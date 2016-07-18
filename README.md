@@ -2,8 +2,8 @@
 网址：join.eeyes.net
 
 ## 安装
-1. 需要php > 5.3
-2. 解压服务器目录
+1. 需要`php > 5.3`
+2. `clone`到服务器
 3. 更改`api/`目录权限，使之可写
 4. 更改`api/submit.php`的`DATA_FILE`常量，使之难以猜测
 5. 安装完成
