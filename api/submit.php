@@ -30,21 +30,28 @@ function get_client_ip($advance = false) {
     }
     return ip2long($ip) ? $ip : false;
 }
-// 防刷初始化
-$last_ip = '0.0.0.0';
-$post_times = 0;
 // 获取ip
-if (!$ip = get_client_ip()) exit;
+if (!$client_ip = get_client_ip()) {
+    exit;
+}
 // 读取防刷记录文件
 if (file_exists(IP_FILE)) {
-	require IP_FILE;
+    $ip = require IP_FILE;
+} else {
+    $ip = array();
 }
-// 提交次数+1
-++$post_times;
-// 同一ip连续10次提交则退出
-if ($last_ip === $ip && $post_times > 10) exit;
+// 判断是否已存在
+if (isset($ip[$client_ip])) {
+    // 同一ip提交达到10次则退出
+    if ($ip[$client_ip] >= 10) {
+        exit;
+    }
+    ++$ip[$client_ip];
+} else {
+    $ip[$client_ip] = 1;
+}
 // 写入防刷记录文件
-file_put_contents(IP_FILE, '<?php $last_ip=\'' . $ip . '\';$post_times=' . $post_times . ';');
+file_put_contents(IP_FILE, '<?php return ' . var_export($ip, true) . ';');
 // 输入过滤函数
 function I($name, $type, $filter) {
 	if (!isset($_POST[$name])) exit;
