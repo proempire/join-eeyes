@@ -1,3 +1,5 @@
+.idea/*
 pic/*
-api/*
-!api/submit.php
+api/*.csv
+api/ip.php
+api/config.php
