@@ -1,17 +1,22 @@
 <?php
 // 只允许POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') exit;
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    exit;
+}
 // 读取配置文件
 require 'config.php';
 // 获取ip，ip不合法返回false
 // $advance == false 返回 REMOTE_ADDR
 // $advance == true 返回 HTTP_X_FORWARDED_FOR首个ip -> HTTP_CLIENT_IP -> REMOTE_ADDR
-function get_client_ip($advance = false) {
+function get_client_ip($advance = false)
+{
     if ($advance) {
         if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $arr = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
             $pos = array_search('unknown', $arr);
-            if (false !== $pos) unset($arr[$pos]);
+            if (false !== $pos) {
+                unset($arr[$pos]);
+            }
             $ip = trim($arr[0]);
         } elseif (isset($_SERVER['HTTP_CLIENT_IP'])) {
             $ip = $_SERVER['HTTP_CLIENT_IP'];
@@ -23,6 +28,7 @@ function get_client_ip($advance = false) {
     }
     return ip2long($ip) ? $ip : false;
 }
+
 // 获取ip
 if (!$client_ip = get_client_ip()) {
     exit('-1');
@@ -46,19 +52,28 @@ if (isset($ip[$client_ip])) {
 // 写入防刷记录文件
 file_put_contents(IP_FILE, '<?php return ' . var_export($ip, true) . ';');
 // 输入过滤函数
-function I($name, $type, $filter) {
-    if (!isset($_POST[$name])) exit('-3');
-    $data = $_POST[$name];
-    if (is_array($data)) exit('-3');
-    if (is_callable($filter))
-        return $filter($data);
-    elseif (is_string($filter) && 1 !== preg_match($filter, (string)$data))
+function I($name, $type, $filter)
+{
+    if (!isset($_POST[$name])) {
         exit('-3');
+    }
+    $data = $_POST[$name];
+    if (is_array($data)) {
+        exit('-3');
+    }
+    if (is_callable($filter)) {
+        return $filter($data);
+    } elseif (is_string($filter) && 1 !== preg_match($filter, (string)$data)) {
+        exit('-3');
+    }
     switch ($type) {
-        case 'd': return (int)$data;
-        case 's': return (string)$data;
+        case 'd':
+            return (int)$data;
+        case 's':
+            return (string)$data;
     }
 }
+
 // 验证输入数据
 // 姓名：1-10个字符
 // 性别：0女、1男
@@ -73,31 +88,38 @@ function I($name, $type, $filter) {
 // 第二志愿：0空、1市场部、2公关部、3信息部门、4产品部、5前端美工部、6后台WEB部、7APP部、8EUX(不面向新生)
 // 个人简介：0-255个字符
 // 加入理由：0-255个字符
-$name    = I('name', 's', '/^.{1,10}$/');
-$gender  = I('gender', 'd', '/^[01]$/');
-$home    = I('home', 's', '/^.{0,40}$/');
-$date    = I('date', 's', function ($date) {return (is_string($date) && 1 === preg_match('/^(\d{4})-(\d{1,2})-(\d{1,2})$/', $date, $matches) && checkdate($matches[2], $matches[3], $matches[1])) ? $date : null;});
-$class   = I('class', 's', '/^.{1,20}$/');
+$name = I('name', 's', '/^.{1,10}$/');
+$gender = I('gender', 'd', '/^[01]$/');
+$home = I('home', 's', '/^.{0,40}$/');
+$date = I('date', 's', function ($date) {
+    return (is_string($date)
+        && 1 === preg_match('/^(\d{4})-(\d{1,2})-(\d{1,2})$/', $date, $matches)
+        && checkdate($matches[2], $matches[3], $matches[1])) ? $date : null;
+});
+$class = I('class', 's', '/^.{1,20}$/');
 $college = I('college', 'd', '/^[0-7]$/');
-$tel     = I('tel', 's', '/^(1((3\d)|(4[579])|(5[012356789])|(7[05678])|(8\d))\d{8})$/');
-$qq      = I('qq', 's', '/^[1-9]\d{4,10}$/');
-$mail    = I('mail', 's', '/^(|([a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+))$/');
-$first   = I('first', 'd', '/^[1-8]$/');
-$second  = I('second', 'd', '/^[0-8]$/');
-if ($first === $second) exit('-3');
-$info    = I('info', 's', '/^.{0,255}$/');
-$reason  = I('reason', 's', '/^.{0,255}$/');
+$tel = I('tel', 's', '/^(1((3\d)|(4[579])|(5[012356789])|(7[05678])|(8\d))\d{8})$/');
+$qq = I('qq', 's', '/^[1-9]\d{4,10}$/');
+$mail = I('mail', 's', '/^(|([a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+))$/');
+$first = I('first', 'd', '/^[1-8]$/');
+$second = I('second', 'd', '/^[0-8]$/');
+if ($first === $second) {
+    exit('-3');
+}
+$info = I('info', 's', '/^.{0,255}$/');
+$reason = I('reason', 's', '/^.{0,255}$/');
 // value->名称转换
 $college = COLLEGE[$college];
-$first   = GROUP[$first];
-$second  = GROUP[$second];
+$first = GROUP[$first];
+$second = GROUP[$second];
 // 时间：yyyy-mm-dd hh:mm:ss
 $time = date('Y-m-d H:i:s');
 // 将csv文件写入缓存
 ob_start();
 $f = fopen('php://output', 'w');
 // 如果不存在，新建，并写入表头
-if (!file_exists(DATA_FILE) && false === fputcsv($f, array('提交时间','IP','姓名','性别','籍贯','出生日期','专业班级','书院','手机','QQ号','邮箱','第一志愿','第二志愿','个人简介','加入理由'))) {
+if (!file_exists(DATA_FILE) && false === fputcsv($f, array('提交时间', 'IP', '姓名', '性别', '籍贯', '出生日期', '专业班级', '书院', '手机', 'QQ号', '邮箱', '第一志愿', '第二志愿', '个人简介', '加入理由'))
+) {
     fclose($f);
     exit('-4');
 }
@@ -116,23 +138,27 @@ if (defined('MAIL_SERVER')) {
     require 'PHPMailer/class.smtp.php';
     $phpmailer = new PHPMailer;
     // 邮件服务器设置
-    $phpmailer->Host       = MAIL_SERVER['Host'];
-    $phpmailer->Port       = MAIL_SERVER['Port'];
+    $phpmailer->Host = MAIL_SERVER['Host'];
+    $phpmailer->Port = MAIL_SERVER['Port'];
     $phpmailer->isSMTP();
     $phpmailer->SMTPSecure = 'ssl';
-    $phpmailer->SMTPAuth   = true;
-    $phpmailer->Username   = MAIL_SERVER['Username'];
-    $phpmailer->Password   = MAIL_SERVER['Password'];
+    $phpmailer->SMTPAuth = true;
+    $phpmailer->Username = MAIL_SERVER['Username'];
+    $phpmailer->Password = MAIL_SERVER['Password'];
     // 邮件设置
     $phpmailer->setFrom($phpmailer->Username, '西安交通大学e瞳网');
     $phpmailer->addAddress($mail, $name);
     $phpmailer->isHTML(true);
     // 邮件内容
-    $phpmailer->Subject    = 'e瞳网招新报名反馈';
-    $phpmailer->Body       = '<h1>' . htmlspecialchars($name) . ' 同学：</h1><p>你好，</p><p>小瞳已经收到您的报名申请，</p><p>经过审核后将以邮件和短信形式通知答辩地点</p>';
-    $phpmailer->AltBody    = $name . ' 同学：你好，小瞳已经收到您的报名申请，经过审核后将以邮件和短信形式通知答辩地点';
+    $phpmailer->Subject = 'e瞳网招新报名反馈';
+    $phpmailer->Body = '<h1>' . htmlspecialchars($name) . ' 同学：</h1><p>你好，</p><p>小瞳已经收到您的报名申请，</p><p>经过审核后将以邮件和短信形式通知答辩地点</p>';
+    $phpmailer->AltBody = $name . ' 同学：你好，小瞳已经收到您的报名申请，经过审核后将以邮件和短信形式通知答辩地点';
     // 发送邮件
-    if (!$phpmailer->send())
-        exit('-5'); // 提交数据成功，发邮件失败
+    if (!$phpmailer->send()) {
+        // 提交数据成功，发邮件失败
+        exit('-5');
+    }
 }
-exit('1'); // 提交成功
+
+// 提交成功
+exit('1');
