@@ -19,7 +19,7 @@
 
 	<!-- 引入 jQuery Mobile 库 -->
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
+    
 	<!-- use Tweene with GSAP -->
 	<script src="dest/js/vendor.min.js"></script>
 	<script>
@@ -29,21 +29,33 @@
             require('gsap');
         </script>
 	<script src="dest/js/tweene.min.js"></script>
-	<script type="text/javascript">
-        $(document).ready(function(){
+	<!-- 设置 -->
+    <script>
+        // set the default time unit you want to use
+        Tweene.defaultTimeUnit = 'ms'; // or 's'      
+        // set the default driver you want to use
+        Tweene.defaultDriver = 'gsap'; // or one of 'transit', 'velocity', 'jquery'
+    	
+    	// 自适应
+        var fontSize;
+        if($(window).width() < 350){  //iphone5
+            fontSize = 12;
+            $('html').css({fontSize: '12px'});
+        }else{
+            if($(window).width() < 400){  //iphone6plus
+            	fontSize = 16;
+            	$('html').css({fontSize: '16px'});
+            }else{  //iphone6
+            	fontSize = 14;
+            	$('html').css({fontSize: '14px'});
+            }
+        }
 
-        	//build the swiper
-            var swiper = new Swiper('.swiper-container',{
-            	direction: 'vertical',
-            	initialSlide: 0,
-            	calculateHeight: true
-            });
-        })
-        // 通用
-        var fontSize = 12;
+        // 获取中央位置 
         var wwidth = $(window).width()/ fontSize * 0.5;
         var wheight = $(window).height()/ fontSize * 0.5;
         
+        // 通用动画函数
         var fadeIn = function($, t, arr){
             if( arr == undefined){ arr = [0, 0, 1, 1]; };
             var TimeLine = Tweene.line();
@@ -118,6 +130,18 @@
             }
             return TimeLine;
         }            
+    </script>
+	<script type="text/javascript">
+        $(document).ready(function(){
+
+        	//build the swiper
+            var swiper = new Swiper('.swiper-container',{
+            	direction: 'vertical',
+            	initialSlide: 0,
+            	calculateHeight: true
+            });
+
+        })        
     </script>
     
     <link rel="stylesheet" type="text/css" href="./css/admin-o.css">
@@ -322,84 +346,87 @@
             <a href="#" data-rel="back" class="back">返回</a>
 		</div>
 		<script type="text/javascript">
-			$('#news-o .icon #voice').css({left: wwidth+1.5 + 'rem', top: 14.2+ 'rem'}).slip;
-	        var bg = $("#news-o .icon #bg");
-	        var bg_img = $("#news-o .icon #bg img")
-	        bg.css({left: wwidth+4 + 'rem', top: 14.2+ 'rem'});
-	        bg_img.css({left: -(wwidth+4) + 'rem', top: -14.2 + 'rem', width: wwidth * 2 + 'rem'});
-	        
-	        var t1 = Tweene.line();
+			$(document).ready(function(){
+				$('#news-o .icon #voice').css({left: wwidth+1.5 + 'rem', top: 14.2+ 'rem'}).slip;
+		        var bg = $("#news-o .icon #bg");
+		        var bg_img = $("#news-o .icon #bg img")
+		        bg.css({left: wwidth+4 + 'rem', top: 14.2+ 'rem'});
+		        bg_img.css({left: -(wwidth+4) + 'rem', top: -14.2 + 'rem', width: wwidth * 2 + 'rem'});
+		        
+		        var t1 = Tweene.line();
 
-	        // 开头
-	        t1.add(Tweene.get($("#news-o .icon #sun, #one img")).set({display: 'none'}));               
-	        t1.add(startfuc('#news-o'));
+		        // 开头
+		        t1.add(Tweene.get($("#news-o .icon #sun, #one img")).set({display: 'none'}));               
+		        t1.add(startfuc('#news-o'));
 
-	        // 太阳出现
-	        var osun = $('#news-o .icon #one img:nth-child(1)');
-	        t1.add(fadeIn(osun, 800));
-	        t1.add(Tweene.get($('#news-o .icon #sun')).set({display: 'inline'}));
+		        // 太阳出现
+		        var osun = $('#news-o .icon #one img:nth-child(1)');
+		        t1.add(fadeIn(osun, 800));
+		        t1.add(fadeIn($('#news-o .icon #sun'), 0.1));
 
-	        // 话筒出现
-	        t1.add(Tweene.get(bg)
-	                .to({height: 0 + 'rem', top: 28.2 + 'rem'})
-	                .easing([0, 0, 1, 1])
-	                .duration(1000));
-	        t1.add(Tweene.get(bg_img)
-	                .to({top: -28.2 + 'rem'})
-	                .easing([0, 0, 1, 1])
-	                .duration(1000), '-=1000');
-	        t1.add(fadeOut(osun, 220), '-=100');
+		        // 话筒出现
+		        t1.add(Tweene.get(bg)
+		                .to({height: 0 + 'rem', top: 28.2 + 'rem'})
+		                .easing([0, 0, 1, 1])
+		                .duration(1000));
+		        t1.add(Tweene.get(bg_img)
+		                .to({top: -28.2 + 'rem'})
+		                .easing([0, 0, 1, 1])
+		                .duration(1000), '-=1000');
+		        t1.add(fadeOut(osun, 220), '-=100');
 
-	        // 嘴巴出现
-	        var omouse = $('#news-o .icon #one img:nth-child(2)');
-	        t1.add(fadeIn(omouse, 800));
+		        // 嘴巴出现
+		        var omouse = $('#news-o .icon #one img:nth-child(2)');
+		        t1.add(fadeIn(omouse, 800));
 
-	        // 字出现
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(3)'), -0.6, 4, -10, -4, 1800, false), '3500');  //A       
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(17)'), -0.4, 4.2, -11, -1.5, 1800, false), '3800');  //o
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(5)'), -0.6, 4, -9, -1, 1500, false), '4100');  //C
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(14)'), -0.3, 4, -10, 1, 1500, false), '4400');  //L        
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(4)'), -0.4, 4, -7, -2.5, 1500, false), '4600');  //B       
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(6)'), -0.4, 4.2, -7, -0.2, 1200, false), '4800');  //d        
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(8)'), -0.4, 4, -5.5, -0.4, 1000, false), '5000');  //F
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(7)'), -0.4, 4.4, -7.8, 1.2, 1200, false), '5200');  //e
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(10)'), -0.4, 4, -8.5, 2.5, 1200, false), '5400');  //h
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(11)'), -0.2, 4, -6.5, 2.4, 1000, false), '5600');  //I
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(9)'), -0.4, 4.4, -5, 2.1, 1000, false), '5700');  //g 
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(16)'), -0.4, 4, -4, -1, 1000, false), '5800');  //N
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(12)'), -0.4, 4, -4.2, 3, 800, false), '5900');  //J
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(13)'), -0.4, 4, -3, 1, 800, false), '6000');  //K        
-	        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(15)'), -0.4, 4.2, -2.5, 3, 500, false), '6100');  //M
-	        
-	        // 嘴巴动
-	        var t2 = Tweene.line();
-	        var i = 0;
-	        while(i<3){
-	            t2.add(Tweene.get(omouse)
-	                    .to({scaleY: 0.5})
-	                    .duration(250));
-	            t2.add(Tweene.get(omouse)
-	                    .to({scaleX: 1.5})
-	                    .duration(250));
-	            t2.add(Tweene.get(omouse)
-	                    .to({scaleX: 1})
-	                    .duration(250));
-	            t2.add(Tweene.get(omouse)
-	                    .to({scaleY: 1})
-	                    .duration(250));
-	            i++;
-	        }
-	        t1.add(t2, '3600');
+		        // 字出现
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(3)'), -0.6, 4, -10, -4, 1800, false), '3500');  //A       
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(17)'), -0.4, 4.2, -11, -1.5, 1800, false), '3800');  //o
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(5)'), -0.6, 4, -9, -1, 1500, false), '4100');  //C
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(14)'), -0.3, 4, -10, 1, 1500, false), '4400');  //L        
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(4)'), -0.4, 4, -7, -2.5, 1500, false), '4600');  //B       
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(6)'), -0.4, 4.2, -7, -0.2, 1200, false), '4800');  //d        
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(8)'), -0.4, 4, -5.5, -0.4, 1000, false), '5000');  //F
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(7)'), -0.4, 4.4, -7.8, 1.2, 1200, false), '5200');  //e
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(10)'), -0.4, 4, -8.5, 2.5, 1200, false), '5400');  //h
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(11)'), -0.2, 4, -6.5, 2.4, 1000, false), '5600');  //I
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(9)'), -0.4, 4.4, -5, 2.1, 1000, false), '5700');  //g 
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(16)'), -0.4, 4, -4, -1, 1000, false), '5800');  //N
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(12)'), -0.4, 4, -4.2, 3, 800, false), '5900');  //J
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(13)'), -0.4, 4, -3, 1, 800, false), '6000');  //K        
+		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(15)'), -0.4, 4.2, -2.5, 3, 500, false), '6100');  //M
+		        
+		        // 嘴巴动
+		        var t2 = Tweene.line();
+		        var i = 0;
+		        while(i<3){
+		        	console.log('1');
+		            t2.add(Tweene.get(omouse)
+		                    .to({scaleY: 0.5})
+		                    .duration(250));
+		            t2.add(Tweene.get(omouse)
+		                    .to({scaleX: 1.5})
+		                    .duration(250));
+		            t2.add(Tweene.get(omouse)
+		                    .to({scaleX: 1})
+		                    .duration(250));
+		            t2.add(Tweene.get(omouse)
+		                    .to({scaleY: 1})
+		                    .duration(250));
+		            i++;
+		        }
+		        t1.add(t2, '3600');
 
-	        // 结束
-	        t1.add(endfuc('#news-o'), '6500');        
-	        t1.play();
-	        // var p = true;
-	        // $('#news-o a:nth-child(1)').click(function(){
-	        //     // console.log('1');
-	        //     if(p){t1.pause();p=false;}
-	        //     else{t1.restart();p=true;}
-	        // });
+		        // 结束
+		        t1.add(endfuc('#news-o'), '6500');        
+		        t1.play();
+		        // var p = true;
+		        // $('#news-o a:nth-child(1)').click(function(){
+		        //     // console.log('1');
+		        //     if(p){t1.pause();p=false;}
+		        //     else{t1.restart();p=true;}
+		        // });
+			});
 		</script>
 	</div>
 	<div data-role="page" id="movie-o">
