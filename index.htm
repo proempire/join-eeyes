@@ -90,7 +90,7 @@
 
         var startfuc = function(str){
             var TimeLine = Tweene.line();
-            TimeLine.add(Tweene.get($(str + " .title, .intro, button")).set({display: 'none'}));
+            TimeLine.add(Tweene.get($(str + " .title, .intro, .more")).set({display: 'none'}));
             TimeLine.add(Tweene.get($(str + " .icon")).set({display: 'block'}));
             TimeLine.add(fadeIn($(str + ' .title'), 1000, [.89, 0, .79, .46]));
             return TimeLine;
@@ -100,7 +100,7 @@
             var TimeLine = Tweene.line();
             TimeLine.add(fadeOut($(str + ' .icon'), 800));
             TimeLine.add(fadeIn($(str + ' .intro'), 800));
-            TimeLine.add(fadeIn($(str + ' button'), 800));
+            TimeLine.add(fadeIn($(str + ' .more'), 800));
             return TimeLine;
         }
                 
@@ -318,8 +318,8 @@
                 </div>
             </div>
             <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
-            <button><a href="#news">了解更多</a></button>
-            <a href="#" data-rel="back">返回</a>
+            <a href="#news" class="more">了解更多</a>
+            <a href="#" data-rel="back" class="back">返回</a>
 		</div>
 		<script type="text/javascript">
 			$('#news-o .icon #voice').css({left: wwidth+1.5 + 'rem', top: 14.2+ 'rem'}).slip;
@@ -395,7 +395,7 @@
 	        t1.add(endfuc('#news-o'), '6500');        
 	        t1.play();
 	        // var p = true;
-	        // $('#news-o button').click(function(){
+	        // $('#news-o a:nth-child(1)').click(function(){
 	        //     // console.log('1');
 	        //     if(p){t1.pause();p=false;}
 	        //     else{t1.restart();p=true;}

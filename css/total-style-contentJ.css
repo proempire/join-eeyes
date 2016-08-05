@@ -24,7 +24,6 @@ html{
     -webkit-align-items: center;
     align-items: center;
     font-family: 黑体;    
-    color: white;
 }
 .contentJ .title{ 
     width: 100%;  
@@ -39,25 +38,27 @@ html{
     width: 70%;
     font-size: 1.5rem;
     line-height: 1.5;
+    color: white;
 }
-.contentJ button{
+.contentJ .more{
+    font-weight: lighter;
+    text-align: center;
+    line-height: 2rem;
+    width: 6rem;
+    height: 2rem; 
     position: absolute;
     outline: none;
-    background: #2deca6;
+    background-color: #2deca6;
     border: none;
     border-radius: 0.4rem;
-}
-.contentJ button a{
-    color: white;
     font-size: 1.2rem;
-}
-.contentJ button{
-    width: 6rem;
-    height: 2rem;        
+    color: white;          
     bottom: 5rem; left: 50%;
     -webkit-transform:translateX(-3rem); /* Safari 和 Chrome */    
 }
-.contentJ a{
+.contentJ .back{
     position: absolute;
     top: 1rem; left: 1rem;
+    color: #2deca6; 
+    opacity: 0.4;
 }
