@@ -1,0 +1,63 @@
+html{
+    font-size: 12px;
+}
+.contentJ{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /*flex布局（已兼容）*/
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    /*调整为竖排*/
+    flex-direction: column;
+    /*一行中内容排不下时正常换行*/
+    flex-wrap: wrap;
+    /*主轴居中（已兼容）*/
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    /*交叉轴居中（已兼容）*/
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-family: 黑体;    
+    color: white;
+}
+.contentJ .title{ 
+    width: 100%;  
+    text-align: center;
+    position: absolute;
+    top: 10rem;
+}
+.contentJ .title img{
+    width: 15rem;
+}
+.contentJ .intro{
+    width: 70%;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+.contentJ button{
+    position: absolute;
+    outline: none;
+    background: #2deca6;
+    border: none;
+    border-radius: 0.4rem;
+}
+.contentJ button a{
+    color: white;
+    font-size: 1.2rem;
+}
+.contentJ button{
+    width: 6rem;
+    height: 2rem;        
+    bottom: 5rem; left: 50%;
+    -webkit-transform:translateX(-3rem); /* Safari 和 Chrome */    
+}
+.contentJ a{
+    position: absolute;
+    top: 1rem; left: 1rem;
+}
