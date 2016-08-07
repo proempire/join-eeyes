@@ -288,10 +288,15 @@
 
 		}
 	</style>
+	<!-- 引入简介页样式 -->
 	<link rel="stylesheet" type="text/css" href="./css/total-style-contentJ.css">
 	<link rel="stylesheet" type="text/css" href="./css/market-o.css">
 	<link rel="stylesheet" type="text/css" href="./css/publicrelation-o.css">
+	<link rel="stylesheet" type="text/css" href="./css/newmedia-o.css">
 	<link rel="stylesheet" type="text/css" href="./css/news-o.css">
+	<link rel="stylesheet" type="text/css" href="./css/product-o.css">	
+	<link rel="stylesheet" type="text/css" href="./css/frontend-and-art-o.css">	
+	<link rel="stylesheet" type="text/css" href="./css/backapp-o.css">
 	<link rel="stylesheet" type="text/css" href="./css/backend-o.css">
 </head>
 
@@ -312,11 +317,11 @@
 					<a href="#market-o">市场部</a>
 					<a href="#publicrelation-o">公关部</a>					
 					<a href="#news-o">新闻部</a>
-					<a href="#newmedia-o">新媒体部</a>
-					<a href="#news-o">新闻部</a>
-					<a href="#news-o">新闻部</a>
-					<a href="#news-o">新闻部</a>
-					<a href="#news-o">新闻部</a>
+					<a href="#movie-o">影视部</a>
+					<a href="#newmedia-o">新媒体部</a>					
+					<a href="#product-o">产品部</a>
+					<a href="#frontend-and-art-o">前端美工组</a>
+					<a href="#backapp-o">后台app组</a>
 					<a href="#backend-o">后台web组</a>
 				</div>
 			</div>
@@ -576,35 +581,349 @@
 		<a href="#movie">详情页</a>
 		<a href="#" data-rel="back">返回</a>
 	</div>
+	<!-- 新媒体部简介页 -->
 	<div data-role="page" id="newmedia-o" class="FenYe">
-		新媒体部简介
-		<audio id="voice0" src="./msc/#.mp3"></audio>
-		<button id="trigger-voice0">放呀！</button>
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="./images/XinMei/title@3x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">
+                <div id="newmedia-o-img1">
+                    <img src="./images/XinMei/Xuan@3x.png">
+                    <img src="./images/XinMei/wechat@3x.png">
+                    <img src="./images/XinMei/weibo@3x.png">
+                </div>
+                <div id="newmedia-o-img2">
+                    <span>共享</span>
+                    <span>交互</span>
+                    <span>生命力</span>
+                    <span>价值</span>
+                    <span>原创</span>
+                    <span>舆论</span>
+                    <span>效应</span>
+                    <span>咨讯</span>
+                    <span>采访</span>
+                </div>
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+			<!-- 跳转按钮 -->
+			<a href="#newmedia" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
+		</div>
+		<!-- 页面动效 -->
 		<script type="text/javascript">
-            $(document).ready(function(){
-            	$('#trigger-voice0').on('click',function(){
-            	//console.log($('#voice0'))
-            	document.getElementById('voice0').play();
-            })
-            });
+			$(document).ready(function(){
+				// 创建时间轴
+				var newmedia_o_t1 = Tweene.line();         
+		        
+				// 开头动效
+		        newmedia_o_t1.add(Tweene.get($("#newmedia-o .icon img")).set({display: 'none'}));
+		        newmedia_o_t1.add(Tweene.get($("#newmedia-o .icon span")).set({display: 'none'}));
+		        newmedia_o_t1.add(startJfuc('#newmedia-o'));
+		        
+		        // 旋涡出现
+		        newmedia_o_t1.add(fadeIn($('#newmedia-o .icon #newmedia-o-img1 img:nth-child(1)'), 800));
+
+		        // 旋转与变色     
+		        newmedia_o_t1.add(ZiXuanfuc($('#newmedia-o .icon #newmedia-o-img1 img:nth-child(1)'), 800), '1000');
+		        newmedia_o_t1.add(Tweene.get($('#newmedia-o .icon #newmedia-o-img1 img:nth-child(1)'))
+		            .from({opacity: 0.5})
+		            .to({opacity: 1})
+		            .easing([0, 0, 1, 1])
+		            .loops(-1)
+		            .yoyo(true)
+		            .duration(800), '1000');
+
+		        // 内容出现
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(1)'), -2, 1, 4.2, 0.2, 1000, true, 2000), '2100');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(2)'), -2, 1, 3.2, 4.2, 1000, true, 2000), '2000');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(3)'), -2.7, 1, -4.2, 5.4, 1000, true, 2000), '1900');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img1 img:nth-child(2)'), -1.4, 1, -7.2, 1.2, 1000, true, 2000), '1800');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(4)'), -1.7, 1, -4.7, -2.7, 1000, true, 2000), '1700');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(5)'), -1.7, 1.1, 0, -3.2, 1000, true, 2000), '1600');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img1 img:nth-child(3)'), -1.2, 1.2, 1.6, -1, 1000, true, 2000), '1500');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(6)'), -1.5, 1.3, 0.6, 2, 1000, true, 2000), '1400');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(7)'), -1.5, 1.3, -1.4, 3.6, 1000, true, 2000), '1300');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(8)'), -1.5, 1.3, -3.2, 1.2, 1000, true, 2000), '1200');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(9)'), -1.5, 1.3, -1.8, -0.9, 1000, true, 2000), '1100');
+
+		        // 结束动效
+		        newmedia_o_t1.add(endJfuc('#newmedia-o'), '2400');  
+
+		        $('#newmedia-o a').click(function(){
+		        	newmedia_o_t1.pause();
+		        })
+		        
+		        // newmedia_o_t1.play();  // 这里要加事件监听
+
+			});
 		</script>
-		<a href="#newmedia">详情页</a>
-		<a href="#" data-rel="back">返回</a>
 	</div>
+	<!-- 产品部简介页 -->
 	<div data-role="page" id="product-o" class="FenYe">
-		产品部简介
-		<a href="#product">详情页</a>
-		<a href="#" data-rel="back">返回</a>
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="./images/ChanPin/title@2x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">
+                <div id="product-o-line">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <div id="product-o-ball">
+                    <img src="./images/ChanPin/lamp@2x.png" class="lamp">
+                    <img src="./images/ChanPin/lamp2@2x.png" class="lamp">
+                    <img src="./images/ChanPin/b1@3x.png" class="ball">
+                    <img src="./images/ChanPin/bs1@3x.png" class="ballshine">
+                    <img src="./images/ChanPin/b2@3x.png" class="ball">
+                    <img src="./images/ChanPin/bs2@3x.png" class="ballshine">
+                    <img src="./images/ChanPin/b3@3x.png" class="ball">
+                    <img src="./images/ChanPin/bs3@3x.png" class="ballshine">
+                    <img src="./images/ChanPin/b4@3x.png" class="ball">
+                    <img src="./images/ChanPin/bs4@3x.png" class="ballshine">
+                    <img src="./images/ChanPin/b5@3x.png" class="ball">
+                    <img src="./images/ChanPin/bs5@3x.png" class="ballshine">
+                    <img src="./images/ChanPin/b6@3x.png" class="ball">
+                    <img src="./images/ChanPin/bs6@3x.png" class="ballshine">
+                    <img src="./images/ChanPin/b7@3x.png" class="ball">
+                    <img src="./images/ChanPin/bs7@3x.png" class="ballshine">
+                    <img src="./images/ChanPin/b8@3x.png" class="ball">
+                    <img src="./images/ChanPin/bs8@3x.png" class="ballshine">
+                    <img src="./images/ChanPin/b9@3x.png" class="ball">
+                    <img src="./images/ChanPin/bs9@3x.png" class="ballshine">
+                    <img src="./images/ChanPin/b10@3x.png" class="ball">
+                    <img src="./images/ChanPin/bs10@3x.png" class="ballshine">
+                </div>
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+			<!-- 跳转按钮 -->
+			<a href="#product" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
+		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 创建时间轴
+				var product_o_t1 = Tweene.line();         
+		        
+		        // 开头动效
+		        product_o_t1.add(Tweene.get($("#product-o .icon #product-o-line>div, #product-o-ball>img")).set({display: 'none'}));
+		        product_o_t1.add(startJfuc('#product-o'));
+
+		        // 灯泡出现
+		        product_o_t1.add(fadeIn($("#product-o .icon #product-o-ball img:nth-child(1)"), 800));
+
+		        // 星球出现
+		        var product_o_arr = [5, 15, 11, 21, 3, 17, 9, 19, 7, 13]
+		        for(var product_o_i = 0 ; product_o_i < 10; product_o_i++){
+		            product_o_t1.add(fadeIn($("#product-o .icon #product-o-ball img:nth-child("+product_o_arr[product_o_i]+")"), 200));
+		        }
+
+		        // 星球发光与连线函数
+		        var Shinefuc = function(number, t){
+		        	if(t == undefined){ t = 200; }
+		        	var TimeLine = Tweene.line(); 
+		        	TimeLine.add(Tweene.get($("#product-o .icon #product-o-ball img:nth-child("+number+")"))
+	                    .from({opacity: 0, display: 'inline', width: '+=5px', left: '-=2.5px', top: '-=2.5px'})
+	                    .to({opacity: 1, display: 'inline', width: '+=5px', left: '-=2.5px', top: '-=2.5px'})
+	                    .duration(t));
+		        	return TimeLine;
+		        }
+		        var LianXianfuc = function(number, width){
+		        	var TimeLine = Tweene.line(); 
+		        	TimeLine.add(Tweene.get($("#product-o .icon #product-o-line div:nth-child("+number+")"))
+                        .from({display: 'inline', width: '0'})
+                        .to({display: 'inline', width: width + 'rem'})
+                        .duration(200));
+		        	return TimeLine;
+		        }
+
+		        // 左侧星球发光并连线1
+		        var product_o_t2 = Tweene.line();       
+        		product_o_t2.add(Shinefuc(6));
+        		product_o_t2.add(LianXianfuc(1, 3.2));
+        		product_o_t2.add(Shinefuc(4));
+        		product_o_t2.add(LianXianfuc(2, 3.2));
+        		product_o_t2.add(LianXianfuc(3, 4.8), '-=100');
+        		product_o_t2.add(Shinefuc(8));
+        		product_o_t2.add(LianXianfuc(5, 3.2));
+        		product_o_t2.add(LianXianfuc(8, 1.8));
+
+        		//左侧星球发光并连线2
+        		var product_o_t3 = Tweene.line();
+        		product_o_t3.add(Shinefuc(12));
+        		product_o_t3.add(LianXianfuc(4, 3.3));
+        		product_o_t3.add(Shinefuc(10));
+        		product_o_t3.add(LianXianfuc(6, 5.8));
+        		product_o_t3.add(LianXianfuc(7, 2.9));
+        		product_o_t3.add(Shinefuc(2, 1500));  // 灯泡发亮
+        
+        		//右侧星球发光并连线1
+        		var product_o_t4 = Tweene.line();       
+        		product_o_t4.add(Shinefuc(16));
+        		product_o_t4.add(LianXianfuc(9, 3.2));
+        		product_o_t4.add(Shinefuc(18));
+        		product_o_t4.add(LianXianfuc(10, 3.8));
+        		product_o_t4.add(LianXianfuc(11, 4.2), '-=100');
+        		product_o_t4.add(Shinefuc(14));
+        		product_o_t4.add(LianXianfuc(13, 5));
+        		product_o_t4.add(LianXianfuc(15, 1.5));
+
+        		//右侧星球发光并连线2
+        		var product_o_t5 = Tweene.line();
+        		product_o_t5.add(Shinefuc(22));
+        		product_o_t5.add(LianXianfuc(12, 2.8));
+        		product_o_t5.add(Shinefuc(20));
+        		product_o_t5.add(LianXianfuc(14, 2));
+        		product_o_t5.add(LianXianfuc(16, 2.4), '+=600');
+
+        		product_o_t1.add(product_o_t2, '2000').add(product_o_t3, '2400').add(product_o_t5, '2200').add(product_o_t4, '2600');
+        
+        		// 结束动效
+		        product_o_t1.add(endJfuc('#product-o'));
+
+		        $('#product-o a').click(function(){
+		        	product_o_t1.pause();
+		        })
+
+		        // product_o_t1.play();  // 这里要加事件监听
+		    });
+		</script>
 	</div>
+	<!-- 前端美工组简介页 -->
 	<div data-role="page" id="frontend-and-art-o" class="FenYe">
-		前端美工组部简介
-		<a href="#frontend-and-art">详情页</a>
-		<a href="#" data-rel="back">返回</a>
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="./images/QianDuan/title@2x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">
+                <img src="./images/QianDuan/icon@2x.png" id="frontend-and-art-o-plane">
+                <img src="./images/QianDuan/css@2x.png" id="frontend-and-art-o-css">
+                <img src="./images/QianDuan/ai2@2x.png" id="frontend-and-art-o-ai">
+                <img src="./images/QianDuan/js@2x.png" id="frontend-and-art-o-js">
+                <img src="./images/QianDuan/ps@2x.png" id="frontend-and-art-o-ps">
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+            <!-- 跳转按钮 -->
+			<a href="#frontend-and-art" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
+		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 创建时间轴
+				var frontend_o_t1 = Tweene.line();         
+		        
+		        // 开头动效
+		        frontend_o_t1.add(Tweene.get($("#frontend-and-art-o .icon img")).set({display: 'none'}))
+		        frontend_o_t1.add(startJfuc('#frontend-and-art-o'));
+
+		        // 飞机出现
+		        frontend_o_t1.add(Tweene.get($('#frontend-and-art-o .icon #frontend-and-art-o-plane'))
+                    .from({left: -10 +'rem', top: wheight*0.95 + 'rem', display: 'inline'})
+                    .to({left: wwidth +'rem', top: wheight*0.95 + 'rem', display: 'inline'})
+                    .duration(1000));
+        
+        		// 块抛出
+        		var Paofuc = function(str, h, w, a){
+        			var TimeLine = Tweene.line(); 
+        			TimeLine.add(Tweene.get($('#frontend-and-art-o .icon ' + str))
+        				.set({display: 'inline', left: wwidth +'rem', top: wheight * h + 'rem'}));
+			        var x = wwidth, y;
+			        while(x > wwidth * w){
+			            x = x - 1;
+			            if(x < wwidth * w){ x = wwidth * w; }
+			            y = a * (x - wwidth) * (x - (wwidth * w)) + wheight * h;
+			            TimeLine.add(Tweene.get($('#frontend-and-art-o .icon ' + str))
+			                .to({ left: x +'rem', top: y +'rem'})
+			                .duration(50));
+			        }
+        			return TimeLine;
+        		}
+               	
+               	frontend_o_t1.add(Paofuc('#frontend-and-art-o-css', 0.95, 0.3, 0.2));
+               	frontend_o_t1.add(Paofuc('#frontend-and-art-o-ai', 1.15, 0.3, 0.35));
+               	// 这个js图的位置莫名有问题……
+               	frontend_o_t1.add(Paofuc('#frontend-and-art-o-js', 0.95, 0.6, 0.25));
+               	frontend_o_t1.add(Paofuc('#frontend-and-art-o-ps', 1.15, 0.6, 0.2));
+
+               	// 结束动效
+		        frontend_o_t1.add(endJfuc('#frontend-and-art-o'));
+
+		        $('#frontend-and-art-o a').click(function(){
+		        	frontend_o_t1.pause();
+		        })
+
+		        frontend_o_t1.play();  // 这里要加事件监听
+		    });
+		</script>
 	</div>
+	<!-- 后台app组简介页 -->
 	<div data-role="page" id="backapp-o" class="FenYe">
-		后台app组简介
-		<a href="#backend">详情页</a>
-		<a href="#" data-rel="back">返回</a>
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="./images/App/title@3x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">
+                <img src="./images/App/bee@3x.png">
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+			<!-- 跳转按钮 -->
+			<a href="#backapp" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
+		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 创建时间轴
+				var backapp_o_t1 = Tweene.line();
+
+				// 开头动效
+				backapp_o_t1.add(Tweene.get($("#backapp-o .icon img")).set({left: '1rem', bottom: '-15rem'}));
+				backapp_o_t1.add(startJfuc('#backapp-o'));
+				
+				// 蜜蜂飞出
+		        var backapp_o_x = 1, backapp_o_y = -15, backapp_o_t = 0, backapp_o_o, backapp_o_z;
+		        while(backapp_o_x <= wwidth * 2 ){
+		            backapp_o_y = backapp_o_y + 1;
+		            backapp_o_x = backapp_o_t * backapp_o_t * backapp_o_t * 0.3;
+		            backapp_o_o = backapp_o_t * backapp_o_t * backapp_o_t * 0.4;
+		            backapp_o_z = 1 - backapp_o_t * backapp_o_t * backapp_o_t * 0.015;
+		            if(backapp_o_z < 0){ backapp_o_z = 0; } 
+		            backapp_o_t1.add(Tweene.get($("#backapp-o .icon img"))
+		                        .to({left: backapp_o_x + 'rem', bottom: backapp_o_y + 'rem', rotation: backapp_o_o, scale: backapp_o_z})
+		                        .duration(35));
+		            backapp_o_t = backapp_o_t + 0.1;
+		        }
+
+		        // 结束动效
+		        backapp_o_t1.add(endJfuc('#backapp-o'));
+		        
+		        $('#backapp-o a').click(function(){
+		        	backapp_o_t1.pause();
+		        })
+
+		        backapp_o_t1.play();  // 这里要加事件监听
+			});
+		</script>
 	</div>
 	<!-- 后台web组简介页 -->
 	<div data-role="page" id="backend-o" class="FenYe">
@@ -621,7 +940,7 @@
             <!-- 部门简介词 -->
             <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
 			<!-- 跳转按钮 -->
-			<a href="#backapp" class="more">了解更多</a>
+			<a href="#backend" class="more">了解更多</a>
 			<a href="#" data-rel="back" class="back">返回</a>
 		</div>
 		<!-- 页面动效 -->
