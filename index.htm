@@ -15,7 +15,7 @@
 	<script type="text/javascript" src="dest/js/swiper.min.js"></script>
 
 	<!-- 引入 jQuery 库 -->
-	// <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 	<!-- 引入 jQuery Mobile 库 -->
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -29,6 +29,7 @@
             require('gsap');
         </script>
 	<script src="dest/js/tweene.min.js"></script>
+	<script type="text/javascript" src="./js/jquery.lazyload.js"></script>
 	<!-- 设置 -->
     <script>
         // set the default time unit you want to use
@@ -54,6 +55,10 @@
         // 获取中央位置 
         var wwidth = $(window).width()/ fontSize * 0.5;
         var wheight = $(window).height()/ fontSize * 0.5;
+
+        // 通用客户端宽高
+        var cwidth = $(window).width();
+        var cheight = $(window).height();
         
         // 通用动画函数
         var fadeIn = function($, t, arr){
@@ -141,16 +146,51 @@
             	calculateHeight: true
             });
 
+            // lazyload
+            //$('div[data-background]').each(function(){
+            	//$(this).lazyload({
+            		//effect: fadeIn,
+            		//container: $(this).parents().filter('.page');
+            	//});
+            //});
+            
+            var p1_1 = Tweene.get($('.part1 img:nth-child(1)'));
+            p1_1.set({left: wwidth*fontSize, top: wheight*fontSize});
+
+            var tmp1 = Tweene.get($('.part1 img:nth-child(1)'));
+            tmp1.to({left: '600px', opacity: 0})
+              .easing([1,-0.04,1,-0.17])
+              .duration(1000);
+            var tmp2 = Tweene.get($('.part1 img:nth-child(8)'));
+            tmp2.to({left: '600px', top: '300px', opacity: 0})
+              .easing([1,-0.04,1,-0.17])
+              .duration(1000);
+            var tmp3 = Tweene.get($('.part1 img:nth-child(9)'));
+            tmp3.to({left: '600px', top: '500px', opacity: 0})
+              .easing([1,-0.04,1,-0.17])
+              .duration(1000);
+            var tmp4 = Tweene.get($('.part1 img:nth-child(4)'));
+            tmp4.to({left: '600px', top: '250px', opacity: 0})
+              .easing([1,-0.04,1,-0.17])
+              .duration(1000);
+            var tmp5 = Tweene.get($('.part1 img:nth-child(5)'));
+            tmp5.to({left: '600px', top: '550px', opacity: 0})
+              .easing([1,-0.04,1,-0.17])
+              .duration(1000);
+            var mt = Tweene.line();
+            mt.add(tmp1,0).add(tmp2,0).add(tmp3,0).add(tmp4,0).add(tmp5,0).play();
         })        
     </script>
     
-    <link rel="stylesheet" type="text/css" href="./css/admin-o.css">
 	<style type="text/css">
         *{
         	margin: 0;
         	padding: 0;
         	text-decoration: none;
         	list-style: none;
+        	box-sizing: border-box;
+        	-moz-box-sizing:border-box; /* Firefox */
+			-webkit-box-sizing:border-box; /* Safari */
         }
 	    html, body, div#pagenav {
 	        position: relative;
@@ -182,7 +222,11 @@
 		    align-items: center;
 	    }
 	    #nav{
-	    	background-color: blue;
+	    	background-image: url('./images/sky1.png');
+            background-size: cover;
+	    }
+	    #nav img{
+	    	position: absolute;
 	    }
         .animate{
         	width: 100%;
@@ -273,11 +317,34 @@
 				background-position: 900px -900px;
 				opacity: 0;
 			}
-
 		}
+        .front,.back1,.back2{
+        	width: 100px;
+        	height: 100px;
+        	border-radius: 50%;
+        	position: absolute;
+        	background-color: #c0f;
+        	text-align: center;
+
+        }
+        .front span,.back1 span,.back2 span{
+            position: absolute;
+            top: 50%;
+        }
+        .front{
+        	animation: 3s rot1 linear infinite;
+        }
+        @keyframes rot1{
+        	100%{
+        		transform: translate3d(180px,0px,180px);
+        	}
+        }
 	</style>
 	<link rel="stylesheet" type="text/css" href="./css/total-style-contentJ.css">
 	<link rel="stylesheet" type="text/css" href="./css/news-o.css">
+	<link rel="stylesheet" type="text/css" href="./css/planetBoom.css">
+	<link rel="stylesheet" type="text/css" href="./css/newmedia.css">
+	<link rel="stylesheet" type="text/css" href="./css/movie.css">
 </head>
 
 <body>
@@ -286,17 +353,41 @@
 			<div class="swiper-wrapper">
 				<div class="swiper-slide" id="nav">
 
-					<div>第一页</div>
+					<div class="part1">
+						<img src="./images/ember1/p1.png" style="left: 0px; top: 0px">
+						<img src="./images/ember1/p2.png" style="left: 0px; top: 0px">
+						<img src="./images/ember1/p3.png" style="left: 0px; top: 0px">
+						<img src="./images/ember1/p4.png" style="left: 140px; top: 385px">
+						<img src="./images/ember1/p5.png" style="left: 166px; top: 384px">
+						<img src="./images/ember1/p6.png" style="left: 0px; top: 0px">
+						<img src="./images/ember1/p7.png" style="left: 270px; top: 373px">
+						<img src="./images/ember1/p8.png" style="left: 217px; top: 437px">
+						<img src="./images/ember1/p9.png" style="left: 297px; top: 429px">
+					</div>
+					<div class="part2"></div>
+					<div class="part3"></div>
+					<div class="part4"></div>
+					<div class="part5"></div>
 					<div class="animate"></div>
 				</div>
 				<div class="swiper-slide">第二页</div>
 				<div class="swiper-slide">第三页</div>
 				<div class="swiper-slide">第四页</div>
 				<div class="swiper-slide">
-					第五页
+					
+					<div class="front">
+						<span>运营部门</span>
+					</div>
+					<div class="back1">
+						<span>信息部门</span>
+					</div>
+					<div class="back2">
+						<span>技术部门</span>
+					</div>
 					<a href="#market-o">市场部</a>
 					<a href="#newmedia-o">新媒体部</a>
-					<a href="#news-o">市场部</a>
+					<a href="#news-o" id="noshow">新闻部</a>
+					<a href="#movie-o">影视部</a>
 				</div>
 			</div>
 		</div>
@@ -346,7 +437,7 @@
             <a href="#" data-rel="back" class="back">返回</a>
 		</div>
 		<script type="text/javascript">
-			$(document).ready(function(){
+			$('#noshow').on('click',function(){
 				$('#news-o .icon #voice').css({left: wwidth+1.5 + 'rem', top: 14.2+ 'rem'}).slip;
 		        var bg = $("#news-o .icon #bg");
 		        var bg_img = $("#news-o .icon #bg img")
@@ -436,16 +527,9 @@
 	</div>
 	<div data-role="page" id="newmedia-o">
 		新媒体部简介
-		<audio id="voice0" src="./msc/#.mp3"></audio>
+		
 		<button id="trigger-voice0">放呀！</button>
-		<script type="text/javascript">
-            $(document).ready(function(){
-            	$('#trigger-voice0').on('click',function(){
-            	//console.log($('#voice0'))
-            	document.getElementById('voice0').play();
-            })
-            });
-		</script>
+		
 		<a href="#newmedia">详情页</a>
 		<a href="#" data-rel="back">返回</a>
 	</div>
@@ -486,14 +570,52 @@
 		<a href="#" data-rel="back">返回</a>
 	</div>
 	<div data-role="page" id="movie">
-		影视部详情
-		<a href="#submit">报名</a>
-		<a href="#" data-rel="back">返回</a>
+		<div class="movie-panel" data-background="../images/media/panel.png"></div>
+		<script type="text/javascript">
+            $('.movie-panel').height(cheight);
+		</script>
 	</div>
 	<div data-role="page" id="newmedia">
-		新媒体部详情
-		<a href="#submit">报名</a>
-		<a href="#" data-rel="back">返回</a>
+		<audio id="voice0" src="yali.mp3"></audio>
+		<div>
+			<div class="container"> 
+				<div class="lrc">
+					<a href="#"><img src="./images/player/detail.png" style="width: 25px;"></a>
+					<a href="#"><img src="./images/player/title.png" style="width: 145px"></a>
+					<div class="lrc-panel">
+						<p>my beloved</p>
+					</div>
+				</div>
+				<div class="icon">
+					<a href="#"><img src="./images/player/shuffle.png" style="width: 20px;"></a>
+					<a href="#"><img src="./images/player/prev.png" style="width: 30px;"></a>
+					<a href="#" id="toggle-msc"><img src="./images/player/play.png" style="width: 30px;"></a>
+					<a href="#"><img src="./images/player/next.png" style="width: 30px;"></a>
+					<a href="#"><img src="./images/player/repeat.png" style="width: 20px;"></a>
+				</div>
+			</div>
+			<div class="player-mask"></div>
+		</div>
+		<script type="text/javascript">
+            $(document).ready(function(){
+            	$('.container').width(cwidth-60).height(cheight-20);
+            	$('.player-mask').width(cwidth);
+            	$('.lrc').width(cwidth-60).height(cheight-20-70);
+            	$('.icon').width(cwidth-60).height(70);
+            	//console.log($('#toggle-msc img').attr('src'))
+            	$('#toggle-msc').on('click',function(){
+	            	//console.log($('#voice0'))
+                    if ($('#toggle-msc img').attr('src') === './images/player/play.png'){
+                        document.getElementById('voice0').play();
+                        $('#toggle-msc img').attr('src','./images/player/stop.png');
+            	    }else{
+            	    	document.getElementById('voice0').pause();
+            	    	$('#toggle-msc img').attr('src','./images/player/play.png');
+            	    }
+	            	
+	            })
+            });
+		</script>
 	</div>
 	<div data-role="page" id="product">
 		产品部详情
