@@ -1,0 +1,16 @@
+#market-o>.content-J{
+    background: url(../images/ShiChang/bg@3x.png);
+    background-size: cover;
+}
+#market-o .icon img{
+    position: absolute;
+}
+#market-o .icon img:nth-child(1){
+    height: 10rem; 
+    left: 50%; right: 50%;   
+    -webkit-transform:translate(-5rem, -4rem); /* Safari 和 Chrome */ 
+}
+#market-o .icon img:nth-child(2){ height: 3.4rem; }
+#market-o .icon img:nth-child(3){ height: 3rem; }
+#market-o .icon img:nth-child(4){ height: 3rem; }
+#market-o .icon img:nth-child(5){ height: 2.8rem; }
