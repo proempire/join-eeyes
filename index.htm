@@ -298,6 +298,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/frontend-and-art-o.css">	
 	<link rel="stylesheet" type="text/css" href="./css/backapp-o.css">
 	<link rel="stylesheet" type="text/css" href="./css/backend-o.css">
+	<link rel="stylesheet" type="text/css" href="./css/movie-o.css">
 </head>
 
 <body>
@@ -576,10 +577,74 @@
 			});
 		</script>
 	</div>
-	<div data-role="page" id="movie-o">
-		影视部简介
-		<a href="#movie">详情页</a>
-		<a href="#" data-rel="back">返回</a>
+	<!-- 影视部简介页 -->
+	<div data-role="page" id="movie-o" class="FenYe">
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="./images/YinShi/title@3x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">                   
+                <img src="./images/YinShi/bottom@3x.png">
+                <img src="./images/YinShi/head@3x.png">
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+			<!-- 跳转按钮 -->
+			<a href="#movie" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
+		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 创建时间轴
+				var movie_o_t1 = Tweene.line();         
+		        
+		        // 开头动效
+		        movie_o_t1.add(Tweene.get($("#movie-o .icon img")).set({display: 'none'}));
+		        movie_o_t1.add(startJfuc('#movie-o'));
+
+		        // 摄像机出现
+        		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(1)"))
+	                .from({left: wwidth-4.5 + 'rem', top: wheight-1 + 'rem', opacity: 0, display: 'inline'})
+	                .to({left: wwidth-4.5 + 'rem', top: wheight-1 + 'rem', opacity: 1, display: 'inline'})
+	                .duration(800));
+        		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
+                    .from({left: wwidth-5 + 'rem', top: wheight-8 + 'rem', opacity: 0, display: 'inline'})
+                    .to({left: wwidth-5 + 'rem', top: wheight-8 + 'rem', opacity: 1, display: 'inline'})
+                    .duration(800), '-=800');
+
+        		// 摄像机移动
+        		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(1)"))
+                    .to({left: -5 + 'rem', height: 0 + 'rem'})
+                    .duration(4000));
+        		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
+                    .to({left: -6 + 'rem', height: 0 + 'rem', top: wheight-1 + 'rem'})
+                    .duration(4000), '-=4000');
+
+		        // 摄像机镜头旋转
+		        movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
+                    .to({rotation: -20, transformOrigin: '21% 50%'})
+                    .duration(500)
+                    , '1800');
+        		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
+                    .to({rotation: 20, transformOrigin: '21% 50%'})
+                    .duration(1000)
+                    , '2300');
+        		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
+                    .to({rotation: -20, transformOrigin: '21% 50%'})
+                    .duration(1000)
+                    , '3300');
+
+        		// 结束动效
+		        movie_o_t1.add(endJfuc('#movie-o'), '3500');
+
+		        $('#movie-o a').click(function(){
+		        	movie_o_t1.pause();
+		        });
+
+		        // movie_o_t1.play();  // 这里要加事件监听
+		    });
+		</script>
 	</div>
 	<!-- 新媒体部简介页 -->
 	<div data-role="page" id="newmedia-o" class="FenYe">
@@ -813,11 +878,11 @@
 			<div class="title"><img src="./images/QianDuan/title@2x.png"></div>
             <!-- 动画icon -->
             <div class="icon">
-                <img src="./images/QianDuan/icon@2x.png" id="frontend-and-art-o-plane">
-                <img src="./images/QianDuan/css@2x.png" id="frontend-and-art-o-css">
-                <img src="./images/QianDuan/ai2@2x.png" id="frontend-and-art-o-ai">
-                <img src="./images/QianDuan/js@2x.png" id="frontend-and-art-o-js">
-                <img src="./images/QianDuan/ps@2x.png" id="frontend-and-art-o-ps">
+                <img src="./images/QianDuan/icon@2x.png" id="frontend-plane">
+                <img src="./images/QianDuan/css@2x.png" id="frontend-css">
+                <img src="./images/QianDuan/ai@2x.png" id="frontend-ai">
+                <img src="./images/QianDuan/js@2x.png" id="frontend-js">
+                <img src="./images/QianDuan/ps@2x.png" id="frontend-ps">
             </div>
             <!-- 部门简介词 -->
             <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
@@ -836,7 +901,7 @@
 		        frontend_o_t1.add(startJfuc('#frontend-and-art-o'));
 
 		        // 飞机出现
-		        frontend_o_t1.add(Tweene.get($('#frontend-and-art-o .icon #frontend-and-art-o-plane'))
+		        frontend_o_t1.add(Tweene.get($('#frontend-and-art-o .icon #frontend-plane'))
                     .from({left: -10 +'rem', top: wheight*0.95 + 'rem', display: 'inline'})
                     .to({left: wwidth +'rem', top: wheight*0.95 + 'rem', display: 'inline'})
                     .duration(1000));
@@ -858,11 +923,11 @@
         			return TimeLine;
         		}
                	
-               	frontend_o_t1.add(Paofuc('#frontend-and-art-o-css', 0.95, 0.3, 0.2));
-               	frontend_o_t1.add(Paofuc('#frontend-and-art-o-ai', 1.15, 0.3, 0.35));
+               	frontend_o_t1.add(Paofuc('#frontend-css', 0.95, 0.3, 0.2));
+               	frontend_o_t1.add(Paofuc('#frontend-ai', 1.15, 0.3, 0.35));
                	// 这个js图的位置莫名有问题……
-               	frontend_o_t1.add(Paofuc('#frontend-and-art-o-js', 0.95, 0.6, 0.25));
-               	frontend_o_t1.add(Paofuc('#frontend-and-art-o-ps', 1.15, 0.6, 0.2));
+               	frontend_o_t1.add(Paofuc('#frontend-js', 0.95, 0.6, 0.25));
+               	frontend_o_t1.add(Paofuc('#frontend-ps', 1.15, 0.6, 0.2));
 
                	// 结束动效
 		        frontend_o_t1.add(endJfuc('#frontend-and-art-o'));
@@ -871,7 +936,7 @@
 		        	frontend_o_t1.pause();
 		        })
 
-		        frontend_o_t1.play();  // 这里要加事件监听
+		        // frontend_o_t1.play();  // 这里要加事件监听
 		    });
 		</script>
 	</div>

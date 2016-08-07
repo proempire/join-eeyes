@@ -2,15 +2,15 @@
     background: url(../images/QianDuan/bg@2x.png);
     background-size: cover;
 }
-#frontend-and-art-o .icon #frontend-and-art-o-plane{
+#frontend-and-art-o .icon #frontend-plane{
     width: 9em;
     position: absolute;
 }
-#frontend-and-art-o .icon #frontend-and-art-o-css, #frontend-and-art-o-js, #frontend-and-art-o-ps, #frontend-and-art-o-ai{
+#frontend-and-art-o .icon #frontend-css, #frontend-js, #frontend-ai{
     width: 3em;
     position: absolute;
-    /*top: 50%; left: 50%;*/
 }
-#frontend-and-art-o .icon #frontend-and-art-o-ps{
+#frontend-and-art-o .icon #frontend-ps{
     width: 3.4em;
+    position: absolute;
 }
