@@ -290,7 +290,9 @@
 	</style>
 	<link rel="stylesheet" type="text/css" href="./css/total-style-contentJ.css">
 	<link rel="stylesheet" type="text/css" href="./css/market-o.css">
+	<link rel="stylesheet" type="text/css" href="./css/publicrelation-o.css">
 	<link rel="stylesheet" type="text/css" href="./css/news-o.css">
+	<link rel="stylesheet" type="text/css" href="./css/backend-o.css">
 </head>
 
 <body>
@@ -308,8 +310,14 @@
 				<div class="swiper-slide">
 					第五页
 					<a href="#market-o">市场部</a>
+					<a href="#publicrelation-o">公关部</a>					
+					<a href="#news-o">新闻部</a>
 					<a href="#newmedia-o">新媒体部</a>
 					<a href="#news-o">新闻部</a>
+					<a href="#news-o">新闻部</a>
+					<a href="#news-o">新闻部</a>
+					<a href="#news-o">新闻部</a>
+					<a href="#backend-o">后台web组</a>
 				</div>
 			</div>
 		</div>
@@ -383,17 +391,64 @@
 		        	market_o_t1.pause();
 		        })
 
-		        market_o_t1.play();  // 这里要加事件监听
+		        // market_o_t1.play();  // 这里要加事件监听
 			});			
 		</script>
 	</div>
 	<!-- 公关部简介页 -->
 	<div data-role="page" id="publicrelation-o" class="FenYe">
 		<div class="content-J">
-
-			<a href="#publicrelation">详情页</a>
-			<a href="#" data-rel="back">返回</a>
+			<!-- 标题 -->
+			<div class="title"><img src="./images/GongGuan/title@3x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">
+                <img src="./images/GongGuan/man@3x.png">
+                <img src="./images/GongGuan/tie1@3x.png">
+                <img src="./images/GongGuan/tie2@3x.png">
+                <img src="./images/GongGuan/tie3@3x.png">
+                <img src="./images/GongGuan/tie4@3x.png">
+                <img src="./images/GongGuan/tie5@3x.png">
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+			<!-- 跳转按钮 -->
+			<a href="#publicrelation" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
 		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 创建时间轴
+				var publicrelation_o_t1 = Tweene.line();         
+		        
+		        // 开头动效
+		        publicrelation_o_t1.add(Tweene.get($("#publicrelation-o .icon img")).set({display: 'none'}));
+		        publicrelation_o_t1.add(startJfuc('#publicrelation-o'));
+		        
+		        // 宇航员出现
+		        publicrelation_o_t1.add(fadeIn($('#publicrelation-o .icon img:nth-child(1)'), 800));
+
+		        // 领结变色
+		        publicrelation_o_t1.add(Tweene.get($('#publicrelation-o .icon img:nth-child(2)')).set({display: 'inline'}));
+		        for(var j = 0; j < 2; j++){
+		            for(var i = 3; i < 7; i++){
+		                publicrelation_o_t1.add(Tweene.get($('#publicrelation-o .icon img:nth-child('+i+')')).set({display: 'inline'}),'+=100');
+		            }
+		            for(var i = 6; i > 2; i--){
+		                publicrelation_o_t1.add(Tweene.get($('#publicrelation-o .icon img:nth-child('+i+')')).set({display: 'none'}),'+=100');
+		            }                
+		        }
+
+		        // 结束动效
+		        publicrelation_o_t1.add(endJfuc('#publicrelation-o'));
+
+		        $('#publicrelation-o a').click(function(){
+		        	publicrelation_o_t1.pause();
+		        })
+
+		        // publicrelation_o_t1.play();  // 这里要加事件监听
+			});
+		</script>
 	</div>
 	<!-- 新闻部简介页 -->
 	<div data-role="page" id="news-o" class="FenYe"> 	
@@ -512,7 +567,7 @@
 		        	news_o_t1.pause();
 		        })
 		        
-		        news_o_t1.play();  // 这里要加事件监听
+		        // news_o_t1.play();  // 这里要加事件监听
 			});
 		</script>
 	</div>
@@ -521,7 +576,7 @@
 		<a href="#movie">详情页</a>
 		<a href="#" data-rel="back">返回</a>
 	</div>
-	<div data-role="page" id="newmedia-o">
+	<div data-role="page" id="newmedia-o" class="FenYe">
 		新媒体部简介
 		<audio id="voice0" src="./msc/#.mp3"></audio>
 		<button id="trigger-voice0">放呀！</button>
@@ -536,25 +591,96 @@
 		<a href="#newmedia">详情页</a>
 		<a href="#" data-rel="back">返回</a>
 	</div>
-	<div data-role="page" id="product-o">
+	<div data-role="page" id="product-o" class="FenYe">
 		产品部简介
 		<a href="#product">详情页</a>
 		<a href="#" data-rel="back">返回</a>
 	</div>
-	<div data-role="page" id="frontend-and-art-o">
+	<div data-role="page" id="frontend-and-art-o" class="FenYe">
 		前端美工组部简介
 		<a href="#frontend-and-art">详情页</a>
 		<a href="#" data-rel="back">返回</a>
 	</div>
-	<div data-role="page" id="backend-o">
-		后台web组简介
+	<div data-role="page" id="backapp-o" class="FenYe">
+		后台app组简介
 		<a href="#backend">详情页</a>
 		<a href="#" data-rel="back">返回</a>
 	</div>
-	<div data-role="page" id="backapp-o">
-		后台app组简介
-		<a href="#backapp">详情页</a>
-		<a href="#" data-rel="back">返回</a>
+	<!-- 后台web组简介页 -->
+	<div data-role="page" id="backend-o" class="FenYe">
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="./images/web/title@3x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">
+                <img src="./images/web/bs@3x.png" id="backend-o-ballshine">
+                <span id="backend-o-bg"><img src="./images/web/bg@3x.png"></span>
+                <img src="./images/web/b@3x.png" id="backend-o-ball">
+                <img src="./images/web/ufo@3x.png" id="backend-o-ufo">
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+			<!-- 跳转按钮 -->
+			<a href="#backapp" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
+		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 发光图遮挡设置
+				var backend_o_obg = $("#backend-o .icon #backend-o-bg");
+		        var backend_o_obg_img = $("#backend-o .icon #backend-o-bg img");
+		        backend_o_obg_img.css({left: 6.8 - wwidth + 'rem', top: 5.9 - wheight + 'rem', width: wwidth * 2 + 'rem'});
+		        backend_o_obg.css({left: wwidth - 6.8 + 'rem', top: wheight - 5.9 + 'rem'});
+		        
+		        // 创建时间轴
+		        var backend_o_t1 = Tweene.line();         
+		        
+		        // 开头动效
+		        backend_o_t1.add(Tweene.get($("#backend-o .icon>img~img")).set({display: 'none'}));
+		        backend_o_t1.add(startJfuc('#backend-o'));
+		        
+		        // 中央图标出现
+		        backend_o_t1.add(fadeIn($('#backend-o .icon #backend-o-ball'), 800));
+
+		        // 发光
+		        backend_o_t1.add(Tweene.get(backend_o_obg)
+		                .to({width: 0 + 'rem', height: 0 + 'rem', left: wwidth-6.8+7 + 'rem', top: wheight-5.9+7 + 'rem'})
+		                .easing([0, 0, 1, 1])
+		                .duration(2000));
+		        backend_o_t1.add(Tweene.get(backend_o_obg_img)
+		                .to({left: 6.8-wwidth-7 + 'rem', top: 5.9-wheight-7 + 'rem'})
+		                .easing([0, 0, 1, 1])
+		                .duration(2000), '-=2000');
+		        
+		        // 飞船飞出        
+		        var backend_o_oufo = $('#backend-o .icon #backend-o-ufo');
+		        backend_o_t1.add(Tweene.get(backend_o_oufo).set({display: 'inline', left: wwidth - 2.5 + 'rem', top: wheight - 2.5 + 'rem', scale: 0}));
+		        var backend_o_x = wwidth - 2.5, backend_o_y = wheight - 2.5, backend_o_d1 = -7.5, backend_o_o = -10, backend_o_d2 = 1, backend_o_z;
+		        while(backend_o_y > 0 && backend_o_x < wwidth*2){
+		            backend_o_y = backend_o_y - 1;
+		            backend_o_x = backend_o_x + 0.1 * backend_o_d1 * backend_o_d2;
+		            backend_o_o = backend_o_o + backend_o_d2 * 3;
+		            backend_o_z = 1 - backend_o_d1 * backend_o_d1 * 0.008;
+		            if(backend_o_z >= 1){ backend_o_z = 1; }
+		            if(backend_o_o >= 40){ backend_o_o = 40; } 
+		            backend_o_t1.add(Tweene.get(backend_o_oufo)
+		                        .to({left: backend_o_x + 'rem', top: backend_o_y + 'rem', scale: backend_o_z, rotation: backend_o_o})
+		                        .duration(100));
+		            backend_o_d1++;
+		            backend_o_d2++;
+		        }
+
+		        // 结束动效
+		        backend_o_t1.add(endJfuc('#backend-o'));  
+
+		        $('#backend-o a').click(function(){
+		        	backend_o_t1.pause();
+		        })
+		        
+		        backend_o_t1.play();  // 这里要加事件监听
+			});
+		</script>
 	</div>
 
 	<div data-role="page" id="market">

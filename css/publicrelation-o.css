@@ -1,0 +1,16 @@
+#publicrelation-o>.content-J{
+    background: url(../images/GongGuan/bg@3x.png);
+    background-size: cover;
+}
+#publicrelation-o .icon img{
+    position: absolute; 
+    left: 50%; top: 50%;   
+}
+#publicrelation-o .icon img:nth-child(1){   
+    width: 6.8rem;
+    -webkit-transform:translate(-3.4rem, -5rem); /* Safari 和 Chrome */
+}
+#publicrelation-o .icon img~img{
+    width: 3.4rem;
+    -webkit-transform:translate(-1.7rem, 2rem); /* Safari 和 Chrome */
+}
