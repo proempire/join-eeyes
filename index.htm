@@ -136,7 +136,7 @@
         // 简介页结束动效 str:简介页id
         var endJfuc = function(str){
             var TimeLine = Tweene.line();
-            TimeLine.add(fadeOut($(str + ' .icon'), 800));
+            TimeLine.add(fadeOut($(str + ' .icon'), 800), '+=800');
             TimeLine.add(fadeIn($(str + ' .intro'), 800));
             TimeLine.add(fadeIn($(str + ' a'), 800));
             return TimeLine;
@@ -342,7 +342,7 @@
                 <img src="./images/ShiChang/ball4@3x.png">
             </div>
             <!-- 部门简介词 -->
-            <div class="intro" style="width: 75%;"><span>集外联和内部协调于一身的门户部门<br>赞助拉取、冬至联欢、春游素拓<br>处处可以看见市场人的智慧与担当<br>希望与慧眼识珠的你同行<br>培养沟通能力、学习职场<br>技能享受社团的严谨敬业与温馨有爱</span></div>
+            <div class="intro"><span>集外联和内部协调于一身的门户部门<br>赞助拉取、冬至联欢、春游素拓<br>处处可以看见市场人的智慧与担当<br>希望与慧眼识珠的你同行<br>培养沟通能力、学习职场<br>技能享受社团的严谨敬业与温馨有爱</span></div>
 			<!-- 跳转按钮 -->
 			<a href="#market" class="more">了解更多</a>
 			<a href="#" data-rel="back" class="back">返回</a>
@@ -448,7 +448,7 @@
 		        }
 
 		        // 结束动效
-		        publicrelation_o_t1.add(endJfuc('#publicrelation-o'));
+		        publicrelation_o_t1.add(endJfuc('#publicrelation-o'), '-=500');
 
 		        $('#publicrelation-o a').click(function(){
 		        	publicrelation_o_t1.pause();
@@ -642,7 +642,7 @@
                     , '3300');
 
         		// 结束动效
-		        movie_o_t1.add(endJfuc('#movie-o'), '3500');
+		        movie_o_t1.add(endJfuc('#movie-o'), '2800');
 
 		        $('#movie-o a').click(function(){
 		        	movie_o_t1.pause();
@@ -960,7 +960,7 @@
                 <img src="./images/App/bee@3x.png">
             </div>
             <!-- 部门简介词 -->
-            <div class="intro" style="width: 75%;"><span>还在苦恼手机软件功能不够实用？<br>还在寻找一款适合自己的游戏？<br>不用再等啦，自己动手，丰衣足食！<br>Flappy Bird，Popstart，2048，<br>围住神经猫等游戏轻松开发！<br>android创意开发之旅，等你来战。</span></div>
+            <div class="intro"><span>还在苦恼手机软件功能不够实用？<br>还在寻找一款适合自己的游戏？<br>不用再等啦，自己动手，丰衣足食！<br>Flappy Bird，Popstart，2048，<br>围住神经猫等游戏轻松开发！<br>android创意开发之旅，等你来战。</span></div>
 			<!-- 跳转按钮 -->
 			<a href="#backapp" class="more">了解更多</a>
 			<a href="#" data-rel="back" class="back">返回</a>
@@ -990,7 +990,7 @@
 		        }
 
 		        // 结束动效
-		        backapp_o_t1.add(endJfuc('#backapp-o'));
+		        backapp_o_t1.add(endJfuc('#backapp-o'), '-=1500');
 		        
 		        $('#backapp-o a').click(function(){
 		        	backapp_o_t1.pause();
@@ -1067,7 +1067,7 @@
 		        }
 
 		        // 结束动效
-		        backend_o_t1.add(endJfuc('#backend-o'));  
+		        backend_o_t1.add(endJfuc('#backend-o'), '-=500');  
 
 		        $('#backend-o a').click(function(){
 		        	backend_o_t1.pause();

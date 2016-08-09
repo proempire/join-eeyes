@@ -37,7 +37,7 @@
 }
 .content-J .intro{
     text-align: center;
-    width: 70%;
+    width: 90%;
     font-size: 1.2rem;
     line-height: 1.8;
     color: white;
@@ -45,22 +45,24 @@
     text-shadow: none !important;
 }
 .content-J .more{
-    font-weight: lighter;
+    width: 5.8rem;
+    height: 2rem; 
+
     text-align: center;
-    line-height: 1.6;
-    width: 4.8rem;
-    height: 1.6rem; 
-    position: absolute;
-    outline: none;
-    background-color: #2deca6;
-    border: none;
-    border-radius: 0.4rem;
-    font-size: 1rem;
-    color: white !important;          
-    bottom: 3rem; left: 50%;
-    -webkit-transform:translateX(-3rem); /* Safari 和 Chrome */    
+    font-size: 1.2rem;
+    color: white !important; 
+    font-weight: lighter !important;   
+    line-height: 1.85;
     font-weight: lighter !important; 
     text-shadow: none !important;
+    
+    background-color: #2deca6;
+    border: none;
+    border-radius: 0.4rem;             
+    
+    position: absolute;
+    bottom: 5rem; left: 50%;
+    -webkit-transform:translateX(-3rem); /* Safari 和 Chrome */      
 }
 .content-J .back{
     position: absolute;
