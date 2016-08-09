@@ -180,7 +180,11 @@
 		    display: -webkit-flex;
 		    display: flex;
 		    /*调整为竖排*/
-		    flex-direction: column;
+		    -webkit-flex-direction: column;
+			-moz-flex-direction: column;
+			-ms-flex-direction: column;
+			-o-flex-direction: column;
+			flex-direction: column;
 		    /*一行中内容排不下时正常换行*/
 		    flex-wrap: wrap;
 		    /*主轴居中（已兼容）*/
