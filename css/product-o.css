@@ -10,43 +10,43 @@
     width: 6em;
     -webkit-transform:translate(-3em, -2em); /* Safari 和 Chrome */
 }
-#product-o .icon #product-o-ball img:nth-child(3),img:nth-child(4){
+#product-o .icon #product-o-ball img:nth-child(3), #product-o .icon #product-o-ball img:nth-child(4){
     width: 2.2em;
     -webkit-transform:translate(-4.6em, -6em); /* Safari 和 Chrome */
 }
-#product-o .icon #product-o-ball img:nth-child(5),img:nth-child(6){
+#product-o .icon #product-o-ball img:nth-child(5), #product-o .icon #product-o-ball img:nth-child(6){
     width: 1.3em;
     -webkit-transform:translate(-9em, -6em); /* Safari 和 Chrome */
 }
-#product-o .icon #product-o-ball img:nth-child(7),img:nth-child(8){
+#product-o .icon #product-o-ball img:nth-child(7), #product-o .icon #product-o-ball img:nth-child(8){
     width: 2.1em;
     -webkit-transform:translate(-10em, -1.5em); /* Safari 和 Chrome */
 }
-#product-o .icon #product-o-ball img:nth-child(9),img:nth-child(10){
+#product-o .icon #product-o-ball img:nth-child(9), #product-o .icon #product-o-ball img:nth-child(10){
     width: 1.1em;
     -webkit-transform:translate(-5.5em, 2em); /* Safari 和 Chrome */
 }
-#product-o .icon #product-o-ball img:nth-child(11),img:nth-child(12){
+#product-o .icon #product-o-ball img:nth-child(11), #product-o .icon #product-o-ball img:nth-child(12){
     width: 1.3em;
     -webkit-transform:translate(-7.5em, 6em); /* Safari 和 Chrome */
 }
-#product-o .icon #product-o-ball img:nth-child(13),img:nth-child(14){
+#product-o .icon #product-o-ball img:nth-child(13), #product-o .icon #product-o-ball img:nth-child(14){
     width: 2.2em;
     -webkit-transform:translate(3em, -5.5em); /* Safari 和 Chrome */
 }
-#product-o .icon #product-o-ball img:nth-child(15),img:nth-child(16){
+#product-o .icon #product-o-ball img:nth-child(15), #product-o .icon #product-o-ball img:nth-child(16){
     width: 1.2em;
     -webkit-transform:translate(9em, -4.5em); /* Safari 和 Chrome */
 }
-#product-o .icon #product-o-ball img:nth-child(17),img:nth-child(18){
+#product-o .icon #product-o-ball img:nth-child(17), #product-o .icon #product-o-ball img:nth-child(18){
     width: 2.1em;
     -webkit-transform:translate(7em, -0.5em); /* Safari 和 Chrome */
 }
-#product-o .icon #product-o-ball img:nth-child(19),img:nth-child(20){
+#product-o .icon #product-o-ball img:nth-child(19), #product-o .icon #product-o-ball img:nth-child(20){
     width: 1em;
     -webkit-transform:translate(4.2em, 2em); /* Safari 和 Chrome */
 }
-#product-o .icon #product-o-ball img:nth-child(21),img:nth-child(22){
+#product-o .icon #product-o-ball img:nth-child(21), #product-o .icon #product-o-ball img:nth-child(22){
     width: 1.3em;
     -webkit-transform:translate(5em, 5.8em); /* Safari 和 Chrome */
 }

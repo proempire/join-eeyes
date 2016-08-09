@@ -6,10 +6,10 @@
     position: absolute;   
 }
 #movie-o .icon img:nth-child(1){
-    height: 7rem; 
+    height: 5.5rem; 
   
 }
 #movie-o .icon img:nth-child(2){
-    height: 12rem;   
+    height: 10rem;   
  
 }

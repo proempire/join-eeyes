@@ -45,7 +45,7 @@
             fontSize = 12;
             $('html').css({fontSize: '12px'});
         }else{
-            if($(window).width() < 400){  //iphone6plus
+            if($(window).width() > 400){  //iphone6plus
             	fontSize = 16;
             	$('html').css({fontSize: '16px'});
             }else{  //iphone6
@@ -342,7 +342,7 @@
                 <img src="./images/ShiChang/ball4@3x.png">
             </div>
             <!-- 部门简介词 -->
-            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+            <div class="intro" style="width: 75%;"><span>集外联和内部协调于一身的门户部门<br>赞助拉取、冬至联欢、春游素拓<br>处处可以看见市场人的智慧与担当<br>希望与慧眼识珠的你同行<br>培养沟通能力、学习职场<br>技能享受社团的严谨敬业与温馨有爱</span></div>
 			<!-- 跳转按钮 -->
 			<a href="#market" class="more">了解更多</a>
 			<a href="#" data-rel="back" class="back">返回</a>
@@ -397,7 +397,9 @@
 		        	market_o_t1.pause();
 		        })
 
-		        $("a[href='#market-o']").click(function(){ market_o_t1.play(); });
+		        $("a[href='#market-o']").click(function(){ 
+		        	market_o_t1.play(); 
+		        });
 			});			
 		</script>
 	</div>
@@ -416,7 +418,7 @@
                 <img src="./images/GongGuan/tie5@3x.png">
             </div>
             <!-- 部门简介词 -->
-            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+            <div class="intro"><span>公共关系 营销文案<br>我们向外展示e瞳专业的水准<br>访谈记录 作文排版<br>我们对内做出自己满意的产品<br>商谈于口 谋划于心 生花于笔<br>给我们一个<br>助你成长的机会</span></div>
 			<!-- 跳转按钮 -->
 			<a href="#publicrelation" class="more">了解更多</a>
 			<a href="#" data-rel="back" class="back">返回</a>
@@ -452,7 +454,8 @@
 		        	publicrelation_o_t1.pause();
 		        })
 
-		        $("a[href='#publicrelation-o']").click(function(){ publicrelation_o_t1.play(); });
+		        $("a[href='#publicrelation-o']").click(function(){ publicrelation_o_t1.play(); 
+		        });
 			});
 		</script>
 	</div>
@@ -487,7 +490,7 @@
                 </div>
             </div>
             <!-- 部门简介词 -->
-            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+            <div class="intro"><span>采访 咨询 舆论<br>我们时刻把握交大动态<br>访谈技巧 新闻写作<br>微信推送 创意图集<br>我们致力于采集热点新闻<br>挖掘最深刻的交大精神<br>学弟学妹们 快到碗里来</span></div>
             <!-- 跳转按钮 -->
             <a href="#news" class="more">了解更多</a>
             <a href="#" data-rel="back" class="back">返回</a>
@@ -496,11 +499,11 @@
 		<script type="text/javascript">
 			$(document).ready(function(){
 				// 话筒遮挡设置
-				$('#news-o .icon #news-o-voice').css({left: wwidth+1.5 + 'rem', top: 14.2+ 'rem'});
+				$('#news-o .icon #news-o-voice').css({left: wwidth+0.9 + 'rem', top: 8.5+ 'rem'});
 		        var news_o_obg = $("#news-o .icon #news-o-bg");
 		        var news_o_obg_img = $("#news-o .icon #news-o-bg img")
-		        news_o_obg.css({left: wwidth+4 + 'rem', top: 14.2+ 'rem'});
-		        news_o_obg_img.css({left: -(wwidth+4) + 'rem', top: -14.2 + 'rem', width: wwidth * 2 + 'rem'});
+		        news_o_obg.css({left: wwidth+3.1 + 'rem', top: 8.5+ 'rem'});
+		        news_o_obg_img.css({left: -(wwidth+3.1) + 'rem', top: -8.5 + 'rem', width: wwidth * 2 + 'rem'});
 		        
 		        // 创建时间轴
 		        var news_o_t1 = Tweene.line();
@@ -530,21 +533,21 @@
 		        news_o_t1.add(fadeIn(news_o_omouse, 800));
 
 		        // 字出现
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(3)'), -0.6, 4, -10, -4, 1800, false), '3500');  //A       
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(17)'), -0.4, 4.2, -11, -1.5, 1800, false), '3800');  //o
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(5)'), -0.6, 4, -9, -1, 1500, false), '4100');  //C
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(14)'), -0.3, 4, -10, 1, 1500, false), '4400');  //L        
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(4)'), -0.4, 4, -7, -2.5, 1500, false), '4600');  //B       
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(6)'), -0.4, 4.2, -7, -0.2, 1200, false), '4800');  //d        
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(8)'), -0.4, 4, -5.5, -0.4, 1000, false), '5000');  //F
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(7)'), -0.4, 4.4, -7.8, 1.2, 1200, false), '5200');  //e
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(10)'), -0.4, 4, -8.5, 2.5, 1200, false), '5400');  //h
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(11)'), -0.2, 4, -6.5, 2.4, 1000, false), '5600');  //I
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(9)'), -0.4, 4.4, -5, 2.1, 1000, false), '5700');  //g 
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(16)'), -0.4, 4, -4, -1, 1000, false), '5800');  //N
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(12)'), -0.4, 4, -4.2, 3, 800, false), '5900');  //J
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(13)'), -0.4, 4, -3, 1, 800, false), '6000');  //K        
-		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(15)'), -0.4, 4.2, -2.5, 3, 500, false), '6100');  //M
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(3)'), -0.6, 3.6, -10, -4, 1800, false), '3500');  //A       
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(17)'), -0.4, 3.8, -11, -1.5, 1800, false), '3800');  //o
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(5)'), -0.6, 3.6, -9, -1, 1500, false), '4100');  //C
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(14)'), -0.3, 3.6, -10, 1, 1500, false), '4400');  //L        
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(4)'), -0.4, 3.6, -7, -2.5, 1500, false), '4600');  //B       
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(6)'), -0.4, 3.8, -7, -0.2, 1200, false), '4800');  //d        
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(8)'), -0.4, 3.6, -5.5, -0.4, 1000, false), '5000');  //F
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(7)'), -0.4, 4, -7.8, 1.2, 1200, false), '5200');  //e
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(10)'), -0.4, 3.6, -8.5, 2.5, 1200, false), '5400');  //h
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(11)'), -0.2, 3.6, -6.5, 2.4, 1000, false), '5600');  //I
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(9)'), -0.4, 4, -5, 2.1, 1000, false), '5700');  //g 
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(16)'), -0.4, 3.6, -4, -1, 1000, false), '5800');  //N
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(12)'), -0.4, 3.6, -4.2, 3, 800, false), '5900');  //J
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(13)'), -0.4, 3.6, -3, 1, 800, false), '6000');  //K        
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(15)'), -0.4, 3.8, -2.5, 3, 500, false), '6100');  //M
 		        
 		        // 嘴巴动
 		        var news_o_t2 = Tweene.line();
@@ -573,7 +576,10 @@
 		        	news_o_t1.pause();
 		        })
 
-		        $("a[href='#news-o']").click(function(){ news_o_t1.play(); });
+		        $("a[href='#news-o']").click(function(){ 
+		        	news_o_t1.play(); 
+		        });
+
 			});
 		</script>
 	</div>
@@ -588,7 +594,7 @@
                 <img src="./images/YinShi/head@3x.png">
             </div>
             <!-- 部门简介词 -->
-            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+            <div class="intro"><span>拍摄与剪辑的融合<br>科技与艺术的碰撞<br>视觉与听觉的综合观赏<br>从好莱坞的幻想世界<br>到新闻里的现实生活<br>只要你有梦想<br>我们让你成为下一个Spielberg</span></div>
 			<!-- 跳转按钮 -->
 			<a href="#movie" class="more">了解更多</a>
 			<a href="#" data-rel="back" class="back">返回</a>
@@ -609,8 +615,8 @@
 	                .to({left: wwidth-4.5 + 'rem', top: wheight-1 + 'rem', opacity: 1, display: 'inline'})
 	                .duration(800));
         		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
-                    .from({left: wwidth-5 + 'rem', top: wheight-8 + 'rem', opacity: 0, display: 'inline'})
-                    .to({left: wwidth-5 + 'rem', top: wheight-8 + 'rem', opacity: 1, display: 'inline'})
+                    .from({left: wwidth-5 + 'rem', top: wheight-7 + 'rem', opacity: 0, display: 'inline'})
+                    .to({left: wwidth-5 + 'rem', top: wheight-7 + 'rem', opacity: 1, display: 'inline'})
                     .duration(800), '-=800');
 
         		// 摄像机移动
@@ -618,20 +624,20 @@
                     .to({left: -5 + 'rem', height: 0 + 'rem'})
                     .duration(4000));
         		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
-                    .to({left: -6 + 'rem', height: 0 + 'rem', top: wheight-1 + 'rem'})
+                    .to({left: -5.2 + 'rem', height: 0 + 'rem', top: wheight-1 + 'rem'})
                     .duration(4000), '-=4000');
 
 		        // 摄像机镜头旋转
 		        movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
-                    .to({rotation: -20, transformOrigin: '21% 50%'})
+                    .to({rotation: -20, transformOrigin: '19% 50%'})
                     .duration(500)
                     , '1800');
         		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
-                    .to({rotation: 20, transformOrigin: '21% 50%'})
+                    .to({rotation: 20, transformOrigin: '19% 50%'})
                     .duration(1000)
                     , '2300');
         		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
-                    .to({rotation: -20, transformOrigin: '21% 50%'})
+                    .to({rotation: -20, transformOrigin: '19% 50%'})
                     .duration(1000)
                     , '3300');
 
@@ -642,7 +648,9 @@
 		        	movie_o_t1.pause();
 		        });
 
-		        $("a[href='#movie-o']").click(function(){ movie_o_t1.play(); });
+		        $("a[href='#movie-o']").click(function(){ 
+		        	movie_o_t1.play(); 
+		        });
 		    });
 		</script>
 	</div>
@@ -671,7 +679,7 @@
                 </div>
             </div>
             <!-- 部门简介词 -->
-            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+            <div class="intro"><span>站在时代与技术的前沿<br>我们是e瞳网的形象设计师<br>我们是一双眼 我们是一扇窗<br>严肃而不失活泼，文艺而不失深度<br>人不精彩枉少年<br>加入e瞳新媒体<br>愿你早日告诉这世界你的样子</span></div>
 			<!-- 跳转按钮 -->
 			<a href="#newmedia" class="more">了解更多</a>
 			<a href="#" data-rel="back" class="back">返回</a>
@@ -720,7 +728,8 @@
 		        	newmedia_o_t1.pause();
 		        })
 		        
-		        $("a[href='#newmedia-o']").click(function(){ newmedia_o_t1.play(); });
+		        $("a[href='#newmedia-o']").click(function(){ newmedia_o_t1.play(); 
+		        });
 
 			});
 		</script>
@@ -776,7 +785,7 @@
                 </div>
             </div>
             <!-- 部门简介词 -->
-            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+            <div class="intro"><span>令好奇和脑洞萌芽<br>从交互和体验奠基<br>用沟通与负责浇灌<br>使产品从雏形走向成品<br>加入产品部<br>让想法亮起来</span></div>
 			<!-- 跳转按钮 -->
 			<a href="#product" class="more">了解更多</a>
 			<a href="#" data-rel="back" class="back">返回</a>
@@ -867,7 +876,8 @@
 		        	product_o_t1.pause();
 		        })
 
-		        $("a[href='#product-o']").click(function(){ product_o_t1.play(); });
+		        $("a[href='#product-o']").click(function(){ product_o_t1.play(); 
+		        });
 		    });
 		</script>
 	</div>
@@ -885,7 +895,7 @@
                 <img src="./images/QianDuan/ps@2x.png" id="frontend-ps">
             </div>
             <!-- 部门简介词 -->
-            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+            <div class="intro"><span>什么都不用说<br>这个招新页面是我们做的~</span></div>
             <!-- 跳转按钮 -->
 			<a href="#frontend-and-art" class="more">了解更多</a>
 			<a href="#" data-rel="back" class="back">返回</a>
@@ -902,8 +912,8 @@
 
 		        // 飞机出现
 		        frontend_o_t1.add(Tweene.get($('#frontend-and-art-o .icon #frontend-plane'))
-                    .from({left: -10 +'rem', top: wheight*0.95 + 'rem', display: 'inline'})
-                    .to({left: wwidth +'rem', top: wheight*0.95 + 'rem', display: 'inline'})
+                    .from({left: -10 +'rem', top: wheight*0.85 + 'rem', display: 'inline'})
+                    .to({left: wwidth +'rem', top: wheight*0.85 + 'rem', display: 'inline'})
                     .duration(1000));
         
         		// 块抛出
@@ -923,11 +933,10 @@
         			return TimeLine;
         		}
                	
-               	frontend_o_t1.add(Paofuc('#frontend-css', 0.95, 0.3, 0.2));
-               	frontend_o_t1.add(Paofuc('#frontend-ai', 1.15, 0.3, 0.35));
-               	// 这个js图的位置莫名有问题……
-               	frontend_o_t1.add(Paofuc('#frontend-js', 0.95, 0.6, 0.25));
-               	frontend_o_t1.add(Paofuc('#frontend-ps', 1.15, 0.6, 0.2));
+               	frontend_o_t1.add(Paofuc('#frontend-css', 0.85, 0.3, 0.2));
+               	frontend_o_t1.add(Paofuc('#frontend-ai', 1.05, 0.3, 0.35));
+               	frontend_o_t1.add(Paofuc('#frontend-js', 0.85, 0.6, 0.25));
+               	frontend_o_t1.add(Paofuc('#frontend-ps', 1.05, 0.6, 0.2));
 
                	// 结束动效
 		        frontend_o_t1.add(endJfuc('#frontend-and-art-o'));
@@ -936,7 +945,8 @@
 		        	frontend_o_t1.pause();
 		        })
 
-		        $("a[href='#frontend-and-art-o']").click(function(){ frontend_o_t1.play(); })
+		        $("a[href='#frontend-and-art-o']").click(function(){ frontend_o_t1.play(); 
+		        })
 		    });
 		</script>
 	</div>
@@ -950,7 +960,7 @@
                 <img src="./images/App/bee@3x.png">
             </div>
             <!-- 部门简介词 -->
-            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+            <div class="intro" style="width: 75%;"><span>还在苦恼手机软件功能不够实用？<br>还在寻找一款适合自己的游戏？<br>不用再等啦，自己动手，丰衣足食！<br>Flappy Bird，Popstart，2048，<br>围住神经猫等游戏轻松开发！<br>android创意开发之旅，等你来战。</span></div>
 			<!-- 跳转按钮 -->
 			<a href="#backapp" class="more">了解更多</a>
 			<a href="#" data-rel="back" class="back">返回</a>
@@ -986,7 +996,8 @@
 		        	backapp_o_t1.pause();
 		        })
 
-		        $("a[href='#backapp-o']").click(function(){ backapp_o_t1.play(); });
+		        $("a[href='#backapp-o']").click(function(){ backapp_o_t1.play(); 
+		        });
 			});
 		</script>
 	</div>
@@ -1003,7 +1014,7 @@
                 <img src="./images/web/ufo@3x.png" id="backend-o-ufo">
             </div>
             <!-- 部门简介词 -->
-            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+            <div class="intro"><span>这里由代码组成，由命令守护<br>每一次操作都有深思熟虑<br>为的是服务器的安全<br>为的是更优质的服务<br>来这里，<br>了解后端那些不为人知的秘密<br>ｅ瞳网后台WEB，期待你的加入</span></div>
 			<!-- 跳转按钮 -->
 			<a href="#backend" class="more">了解更多</a>
 			<a href="#" data-rel="back" class="back">返回</a>
@@ -1014,8 +1025,8 @@
 				// 发光图遮挡设置
 				var backend_o_obg = $("#backend-o .icon #backend-o-bg");
 		        var backend_o_obg_img = $("#backend-o .icon #backend-o-bg img");
-		        backend_o_obg_img.css({left: 6.8 - wwidth + 'rem', top: 5.9 - wheight + 'rem', width: wwidth * 2 + 'rem'});
-		        backend_o_obg.css({left: wwidth - 6.8 + 'rem', top: wheight - 5.9 + 'rem'});
+		        backend_o_obg_img.css({left: 6.8 - wwidth + 'rem', top: 6.9 - wheight + 'rem', width: wwidth * 2 + 'rem'});
+		        backend_o_obg.css({left: wwidth - 6.8 + 'rem', top: wheight - 6.9 + 'rem'});
 		        
 		        // 创建时间轴
 		        var backend_o_t1 = Tweene.line();         
@@ -1029,11 +1040,11 @@
 
 		        // 发光
 		        backend_o_t1.add(Tweene.get(backend_o_obg)
-		                .to({width: 0 + 'rem', height: 0 + 'rem', left: wwidth-6.8+7 + 'rem', top: wheight-5.9+7 + 'rem'})
+		                .to({width: 0 + 'rem', height: 0 + 'rem', left: wwidth-6.8+7 + 'rem', top: wheight-6.9+7 + 'rem'})
 		                .easing([0, 0, 1, 1])
 		                .duration(2000));
 		        backend_o_t1.add(Tweene.get(backend_o_obg_img)
-		                .to({left: 6.8-wwidth-7 + 'rem', top: 5.9-wheight-7 + 'rem'})
+		                .to({left: 6.8-wwidth-7 + 'rem', top: 6.9-wheight-7 + 'rem'})
 		                .easing([0, 0, 1, 1])
 		                .duration(2000), '-=2000');
 		        
@@ -1062,7 +1073,8 @@
 		        	backend_o_t1.pause();
 		        })
 		        
-		        $("a[href='#backend-o']").click(function(){ backend_o_t1.play(); });
+		        $("a[href='#backend-o']").click(function(){ backend_o_t1.play(); 
+		        });
 			});
 		</script>
 	</div>
