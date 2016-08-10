@@ -1,0 +1,8 @@
+#movie{
+	background-image: url('../images/media/bg.png');
+	background-size: cover;
+}
+.movie-panel{
+	position: absolute;
+	background-size: cover;
+}
