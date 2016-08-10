@@ -1,0 +1,123 @@
+#product-o>.content-J{
+    background: url(../images/ChanPin/bg@2x.png);
+    background-size: cover;
+}
+#product-o .icon #product-o-ball img{
+    position: absolute;
+    top: 50%; left: 50%;
+}
+#product-o .icon #product-o-ball .lamp{
+    width: 6em;
+    -webkit-transform:translate(-3em, -2em); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-ball img:nth-child(3),img:nth-child(4){
+    width: 2.2em;
+    -webkit-transform:translate(-4.6em, -6em); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-ball img:nth-child(5),img:nth-child(6){
+    width: 1.3em;
+    -webkit-transform:translate(-9em, -6em); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-ball img:nth-child(7),img:nth-child(8){
+    width: 2.1em;
+    -webkit-transform:translate(-10em, -1.5em); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-ball img:nth-child(9),img:nth-child(10){
+    width: 1.1em;
+    -webkit-transform:translate(-5.5em, 2em); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-ball img:nth-child(11),img:nth-child(12){
+    width: 1.3em;
+    -webkit-transform:translate(-7.5em, 6em); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-ball img:nth-child(13),img:nth-child(14){
+    width: 2.2em;
+    -webkit-transform:translate(3em, -5.5em); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-ball img:nth-child(15),img:nth-child(16){
+    width: 1.2em;
+    -webkit-transform:translate(9em, -4.5em); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-ball img:nth-child(17),img:nth-child(18){
+    width: 2.1em;
+    -webkit-transform:translate(7em, -0.5em); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-ball img:nth-child(19),img:nth-child(20){
+    width: 1em;
+    -webkit-transform:translate(4.2em, 2em); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-ball img:nth-child(21),img:nth-child(22){
+    width: 1.3em;
+    -webkit-transform:translate(5em, 5.8em); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div{
+    position: absolute;
+    top: 50%; left: 50%;
+    border: 0.1em solid rgba(251,247,202,0.7);
+    height: 0em;
+    transform-origin: 0 0;
+}
+#product-o .icon #product-o-line div:nth-child(1){   
+    width: 3.2em;    
+    -webkit-transform:translate(-7.8em, -5.5em) rotate(6deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(2){
+    width: 3.2em;
+    -webkit-transform:translate(-8.3em, -4.7em) rotate(98deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(3){
+    width: 4.8em;
+    -webkit-transform:translate(-4.2em, -4em) rotate(140deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(4){
+    width: 3.3em;
+    -webkit-transform:translate(-6.6em, 6em) rotate(-66deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(5){
+    width: 3.2em;
+    -webkit-transform:translate(-8em, 0.1em) rotate(34deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(6){
+    width: 5.8em;
+    -webkit-transform:translate(-5em, 2em) rotate(-80deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(7){
+    width: 2.9em;
+    -webkit-transform:translate(-2.8em, -4.2em) rotate(50deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(8){
+    width: 1.8em;
+    -webkit-transform:translate(-4.5em, 2.5em) rotate(-5deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(9){
+    width: 3.2em;
+    -webkit-transform:translate(9.5em, -3.5em) rotate(108deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(10){
+    width: 3.8em;
+    -webkit-transform:translate(9em, -3.8em) rotate(185deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(11){
+    width: 4.2em;
+    -webkit-transform:translate(7.3em, -0.1em) rotate(-130deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(12){
+    width: 2.8em;
+    -webkit-transform:translate(5.5em, 5.8em) rotate(-105deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(13){
+    width: 5em;
+    -webkit-transform:translate(3.9em, -3.2em) rotate(80deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(14){
+    width: 2em;
+    -webkit-transform:translate(5.2em, 2em) rotate(-30deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(15){
+    width: 1.5em;
+    -webkit-transform:translate(4.2em, 2.6em) rotate(-170deg); /* Safari 和 Chrome */
+}
+#product-o .icon #product-o-line div:nth-child(16){
+    width: 2.4em;
+    -webkit-transform:translate(3.3em, -3.6em) rotate(130deg); /* Safari 和 Chrome */
+}

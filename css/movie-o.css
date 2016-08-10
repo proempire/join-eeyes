@@ -1,0 +1,15 @@
+#movie-o>.content-J{
+    background: url(../images/YinShi/bg@3x.png);
+    background-size: cover;
+}
+#movie-o .icon img{
+    position: absolute;   
+}
+#movie-o .icon img:nth-child(1){
+    height: 7rem; 
+  
+}
+#movie-o .icon img:nth-child(2){
+    height: 12rem;   
+ 
+}

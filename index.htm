@@ -4,6 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>e瞳网2016招新</title>
+	
 	<!-- meta使用viewport以确保页面可自由缩放 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,17 +28,20 @@
             require('velocity-animate');
             require('jquery.transit');
             require('gsap');
-        </script>
+    </script>
 	<script src="dest/js/tweene.min.js"></script>
 	<script type="text/javascript" src="./js/jquery.lazyload.js"></script>
 	<!-- 设置 -->
+	<script type="text/javascript">
+		// set the default time unit you want to use
+	    Tweene.defaultTimeUnit = 'ms'; // or 's'      
+	    // set the default driver you want to use
+	    Tweene.defaultDriver = 'gsap'; // or one of 'transit', 'velocity', 'jquery'
+	</script>
+	
+	<!-- 页面自适应与动效函数设置 -->
     <script>
-        // set the default time unit you want to use
-        Tweene.defaultTimeUnit = 'ms'; // or 's'      
-        // set the default driver you want to use
-        Tweene.defaultDriver = 'gsap'; // or one of 'transit', 'velocity', 'jquery'
-    	
-    	// 自适应
+    	// 页面自适应
         var fontSize;
         if($(window).width() < 350){  //iphone5
             fontSize = 12;
@@ -61,8 +65,10 @@
         var cheight = $(window).height();
         
         // 通用动画函数
+        
+        // 淡入 $:jquery对象 t:时长 arr:淡出速度曲线(默认匀速)
         var fadeIn = function($, t, arr){
-            if( arr == undefined){ arr = [0, 0, 1, 1]; };
+            if(arr == undefined){ arr = [0, 0, 1, 1]; };
             var TimeLine = Tweene.line();
             TimeLine.add(Tweene.get($)
                         .from({opacity: 0, display: 'inline'})
@@ -71,9 +77,10 @@
                         .duration(t));
             return TimeLine;
         }
-
+        
+        // 淡出 $:jquery对象 t:时长 arr:淡出速度曲线(默认匀速)
         var fadeOut = function($, t, arr){
-            if( arr == undefined){ arr = [0, 0, 1, 1]; };
+            if(arr == undefined){ arr = [0, 0, 1, 1]; };
             var TimeLine = Tweene.line();
             TimeLine.add(Tweene.get($)
                         .to({opacity: 0, display: 'none'})
@@ -82,6 +89,7 @@
             return TimeLine;
         }
 
+        // 顺时针循环旋转 $:jquery对象 speed:旋转速度 xystr:旋转中心(默认图形中点)
         var ZiXuanfuc = function($, speed, xystr){
             if(xystr == undefined){ xystr = '50% 50%'; };
             var TimeLine = Tweene.line();
@@ -89,57 +97,62 @@
                         .to({rotation: '360', transformOrigin: xystr})
                         .easing([0, 0, 1, 1])
                         .loops(-1)    
-                        // on loop 监听不管用
                         .duration(speed));
             return TimeLine;
         }
 
+        // 放大出现效果 $:jquery对象 speed:放大速度 arr:速度曲线(默认匀速)
         var FangDaChuXianfuc = function($, speed, arr){
-            if( arr == undefined){ arr = [0, 0, 1, 1]; };
+            if(arr == undefined){ arr = [0, 0, 1, 1]; };
             var TimeLine = Tweene.line();
             TimeLine.add(Tweene.get($)
-                        .from({scale: 0})
-                        .to({scale: 1})
+                        .from({scale: 0, display: 'inline'})
+                        .to({scale: 1, display: 'inline'})
                         .easing(arr)
                         .duration(speed));
             return TimeLine;
         }
 
-        var startfuc = function(str){
-            var TimeLine = Tweene.line();
-            TimeLine.add(Tweene.get($(str + " .title, .intro, .more")).set({display: 'none'}));
-            TimeLine.add(Tweene.get($(str + " .icon")).set({display: 'block'}));
-            TimeLine.add(fadeIn($(str + ' .title'), 1000, [.89, 0, .79, .46]));
-            return TimeLine;
-        }
-
-        var endfuc = function(str){
-            var TimeLine = Tweene.line();
-            TimeLine.add(fadeOut($(str + ' .icon'), 800));
-            TimeLine.add(fadeIn($(str + ' .intro'), 800));
-            TimeLine.add(fadeIn($(str + ' .more'), 800));
-            return TimeLine;
-        }
-                
-        var MaoChuXiaoShifuc = function($, dx1, dy1, dx2, dy2, t1, bool, t2){
+		// 冒气泡式动效 $:jquery对象 dx1,dy1:冒出时对中心的偏移距离 dx2,dy2:移动终点位置对中心的偏移距离 t1:冒出并移动的时长 bool:移动完成后是否消失 t2:消失的时长
+		var MaoChuXiaoShifuc = function($, dx1, dy1, dx2, dy2, t1, bool, t2){
             var TimeLine = Tweene.line();
             TimeLine.add(Tweene.get($)
+                        // 用于测试位置
                         // .set({display: 'inline', left: wwidth+dx2 + 'rem', top: wheight+dy2 + 'rem'})
                         .from({scaleX: 0, scaleY: 0, display: 'inline', left: wwidth+dx1 + 'rem', top: wheight+dy1 + 'rem'})
                         .to({scaleX: 1, scaleY: 1, display: 'inline', left: wwidth+dx2 + 'rem', top: wheight+dy2 + 'rem'})
                         .duration(t1));
             if(bool){
-                TimeLine.add(Tweene.get($)
-                        .to({opacity: 0})
-                        .duration(t2));
+                TimeLine.add(fadeOut($, t2));
             }
             return TimeLine;
-        }            
+        }      
+
+        // 简介页开始动效 str:简介页id
+        var startJfuc = function(str){
+            var TimeLine = Tweene.line();
+            TimeLine.add(Tweene.get($(str + " .title")).set({display: 'none'}));
+            TimeLine.add(Tweene.get($(str + " .intro")).set({display: 'none'}));
+            TimeLine.add(Tweene.get($(str + " a")).set({display: 'none'}));
+            TimeLine.add(Tweene.get($(str + " .icon")).set({display: 'block'}));
+            TimeLine.add(fadeIn($(str + ' .title'), 1000, [.89, 0, .79, .46]));
+            return TimeLine;
+        }
+
+        // 简介页结束动效 str:简介页id
+        var endJfuc = function(str){
+            var TimeLine = Tweene.line();
+            TimeLine.add(fadeOut($(str + ' .icon'), 800));
+            TimeLine.add(fadeIn($(str + ' .intro'), 800));
+            TimeLine.add(fadeIn($(str + ' a'), 800));
+            return TimeLine;
+        }
+                      
     </script>
+	<!-- build the swiper -->
 	<script type="text/javascript">
         $(document).ready(function(){
-
-        	//build the swiper
+       	
             var swiper = new Swiper('.swiper-container',{
             	direction: 'vertical',
             	initialSlide: 0,
@@ -188,6 +201,7 @@
         	padding: 0;
         	text-decoration: none;
         	list-style: none;
+        	font-family: 黑体;
         	box-sizing: border-box;
         	-moz-box-sizing:border-box; /* Firefox */
 			-webkit-box-sizing:border-box; /* Safari */
@@ -340,11 +354,20 @@
         	}
         }
 	</style>
+	<!-- 引入简介页样式 -->
 	<link rel="stylesheet" type="text/css" href="./css/total-style-contentJ.css">
+	<link rel="stylesheet" type="text/css" href="./css/market-o.css">
+	<link rel="stylesheet" type="text/css" href="./css/publicrelation-o.css">
+	<link rel="stylesheet" type="text/css" href="./css/newmedia-o.css">
 	<link rel="stylesheet" type="text/css" href="./css/news-o.css">
 	<link rel="stylesheet" type="text/css" href="./css/planetBoom.css">
 	<link rel="stylesheet" type="text/css" href="./css/newmedia.css">
 	<link rel="stylesheet" type="text/css" href="./css/movie.css">
+	<link rel="stylesheet" type="text/css" href="./css/product-o.css">	
+	<link rel="stylesheet" type="text/css" href="./css/frontend-and-art-o.css">	
+	<link rel="stylesheet" type="text/css" href="./css/backapp-o.css">
+	<link rel="stylesheet" type="text/css" href="./css/backend-o.css">
+	<link rel="stylesheet" type="text/css" href="./css/movie-o.css">
 </head>
 
 <body>
@@ -385,57 +408,183 @@
 						<span>技术部门</span>
 					</div>
 					<a href="#market-o">市场部</a>
-					<a href="#newmedia-o">新媒体部</a>
+					<a href="#publicrelation-o">公关部</a>				
 					<a href="#news-o" id="noshow">新闻部</a>
 					<a href="#movie-o">影视部</a>
+					<a href="#newmedia-o">新媒体部</a>					
+					<a href="#product-o">产品部</a>
+					<a href="#frontend-and-art-o">前端美工组</a>
+					<a href="#backapp-o">后台app组</a>
+					<a href="#backend-o">后台web组</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div data-role="page" id="market-o">
-		<div class="contentJ">
-			市场部简介
-			<a href="#market">详情页</a>
-			<a href="#" data-rel="back">返回</a>
+	<!-- 市场部简介页 -->
+	<div data-role="page" id="market-o" class="FenYe">
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="" remark="./images/ShiChang/title@3x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">
+                <img src="" remark="./images/ShiChang/center@3x.png">
+                <img src="" remark="./images/ShiChang/ball1@3x.png">
+                <img src="" remark="./images/ShiChang/ball2@3x.png">
+                <img src="" remark="./images/ShiChang/ball3@3x.png">
+                <img src="" remark="./images/ShiChang/ball4@3x.png">
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>集外联和内部协调于一身的门户部门<br>赞助拉取、冬至联欢、春游素拓<br>处处可以看见市场人的智慧与担当<br>希望与慧眼识珠的你同行<br>培养沟通能力、学习职场<br>技能享受社团的严谨敬业与温馨有爱</span></div>
+			<!-- 跳转按钮 -->
+			<a href="#market" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
 		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 创建时间轴
+				var market_o_t1 = Tweene.line(); 
+        
+		        // 开头动效
+		        market_o_t1.add(Tweene.get($("#market-o .icon img")).set({display: 'none'}));
+		        market_o_t1.add(startJfuc('#market-o'));
+		        
+		        // 星系出现
+		        market_o_t1.add(fadeIn('#market-o .icon img:nth-child(1)', 800));
+		        
+		        // 星球出现并旋转
+		        var market_o_Turn = function(number, x0, y0, x1, y1, Xs, dxyS, speed){
+		            if(speed == undefined){ speed = 1000 }
+		            var TimeLine = Tweene.line();
+		            TimeLine.add(Tweene.get('#market-o .icon img:nth-child(' + number + ')').set({ left: x0 + 'rem', top: y0 + 'rem'}));
+		            TimeLine.add(fadeIn('#market-o .icon img:nth-child(' + number + ')', 1000));
+		            TimeLine.add(FangDaChuXianfuc('#market-o .icon img:nth-child(' + number + ')', 1000),'-=1000');
+		            TimeLine.add(Tweene.get('#market-o .icon img:nth-child(' + number + ')')
+		                            .to({left: x1 + 'rem', top: y1 + 'rem'})
+		                            .easing([0, 0, 1, 1])
+		                            .duration(speed),'-=1000');
+		            TimeLine.add(ZiXuanfuc('#market-o .icon img:nth-child(' + number + ')', Xs, dxyS));
+		            return TimeLine;
+		        }
+		        market_o_t1.add(market_o_Turn(2, wwidth+10, wheight+12, wwidth-2, wheight+4, 2000, '60% -86%'), '1200');
+		        market_o_t1.add(market_o_Turn(3, wwidth-14, wheight+5, wwidth-3.4, wheight-4.5, 2000, '112% 185%'), '3600');
+		        market_o_t1.add(market_o_Turn(4, wwidth-14, wheight-20, wwidth+2, wheight-3.5, 2000, '-62% 150%', 1200), '2800');
+		        market_o_t1.add(market_o_Turn(5, wwidth+14, wheight-8, wwidth+2, wheight+2.6, 2000, '-66% -60%'), '2000');
+		        
+		        // 星系旋转变化
+		        var market_o_t2 = Tweene.line();
+		        market_o_t2.add(Tweene.get($('#market-o .icon img:nth-child(1)'))
+		                    .from({opacity: 1})
+		                    .to({opacity: 0.5})
+		                    .easing([0, 0, 1, 1])
+		                    .loops(-1)
+		                    .yoyo(true)
+		                    .duration(1000));
+		        market_o_t1.add(ZiXuanfuc('#market-o .icon img:nth-child(1)', 2000), '1000').add(market_o_t2, '1800');
+
+		        // 结束动效
+		        market_o_t1.add(endJfuc('#market-o'), '4800');        
+		        
+		        $('#market-o a').click(function(){
+		        	market_o_t1.pause();
+		        })
+
+		        $("a[href='#market-o']").click(function(){ $('#market-o img[remark]').attr('src',function(){return $(this).attr('remark')}); market_o_t1.play(); });
+			});			
+		</script>
 	</div>
-	<div data-role="page" id="publicrelation-o">
-		公关部简介
-		<a href="#publicrelation">详情页</a>
-		<a href="#" data-rel="back">返回</a>
+	<!-- 公关部简介页 -->
+	<div data-role="page" id="publicrelation-o" class="FenYe">
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="" remark="./images/GongGuan/title@3x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">
+                <img src="" remark="./images/GongGuan/man@3x.png">
+                <img src="" remark="./images/GongGuan/tie1@3x.png">
+                <img src="" remark="./images/GongGuan/tie2@3x.png">
+                <img src="" remark="./images/GongGuan/tie3@3x.png">
+                <img src="" remark="./images/GongGuan/tie4@3x.png">
+                <img src="" remark="./images/GongGuan/tie5@3x.png">
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+			<!-- 跳转按钮 -->
+			<a href="#publicrelation" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
+		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 创建时间轴
+				var publicrelation_o_t1 = Tweene.line();         
+		        
+		        // 开头动效
+		        publicrelation_o_t1.add(Tweene.get($("#publicrelation-o .icon img")).set({display: 'none'}));
+		        publicrelation_o_t1.add(startJfuc('#publicrelation-o'));
+		        
+		        // 宇航员出现
+		        publicrelation_o_t1.add(fadeIn($('#publicrelation-o .icon img:nth-child(1)'), 800));
+
+		        // 领结变色
+		        publicrelation_o_t1.add(Tweene.get($('#publicrelation-o .icon img:nth-child(2)')).set({display: 'inline'}));
+		        for(var j = 0; j < 2; j++){
+		            for(var i = 3; i < 7; i++){
+		                publicrelation_o_t1.add(Tweene.get($('#publicrelation-o .icon img:nth-child('+i+')')).set({display: 'inline'}),'+=100');
+		            }
+		            for(var i = 6; i > 2; i--){
+		                publicrelation_o_t1.add(Tweene.get($('#publicrelation-o .icon img:nth-child('+i+')')).set({display: 'none'}),'+=100');
+		            }                
+		        }
+
+		        // 结束动效
+		        publicrelation_o_t1.add(endJfuc('#publicrelation-o'));
+
+		        $('#publicrelation-o a').click(function(){
+		        	publicrelation_o_t1.pause();
+		        })
+
+		        $("a[href='#publicrelation-o']").click(function(){ $('#publicrelation-o img[remark]').attr('src',function(){return $(this).attr('remark')}); publicrelation_o_t1.play(); });
+			});
+		</script>
 	</div>
-	<div data-role="page" id="news-o" class="contentJ"> 
-	<!-- 新闻部 -->
-		<div class="contentJ">
-			<div class="title"><img src="./images/XinWen/title@3x.png"></div>
+	<!-- 新闻部简介页 -->
+	<div data-role="page" id="news-o" class="FenYe"> 	
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="" remark="./images/XinWen/title@3x.png"></div>
+            <!-- 动画icon -->
             <div class="icon">                   
-                <img src="./images/XinWen/Sun@3x.png" id="sun">
-                <img src="./images/XinWen/voice@3x.png" id="voice">
-                <span id="bg"><img src="./images/XinWen/bg@3x.png"></span>
-                <div id="one">
-                    <img src="./images/XinWen/Sun@3x.png">
-                    <img src="./images/XinWen/mouse@3x.png">
-                    <img src="./images/XinWen/words/A@3x.png">
-                    <img src="./images/XinWen/words/B@3x.png">
-                    <img src="./images/XinWen/words/C@3x.png">
-                    <img src="./images/XinWen/words/d@3x.png">
-                    <img src="./images/XinWen/words/e@3x.png">
-                    <img src="./images/XinWen/words/F@3x.png">
-                    <img src="./images/XinWen/words/g@3x.png">
-                    <img src="./images/XinWen/words/h@3x.png">
-                    <img src="./images/XinWen/words/I@3x.png">
-                    <img src="./images/XinWen/words/J@3x.png">
-                    <img src="./images/XinWen/words/K@3x.png">
-                    <img src="./images/XinWen/words/L@3x.png">
-                    <img src="./images/XinWen/words/M@3x.png">
-                    <img src="./images/XinWen/words/N@3x.png">
-                    <img src="./images/XinWen/words/o@3x.png">
+                <img src="" remark="./images/XinWen/Sun@3x.png" id="news-o-sun">
+                <img src="" remark="./images/XinWen/voice@3x.png" id="news-o-voice">
+                <span id="news-o-bg"><img src="" remark="./images/XinWen/bg@3x.png"></span>
+                <div id="news-o-img">
+                    <img src="" remark="./images/XinWen/Sun@3x.png">
+                    <img src="" remark="./images/XinWen/mouse@3x.png">
+                    <img src="" remark="./images/XinWen/words/A@3x.png">
+                    <img src="" remark="./images/XinWen/words/B@3x.png">
+                    <img src="" remark="./images/XinWen/words/C@3x.png">
+                    <img src="" remark="./images/XinWen/words/d@3x.png">
+                    <img src="" remark="./images/XinWen/words/e@3x.png">
+                    <img src="" remark="./images/XinWen/words/F@3x.png">
+                    <img src="" remark="./images/XinWen/words/g@3x.png">
+                    <img src="" remark="./images/XinWen/words/h@3x.png">
+                    <img src="" remark="./images/XinWen/words/I@3x.png">
+                    <img src="" remark="./images/XinWen/words/J@3x.png">
+                    <img src="" remark="./images/XinWen/words/K@3x.png">
+                    <img src="" remark="./images/XinWen/words/L@3x.png">
+                    <img src="" remark="./images/XinWen/words/M@3x.png">
+                    <img src="" remark="./images/XinWen/words/N@3x.png">
+                    <img src="" remark="./images/XinWen/words/o@3x.png">
                 </div>
             </div>
+            <!-- 部门简介词 -->
             <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+            <!-- 跳转按钮 -->
             <a href="#news" class="more">了解更多</a>
             <a href="#" data-rel="back" class="back">返回</a>
 		</div>
+		<!-- 页面动效 -->
 		<script type="text/javascript">
 			$('#noshow').on('click',function(){
 				$('#news-o .icon #voice').css({left: wwidth+1.5 + 'rem', top: 14.2+ 'rem'}).slip;
@@ -443,115 +592,578 @@
 		        var bg_img = $("#news-o .icon #bg img")
 		        bg.css({left: wwidth+4 + 'rem', top: 14.2+ 'rem'});
 		        bg_img.css({left: -(wwidth+4) + 'rem', top: -14.2 + 'rem', width: wwidth * 2 + 'rem'});
+		    });
+			$(document).ready(function(){
+				// 话筒遮挡设置
+				$('#news-o .icon #news-o-voice').css({left: wwidth+1.5 + 'rem', top: 14.2+ 'rem'});
+		        var news_o_obg = $("#news-o .icon #news-o-bg");
+		        var news_o_obg_img = $("#news-o .icon #news-o-bg img")
+		        news_o_obg.css({left: wwidth+4 + 'rem', top: 14.2+ 'rem'});
+		        news_o_obg_img.css({left: -(wwidth+4) + 'rem', top: -14.2 + 'rem', width: wwidth * 2 + 'rem'});
 		        
-		        var t1 = Tweene.line();
+		        // 创建时间轴
+		        var news_o_t1 = Tweene.line();
 
-		        // 开头
-		        t1.add(Tweene.get($("#news-o .icon #sun, #one img")).set({display: 'none'}));               
-		        t1.add(startfuc('#news-o'));
+		        // 开头动效
+		        news_o_t1.add(Tweene.get($("#news-o .icon #news-o-sun, #news-o-img img")).set({display: 'none'}));               
+		        news_o_t1.add(startJfuc('#news-o'));
 
 		        // 太阳出现
-		        var osun = $('#news-o .icon #one img:nth-child(1)');
-		        t1.add(fadeIn(osun, 800));
-		        t1.add(fadeIn($('#news-o .icon #sun'), 0.1));
+		        var news_o_osun = $('#news-o .icon #news-o-img img:nth-child(1)');
+		        news_o_t1.add(fadeIn(news_o_osun, 800));
+		        news_o_t1.add(fadeIn($('#news-o .icon #news-o-sun'), 0.1));
 
 		        // 话筒出现
-		        t1.add(Tweene.get(bg)
+		        news_o_t1.add(Tweene.get(news_o_obg)
 		                .to({height: 0 + 'rem', top: 28.2 + 'rem'})
 		                .easing([0, 0, 1, 1])
 		                .duration(1000));
-		        t1.add(Tweene.get(bg_img)
+		        news_o_t1.add(Tweene.get(news_o_obg_img)
 		                .to({top: -28.2 + 'rem'})
 		                .easing([0, 0, 1, 1])
 		                .duration(1000), '-=1000');
-		        t1.add(fadeOut(osun, 220), '-=100');
+		        news_o_t1.add(fadeOut(news_o_osun, 220), '-=100');
 
 		        // 嘴巴出现
-		        var omouse = $('#news-o .icon #one img:nth-child(2)');
-		        t1.add(fadeIn(omouse, 800));
+		        var news_o_omouse = $('#news-o .icon #news-o-img img:nth-child(2)');
+		        news_o_t1.add(fadeIn(news_o_omouse, 800));
 
 		        // 字出现
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(3)'), -0.6, 4, -10, -4, 1800, false), '3500');  //A       
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(17)'), -0.4, 4.2, -11, -1.5, 1800, false), '3800');  //o
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(5)'), -0.6, 4, -9, -1, 1500, false), '4100');  //C
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(14)'), -0.3, 4, -10, 1, 1500, false), '4400');  //L        
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(4)'), -0.4, 4, -7, -2.5, 1500, false), '4600');  //B       
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(6)'), -0.4, 4.2, -7, -0.2, 1200, false), '4800');  //d        
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(8)'), -0.4, 4, -5.5, -0.4, 1000, false), '5000');  //F
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(7)'), -0.4, 4.4, -7.8, 1.2, 1200, false), '5200');  //e
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(10)'), -0.4, 4, -8.5, 2.5, 1200, false), '5400');  //h
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(11)'), -0.2, 4, -6.5, 2.4, 1000, false), '5600');  //I
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(9)'), -0.4, 4.4, -5, 2.1, 1000, false), '5700');  //g 
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(16)'), -0.4, 4, -4, -1, 1000, false), '5800');  //N
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(12)'), -0.4, 4, -4.2, 3, 800, false), '5900');  //J
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(13)'), -0.4, 4, -3, 1, 800, false), '6000');  //K        
-		        t1.add(MaoChuXiaoShifuc($('#news-o .icon #one img:nth-child(15)'), -0.4, 4.2, -2.5, 3, 500, false), '6100');  //M
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(3)'), -0.6, 4, -10, -4, 1800, false), '3500');  //A       
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(17)'), -0.4, 4.2, -11, -1.5, 1800, false), '3800');  //o
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(5)'), -0.6, 4, -9, -1, 1500, false), '4100');  //C
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(14)'), -0.3, 4, -10, 1, 1500, false), '4400');  //L        
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(4)'), -0.4, 4, -7, -2.5, 1500, false), '4600');  //B       
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(6)'), -0.4, 4.2, -7, -0.2, 1200, false), '4800');  //d        
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(8)'), -0.4, 4, -5.5, -0.4, 1000, false), '5000');  //F
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(7)'), -0.4, 4.4, -7.8, 1.2, 1200, false), '5200');  //e
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(10)'), -0.4, 4, -8.5, 2.5, 1200, false), '5400');  //h
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(11)'), -0.2, 4, -6.5, 2.4, 1000, false), '5600');  //I
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(9)'), -0.4, 4.4, -5, 2.1, 1000, false), '5700');  //g 
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(16)'), -0.4, 4, -4, -1, 1000, false), '5800');  //N
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(12)'), -0.4, 4, -4.2, 3, 800, false), '5900');  //J
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(13)'), -0.4, 4, -3, 1, 800, false), '6000');  //K        
+		        news_o_t1.add(MaoChuXiaoShifuc($('#news-o .icon #news-o-img img:nth-child(15)'), -0.4, 4.2, -2.5, 3, 500, false), '6100');  //M
 		        
 		        // 嘴巴动
-		        var t2 = Tweene.line();
+		        var news_o_t2 = Tweene.line();
 		        var i = 0;
 		        while(i<3){
-		        	console.log('1');
-		            t2.add(Tweene.get(omouse)
+		            news_o_t2.add(Tweene.get(news_o_omouse)
 		                    .to({scaleY: 0.5})
 		                    .duration(250));
-		            t2.add(Tweene.get(omouse)
+		            news_o_t2.add(Tweene.get(news_o_omouse)
 		                    .to({scaleX: 1.5})
 		                    .duration(250));
-		            t2.add(Tweene.get(omouse)
+		            news_o_t2.add(Tweene.get(news_o_omouse)
 		                    .to({scaleX: 1})
 		                    .duration(250));
-		            t2.add(Tweene.get(omouse)
+		            news_o_t2.add(Tweene.get(news_o_omouse)
 		                    .to({scaleY: 1})
 		                    .duration(250));
 		            i++;
 		        }
-		        t1.add(t2, '3600');
+		        news_o_t1.add(news_o_t2, '3600');
 
-		        // 结束
-		        t1.add(endfuc('#news-o'), '6500');        
-		        t1.play();
-		        // var p = true;
-		        // $('#news-o a:nth-child(1)').click(function(){
-		        //     // console.log('1');
-		        //     if(p){t1.pause();p=false;}
-		        //     else{t1.restart();p=true;}
-		        // });
+		        // 结束动效
+		        news_o_t1.add(endJfuc('#news-o'), '6500');  
+
+		        $('#news-o a').click(function(){
+		        	news_o_t1.pause();
+		        })
+
+		        $("a[href='#news-o']").click(function(){ $('#news-o img[remark]').attr('src',function(){return $(this).attr('remark')});news_o_t1.play(); });
 			});
 		</script>
 	</div>
-	<div data-role="page" id="movie-o">
-		影视部简介
-		<a href="#movie">详情页</a>
-		<a href="#" data-rel="back">返回</a>
+	<!-- 影视部简介页 -->
+	<div data-role="page" id="movie-o" class="FenYe">
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="" remark="./images/YinShi/title@3x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">                   
+                <img src="" remark="./images/YinShi/bottom@3x.png">
+                <img src="" remark="./images/YinShi/head@3x.png">
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+			<!-- 跳转按钮 -->
+			<a href="#movie" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
+		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 创建时间轴
+				var movie_o_t1 = Tweene.line();         
+		        
+		        // 开头动效
+		        movie_o_t1.add(Tweene.get($("#movie-o .icon img")).set({display: 'none'}));
+		        movie_o_t1.add(startJfuc('#movie-o'));
+
+		        // 摄像机出现
+        		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(1)"))
+	                .from({left: wwidth-4.5 + 'rem', top: wheight-1 + 'rem', opacity: 0, display: 'inline'})
+	                .to({left: wwidth-4.5 + 'rem', top: wheight-1 + 'rem', opacity: 1, display: 'inline'})
+	                .duration(800));
+        		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
+                    .from({left: wwidth-5 + 'rem', top: wheight-8 + 'rem', opacity: 0, display: 'inline'})
+                    .to({left: wwidth-5 + 'rem', top: wheight-8 + 'rem', opacity: 1, display: 'inline'})
+                    .duration(800), '-=800');
+
+        		// 摄像机移动
+        		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(1)"))
+                    .to({left: -5 + 'rem', height: 0 + 'rem'})
+                    .duration(4000));
+        		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
+                    .to({left: -6 + 'rem', height: 0 + 'rem', top: wheight-1 + 'rem'})
+                    .duration(4000), '-=4000');
+
+		        // 摄像机镜头旋转
+		        movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
+                    .to({rotation: -20, transformOrigin: '21% 50%'})
+                    .duration(500)
+                    , '1800');
+        		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
+                    .to({rotation: 20, transformOrigin: '21% 50%'})
+                    .duration(1000)
+                    , '2300');
+        		movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
+                    .to({rotation: -20, transformOrigin: '21% 50%'})
+                    .duration(1000)
+                    , '3300');
+
+        		// 结束动效
+		        movie_o_t1.add(endJfuc('#movie-o'), '3500');
+
+		        $('#movie-o a').click(function(){
+		        	movie_o_t1.pause();
+		        });
+
+		        $("a[href='#movie-o']").click(function(){ $('#movie-o img[remark]').attr('src',function(){return $(this).attr('remark')});movie_o_t1.play(); });
+		    });
+		</script>
 	</div>
-	<div data-role="page" id="newmedia-o">
-		新媒体部简介
-		
-		<button id="trigger-voice0">放呀！</button>
-		
-		<a href="#newmedia">详情页</a>
-		<a href="#" data-rel="back">返回</a>
+	<!-- 新媒体部简介页 -->
+	<div data-role="page" id="newmedia-o" class="FenYe">
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="" remark="./images/XinMei/title@3x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">
+                <div id="newmedia-o-img1">
+                    <img src="" remark="./images/XinMei/Xuan@3x.png">
+                    <img src="" remark="./images/XinMei/wechat@3x.png">
+                    <img src="" remark="./images/XinMei/weibo@3x.png">
+                </div>
+                <div id="newmedia-o-img2">
+                    <span>共享</span>
+                    <span>交互</span>
+                    <span>生命力</span>
+                    <span>价值</span>
+                    <span>原创</span>
+                    <span>舆论</span>
+                    <span>效应</span>
+                    <span>咨讯</span>
+                    <span>采访</span>
+                </div>
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+			<!-- 跳转按钮 -->
+			<a href="#newmedia" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
+		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 创建时间轴
+				var newmedia_o_t1 = Tweene.line();         
+		        
+				// 开头动效
+		        newmedia_o_t1.add(Tweene.get($("#newmedia-o .icon img")).set({display: 'none'}));
+		        newmedia_o_t1.add(Tweene.get($("#newmedia-o .icon span")).set({display: 'none'}));
+		        newmedia_o_t1.add(startJfuc('#newmedia-o'));
+		        
+		        // 旋涡出现
+		        newmedia_o_t1.add(fadeIn($('#newmedia-o .icon #newmedia-o-img1 img:nth-child(1)'), 800));
+
+		        // 旋转与变色     
+		        newmedia_o_t1.add(ZiXuanfuc($('#newmedia-o .icon #newmedia-o-img1 img:nth-child(1)'), 800), '1000');
+		        newmedia_o_t1.add(Tweene.get($('#newmedia-o .icon #newmedia-o-img1 img:nth-child(1)'))
+		            .from({opacity: 0.5})
+		            .to({opacity: 1})
+		            .easing([0, 0, 1, 1])
+		            .loops(-1)
+		            .yoyo(true)
+		            .duration(800), '1000');
+
+		        // 内容出现
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(1)'), -2, 1, 4.2, 0.2, 1000, true, 2000), '2100');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(2)'), -2, 1, 3.2, 4.2, 1000, true, 2000), '2000');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(3)'), -2.7, 1, -4.2, 5.4, 1000, true, 2000), '1900');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img1 img:nth-child(2)'), -1.4, 1, -7.2, 1.2, 1000, true, 2000), '1800');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(4)'), -1.7, 1, -4.7, -2.7, 1000, true, 2000), '1700');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(5)'), -1.7, 1.1, 0, -3.2, 1000, true, 2000), '1600');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img1 img:nth-child(3)'), -1.2, 1.2, 1.6, -1, 1000, true, 2000), '1500');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(6)'), -1.5, 1.3, 0.6, 2, 1000, true, 2000), '1400');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(7)'), -1.5, 1.3, -1.4, 3.6, 1000, true, 2000), '1300');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(8)'), -1.5, 1.3, -3.2, 1.2, 1000, true, 2000), '1200');
+		        newmedia_o_t1.add(MaoChuXiaoShifuc($('#newmedia-o .icon #newmedia-o-img2 span:nth-child(9)'), -1.5, 1.3, -1.8, -0.9, 1000, true, 2000), '1100');
+
+		        // 结束动效
+		        newmedia_o_t1.add(endJfuc('#newmedia-o'), '2400');  
+
+		        $('#newmedia-o a').click(function(){
+		        	newmedia_o_t1.pause();
+		        })
+		        
+		        $("a[href='#newmedia-o']").click(function(){ $('#newmedia-o img[remark]').attr('src',function(){return $(this).attr('remark')});newmedia_o_t1.play(); });
+
+			});
+		</script>
 	</div>
-	<div data-role="page" id="product-o">
-		产品部简介
-		<a href="#product">详情页</a>
-		<a href="#" data-rel="back">返回</a>
+	<!-- 产品部简介页 -->
+	<div data-role="page" id="product-o" class="FenYe">
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="" remark="./images/ChanPin/title@2x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">
+                <div id="product-o-line">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <div id="product-o-ball">
+                    <img src="" remark="./images/ChanPin/lamp@2x.png" class="lamp">
+                    <img src="" remark="./images/ChanPin/lamp2@2x.png" class="lamp">
+                    <img src="" remark="./images/ChanPin/b1@3x.png" class="ball">
+                    <img src="" remark="./images/ChanPin/bs1@3x.png" class="ballshine">
+                    <img src="" remark="./images/ChanPin/b2@3x.png" class="ball">
+                    <img src="" remark="./images/ChanPin/bs2@3x.png" class="ballshine">
+                    <img src="" remark="./images/ChanPin/b3@3x.png" class="ball">
+                    <img src="" remark="./images/ChanPin/bs3@3x.png" class="ballshine">
+                    <img src="" remark="./images/ChanPin/b4@3x.png" class="ball">
+                    <img src="" remark="./images/ChanPin/bs4@3x.png" class="ballshine">
+                    <img src="" remark="./images/ChanPin/b5@3x.png" class="ball">
+                    <img src="" remark="./images/ChanPin/bs5@3x.png" class="ballshine">
+                    <img src="" remark="./images/ChanPin/b6@3x.png" class="ball">
+                    <img src="" remark="./images/ChanPin/bs6@3x.png" class="ballshine">
+                    <img src="" remark="./images/ChanPin/b7@3x.png" class="ball">
+                    <img src="" remark="./images/ChanPin/bs7@3x.png" class="ballshine">
+                    <img src="" remark="./images/ChanPin/b8@3x.png" class="ball">
+                    <img src="" remark="./images/ChanPin/bs8@3x.png" class="ballshine">
+                    <img src="" remark="./images/ChanPin/b9@3x.png" class="ball">
+                    <img src="" remark="./images/ChanPin/bs9@3x.png" class="ballshine">
+                    <img src="" remark="./images/ChanPin/b10@3x.png" class="ball">
+                    <img src="" remark="./images/ChanPin/bs10@3x.png" class="ballshine">
+                </div>
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+			<!-- 跳转按钮 -->
+			<a href="#product" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
+		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 创建时间轴
+				var product_o_t1 = Tweene.line();         
+		        
+		        // 开头动效
+		        product_o_t1.add(Tweene.get($("#product-o .icon #product-o-line>div, #product-o-ball>img")).set({display: 'none'}));
+		        product_o_t1.add(startJfuc('#product-o'));
+
+		        // 灯泡出现
+		        product_o_t1.add(fadeIn($("#product-o .icon #product-o-ball img:nth-child(1)"), 800));
+
+		        // 星球出现
+		        var product_o_arr = [5, 15, 11, 21, 3, 17, 9, 19, 7, 13]
+		        for(var product_o_i = 0 ; product_o_i < 10; product_o_i++){
+		            product_o_t1.add(fadeIn($("#product-o .icon #product-o-ball img:nth-child("+product_o_arr[product_o_i]+")"), 200));
+		        }
+
+		        // 星球发光与连线函数
+		        var Shinefuc = function(number, t){
+		        	if(t == undefined){ t = 200; }
+		        	var TimeLine = Tweene.line(); 
+		        	TimeLine.add(Tweene.get($("#product-o .icon #product-o-ball img:nth-child("+number+")"))
+	                    .from({opacity: 0, display: 'inline', width: '+=5px', left: '-=2.5px', top: '-=2.5px'})
+	                    .to({opacity: 1, display: 'inline', width: '+=5px', left: '-=2.5px', top: '-=2.5px'})
+	                    .duration(t));
+		        	return TimeLine;
+		        }
+		        var LianXianfuc = function(number, width){
+		        	var TimeLine = Tweene.line(); 
+		        	TimeLine.add(Tweene.get($("#product-o .icon #product-o-line div:nth-child("+number+")"))
+                        .from({display: 'inline', width: '0'})
+                        .to({display: 'inline', width: width + 'rem'})
+                        .duration(200));
+		        	return TimeLine;
+		        }
+
+		        // 左侧星球发光并连线1
+		        var product_o_t2 = Tweene.line();       
+        		product_o_t2.add(Shinefuc(6));
+        		product_o_t2.add(LianXianfuc(1, 3.2));
+        		product_o_t2.add(Shinefuc(4));
+        		product_o_t2.add(LianXianfuc(2, 3.2));
+        		product_o_t2.add(LianXianfuc(3, 4.8), '-=100');
+        		product_o_t2.add(Shinefuc(8));
+        		product_o_t2.add(LianXianfuc(5, 3.2));
+        		product_o_t2.add(LianXianfuc(8, 1.8));
+
+        		//左侧星球发光并连线2
+        		var product_o_t3 = Tweene.line();
+        		product_o_t3.add(Shinefuc(12));
+        		product_o_t3.add(LianXianfuc(4, 3.3));
+        		product_o_t3.add(Shinefuc(10));
+        		product_o_t3.add(LianXianfuc(6, 5.8));
+        		product_o_t3.add(LianXianfuc(7, 2.9));
+        		product_o_t3.add(Shinefuc(2, 1500));  // 灯泡发亮
+        
+        		//右侧星球发光并连线1
+        		var product_o_t4 = Tweene.line();       
+        		product_o_t4.add(Shinefuc(16));
+        		product_o_t4.add(LianXianfuc(9, 3.2));
+        		product_o_t4.add(Shinefuc(18));
+        		product_o_t4.add(LianXianfuc(10, 3.8));
+        		product_o_t4.add(LianXianfuc(11, 4.2), '-=100');
+        		product_o_t4.add(Shinefuc(14));
+        		product_o_t4.add(LianXianfuc(13, 5));
+        		product_o_t4.add(LianXianfuc(15, 1.5));
+
+        		//右侧星球发光并连线2
+        		var product_o_t5 = Tweene.line();
+        		product_o_t5.add(Shinefuc(22));
+        		product_o_t5.add(LianXianfuc(12, 2.8));
+        		product_o_t5.add(Shinefuc(20));
+        		product_o_t5.add(LianXianfuc(14, 2));
+        		product_o_t5.add(LianXianfuc(16, 2.4), '+=600');
+
+        		product_o_t1.add(product_o_t2, '2000').add(product_o_t3, '2400').add(product_o_t5, '2200').add(product_o_t4, '2600');
+        
+        		// 结束动效
+		        product_o_t1.add(endJfuc('#product-o'));
+
+		        $('#product-o a').click(function(){
+		        	product_o_t1.pause();
+		        })
+
+		        $("a[href='#product-o']").click(function(){ $('#product-o img[remark]').attr('src',function(){return $(this).attr('remark')}); product_o_t1.play(); });
+		    });
+		</script>
 	</div>
-	<div data-role="page" id="frontend-and-art-o">
-		前端美工组部简介
-		<a href="#frontend-and-art">详情页</a>
-		<a href="#" data-rel="back">返回</a>
+	<!-- 前端美工组简介页 -->
+	<div data-role="page" id="frontend-and-art-o" class="FenYe">
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="" remark="./images/QianDuan/title@2x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">
+                <img src="" remark="./images/QianDuan/icon@2x.png" id="frontend-plane">
+                <img src="" remark="./images/QianDuan/css@2x.png" id="frontend-css">
+                <img src="" remark="./images/QianDuan/ai@2x.png" id="frontend-ai">
+                <img src="" remark="./images/QianDuan/js@2x.png" id="frontend-js">
+                <img src="" remark="./images/QianDuan/ps@2x.png" id="frontend-ps">
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+            <!-- 跳转按钮 -->
+			<a href="#frontend-and-art" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
+		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 创建时间轴
+				var frontend_o_t1 = Tweene.line();         
+		        
+		        // 开头动效
+		        frontend_o_t1.add(Tweene.get($("#frontend-and-art-o .icon img")).set({display: 'none'}))
+		        frontend_o_t1.add(startJfuc('#frontend-and-art-o'));
+
+		        // 飞机出现
+		        frontend_o_t1.add(Tweene.get($('#frontend-and-art-o .icon #frontend-plane'))
+                    .from({left: -10 +'rem', top: wheight*0.95 + 'rem', display: 'inline'})
+                    .to({left: wwidth +'rem', top: wheight*0.95 + 'rem', display: 'inline'})
+                    .duration(1000));
+        
+        		// 块抛出
+        		var Paofuc = function(str, h, w, a){
+        			var TimeLine = Tweene.line(); 
+        			TimeLine.add(Tweene.get($('#frontend-and-art-o .icon ' + str))
+        				.set({display: 'inline', left: wwidth +'rem', top: wheight * h + 'rem'}));
+			        var x = wwidth, y;
+			        while(x > wwidth * w){
+			            x = x - 1;
+			            if(x < wwidth * w){ x = wwidth * w; }
+			            y = a * (x - wwidth) * (x - (wwidth * w)) + wheight * h;
+			            TimeLine.add(Tweene.get($('#frontend-and-art-o .icon ' + str))
+			                .to({ left: x +'rem', top: y +'rem'})
+			                .duration(50));
+			        }
+        			return TimeLine;
+        		}
+               	
+               	frontend_o_t1.add(Paofuc('#frontend-css', 0.95, 0.3, 0.2));
+               	frontend_o_t1.add(Paofuc('#frontend-ai', 1.15, 0.3, 0.35));
+               	// 这个js图的位置莫名有问题……
+               	frontend_o_t1.add(Paofuc('#frontend-js', 0.95, 0.6, 0.25));
+               	frontend_o_t1.add(Paofuc('#frontend-ps', 1.15, 0.6, 0.2));
+
+               	// 结束动效
+		        frontend_o_t1.add(endJfuc('#frontend-and-art-o'));
+
+		        $('#frontend-and-art-o a').click(function(){
+		        	frontend_o_t1.pause();
+		        })
+
+		        $("a[href='#frontend-and-art-o']").click(function(){ $('#frontend-and-art-o img[remark]').attr('src',function(){return $(this).attr('remark')}); frontend_o_t1.play(); })
+		    });
+		</script>
 	</div>
-	<div data-role="page" id="backend-o">
-		后台web组简介
-		<a href="#backend">详情页</a>
-		<a href="#" data-rel="back">返回</a>
+	<!-- 后台app组简介页 -->
+	<div data-role="page" id="backapp-o" class="FenYe">
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="" remark="./images/App/title@3x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">
+                <img src="" remark="./images/App/bee@3x.png">
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+			<!-- 跳转按钮 -->
+			<a href="#backapp" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
+		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 创建时间轴
+				var backapp_o_t1 = Tweene.line();
+
+				// 开头动效
+				backapp_o_t1.add(Tweene.get($("#backapp-o .icon img")).set({left: '1rem', bottom: '-15rem'}));
+				backapp_o_t1.add(startJfuc('#backapp-o'));
+				
+				// 蜜蜂飞出
+		        var backapp_o_x = 1, backapp_o_y = -15, backapp_o_t = 0, backapp_o_o, backapp_o_z;
+		        while(backapp_o_x <= wwidth * 2 ){
+		            backapp_o_y = backapp_o_y + 1;
+		            backapp_o_x = backapp_o_t * backapp_o_t * backapp_o_t * 0.3;
+		            backapp_o_o = backapp_o_t * backapp_o_t * backapp_o_t * 0.4;
+		            backapp_o_z = 1 - backapp_o_t * backapp_o_t * backapp_o_t * 0.015;
+		            if(backapp_o_z < 0){ backapp_o_z = 0; } 
+		            backapp_o_t1.add(Tweene.get($("#backapp-o .icon img"))
+		                        .to({left: backapp_o_x + 'rem', bottom: backapp_o_y + 'rem', rotation: backapp_o_o, scale: backapp_o_z})
+		                        .duration(35));
+		            backapp_o_t = backapp_o_t + 0.1;
+		        }
+
+		        // 结束动效
+		        backapp_o_t1.add(endJfuc('#backapp-o'));
+		        
+		        $('#backapp-o a').click(function(){
+		        	backapp_o_t1.pause();
+		        })
+
+		        $("a[href='#backapp-o']").click(function(){ $('#backapp-o img[remark]').attr('src',function(){return $(this).attr('remark')}); backapp_o_t1.play(); });
+			});
+		</script>
 	</div>
-	<div data-role="page" id="backapp-o">
-		后台app组简介
-		<a href="#backapp">详情页</a>
-		<a href="#" data-rel="back">返回</a>
+	<!-- 后台web组简介页 -->
+	<div data-role="page" id="backend-o" class="FenYe">
+		<div class="content-J">
+			<!-- 标题 -->
+			<div class="title"><img src="" remark="./images/web/title@3x.png"></div>
+            <!-- 动画icon -->
+            <div class="icon">
+                <img src="" remark="./images/web/bs@3x.png" id="backend-o-ballshine">
+                <span id="backend-o-bg"><img src="" remark="./images/web/bg@3x.png"></span>
+                <img src="" remark="./images/web/b@3x.png" id="backend-o-ball">
+                <img src="" remark="./images/web/ufo@3x.png" id="backend-o-ufo">
+            </div>
+            <!-- 部门简介词 -->
+            <div class="intro"><span>介绍词<br>介绍词介绍词介绍词<br>介绍词介绍词<br>介绍词介绍词介绍词介绍词</span></div>
+			<!-- 跳转按钮 -->
+			<a href="#backend" class="more">了解更多</a>
+			<a href="#" data-rel="back" class="back">返回</a>
+		</div>
+		<!-- 页面动效 -->
+		<script type="text/javascript">
+			$(document).ready(function(){
+				// 发光图遮挡设置
+				var backend_o_obg = $("#backend-o .icon #backend-o-bg");
+		        var backend_o_obg_img = $("#backend-o .icon #backend-o-bg img");
+		        backend_o_obg_img.css({left: 6.8 - wwidth + 'rem', top: 5.9 - wheight + 'rem', width: wwidth * 2 + 'rem'});
+		        backend_o_obg.css({left: wwidth - 6.8 + 'rem', top: wheight - 5.9 + 'rem'});
+		        
+		        // 创建时间轴
+		        var backend_o_t1 = Tweene.line();         
+		        
+		        // 开头动效
+		        backend_o_t1.add(Tweene.get($("#backend-o .icon>img~img")).set({display: 'none'}));
+		        backend_o_t1.add(startJfuc('#backend-o'));
+		        
+		        // 中央图标出现
+		        backend_o_t1.add(fadeIn($('#backend-o .icon #backend-o-ball'), 800));
+
+		        // 发光
+		        backend_o_t1.add(Tweene.get(backend_o_obg)
+		                .to({width: 0 + 'rem', height: 0 + 'rem', left: wwidth-6.8+7 + 'rem', top: wheight-5.9+7 + 'rem'})
+		                .easing([0, 0, 1, 1])
+		                .duration(2000));
+		        backend_o_t1.add(Tweene.get(backend_o_obg_img)
+		                .to({left: 6.8-wwidth-7 + 'rem', top: 5.9-wheight-7 + 'rem'})
+		                .easing([0, 0, 1, 1])
+		                .duration(2000), '-=2000');
+		        
+		        // 飞船飞出        
+		        var backend_o_oufo = $('#backend-o .icon #backend-o-ufo');
+		        backend_o_t1.add(Tweene.get(backend_o_oufo).set({display: 'inline', left: wwidth - 2.5 + 'rem', top: wheight - 2.5 + 'rem', scale: 0}));
+		        var backend_o_x = wwidth - 2.5, backend_o_y = wheight - 2.5, backend_o_d1 = -7.5, backend_o_o = -10, backend_o_d2 = 1, backend_o_z;
+		        while(backend_o_y > 0 && backend_o_x < wwidth*2){
+		            backend_o_y = backend_o_y - 1;
+		            backend_o_x = backend_o_x + 0.1 * backend_o_d1 * backend_o_d2;
+		            backend_o_o = backend_o_o + backend_o_d2 * 3;
+		            backend_o_z = 1 - backend_o_d1 * backend_o_d1 * 0.008;
+		            if(backend_o_z >= 1){ backend_o_z = 1; }
+		            if(backend_o_o >= 40){ backend_o_o = 40; } 
+		            backend_o_t1.add(Tweene.get(backend_o_oufo)
+		                        .to({left: backend_o_x + 'rem', top: backend_o_y + 'rem', scale: backend_o_z, rotation: backend_o_o})
+		                        .duration(100));
+		            backend_o_d1++;
+		            backend_o_d2++;
+		        }
+
+		        // 结束动效
+		        backend_o_t1.add(endJfuc('#backend-o'));  
+
+		        $('#backend-o a').click(function(){
+		        	backend_o_t1.pause();
+		        })
+		        
+		        $("a[href='#backend-o']").click(function(){ $('#market-o img[remark]').attr('src',function(){return $(this).attr('remark')}); backend_o_t1.play(); });
+			});
+		</script>
 	</div>
 
 	<div data-role="page" id="market">
@@ -570,9 +1182,10 @@
 		<a href="#" data-rel="back">返回</a>
 	</div>
 	<div data-role="page" id="movie">
-		<div class="movie-panel" data-background="../images/media/panel.png"></div>
+		<div class="movie-panel" data-background="./images/media/panel.png"></div>
 		<script type="text/javascript">
-            $('.movie-panel').height(cheight);
+            $('.movie-panel').width(cwidth).height(cheight);
+            $('.movie-panel').css('background-image',"url('./images/media/panel.png')");
 		</script>
 	</div>
 	<div data-role="page" id="newmedia">
@@ -580,28 +1193,69 @@
 		<div>
 			<div class="container"> 
 				<div class="lrc">
-					<a href="#"><img src="./images/player/detail.png" style="width: 25px;"></a>
-					<a href="#"><img src="./images/player/title.png" style="width: 145px"></a>
+					<a href="#" id="newmedia-detail"><img src="" remark="./images/player/detail.png" style="width: 25px;"></a>
+					<a href="#" id="newmedia-title"><img src="" remark="./images/player/title.png" style="width: 100px;"></a>
 					<div class="lrc-panel">
-						<p>my beloved</p>
+						<div class="lrc-real">
+							<p>站在时代与技术的前沿</p>
+							<p>我们是e瞳网的形象设计师</p>
+							<p>我们输送精辟的观点与看法</p>
+							<p>我们传递新鲜及时的资讯与信息</p>
+							<p>我们开发管理e瞳网的各个新媒体平台</p>
+							<p>打造属于e瞳的特色品牌--</p>
+							<p>严肃而不失活泼，文艺而不失深度</p>
+							<p>我们聚焦大学生活</p>
+							<p>我们为你们发声</p>
+							<p>我们关注意料之外情理之中的疑惑</p>
+							<p>思考生活的琐碎，发现周遭的有趣</p>
+							<p>我们挑战常理，我们也发现规律</p>
+							<p>我们畅所欲言，也来者不拒</p>
+							<p>刁钻、宽容或者古怪</p>
+							<p>悲情、乐观或是冷静</p>
+							<p>我们接受各种视角和态度</p>
+							<p>展现一个平台的胸怀。</p>
+							<p>我们，是一扇窗</p>
+							<p>在这里，你会看到e瞳网</p>
+							<p>看到我们想说的，看到我们所做的</p>
+							<p>你可以看到交大，看到你身边的利益相关</p>
+							<p>看到你会感兴趣的逸闻趣事</p>
+							<p>看到交大的有趣和严谨</p>
+							<p>你可以看到这个网络时代的世界</p>
+							<p>在新媒体平台如何运转</p>
+							<p>新媒体部，等你，风生水起</p>
+						</div>
 					</div>
 				</div>
 				<div class="icon">
-					<a href="#"><img src="./images/player/shuffle.png" style="width: 20px;"></a>
-					<a href="#"><img src="./images/player/prev.png" style="width: 30px;"></a>
-					<a href="#" id="toggle-msc"><img src="./images/player/play.png" style="width: 30px;"></a>
-					<a href="#"><img src="./images/player/next.png" style="width: 30px;"></a>
-					<a href="#"><img src="./images/player/repeat.png" style="width: 20px;"></a>
+					<a href="#"><img src="" remark="./images/player/shuffle.png" style="width: 20px;"></a>
+					<a href="#"><img src="" remark="./images/player/prev.png" style="width: 30px;"></a>
+					<a href="#" id="toggle-msc"><img src="" remark="./images/player/play.png" style="width: 30px;"></a>
+					<a href="#"><img src="" remark="./images/player/next.png" style="width: 30px;"></a>
+					<a href="#"><img src="" remark="./images/player/repeat.png" style="width: 20px;"></a>
 				</div>
 			</div>
 			<div class="player-mask"></div>
 		</div>
 		<script type="text/javascript">
             $(document).ready(function(){
-            	$('.container').width(cwidth-60).height(cheight-20);
-            	$('.player-mask').width(cwidth);
-            	$('.lrc').width(cwidth-60).height(cheight-20-70);
-            	$('.icon').width(cwidth-60).height(70);
+            	//$("a[href='#newmedia']").on('click',function(){
+            		$('#newmedia img[remark]').attr('src',function(){return $(this).attr('remark')});
+            	//});
+
+                // 自适应定位
+            	$('#newmedia .container').width(cwidth-60).height(cheight-20);
+            	$('#newmedia .player-mask').width(cwidth);
+            	$('#newmedia .lrc').width(cwidth-60).height(cheight-20-70);
+            	$('#newmedia .lrc').css('text-align','center');
+            	$('#newmedia .icon').width(cwidth-60).height(70);
+            	$('#newmedia #newmedia-detail').css('left',$('#newmedia .lrc').width() * 0.155299 + 20 + 'px');
+            	$('#newmedia #newmedia-detail').css('top',$('#newmedia .lrc').height() * 0.070299 + 20 + 'px');
+            	$('#newmedia #newmedia-title').css('position','relative');
+            	$('#newmedia #newmedia-title').css('left','10px');
+            	$('#newmedia #newmedia-title').css('top',$('#newmedia .lrc').height() * 0.070299 + 'px');
+            	//$('#newmedia .lrc-panel').css('margin-left',$('#newmedia .lrc').width() * 0.155299 + 5 + 'px');
+            	$('#newmedia .lrc-panel').css('margin-top',$('#newmedia .lrc').height() * 0.070299 + 40 + 'px');
+
             	//console.log($('#toggle-msc img').attr('src'))
             	$('#toggle-msc').on('click',function(){
 	            	//console.log($('#voice0'))
@@ -614,6 +1268,24 @@
             	    }
 	            	
 	            })
+	            var lrc_t = Tweene.line();
+                var lrc = Tweene.get($('.lrc-real'));
+                var t = 1000;
+                var child1 = lrc.to({marginTop: '-=60px'})
+                             .duration(1000);
+                
+                
+
+                // 添加动态歌词
+                lrc_t.add(child1,3570);
+                lrc_t.add(Tweene.get($('.lrc-real')).to({marginTop: '-=60px'}).duration(t),6370);
+                lrc_t.add(Tweene.get($('.lrc-real')).to({marginTop: '-=60px'}).duration(t),9000);
+                lrc_t.add(Tweene.get($('.lrc-real')).to({marginTop: '-=60px'}).duration(t),12230);
+                lrc_t.add(Tweene.get($('.lrc-real')).to({marginTop: '-=60px'}).duration(t),15610);
+                lrc_t.add(Tweene.get($('.lrc-real')).to({marginTop: '-=60px'}).duration(t),18260);
+                lrc_t.add(Tweene.get($('.lrc-real')).to({marginTop: '-=60px'}).duration(t),22230);
+                lrc_t.add(Tweene.get($('.lrc-real')).to({marginTop: '-=60px'}).duration(t),24120);
+                lrc_t.play();
             });
 		</script>
 	</div>
