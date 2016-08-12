@@ -1,0 +1,27 @@
+#backend-o>.content-J{
+    background: url(../images/web/bg@3x.png);
+    background-size: cover;
+}
+#backend-o .icon #backend-o-ball, #backend-o .icon #backend-o-ballshine{
+    height: 10rem;
+    position: absolute; 
+    left: 50%; top: 50%;
+    -webkit-transform:translate(-5em, -5em); /* Safari 和 Chrome */
+}
+#backend-o .icon #backend-o-bg{
+    display: inline-block;
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    position: absolute;  
+    overflow: hidden; 
+}
+#backend-o .icon #backend-o-bg img{
+    position: absolute; 
+}
+#backend-o .icon #backend-o-ufo{
+    width: 6.4em;
+    height: 6em;
+    position: absolute; 
+    -webkit-transform:rotate(-10deg); /* Safari 和 Chrome */
+}

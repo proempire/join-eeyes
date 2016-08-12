@@ -1,24 +1,22 @@
 <?php
-// CSV文件名设置，最好设置成别人猜不到的名字
-define('DATA_FILE', 'data.csv');
-// 防刷的记录文件
-define('IP_FILE', 'ip.php');
-// 书院名
-define('COLLEGE', array('彭康','仲英','南洋','文治','崇实','宗濂','励志','启德'));
-// 部门名
-define('GROUP', array('空','市场部','公关部','信息部门','产品部','前端美工部','后台WEB部','APP部','EUX'));
 // 只允许POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') exit;
-
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    exit;
+}
+// 读取配置文件
+require 'config.php';
 // 获取ip，ip不合法返回false
-// $advance：false REMOTE_ADDR
-// $advance：true HTTP_X_FORWARDED_FOR首个ip -> HTTP_CLIENT_IP -> REMOTE_ADDR
-function get_client_ip($advance = false) {
+// $advance == false 返回 REMOTE_ADDR
+// $advance == true 返回 HTTP_X_FORWARDED_FOR首个ip -> HTTP_CLIENT_IP -> REMOTE_ADDR
+function get_client_ip($advance = false)
+{
     if ($advance) {
         if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $arr = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
             $pos = array_search('unknown', $arr);
-            if (false !== $pos) unset($arr[$pos]);
+            if (false !== $pos) {
+                unset($arr[$pos]);
+            }
             $ip = trim($arr[0]);
         } elseif (isset($_SERVER['HTTP_CLIENT_IP'])) {
             $ip = $_SERVER['HTTP_CLIENT_IP'];
@@ -30,35 +28,52 @@ function get_client_ip($advance = false) {
     }
     return ip2long($ip) ? $ip : false;
 }
-// 防刷初始化
-$last_ip = '0.0.0.0';
-$post_times = 0;
+
 // 获取ip
-if (!$ip = get_client_ip()) exit;
+if (!$client_ip = get_client_ip()) {
+    exit('-1');
+}
 // 读取防刷记录文件
 if (file_exists(IP_FILE)) {
-	require IP_FILE;
+    $ip = require IP_FILE;
+} else {
+    $ip = array();
 }
-// 提交次数+1
-++$post_times;
-// 同一ip连续10次提交则退出
-if ($last_ip === $ip && $post_times > 10) exit;
+// 判断是否已存在
+if (isset($ip[$client_ip])) {
+    // 同一ip提交达到10次则退出
+    if ($ip[$client_ip] >= 10) {
+        exit('-2');
+    }
+    ++$ip[$client_ip];
+} else {
+    $ip[$client_ip] = 1;
+}
 // 写入防刷记录文件
-file_put_contents(IP_FILE, '<?php $last_ip=\'' . $ip . '\';$post_times=' . $post_times . ';');
+file_put_contents(IP_FILE, '<?php return ' . var_export($ip, true) . ';');
 // 输入过滤函数
-function I($name, $type, $filter) {
-	if (!isset($_POST[$name])) exit;
-	$data = $_POST[$name];
-	if (is_array($data)) exit;
-	if (is_callable($filter))
-		return $filter($data);
-	elseif (is_string($filter) && 1 !== preg_match($filter, (string)$data))
-		exit;
-	switch ($type) {
-		case 'd': return (int)$data;
-		case 's': return (string)$data;
-	}
+function I($name, $type, $filter)
+{
+    if (!isset($_POST[$name])) {
+        exit('-3');
+    }
+    $data = $_POST[$name];
+    if (is_array($data)) {
+        exit('-3');
+    }
+    if (is_callable($filter)) {
+        return $filter($data);
+    } elseif (is_string($filter) && 1 !== preg_match($filter, (string)$data)) {
+        exit('-3');
+    }
+    switch ($type) {
+        case 'd':
+            return (int)$data;
+        case 's':
+            return (string)$data;
+    }
 }
+
 // 验证输入数据
 // 姓名：1-10个字符
 // 性别：0女、1男
@@ -76,7 +91,11 @@ function I($name, $type, $filter) {
 $name = I('name', 's', '/^.{1,10}$/');
 $gender = I('gender', 'd', '/^[01]$/');
 $home = I('home', 's', '/^.{0,40}$/');
-$date = I('date', 's', function ($date) {return (is_string($date) && 1 === preg_match('/^(\d{4})-(\d{1,2})-(\d{1,2})$/', $date, $matches) && checkdate($matches[2], $matches[3], $matches[1])) ? $date : null;});
+$date = I('date', 's', function ($date) {
+    return (is_string($date)
+        && 1 === preg_match('/^(\d{4})-(\d{1,2})-(\d{1,2})$/', $date, $matches)
+        && checkdate($matches[2], $matches[3], $matches[1])) ? $date : null;
+});
 $class = I('class', 's', '/^.{1,20}$/');
 $college = I('college', 'd', '/^[0-7]$/');
 $tel = I('tel', 's', '/^(1((3\d)|(4[579])|(5[012356789])|(7[05678])|(8\d))\d{8})$/');
@@ -84,7 +103,9 @@ $qq = I('qq', 's', '/^[1-9]\d{4,10}$/');
 $mail = I('mail', 's', '/^(|([a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+))$/');
 $first = I('first', 'd', '/^[1-8]$/');
 $second = I('second', 'd', '/^[0-8]$/');
-if ($first === $second) exit;
+if ($first === $second) {
+    exit('-3');
+}
 $info = I('info', 's', '/^.{0,255}$/');
 $reason = I('reason', 's', '/^.{0,255}$/');
 // value->名称转换
@@ -97,17 +118,47 @@ $time = date('Y-m-d H:i:s');
 ob_start();
 $f = fopen('php://output', 'w');
 // 如果不存在，新建，并写入表头
-if (!file_exists(DATA_FILE) && false === fputcsv($f, array('提交时间','IP','姓名','性别','籍贯','出生日期','专业班级','书院','手机','QQ号','邮箱','第一志愿','第二志愿','个人简介','加入理由'))) {
-	fclose($f);
-	exit;
+if (!file_exists(DATA_FILE) && false === fputcsv($f, array('提交时间', 'IP', '姓名', '性别', '籍贯', '出生日期', '专业班级', '书院', '手机', 'QQ号', '邮箱', '第一志愿', '第二志愿', '个人简介', '加入理由'))
+) {
+    fclose($f);
+    exit('-4');
 }
 // 追加数据
 if (false === fputcsv($f, array($time, $ip, $name, $gender, $home, $date, $class, $college, $tel, $qq, $mail, $first, $second, $info, $reason))) {
-	fclose($f);
-	exit;
+    fclose($f);
+    exit('-4');
 }
 // Excel仅识别GBK编码的csv
 file_put_contents(DATA_FILE, iconv('utf-8', 'GBK//IGNORE', ob_get_clean()), FILE_APPEND);
 fclose($f);
-// 返回1为成功，返回空为失败
+// 未设置MAIL_SERVER即为不发送邮件
+if (defined('MAIL_SERVER')) {
+    // 加载PHPMailer库
+    require 'PHPMailer/class.phpmailer.php';
+    require 'PHPMailer/class.smtp.php';
+    $phpmailer = new PHPMailer;
+    // 邮件服务器设置
+    $phpmailer->Host = MAIL_SERVER['Host'];
+    $phpmailer->Port = MAIL_SERVER['Port'];
+    $phpmailer->isSMTP();
+    $phpmailer->SMTPSecure = 'ssl';
+    $phpmailer->SMTPAuth = true;
+    $phpmailer->Username = MAIL_SERVER['Username'];
+    $phpmailer->Password = MAIL_SERVER['Password'];
+    // 邮件设置
+    $phpmailer->setFrom($phpmailer->Username, '西安交通大学e瞳网');
+    $phpmailer->addAddress($mail, $name);
+    $phpmailer->isHTML(true);
+    // 邮件内容
+    $phpmailer->Subject = 'e瞳网招新报名反馈';
+    $phpmailer->Body = '<h1>' . htmlspecialchars($name) . ' 同学：</h1><p>你好，</p><p>小瞳已经收到您的报名申请，</p><p>经过审核后将以邮件和短信形式通知答辩地点</p>';
+    $phpmailer->AltBody = $name . ' 同学：你好，小瞳已经收到您的报名申请，经过审核后将以邮件和短信形式通知答辩地点';
+    // 发送邮件
+    if (!$phpmailer->send()) {
+        // 提交数据成功，发邮件失败
+        exit('-5');
+    }
+}
+
+// 提交成功
 exit('1');
