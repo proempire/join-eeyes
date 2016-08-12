@@ -2,11 +2,11 @@
     background: url(../images/web/bg@3x.png);
     background-size: cover;
 }
-#backend-o .icon #backend-o-ball, #backend-o-ballshine{
+#backend-o .icon #backend-o-ball, #backend-o .icon #backend-o-ballshine{
     height: 10rem;
     position: absolute; 
     left: 50%; top: 50%;
-    -webkit-transform:translate(-5em, -4em); /* Safari 和 Chrome */
+    -webkit-transform:translate(-5em, -5em); /* Safari 和 Chrome */
 }
 #backend-o .icon #backend-o-bg{
     display: inline-block;

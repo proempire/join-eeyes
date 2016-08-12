@@ -26,40 +26,46 @@
     /*设置页内字体*/
     font-family: 黑体; 
 }
-.content-J .title{ 
+/*.content-J .title{ 
     width: 100%;  
     text-align: center;
     position: absolute;
-    top: 10rem;
-}
+    top: 5rem; 
+}*/
 .content-J .title img{
-    width: 15rem;
+    width: 12rem;
+    position: absolute;
+    top: 5rem; left: 50%;
+    -webkit-transform:translateX(-6rem);
 }
 .content-J .intro{
-    width: 70%;
-    font-size: 1.5rem;
-    line-height: 1.5;
+    text-align: center;
+    width: 90%;
+    font-size: 1.2rem;
+    line-height: 1.8;
     color: white;
     font-weight: lighter !important; 
     text-shadow: none !important;
 }
 .content-J .more{
-    font-weight: lighter;
+    width: 5.8rem;
+    height: 2rem; 
+
     text-align: center;
-    line-height: 2rem;
-    width: 6.2rem;
-    height: 2.1rem; 
-    position: absolute;
-    outline: none;
-    background-color: #2deca6;
-    border: none;
-    border-radius: 0.4rem;
-    font-size: 1.5rem;
-    color: white !important;          
-    bottom: 5rem; left: 50%;
-    -webkit-transform:translateX(-3rem); /* Safari 和 Chrome */    
+    font-size: 1.2rem;
+    color: white !important; 
+    font-weight: lighter !important;   
+    line-height: 1.85;
     font-weight: lighter !important; 
     text-shadow: none !important;
+    
+    background-color: #2deca6;
+    border: none;
+    border-radius: 0.4rem;             
+    
+    position: absolute;
+    bottom: 5rem; left: 50%;
+    -webkit-transform:translateX(-3rem); /* Safari 和 Chrome */      
 }
 .content-J .back{
     position: absolute;
@@ -67,5 +73,5 @@
     color: #2deca6 !important; 
     font-weight: lighter !important; 
     text-shadow: none !important;
-    /*opacity: 0.5;*/
+    font-size: 1.2rem;
 }
