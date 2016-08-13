@@ -402,7 +402,6 @@
             </div>
             <!-- 部门简介词 -->
             <div class="intro"><span>集外联和内部协调于一身的门户部门<br>赞助拉取、冬至联欢、春游素拓<br>处处可以看见市场人的智慧与担当<br>希望与慧眼识珠的你同行<br>培养沟通能力、学习职场<br>技能享受社团的严谨敬业与温馨有爱</span></div>
-            <div class="intro"><span>集外联和内部协调于一身的门户部门<br>赞助拉取、冬至联欢、春游素拓<br>处处可以看见市场人的智慧与担当<br>希望与慧眼识珠的你同行<br>培养沟通能力、学习职场技能<br>享受社团的严谨敬业与温馨有爱</span></div>
 			<!-- 跳转按钮 -->
 			<a href="#market" class="more">了解更多</a>
 			<a href="#" data-rel="back" class="back">返回</a>
@@ -453,6 +452,7 @@
 		        // 结束动效
 		        market_o_t1.add(endJfuc('#market-o'), '4800');        
 		        
+		        // 动画监听事件
 		        $('#market-o a').click(function(){
 		        	market_o_t1.pause();
 		        })
@@ -509,6 +509,7 @@
 		        // 结束动效
 		        publicrelation_o_t1.add(endJfuc('#publicrelation-o'), '-=500');
 
+		        // 动画监听事件
 		        $('#publicrelation-o a').click(function(){
 		        	publicrelation_o_t1.pause();
 		        })
@@ -575,7 +576,8 @@
 		        var news_o_t1 = Tweene.line();
 
 		        // 开头动效
-		        news_o_t1.add(Tweene.get($("#news-o .icon #news-o-sun, #news-o-img img")).set({display: 'none'}));               
+		        news_o_t1.add(Tweene.get($("#news-o .icon #news-o-sun")).set({display: 'none'}));
+		        news_o_t1.add(Tweene.get($("#news-o .icon #news-o-img img")).set({display: 'none'}));              
 		        news_o_t1.add(startJfuc('#news-o'));
 
 		        // 太阳出现
@@ -638,6 +640,7 @@
 		        // 结束动效
 		        news_o_t1.add(endJfuc('#news-o'), '6500');  
 
+		        // 动画事件监听
 		        $('#news-o a').click(function(){
 		        	news_o_t1.pause();
 		        })
@@ -709,6 +712,7 @@
         		// 结束动效
 		        movie_o_t1.add(endJfuc('#movie-o'), '2800');
 
+		        // 动画事件监听
 		        $('#movie-o a').click(function(){
 		        	movie_o_t1.pause();
 		        });
@@ -788,6 +792,7 @@
 		        // 结束动效
 		        newmedia_o_t1.add(endJfuc('#newmedia-o'), '2400');  
 
+		        // 动画事件监听
 		        $('#newmedia-o a').click(function(){
 		        	newmedia_o_t1.pause();
 		        })
@@ -861,7 +866,8 @@
 				var product_o_t1 = Tweene.line();         
 		        
 		        // 开头动效
-		        product_o_t1.add(Tweene.get($("#product-o .icon #product-o-line>div, #product-o-ball>img")).set({display: 'none'}));
+		        product_o_t1.add(Tweene.get($("#product-o .icon #product-o-line>div")).set({display: 'none'}));
+		        product_o_t1.add(Tweene.get($("#product-o .icon #product-o-ball>img")).set({display: 'none'}));
 		        product_o_t1.add(startJfuc('#product-o'));
 
 		        // 灯泡出现
@@ -895,7 +901,7 @@
 		        // 左侧星球发光并连线1
 		        var product_o_t2 = Tweene.line();       
         		product_o_t2.add(Shinefuc(6));
-        		product_o_t2.add(LianXianfuc(1, 3.2));
+        		// product_o_t2.add(LianXianfuc(1, 3.2));
         		product_o_t2.add(Shinefuc(4));
         		product_o_t2.add(LianXianfuc(2, 3.2));
         		product_o_t2.add(LianXianfuc(3, 4.8), '-=100');
@@ -936,6 +942,7 @@
         		// 结束动效
 		        product_o_t1.add(endJfuc('#product-o'));
 
+		        // 动画事件监听
 		        $('#product-o a').click(function(){
 		        	product_o_t1.pause();
 		        })
@@ -1005,6 +1012,7 @@
                	// 结束动效
 		        frontend_o_t1.add(endJfuc('#frontend-and-art-o'));
 
+		        // 动画事件监听
 		        $('#frontend-and-art-o a').click(function(){
 		        	frontend_o_t1.pause();
 		        })
