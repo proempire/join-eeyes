@@ -1314,10 +1314,31 @@
                 lrc_t.add(Tweene.get($('.lrc-real')).to({marginTop: '-=60px'}).duration(t),68150);
                 lrc_t.add(Tweene.get($('.lrc-real')).to({marginTop: '-=60px'}).duration(t),70750);
                 
+                function weChatPlay(id){
+                	var audio = document.getElementById(id);
+
+	                var play = function() {
+				        document.removeEventListener("WeixinJSBridgeReady", play);
+				        document.removeEventListener("YixinJSBridgeReady", play);
+
+				        audio.play();
+				        audio.pause();
+				        // document.removeEventListener("touchstart", play, false);
+				    };
+				    
+				    audio.play();
+				    audio.pause();
+
+				    //weixin
+				    document.addEventListener("WeixinJSBridgeReady", play, false);
+				    //yixin
+				    document.addEventListener('YixinJSBridgeReady', play, false);
+                }
+
                 $('#toggle-msc').on('click',function(){
 	            	//console.log($('#voice0'))
                     if ($('#toggle-msc img').attr('src') === './images/player/play.png'){
-                        document.getElementById('voice0').play();
+                        weChatPlay('voice0');
                         $('#toggle-msc img').attr('src','./images/player/stop.png');
                         lrc_t.play();
             	    }else{
@@ -1325,9 +1346,10 @@
             	    	$('#toggle-msc img').attr('src','./images/player/play.png');
             	    	lrc_t.pause();
             	    }
-	            	
-	            })
-            });
+
+	            
+			    })
+			});
 		</script>
 	</div>
 
