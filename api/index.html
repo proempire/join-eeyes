@@ -2,8 +2,8 @@
 <html>
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title>e瞳网2016招新报名表</title>
 	<style>
 		form * {
@@ -15,7 +15,7 @@
 			margin: 0 auto;
 			max-width: 640px;
 		}
-		form .title {
+		form h1 {
 			color: #3c9;
 			font-size: 2em;
 			text-align: center;
@@ -23,12 +23,14 @@
 		form table {
 			width: 100%;
 		}
-		form p {
-			margin: 0.2em 0;
-		}
 		form td {
 			padding: 0.3em;
 			vertical-align: top;
+		}
+		form .field {
+			margin-top: 0.3em;
+			color: grey;
+			font-size: 0.7em;
 		}
 		form input[type="text"], form input[type="date"], form input[type="email"], form select, form textarea {
 			width: 100%;
@@ -47,9 +49,6 @@
 			line-height: 2em;
 			text-align: center;
 		}
-		form .gender: {
-			margin: 0;
-		}
 		form .gender label:nth-child(1) {
 			border-radius: 0.5em 0 0 0.5em;
 			border-right-width: 0;
@@ -60,6 +59,9 @@
 		}
 		form .gender label.checked {
 			background-color: #ccc;
+		}
+		form .gender input {
+			display: none;
 		}
 		form textarea {
 			font-size: 1em;
@@ -77,47 +79,66 @@
 			border: 0;
 			border-radius: 0.5em;
 		}
+		form input[type="submit"].submitting {
+			background-color: grey;
+		}
 		form .invalid {
 			border-color: red;
 		}
+		.placepicker-cover {
+			display: none;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+		}
+		.placepicker {
+			display: none;
+			position: absolute;
+		}
+		.placepicker select {
+			display: block;
+			font-size: 16px;
+			width: 100%;
+		}
 	</style>
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script src="../js/jquery.min.js"></script>
 </head>
 
 <body>
 	<div>
 		<form action="submit.php" method="post">
-			<h1 class="title">ｅ瞳网招新表</h1>
+			<h1>ｅ瞳网招新表</h1>
 			<table>
 				<tbody>
 					<tr>
 						<td>
 							<label>
-								<p><input type="text" name="name" /></p>
-								<p>姓名 YOURNAME</p>
+								<p><input type="text" name="name"></p>
+								<p class="field">姓名 YOURNAME</p>
 							</label>
 						</td>
 						<td>
-							<p class="gender">
-								<label class="checked"><input type="radio" name="gender" value="1" checked />男</label>
-								<label><input type="radio" name="gender" value="0" />女</label>
-								<div style="clear:both"></div>
+							<p class="input gender">
+								<label class="checked"><input type="radio" name="gender" value="1" checked>♂</label>
+								<label><input type="radio" name="gender" value="0">♀</label>
 							</p>
-							<p>性别 GENDER</p>
+							<div style="clear:both"></div>
+							<p class="field">性别 GENDER</p>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<label>
-								<p><input type="date" name="date" value="1998-01-01" /></p>
-								<p>出生日期 DATE OF BIRTH</p>
+								<p><input type="date" name="date" value="1998-01-01"></p>
+								<p class="field">出生日期 DATE OF BIRTH</p>
 							</label>
 						</td>
 						<td>
 							<label>
-								<p><input type="text" name="home" /></p>
-								<p>籍贯 PLACE OF BIRTH</p>
+								<p><input type="text" name="home"></p>
+								<p class="field">籍贯 PLACE OF BIRTH</p>
 							</label>
 						</td>
 					</tr>
@@ -136,37 +157,37 @@
 										<option value="7">启德</option>
 									</select>
 								</p>
-								<p>书院 COLLEGE</p>
+								<p class="field">书院 COLLEGE</p>
 							</label>
 						</td>
 						<td>
 							<label>
-								<p><input type="text" name="class" /></p>
-								<p>专业班级 CLASS</p>
+								<p><input type="text" name="class"></p>
+								<p class="field">专业班级 CLASS</p>
 							</label>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 							<label>
-								<p><input type="text" name="tel" placeholder="面试通知将以短信的方式发送" /></p>
-								<p>手机号码 CELLPHONE NUMBER</p>
+								<p><input type="text" name="tel" placeholder="面试通知将以短信的方式发送"></p>
+								<p class="field">手机号码 CELLPHONE NUMBER</p>
 							</label>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 							<label>
-								<p><input type="text" name="qq" /></p>
-								<p>QQ号 QQ NUMBER</p>
+								<p><input type="text" name="qq"></p>
+								<p class="field">QQ号 QQ NUMBER</p>
 							</label>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 							<label>
-								<p><input type="email" name="mail" placeholder="成功提交后将会向您的电子邮箱发送“已收到报名”邮件" /></p>
-								<p>电子邮箱 E-MAIL ADDRESS</p>
+								<p><input type="email" name="mail" placeholder="成功提交后将会向您的电子邮箱发送“已收到报名”邮件"></p>
+								<p class="field">电子邮箱 E-MAIL ADDRESS</p>
 							</label>
 						</td>
 					</tr>
@@ -186,7 +207,7 @@
 										<option value="9">前端美工组</option>
 									</select>
 								</p>
-								<p>第一志愿 FIRST</p>
+								<p class="field">第一志愿 FIRST</p>
 							</label>
 						</td>
 						<td>
@@ -205,7 +226,7 @@
 										<option value="9">前端美工组</option>
 									</select>
 								</p>
-								<p>第二志愿 SECOND</p>
+								<p class="field">第二志愿 SECOND</p>
 							</label>
 						</td>
 					</tr>
@@ -213,7 +234,7 @@
 						<td colspan="2">
 							<label>
 								<p><textarea name="info" placeholder="(选填)你有什么话要对我们说..."></textarea></p>
-								<p>个人陈述 WANNA SAY</p>
+								<p class="field">个人陈述 WANNA SAY</p>
 							</label>
 						</td>
 					</tr>
@@ -221,78 +242,139 @@
 			</table>
 			<p class="submit"><input type="submit"></p>
 		</form>
+		<div class="placepicker-cover"></div>
+		<div class="placepicker">
+			<select></select>
+			<select></select>
+			<select></select>
+		</div>
 	</div>
 	<script>
-		// 单选效果
-		$('form .gender input[type="radio"]').click(function () {
-			$(this).closest("p").children("label").removeClass("checked");
-			$(this).closest("label").addClass("checked");
-		});
-		// 验证输入数据
-		function validate(jQueryObject, regexp, errmsg, strict) {
-			var val = jQueryObject.val();
-			if (regexp.test(val) || (!strict && val == "")) {
-				return "";
-			}
-			jQueryObject.addClass("invalid");
-			return errmsg + "\n";
-		}
-		function validateAll(strict) {
-			$("form .invalid").removeClass("invalid");
-			return validate($('form input[name="name"]'), /^.{1,10}$/, "姓名：1-10个汉字/英文字母", strict)
-				+ validate($('form input[name="date"]'), {
-					test: function (val) {
-						var year = (new Date(val)).getFullYear();
-						if (year < 1986 || year > 2006) {
-							return false;
-						}
-						return true;
-					}
-				}, "出生日期：只接受1986-2006年的同学", strict)
-				+ validate($('form input[name="home"]'), /^.{0,40}$/, "籍贯：0-40个汉字/英文字母", strict)
-				+ validate($('form input[name="class"]'), /^.{1,20}$/, "专业班级：1-20个汉字/英文字母", strict)
-				+ validate($('form input[name="tel"]'), /^(1((3\d)|(4[579])|(5[012356789])|(7[05678])|(8\d))\d{8})$/, "手机号段不存在", strict)
-				+ validate($('form input[name="qq"]'), /^[1-9]\d{4,10}$/, "QQ号格式不正确", strict)
-				+ validate($('form input[name="mail"]'), /^.+?@.+\..+?$/, "邮箱格式不正确", strict)
-				+ validate($('form select[name="second"]'), {
-					test: function (val) {
-						if (val === $('form select[name="first"]').val()) {
-							return false;
-						}
-						return true;
-					}
-				}, "第二志愿必须与第一志愿不同", strict)
-				+ validate($('form textarea[name="info"]'), /^.{0,255}$/, "个人陈述：0-255个汉字/英文字母", strict);
-		}
-		$("form").change(function () {
-			validateAll(false);
-		})
-		$("form").submit(function () {
-			var result = validateAll(true);
-			if (result !== "") {
-				alert(result);
-				return false;
-			}
-			$.post($(this).attr("action"), $(this).serialize(), function (data) {
-				if (data === '-1') {
-					alert("获取IP失败");
-				} else if (data === '-2') {
-					alert("同一IP多次提交\n有问题可以加e瞳新生群552035254询问\n(可能是我们后台web组的同学数据验证做得太狠，不小心误伤了)");
-				} else if (data === '-3') {
-					alert("数据不合理\n如果数据的确无误，可以请加e瞳新生群552035254询问\n(可能是我们后台web组的同学数据验证做得太狠，不小心误伤了)");
-				} else if (data === '-4') {
-					alert("提交数据失败");
-				} else if (data === '-5') {
-					alert("提交数据成功，发邮件失败");
-				} else if (data === '1') {
-					alert("提交成功");
-				} else {
-					alert("未知错误");
+		+function () {
+			// 单选效果
+			$('form .gender input[type="radio"]').click(function () {
+				$(this).closest("p").children("label").removeClass("checked");
+				$(this).closest("label").addClass("checked");
+			});
+		}();
+		+function () {
+			// 验证输入数据
+			function validate(jQueryObject, regexp, errmsg, strict) {
+				var val = jQueryObject.val();
+				if (regexp.test(val) || (!strict && val == "")) {
+					return "";
 				}
+				jQueryObject.addClass("invalid");
+				return errmsg + "\n";
+			}
+			function validateAll(strict) {
+				$("form .invalid").removeClass("invalid");
+				return validate($('form input[name="name"]'), /^.{1,10}$/, "姓名：1-10个汉字/英文字母", strict)
+					+ validate($('form input[name="date"]'), {
+						test: function (val) {
+							var year = (new Date(val)).getFullYear();
+							if (year < 1986 || year > 2006) {
+								return false;
+							}
+							return true;
+						}
+					}, "出生日期：只接受1986-2006年的同学", strict)
+					+ validate($('form input[name="home"]'), /^.{0,40}$/, "籍贯：0-40个汉字/英文字母", strict)
+					+ validate($('form input[name="class"]'), /^.{1,20}$/, "专业班级：1-20个汉字/英文字母", strict)
+					+ validate($('form input[name="tel"]'), /^(1((3\d)|(4[579])|(5[012356789])|(7[05678])|(8\d))\d{8})$/, "手机号段不存在", strict)
+					+ validate($('form input[name="qq"]'), /^[1-9]\d{4,10}$/, "QQ号格式不正确", strict)
+					+ validate($('form input[name="mail"]'), /^.+?@.+\..+?$/, "邮箱格式不正确", strict)
+					+ validate($('form select[name="second"]'), {
+						test: function (val) {
+							if (val === $('form select[name="first"]').val()) {
+								return false;
+							}
+							return true;
+						}
+					}, "第二志愿必须与第一志愿不同", strict)
+					+ validate($('form textarea[name="info"]'), /^.{0,255}$/, "个人陈述：0-255个汉字/英文字母", strict);
+			}
+			$("form").change(function () {
+				validateAll(false);
+			})
+			$("form").submit(function () {
+				var result = validateAll(true);
+				if (result !== "") {
+					alert(result);
+					return false;
+				}
+				// 暂时禁用按钮
+				$('form input[type="submit"]').addClass("submitting").attr("disabled", true);
+				var timeoutId = setTimeout(function () {
+					// 超时提示，然后恢复按钮
+					alert("连接超时\n请检查网络是否连接\n有问题可以加e瞳新生群552035254询问\n(也说不定是我们服务器出问题了)");
+					$('form input[type="submit"]').removeClass("submitting").attr("disabled", "");
+				}, 10000);
+				$.post($(this).attr("action"), $(this).serialize(), function (data) {
+					clearTimeout(timeoutId);
+					$('form input[type="submit"]').removeClass("submitting").attr("disabled", "");
+					if (data === '-1') {
+						alert("获取IP失败");
+					} else if (data === '-2') {
+						alert("同一IP多次提交\n有问题可以加e瞳新生群552035254询问\n(可能是我们后台web组的同学数据验证做得太狠，不小心误伤了)");
+					} else if (data === '-3') {
+						alert("数据不合理\n如果数据的确无误，可以请加e瞳新生群552035254询问\n(可能是我们后台web组的同学数据验证做得太狠，不小心误伤了)");
+					} else if (data === '-4') {
+						alert("提交数据失败");
+					} else if (data === '-5') {
+						alert("提交数据成功，发邮件失败");
+					} else if (data === '1') {
+						alert("提交成功");
+					} else {
+						alert("未知错误");
+					}
+					return false;
+				});
 				return false;
 			});
-			return false;
-		});
+		}();
+	</script>
+	<script src="../js/placepicker.data.js"></script>
+	<script>
+		+function () {
+			function addOption(jQueryObject, val) {
+				var arr = ['<option value="0"></option>'];
+				var selected = " selected";
+				for (var i in ChineseDistricts[val]) {
+					arr.push('<option value="' + i + '"' + selected + '>' + ChineseDistricts[val][i] + '</option>');
+					selected = "";
+				}
+				jQueryObject.html(arr.join());
+				jQueryObject.change();
+			}
+			$(".placepicker select:nth-child(-n+2)").change(function () {
+				addOption($(this).next(), $(this).val());
+			});
+			addOption($(".placepicker select:nth-child(1)"), 86);
+			function placeToString() {
+				var arr = [];
+				$(".placepicker select").each(function () {
+					arr.push($(this).children('option[value="' + $(this).val() + '"]').text());
+				});
+				return arr.join(" ");
+			}
+			var home = $('form input[name="home"]');
+			$(".placepicker select").change(function () {
+				home.val(placeToString());
+			});
+			$(".placepicker").css("left", home.offset().left)
+				.css("top", home.offset().top + home.height())
+				.width(home.width());
+			$('form input[name="home"]').focus(function () {
+				$(".placepicker").show();
+				$(".placepicker select").change();
+				$('.placepicker-cover').show();
+			});
+			$('.placepicker-cover').click(function (event) {
+				$(".placepicker").hide();
+				$('.placepicker-cover').hide();
+			});
+		}()
 	</script>
 </body>
 

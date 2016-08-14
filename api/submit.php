@@ -163,6 +163,7 @@ if (defined('MAIL_SERVER')) {
     require 'PHPMailer/class.phpmailer.php';
     require 'PHPMailer/class.smtp.php';
     $phpmailer = new PHPMailer;
+    $phpmailer->CharSet = "utf-8";
     // 邮件服务器设置
     $phpmailer->Host = MAIL_SERVER['Host'];
     $phpmailer->Port = MAIL_SERVER['Port'];
