@@ -10,7 +10,11 @@
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    /*调整为竖排*/
+    /*调整为竖排（已兼容）*/
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
     flex-direction: column;
     /*一行中内容排不下时正常换行*/
     flex-wrap: wrap;
@@ -67,5 +71,5 @@
     color: #2deca6 !important; 
     font-weight: lighter !important; 
     text-shadow: none !important;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
