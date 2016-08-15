@@ -1731,7 +1731,7 @@
 								<label for="sub-Birth">出生日期 BIRTHDAY</label>
 							</td>
 							<td>
-								<input type="text" name="home" id="sub-home" placeholder="陕西省西安市" />
+								<input type="text" name="home" id="sub-home" value="陕西省西安市" />
 								<label for="sub-home">籍贯 PLACE OF BIRTH</label>
 							</td>
 						</tr>
@@ -1768,7 +1768,7 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<input type="text" name="email" id="sub-email" placeholder="成功提交后将会向您的电子邮箱发送“已收到报名”邮件" />
+								<input type="text" name="email" id="sub-email" placeholder="提交成功可收到邮件确认" />
 								<label for="sub-email">电子邮箱 E-MAIL ADDRESS</label>
 							</td>
 						</tr>
@@ -1857,6 +1857,19 @@
 		};
 		$("form #sub-Birth").mobiscroll().date(opt);
 
+		// 籍贯体验改善
+		var sub_home = $("form #sub-home")
+		sub_home.focus(function(){
+			if(sub_home.val() == "陕西省西安市"){
+				sub_home.val("");
+			}
+		});
+		sub_home.focusout(function(){
+			if(sub_home.val() == ""){
+				sub_home.val("陕西省西安市");
+			}
+		});
+
 		// 个人陈述字数提醒
 		var sub_words = 0;
 		var sub_tip = $("form #sub-tip");
@@ -1866,7 +1879,7 @@
                 console.log("1");
                 sub_words = sub_txtarea.val().length;
                 sub_tip.html(sub_words + "/255");
-            });
+        });
 
 		// 验证输入数据
 		// 姓名：1-10个字符

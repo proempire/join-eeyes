@@ -95,6 +95,7 @@
 }
 #submit #sub-content form table #sub-gender .checked{
 	background-color: #e9e9e7;
+	color: #000;
 }
 #submit #sub-content form table textarea{
 	overflow: auto;
