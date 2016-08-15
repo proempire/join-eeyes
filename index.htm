@@ -1806,6 +1806,7 @@
 						<tr>
 							<td colspan="2">
 								<textarea name="info" id="sub-info" maxlength="255" placeholder="(选填)你有什么话要对我们说..."></textarea>
+								<span id="sub-tip"></span>
 								<label for="sub-info">个人陈述 WANNA SAY</label>
 							</td>
 						</tr>
@@ -1817,17 +1818,17 @@
 	</div>
 	<script>
 		// 单选效果
-		$("#submit form #sub-gender label:nth-child(1)").click(function(){
+		$("form #sub-gender label:nth-child(1)").click(function(){
 			$(this).addClass("checked");
-			$("#submit form #sub-gender label:nth-child(2)").removeClass("checked");
-			$("#submit form #sub-gender .man").attr("checked","checked");
-			$("#submit form #sub-gender .woman").attr("checked", null);
+			$("form #sub-gender label:nth-child(2)").removeClass("checked");
+			$("form .man").attr("checked","checked");
+			$("form .woman").attr("checked", null);
 		})
-		$("#submit form #sub-gender label:nth-child(2)").click(function(){
+		$("form #sub-gender label:nth-child(2)").click(function(){
 			$(this).addClass("checked");
-			$("#submit form #sub-gender label:nth-child(1)").removeClass("checked");
-			$("#submit form #sub-gender .man").attr("checked", null);
-			$("#submit form #sub-gender .woman").attr("checked","checked");
+			$("form #sub-gender label:nth-child(1)").removeClass("checked");
+			$("form .man").attr("checked", null);
+			$("form .woman").attr("checked","checked");
 		})
 		// 日历选择器
 		var StartDate = new Date();
@@ -1855,6 +1856,17 @@
 		        }
 		};
 		$("form #sub-Birth").mobiscroll().date(opt);
+
+		// 个人陈述字数提醒
+		var sub_words = 0;
+		var sub_tip = $("form #sub-tip");
+		var sub_txtarea = $('form textarea')
+		sub_tip.html(sub_words + "/255");
+		sub_txtarea.bind('input propertychange', function() {  
+                console.log("1");
+                sub_words = sub_txtarea.val().length;
+                sub_tip.html(sub_words + "/255");
+            });
 
 		// 验证输入数据
 		// 姓名：1-10个字符

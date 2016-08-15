@@ -100,8 +100,16 @@
 	overflow: auto;
 	resize: none;
 	font-size: 1.2rem;
-	max-height: 4rem;
+	max-height: 6rem;
+	min-height: 6rem;
 	margin: 0;
+}
+#submit #sub-content form table #sub-tip{
+	float: right;
+	color: #bdbdbd;
+	font-size: 1rem;
+	margin-top: -1.4rem;
+	margin-right: 0.4rem; 
 }
 #submit #sub-content form>div{
 	width: 10rem;
