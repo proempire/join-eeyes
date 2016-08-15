@@ -50,12 +50,17 @@
             fontSize = 12;
             $('html').css({fontSize: '12px'});
         }else{
-            if($(window).width() > 400){  //iphone6plus
-            	fontSize = 16;
-            	$('html').css({fontSize: '16px'});
-            }else{  //iphone6
+            if($(window).width() < 400){  //iphone6
             	fontSize = 14;
             	$('html').css({fontSize: '14px'});
+            }else{  
+            	if($(window).width() < 600){  //iphone6plus
+            		fontSize = 16;
+            		$('html').css({fontSize: '16px'});
+            	}else{  //ipad
+            		fontSize = 26;
+            		$('html').css({fontSize: '24px'});
+            	}
             }
         }
 
@@ -244,7 +249,7 @@
 		    display: -ms-flexbox;
 		    display: -webkit-flex;
 		    display: flex;
-		    /*调整为竖排*/
+		    /*调整为竖排（已兼容）*/
 		    -webkit-flex-direction: column;
 			-moz-flex-direction: column;
 			-ms-flex-direction: column;
@@ -261,11 +266,10 @@
 		    -ms-flex-align: center;
 		    -webkit-align-items: center;
 		    align-items: center;
-	    }
-	    
-        
+	    }        
 	</style>
-	<!-- 引入简介页及详情页样式 -->
+	
+	<!-- 引入简介页样式 -->
 	<link rel="stylesheet" type="text/css" href="./css/total-style-contentJ.css">
 	<link rel="stylesheet" type="text/css" href="./css/market-o.css">
 	<link rel="stylesheet" type="text/css" href="./css/publicrelation-o.css">
@@ -276,11 +280,18 @@
 	<link rel="stylesheet" type="text/css" href="./css/backapp-o.css">
 	<link rel="stylesheet" type="text/css" href="./css/backend-o.css">
 	<link rel="stylesheet" type="text/css" href="./css/movie-o.css">
-
+	
+	<!-- 引入详情页样式 -->
 	<link rel="stylesheet" type="text/css" href="./css/total-overview.css">
 	<link rel="stylesheet" type="text/css" href="./css/planetBoom.css">
 	<link rel="stylesheet" type="text/css" href="./css/newmedia.css">
 	<link rel="stylesheet" type="text/css" href="./css/movie.css">
+	
+	<!-- 引入报名页样式及工具 -->
+	<link rel="stylesheet" type="text/css" href="./css/submit.css">
+	<!-- 引入mobiscroll(报名页生日选择器) -->
+	<script src="./dest/js/mobiscroll-2.13.2.full.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./dest/css/mobiscroll-2.13.2.full.min.css">
 </head>
 
 <body>
@@ -1691,84 +1702,160 @@
 	</div>
 
 	<div data-role="page" id="submit">
-		<form action="api/submit.php" method="post">
-			<p>
-				姓名：
-				<input type="text" name="name" placeholder="张三"></p>
-			<p>
-				性别：
-				<input type="radio" name="gender" value="1" checked>
-				男
-				<input type="radio" name="gender" value="0">女</p>
-			<p>
-				籍贯：
-				<input type="text" name="home" placeholder="辽宁沈阳"></p>
-			<p>
-				出生日期：
-				<input type="date" name="date"></p>
-			<p>
-				专业班级：
-				<input type="text" name="class" placeholder="软件工程61"></p>
-			<p>
-				书院：
-				<select name="college">
-					<option value="0">彭康</option>
-					<option value="1">仲英</option>
-					<option value="2">南洋</option>
-					<option value="3">文治</option>
-					<option value="4">崇实</option>
-					<option value="5">宗濂</option>
-					<option value="6">励志</option>
-					<option value="7">启德</option>
-				</select>
-			</p>
-			<p>
-				手机：
-				<input type="text" name="tel" placeholder="1xxxxxxxxxx"></p>
-			<p>
-				QQ号：
-				<input type="text" name="qq" placeholder="10000"></p>
-			<p>
-				邮箱：
-				<input type="email" name="mail" placeholder="username@example.com"></p>
-			<p>
-				第一志愿：
-				<select name="first">
-					<option value="1">市场部</option>
-					<option value="2">公关部</option>
-					<option value="3">信息部门</option>
-					<option value="4">产品部</option>
-					<option value="5">前端美工部</option>
-					<option value="6" selected>后台WEB部</option>
-					<option value="7">APP部</option>
-					<option value="8">EUX(不面向新生)</option>
-				</select>
-			</p>
-			<p>
-				第二志愿：
-				<select name="second">
-					<option value="0"></option>
-					<option value="1">市场部</option>
-					<option value="2">公关部</option>
-					<option value="3">信息部门</option>
-					<option value="4">产品部</option>
-					<option value="5" selected>前端美工部</option>
-					<option value="6">后台WEB部</option>
-					<option value="7">APP部</option>
-					<option value="8">EUX(不面向新生)</option>
-				</select>
-			</p>
-			<p>
-				个人简介：
-				<input type="text" name="info" placeholder="曾经..."></p>
-			<p>
-				加入理由：
-				<input type="text" name="reason" placeholder="打算..."></p>
-			<p>
-				<input type="submit"></p>
-		</form>
+		<div id="sub-content">
+			<a href="#" data-rel="back">返回</a>
+			<form action="submit.php" method="post">			
+				<h1 class="title">ｅ瞳网招新表</h1>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<div><input type="text" name="name" id="sub-name" /></div>
+								<label for="sub-name">姓名 YOURNAME</label>
+							</td>
+							<td>							
+								<div class="gender" id="sub-gender">	
+									<label class="checked">男</label>
+									<label>女</label>
+									<input type="radio" name="gender" class="man" value="1" checked />
+									<input type="radio" name="gender" class="woman" value="0" />
+									<div style="clear: both;"></div>
+								</div>
+								<label for="sub-gender">性别 GENDER</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<!-- <input type="date" name="date" value="1998-01-01" id="sub-Birth" /> -->
+								<input type="text" name="date" id="sub-Birth" />
+								<label for="sub-Birth">出生日期 BIRTHDAY</label>
+							</td>
+							<td>
+								<input type="text" name="home" id="sub-home" placeholder="陕西省西安市" />
+								<label for="sub-home">籍贯 PLACE OF BIRTH</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<select name="college" id="sub-college">
+									<option value="0">彭康书院</option>
+									<option value="1">仲英书院</option>
+									<option value="2">南洋书院</option>
+									<option value="3">文治书院</option>
+									<option value="4">崇实书院</option>
+									<option value="5">宗濂书院</option>
+									<option value="6">励志书院</option>
+									<option value="7">启德书院</option>
+								</select>
+								<label for="sub-college">书院 COLLEGE</label>
+							</td>
+							<td>
+								<input type="text" name="class" id="sub-class" />
+								<label for="sub-class">专业班级 CLASS</label>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="text" name="tel" id="sub-tel" placeholder="面试通知将以短信的方式发送" />
+								<label for="sub-tel">手机号码 CELLPHONE NUMBER</label>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="text" name="qq" id="sub-qq" />
+								<label for="sub-qq">QQ号 QQ NUMBER</label>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input type="text" name="email" id="sub-email" placeholder="成功提交后将会向您的电子邮箱发送“已收到报名”邮件" />
+								<label for="sub-email">电子邮箱 E-MAIL ADDRESS</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<select name="first" id="sub-first">
+									<option value="1">新闻部</option>
+									<option value="2">新媒体部</option>
+									<option value="3">影视部</option>
+									<option value="4">市场部</option>
+									<option value="5">公关部</option>
+									<option value="6">产品部</option>
+									<option value="7">app组</option>
+									<option value="8" selected>web组</option>
+									<option value="9">前端美工组</option>
+								</select>
+								<label for="sub-first">第一志愿 FIRST</label>
+							</td>
+							<td>
+								<select name="second" id="sub-second">
+									<option value="0" selected>(未选)</option>
+									<option value="1">新闻部</option>
+									<option value="2">新媒体部</option>
+									<option value="3">影视部</option>
+									<option value="4">市场部</option>
+									<option value="5">公关部</option>
+									<option value="6">产品部</option>
+									<option value="7">app组</option>
+									<option value="8">web组</option>
+									<option value="9">前端美工组</option>
+								</select>
+								<label for="sub-second">第二志愿 SECOND</label>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<textarea name="info" id="sub-info" maxlength="255" placeholder="(选填)你有什么话要对我们说..."></textarea>
+								<label for="sub-info">个人陈述 WANNA SAY</label>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<input type="submit" value="确认提交">
+			</form>
+		</div>
 	</div>
 	<script>
+		// 单选效果
+		$("#submit form #sub-gender label:nth-child(1)").click(function(){
+			$(this).addClass("checked");
+			$("#submit form #sub-gender label:nth-child(2)").removeClass("checked");
+			$("#submit form #sub-gender .man").attr("checked","checked");
+			$("#submit form #sub-gender .woman").attr("checked", null);
+		})
+		$("#submit form #sub-gender label:nth-child(2)").click(function(){
+			$(this).addClass("checked");
+			$("#submit form #sub-gender label:nth-child(1)").removeClass("checked");
+			$("#submit form #sub-gender .man").attr("checked", null);
+			$("#submit form #sub-gender .woman").attr("checked","checked");
+		})
+		// 日历选择器
+		var StartDate = new Date();
+		StartDate.setFullYear(1998, 0, 1);
+		var opt = {  
+		        lang: "zh",  // 语言
+		        preset: 'date',  // 日期类型--datatime --time,
+		        theme: 'android-ics light', // 皮肤样式【android-ics light】【android-ics】【ios】【jqm】【sense-ui】【sense-ui】【sense-ui】【wp light】【wp】
+		        mode: "scroller",  // 操作方式【scroller】【clickpick】【mixed】
+		        display: 'modal',  // 显示位置【modal】【inline】【bubble】【top】【bottom】
+		        dateFormat: 'yyyy-mm-dd', // 日期提交格式
+		        setText: '确定',  // 确认按钮名称
+		        cancelText: '取消',  // 取消按钮名称
+		        // setText: null,  // 确认按钮名称
+		        // cancelText: null,  // 取消按钮名称
+		        startYear: 1986,  //开始年份
+		        endYear: 2006,  //结束年份
+		        rows: 3,
+		        animate: 'fade',  // 显示效果
+		        defaultValue: StartDate, // 打开时的初始值，与其他工具出现冲突，未生效
+		        //自定义弹出框头部格式
+		        headerText: function (valueText) {   
+		            array = valueText.split('-');  
+		            return array[0] + "年" + array[1] + "月" + array[2] + "日";  
+		        }
+		};
+		$("form #sub-Birth").mobiscroll().date(opt);
+
 		// 验证输入数据
 		// 姓名：1-10个字符
 		// 性别：0女、1男
@@ -1783,53 +1870,62 @@
 		// 第二志愿：0空、1市场部、2公关部、3信息部门、4产品部、5前端美工部、6后台WEB部、7APP部、8EUX(不面向新生)
 		// 个人简介：0-255个字符
 		// 加入理由：0-255个字符
-		function validate() {
-			if (!/^.{1,10}$/.test($('input[name="name"]').val()))
-				return "姓名：1-10个字符";
-			if (!/^.{0,40}$/.test($('input[name="home"]').val()))
-				return "籍贯：0-40个字符";
-			if (!/^.{1,20}$/.test($('input[name="class"]').val()))
-				return "专业班级：1-20个字符";
-			if (!/^(1((3\d)|(4[579])|(5[012356789])|(7[05678])|(8\d))\d{8})$/.test($('input[name="tel"]').val()))
-				return "电话：号段130、131、132、133、134、135、136、137、138、139、145、147、149、150、151、152、153、155、156、157、158、159、170、175、176、177、178、180、181、182、183、184、185、186、187、188、189";
-			if (!/^[1-9]\d{4,10}$/.test($('input[name="qq"]').val()))
-				return "QQ：5-11位数字，首位不为0";
-			if (!/^(|([a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+))$/.test($('input[name="mail"]').val()))
-				return "邮箱：username@example.com";
-			if ($('select[name="first"]').val() === $('select[name="second"]').val())
-				return "第一志愿与第二志愿不能相同";
-			if (!/^.{0,255}$/.test($('input[name="info"]').val()))
-				return "个人简介：0-255个字符";
-			if (!/^.{0,255}$/.test($('input[name="reason"]').val()))
-				return "加入理由：0-255个字符";
-			return true;
-	}
-	$("form").submit(function () {
-		var valid = validate();
-		if (valid !== true) {
-			alert(valid);
-			return false;
+		function validate(jQueryObject, regexp, errmsg, strict) {
+			var val = jQueryObject.val();
+			if (regexp.test(val) || (!strict && val == "")) {
+				return "";
+			}
+			jQueryObject.addClass("invalid");
+			return errmsg + "\n";
 		}
-		$.post($(this).attr("action"), $(this).serialize(), function (data) {
-			if (data === '-1')
-				alert("获取IP失败");
-			else if (data === '-2')
-				alert("同一IP多次提交");
-			else if (data === '-3')
-				alert("数据不合理");
-			else if (data === '-4')
-				alert("提交数据失败");
-			else if (data === '-5')
-				alert("提交数据成功，发邮件失败");
-			else if (data === '1')
-				alert("提交成功");
-			else
-				alert("未知错误");
+		function validateAll(strict) {
+			$("form .invalid").removeClass("invalid");
+			return validate($('form input[name="name"]'), /^.{1,10}$/, "姓名：1-10个汉字/英文字母", strict)
+				+ validate($('form input[name="home"]'), /^.{0,40}$/, "籍贯：0-40个汉字/英文字母", strict)
+				+ validate($('form input[name="class"]'), /^.{1,20}$/, "专业班级：1-20个汉字/英文字母", strict)
+				+ validate($('form input[name="tel"]'), /^(1((3\d)|(4[579])|(5[012356789])|(7[05678])|(8\d))\d{8})$/, "手机号段不存在", strict)
+				+ validate($('form input[name="qq"]'), /^[1-9]\d{4,10}$/, "QQ号格式不正确", strict)
+				+ validate($('form input[name="mail"]'), /^.+?@.+\..+?$/, "邮箱格式不正确", strict)
+				+ validate($('form select[name="second"]'), {
+					test: function (val) {
+						if (val === $('form select[name="first"]').val()) {
+							return false;
+						}
+						return true;
+					}
+				}, "第二志愿必须与第一志愿不同", strict)
+				+ validate($('form textarea[name="info"]'), /^.{0,255}$/, "个人陈述：0-255个汉字/英文字母", strict);
+		}
+		$("form").change(function () {
+			validateAll(false);
+		})
+		$("form").submit(function () {
+			var result = validateAll(true);
+			if (result !== "") {
+				alert(result);
+				return false;
+			}
+			$.post($(this).attr("action"), $(this).serialize(), function (data) {
+				if (data === '-1') {
+					alert("获取IP失败");
+				} else if (data === '-2') {
+					alert("同一IP多次提交\n有问题可以加e瞳新生群552035254询问\n(可能是我们后台web组的同学数据验证做得太狠，不小心误伤了)");
+				} else if (data === '-3') {
+					alert("数据不合理\n如果数据的确无误，可以请加e瞳新生群552035254询问\n(可能是我们后台web组的同学数据验证做得太狠，不小心误伤了)");
+				} else if (data === '-4') {
+					alert("提交数据失败");
+				} else if (data === '-5') {
+					alert("提交数据成功，发邮件失败");
+				} else if (data === '1') {
+					alert("提交成功");
+				} else {
+					alert("未知错误");
+				}
+				return false;
+			});
 			return false;
 		});
-		return false;
-	});
-</script>
+	</script>
 </body>
 
 </html>
