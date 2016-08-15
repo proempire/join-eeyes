@@ -365,9 +365,11 @@
 			$(".placepicker").css("left", home.offset().left)
 				.css("top", home.offset().top + home.height())
 				.width(home.width());
-			$('form input[name="home"]').focus(function () {
+			home.focus(function () {
 				$(".placepicker").show();
-				$(".placepicker select").change();
+				if (home.val() == "") {
+					home.val(placeToString());
+				}
 				$('.placepicker-cover').show();
 			});
 			$('.placepicker-cover').click(function (event) {
