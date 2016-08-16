@@ -1748,7 +1748,6 @@
 						</tr>
 						<tr>
 							<td>
-								<!-- <input type="date" name="date" value="1998-01-01" id="sub-Birth" /> -->
 								<input type="text" name="date" id="sub-Birth" />
 								<label for="sub-Birth">出生日期 BIRTHDAY</label>
 							</td>
@@ -1904,19 +1903,6 @@
         });
 
 		// 验证输入数据
-		// 姓名：1-10个字符
-		// 性别：0女、1男
-		// 籍贯：0-40个字符
-		// 出生日期：yyyy-mm-dd
-		// 专业班级：1-20个字符
-		// 书院；0彭康、1仲英、2南洋、3文治、4崇实、5宗濂、6励志、7启德
-		// 手机：号段130、131、132、133、134、135、136、137、138、139、145、147、149、150、151、152、153、155、156、157、158、159、170、175、176、177、178、180、181、182、183、184、185、186、187、188、189
-		// QQ号：5-11位数字，首位不为0
-		// 邮箱：username@example.com
-		// 第一志愿：1市场部、2公关部、3信息部门、4产品部、5前端美工部、6后台WEB部、7APP部、8EUX(不面向新生)
-		// 第二志愿：0空、1市场部、2公关部、3信息部门、4产品部、5前端美工部、6后台WEB部、7APP部、8EUX(不面向新生)
-		// 个人简介：0-255个字符
-		// 加入理由：0-255个字符
 		function validate(jQueryObject, regexp, errmsg, strict) {
 			var val = jQueryObject.val();
 			if (regexp.test(val) || (!strict && val == "")) {
@@ -1927,21 +1913,21 @@
 		}
 		function validateAll(strict) {
 			$("form .invalid").removeClass("invalid");
-			return validate($('form input[name="name"]'), /^.{1,10}$/, "姓名：1-10个汉字/英文字母", strict)
-				+ validate($('form input[name="home"]'), /^.{0,40}$/, "籍贯：0-40个汉字/英文字母", strict)
-				+ validate($('form input[name="class"]'), /^.{1,20}$/, "专业班级：1-20个汉字/英文字母", strict)
-				+ validate($('form input[name="tel"]'), /^(1((3\d)|(4[579])|(5[012356789])|(7[05678])|(8\d))\d{8})$/, "手机号段不存在", strict)
-				+ validate($('form input[name="qq"]'), /^[1-9]\d{4,10}$/, "QQ号格式不正确", strict)
-				+ validate($('form input[name="mail"]'), /^.+?@.+\..+?$/, "邮箱格式不正确", strict)
-				+ validate($('form select[name="second"]'), {
-					test: function (val) {
-						if (val === $('form select[name="first"]').val()) {
-							return false;
-						}
-						return true;
-					}
-				}, "第二志愿必须与第一志愿不同", strict)
-				+ validate($('form textarea[name="info"]'), /^.{0,255}$/, "个人陈述：0-255个汉字/英文字母", strict);
+                return validate($('form input[name="name"]'), /^.{1,10}$/, "姓名：1-10个汉字/英文字母", strict)
+                    + validate($('form input[name="home"]'), /^.{0,40}$/, "籍贯：0-40个汉字/英文字母", strict)
+                    + validate($('form input[name="class"]'), /^.{1,20}$/, "专业班级：1-20个汉字/英文字母", strict)
+                    + validate($('form input[name="tel"]'), /^(1((3\d)|(4[579])|(5[012356789])|(7[05678])|(8\d))\d{8})$/, "手机号段不存在", strict)
+                    + validate($('form input[name="qq"]'), /^[1-9]\d{4,10}$/, "QQ号格式不正确", strict)
+                    + validate($('form input[name="mail"]'), /^.+?@.+\..+?$/, "邮箱格式不正确", strict)
+                    + validate($('form select[name="second"]'), {
+                        test: function (val) {
+                            if (val === $('form select[name="first"]').val()) {
+                                return false;
+                            }
+                            return true;
+                        }
+                    }, "第二志愿必须与第一志愿不同", strict)
+                    + validate($('form textarea[name="info"]'), /^.{0,255}$/, "个人陈述：0-255个汉字/英文字母", strict);
 		}
 		$("form").change(function () {
 			validateAll(false);
@@ -1952,7 +1938,16 @@
 				alert(result);
 				return false;
 			}
+            // 暂时禁用按钮
+            $('form>div').addClass("submitting").attr("disabled", true);
+            var timeoutId = setTimeout(function () {
+                // 超时提示，然后恢复按钮
+                alert("连接超时\n请检查网络是否连接\n有问题可以加e瞳新生群552035254询问\n(也说不定是我们服务器出问题了)");
+                $('form>div').removeClass("submitting").attr("disabled", "");
+            }, 10000);
 			$.post($(this).attr("action"), $(this).serialize(), function (data) {
+                clearTimeout(timeoutId);
+                $('form>div').removeClass("submitting").attr("disabled", "");
 				if (data === '-1') {
 					alert("获取IP失败");
 				} else if (data === '-2') {

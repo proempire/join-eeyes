@@ -151,44 +151,9 @@
 	text-align: left;
 	padding: 0.5rem;
 }
-/*书院选择界面*/
-/*#submit #sub-content #CollegeChoose{
-	position: fixed;
-	top: 0; left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.7);
+form .invalid {
+	border: 1px solid red !important;
 }
-#submit #sub-content #CollegeChoose ul{
-	background-color: white;
-	width: 10rem;
-	height: 20rem;
-	position: absolute;
-	left: 50%; top: 50%;
-	-webkit-transform:translate(-5rem, -10rem);*/
-	/*flex布局（已兼容）*/
-/*    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;*/
-    /*调整为竖排（已兼容）*/
-/*    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
-    -ms-flex-direction: column;
-    -o-flex-direction: column;
-    flex-direction: column;
+#submit #sub-content form .submitting {
+	background-color: grey;
 }
-#submit #sub-content #CollegeChoose ul li{
-	flex: 1;
-	text-align: center;
-	font-size: 1.2rem;
-	line-height: 1.2;
-	color: #bdbdbd;
-}
-#submit #sub-content #CollegeChoose ul li:hover{
-	background-color: #f9f9f9;
-}*/
-
-/*form .invalid {
-	border-color: red;
-}*/
