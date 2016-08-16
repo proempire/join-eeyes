@@ -308,11 +308,11 @@
 				var timeoutId = setTimeout(function () {
 					// 超时提示，然后恢复按钮
 					alert("连接超时\n请检查网络是否连接\n有问题可以加e瞳新生群552035254询问\n(也说不定是我们服务器出问题了)");
-					$('form input[type="submit"]').removeClass("submitting").attr("disabled", "");
+					$('form input[type="submit"]').removeClass("submitting").attr("disabled", false);
 				}, 10000);
 				$.post($(this).attr("action"), $(this).serialize(), function (data) {
 					clearTimeout(timeoutId);
-					$('form input[type="submit"]').removeClass("submitting").attr("disabled", "");
+					$('form input[type="submit"]').removeClass("submitting").attr("disabled", false);
 					if (data === '-1') {
 						alert("获取IP失败");
 					} else if (data === '-2') {
