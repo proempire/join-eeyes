@@ -150,8 +150,15 @@
     position: absolute;
 }
 #mutiangle{
+    position: relative;
     text-align: center;
-    top: 50%;
+}
+#tech,#info,#man{
+    position: absolute;
+    top: 0;
+}
+#techp{
+
 }
 /*.orbit{
     perspective: 600px;
