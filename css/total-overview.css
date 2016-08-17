@@ -2,11 +2,23 @@
     background-image: url('../images/star/bg1.png');
     background-size: cover;
 }
+.main-wrapper-first{
+    background-image: url('../images/star/star-p1.png');
+    background-size: cover;
+}
 #nav{
     background-size: cover;
 }
-#nav img{
-    position: absolute;
+.main-wrapper-first .content-J{
+    height: 100%;
+    position: absolute !important;
+}
+#planet{
+    display: block;
+    width: 80%;
+    position: relative;
+    left: 7%;
+    bottom: 4%;
 }
 .animate{
     width: 100%;
@@ -106,6 +118,28 @@
     background-image: url('../images/star/bg.png');
     text-align: center;
 }
+.second{
+    text-align: center;
+}
+.second img{
+    position: absolute;
+    left: 0;
+}
+.sec-con{
+    position: absolute;
+    color: white;
+    font-size: 15px;
+    line-height: 30px;
+}
+.sec-con p{
+    text-align: center;
+}
+#sec-div2,#sec-div3,#sec-div5,#sec-div6,#sec-div{
+    opacity: 0;
+}
+#ofour div.sec-con{
+
+}
 #star-content-wrapper{
     position: absolute;
     top: 0;
@@ -115,7 +149,11 @@
     color: #fff;
     position: absolute;
 }
-.orbit{
+#mutiangle{
+    text-align: center;
+    top: 50%;
+}
+/*.orbit{
     perspective: 600px;
 }
 .front,.back1,.back2{
@@ -138,4 +176,4 @@
 	100%{
 		transform: translate3d(180px,0px,180px);
 	}
-}
+}*/
