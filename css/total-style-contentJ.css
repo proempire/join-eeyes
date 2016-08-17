@@ -63,7 +63,7 @@
     bottom: 5rem; left: 50%;
     -webkit-transform:translateX(-3rem); /* Safari 和 Chrome */      
 }
-.content-J .back{
+.back{
     position: absolute;
     top: 1rem; left: 1rem;
     color: #2deca6 !important; 

@@ -104,13 +104,18 @@
             	autoHeight: true,
             	onSlideChangeEnd: function(swiper){
             		if (swiper.activeIndex == 2){
-                        starline.play();
+                        starline.restart();
             		}
                     if (swiper.activeIndex == 1){
-                        sec.play();
+                        sec.restart();
                     }
                     if (swiper.activeIndex == 3){
-                        four.play();
+                        four.restart();
+                    }
+                    if (swiper.activeIndex == 4){
+                        surround.restart();
+                        surround1.restart();
+                        surround2.restart();
                     }
                     //if (swiper.activeIndex == 0){
                         //demo.play();
@@ -159,6 +164,84 @@
             four.add($secDiv7.set({opacity: 0}).to({opacity: 1}).duration(3000),30000);
             four.add(Tweene.get('#sec-div7').to({opacity: 0}).duration(3000),38000);
 
+            // 第五页
+            $('#mutiangle img').width(cwidth*0.5);
+            $('#mutiangle').css({top: cheight*0.5 - $('#mutiangle').height()*0.5 + 'px'});
+            //console.log($('#tech').width())
+            
+            $('.bigplanet').width(cwidth*0.2);
+            $('#tech').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('#tech').height()*0.5 + 'px' })
+            $('#total-overview').on('swipe',function(){
+                $.mobile.changePage("#submit", {transition: "slidedown"}); 
+            });
+
+            var surround = Tweene.line();
+            var record = 0,
+                reverse = true,
+                xstd = cwidth*0.5 - $('.bigplanet').width()*0.5,
+                ystd = cheight*0.5 - $('#tech').height()*0.5,
+                x = 0,
+                y = -160;
+            //console.log(xstd,ystd)
+            while (record < 2){
+                if (reverse){
+                    y += 1;
+                    x = Math.sqrt(25600-y*y);
+                }else{
+                    y -= 1;
+                    x = -Math.sqrt(25600-y*y);
+                }
+                surround.add(Tweene.get($('#tech')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+                //console.log(x,y)
+                if ( x == 0 ){
+                    reverse = !reverse;
+                    record++;
+                }
+            }
+            $('#info').css({top: ystd + 80 + 'px', left: xstd + 138});
+            var surround1 = Tweene.line();
+            var record = 0,
+                reverse = true,
+                x = 138,
+                y = 80;
+            while (record < 2 || y != 80){
+                if (reverse){
+                    y += 1;
+                    x = Math.sqrt(25600-y*y);
+                }else{
+                    y -= 1;
+                    x = -Math.sqrt(25600-y*y);
+                }
+                surround1.add(Tweene.get($('#info')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+                //console.log(x,y)
+                if ( x == 0 ){
+                    reverse = !reverse;
+                    record++;
+                }
+            }
+            $('#man').css({top: ystd + 80 + 'px', left: xstd - 138});
+            var surround2 = Tweene.line();
+            var record = 0,
+                reverse = false,
+                x = -138,
+                y = 80;
+            while (record < 2 || y != 80){
+                if (reverse){
+                    y += 1;
+                    x = Math.sqrt(25600-y*y);
+                }else{
+                    y -= 1;
+                    x = -Math.sqrt(25600-y*y);
+                }
+                surround2.add(Tweene.get($('#man')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+                //console.log(x,y)
+                if ( x == 0 ){
+                    reverse = !reverse;
+                    record++;
+                }
+            }
+            //$('#info')
+            //surround.play();
             // lazyload
             //$('div[data-background]').each(function(){
             	//$(this).lazyload({
@@ -449,7 +532,10 @@
 					</script>-->
                     <div class="main-wrapper-c">
                         <div id="mutiangle"><img src="./images/overview/mutiangle.png"></div>
-                        <a href="#market-o">市场部</a>
+                        <a href="#techp" id="tech"><img class="bigplanet" src="./images/overview/tech.png"></a>
+                        <a href="#infop" id="info"><img class="bigplanet" src="./images/overview/info.png"></a>
+                        <a href="#manp" id="man"><img class="bigplanet" src="./images/overview/man.png"></a>
+                        <!--<a href="#market-o">市场部</a>
                         <a href="#publicrelation-o">公关部</a>             
                         <a href="#news-o" id="noshow">新闻部</a>
                         <a href="#movie-o">影视部</a>
@@ -457,17 +543,43 @@
                         <a href="#product-o">产品部</a>
                         <a href="#frontend-and-art-o">前端美工组</a>
                         <a href="#backapp-o">后台app组</a>
-                        <a href="#backend-o">后台web组</a>
+                        <a href="#backend-o">后台web组</a>-->
                     </div>
                     <script type="text/javascript">
                         $(document).ready(function(){
-                            $('#mutiangle img').width(cwidth*0.33);
+                            
                         });
-                    </script>
+
+                        
+                    </script> 
 				</div>
 			</div>
 		</div>
 	</div>
+    <div data-role="page" id="techp">
+        <div class="main-wrapper-c">
+            <a href="#market-o"><img src="./images/overview/market.png"></a>
+            <a href="#publicrelation-o"><img src="./images/overview/pr.png"></a>
+            <a href="#" data-rel="back" class="back">返回</a>
+        </div>
+    </div>
+    <div data-role="page" id="infop">
+        <div class="main-wrapper-c">
+            <a href="#news-o" id="noshow"><img src="./images/overview/news.png"></a>
+            <a href="#movie-o"><img src="./images/overview/movie.png"></a>
+            <a href="#newmedia-o"><img src="./images/overview/newmedia.png"></a>
+            <a href="#" data-rel="back" class="back">返回</a>
+        </div>
+    </div>
+    <div data-role="page" id="manp">
+        <div class="main-wrapper-c">
+            <a href="#product-o"><img src="./images/overview/product.png"></a>
+            <a href="#frontend-and-art-o"><img src="./images/overview/frontend-and-art.png"></a>
+            <a href="#backapp-o"><img src="./images/overview/backapp.png"></a>
+            <a href="#backend-o"><img src="./images/overview/backend.png"></a>
+            <a href="#" data-rel="back" class="back">返回</a>
+        </div>
+    </div>
 	<!-- 市场部简介页 -->
 	<div data-role="page" id="market-o" class="FenYe">
 		<div class="content-J">
@@ -1224,7 +1336,7 @@
 		        	backend_o_t1.pause();
 		        })
 		        
-		        $("a[href='#backend-o']").click(function(){ $('#market-o img[remark]').attr('src',function(){return $(this).attr('remark')}); backend_o_t1.play(); });
+		        $("a[href='#backend-o']").click(function(){ $('#backend-o img[remark]').attr('src',function(){return $(this).attr('remark')}); backend_o_t1.play(); });
 
 			});
 		</script>
