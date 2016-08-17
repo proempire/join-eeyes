@@ -8,22 +8,10 @@
 	<!-- meta使用viewport以确保页面可自由缩放 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- 引入 jQuery Mobile 样式 -->
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> 
-	<!-- <link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.5.min.css"> -->
-
-	<!-- 引入swiper库 -->
-	<link rel="stylesheet" type="text/css" href="dest/css/swiper.min.css">
-	<script type="text/javascript" src="dest/js/swiper.min.js"></script>
-
 	<!-- 引入 jQuery 库 -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <!-- <script type="text/javascript" src="jquery-1.12.2.min.js"></script> -->
 
-	<!-- 引入 jQuery Mobile 库 -->
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<!-- <script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script> -->
-    
 	<!-- use Tweene with GSAP -->
 	<script src="dest/js/vendor.min.js"></script>
 	<script>
@@ -42,28 +30,36 @@
 	    Tweene.defaultDriver = 'gsap'; // or one of 'transit', 'velocity', 'jquery'
 	</script>
 	
-	<script type="text/javascript">
-        $(window).load(function(){
-            $("#loading-cover").hide();
-        })
-    </script>
+	<!-- 引入加载页样式 -->
+    <link rel="stylesheet" type="text/css" href="./css/loading.css">
+    
+    <!-- 引入 jQuery Mobile -->
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <!-- <script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script> -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> 
+    <!-- <link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.5.min.css"> -->
+
+    <!-- 引入swiper库 -->
+    <link rel="stylesheet" type="text/css" href="dest/css/swiper.min.css">
+    <script type="text/javascript" src="dest/js/swiper.min.js"></script>
+
     <!-- 页面自适应等 -->
     <script>
         var fontSize;
         if($(window).width() < 350){  //iphone5
             fontSize = 12;
-            $('html').css({fontSize: '12px'});
+            // $('html').css({fontSize: '12px'});
         }else{
             if($(window).width() < 400){  //iphone6
             	fontSize = 14;
-            	$('html').css({fontSize: '14px'});
+            	// $('html').css({fontSize: '14px'});
             }else{  
             	if($(window).width() < 600){  //iphone6plus
             		fontSize = 16;
-            		$('html').css({fontSize: '16px'});
+            		// $('html').css({fontSize: '16px'});
             	}else{  //ipad
             		fontSize = 26;
-            		$('html').css({fontSize: '24px'});
+            		// $('html').css({fontSize: '24px'});
             	}
             }
         }
@@ -351,7 +347,40 @@
 </head>
 
 <body>
-    <div id="loading-cover">loading……</div>
+    <div id="loading-cover">
+        <div id="load-ball">           
+            <div></div>
+            <img src="./images/wave.jpg">
+            <span>0％</span>
+        </div>
+        <p>我们精心的作品<br>值得你少量的等待</p>
+    </div>
+    <script type="text/javascript">
+        var load_t1 = Tweene.line(); 
+        var load_t2 = Tweene.line(); 
+        var load_cartoon1;
+        $(document).ready(function(){
+            var load_per = 0;
+            load_cartoon1 = setInterval(function(){
+                load_per++;
+                if(load_per >= 99){
+                    clearInterval(load_cartoon1);
+                }
+                $("#loading-cover span").text(load_per + "％");
+            }, 100);            
+            load_t1.add(Tweene.get($("#loading-cover img")).to({left: "-10rem"}).loops(-1).yoyo(true).duration(1200).easing([0, 0, 1, 1]));
+            load_t1.play();            
+            load_t2.add(Tweene.get($("#loading-cover p")).to({zoom: "0.9"}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]));
+            load_t2.play();
+        });  
+        $(window).load(function(){
+            clearInterval(load_cartoon1);
+            $("#loading-cover span").text("100％");
+            $("#loading-cover").fadeOut();
+            load_t1.pause();
+            load_t2.pause();
+        })      
+    </script>
 	<div data-role="page" id="pagenav">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">

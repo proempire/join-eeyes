@@ -1,0 +1,66 @@
+/*自适应媒体查询*/
+html{
+	font-size: 26px;
+}
+@media screen and (max-width: 414px) {
+	html {font-size: 16px;}
+}
+@media screen and (max-width: 375px) {
+	html {font-size: 14px;}
+}
+@media screen and (max-width: 320px) {
+	html {font-size: 12px;}
+}
+/*loading样式*/
+#loading-cover{
+	width: 100%;
+	height: 100%;
+	float: left;
+	background-image: url('../images/star/bg1.png');
+	background-size: cover;
+}
+#loading-cover #load-ball{
+	border-radius: 50%;
+	height: 10rem;
+	width: 10rem;
+	box-shadow: 0 0 1rem 0.7rem rgba(161, 231, 255, 0.6);
+	overflow: hidden;
+	position: absolute;
+	top: 50%; left: 50%;
+	-webkit-transform:translate(-5rem, -8rem);
+}
+#loading-cover #load-ball div{
+	background-color: white;
+	height: 5rem;
+	width: 10rem;
+}
+#loading-cover #load-ball img{
+	width: 20rem;
+	position: absolute;
+	top: 4.5rem; left: 0;
+}
+#loading-cover #load-ball span{
+	color: #8bfffe;
+	font-size: 2.5rem;
+	font-size: 黑体;
+	text-align: center;
+
+	width: 8rem;
+	position: absolute;
+	left: 50%; top: 50%;
+	-webkit-transform:translate(-4rem, -4rem);
+}
+#loading-cover p{
+	color: white;
+	line-height: 1.8;
+	font-size: 1.2rem;
+	width: 10rem;
+	text-align: center;
+
+	position: absolute;
+	left: 50%; bottom: 9rem;
+	-webkit-transform:translateX(-5rem);
+}
+/*8bfffe
+2adffe
+447aa9*/

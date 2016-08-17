@@ -44,7 +44,8 @@
     color: white;
     font-weight: lighter !important; 
 }
-.content-J .more{
+/*报名键方案一*/
+/*.content-J .more, .content-J .form{
     width: 5.8rem;
     height: 2rem; 
 
@@ -60,12 +61,47 @@
     border-radius: 0.4rem;             
     
     position: absolute;
-    bottom: 5rem; left: 50%;
-    -webkit-transform:translateX(-3rem); /* Safari 和 Chrome */      
+    bottom: 5rem; left: 50%;         
 }
-.back{
+.content-J .more{
+    -webkit-transform:translateX(-8rem); 
+}
+.content-J .form{
+    -webkit-transform:translateX(2rem); 
+}*/
+/*报名键方案二*/
+.content-J .more, .content-J .form{
+    /*width: 5.8rem;*/
+    /*height: 2rem; */
+
+    text-align: center;
+    /*font-size: 1.2rem;*/
+    padding: 0.4rem 0.6rem;
+    
+    font-weight: lighter !important;   
+    /*line-height: 1.85;*/
+    font-weight: lighter !important; 
+        
+    border: none;
+    border-radius: 0.4rem;             
+    
     position: absolute;
-    top: 1rem; left: 1rem;
+    left: 50%;
+    -webkit-transform:translateX(-2.5rem);          
+}
+.content-J .more{
+    bottom: 8.2rem; 
+    background-color: #2deca6;
+    color: white !important; 
+}
+.content-J .form{
+    bottom: 5rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white !important; 
+}
+.content-J .back{
+    position: absolute;
+    top: 1.5rem; left: 1.5rem;
     color: #2deca6 !important; 
     font-weight: lighter !important; 
     font-size: 1rem;
