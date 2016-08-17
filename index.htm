@@ -1355,338 +1355,351 @@
 
 	<!-- 产品部 -->
 	<div data-role="page" id="product">
-		
+	    <link rel="stylesheet" href="./css/index.css">
+	    <script type="text/javascript">
+	        var GC = {
+	            w: document.documentElement.clientWidth,
+	            h: document.documentElement.clientHeight
+	        };
+	        var init = {};
+	        init.isCanMove = false;
+	    </script>
+		<script type="text/javascript" src="./js/index.js"></script>
+		<script type="text/javascript" src="./js/zepto.min.js"></script>
+	    <script type="text/javascript" src="./js/Loader.js"></script>
+	    <script type="text/javascript" src="./js/jweixin-1.0.0.js"></script>
+	    <script type="text/javascript" src="./js/share.js"></script>
 		<div class="page loading">
-        <!--<div class="progress">-->
-        <!--<div id="content"></div>-->
-        <!--</div>-->
-        <!--<p class="number">0%</p>-->
-        <!--<div class="loadAnimate"></div>-->
-        <div class="loadIMG"></div>
-    </div>
-    <div class="page page1 hidden">
-        <audio class="tips" src="./images/message.mp3" preload="auto"></audio>
-        <div class="content">
-            <div class="date">
-                <p class="time">00:35</p>
-                <p class="week">10月24日 星期六</p>
-            </div>
-            <ul class="message">
-                <li class="page1LiAnimate">
-                    <p calss="title">微信<em> 现在</em></p>
-                    <p class="info">智商担当：我爱学习！学习使我快乐！不学习我浑身难受！ </p>
-            </ul>
-            <!--<div class="footer"><p> > 滑动解锁 </p></div>-->
-            <div class="footer"></div>
-        </div>
-        <audio class="unlock" src="./images/unlock.mp3" preload="auto"></audio>
-    </div>
-    <div class="page page2 hidden">
-        <audio class="tips" src="./images/message.mp3" preload="auto"></audio>
-        <div class="con">
-            <ul class="content clearfix">
-                <li class="clearfix msgleft">
-                    <p class="mTime"><span>昨天 晚上10:23</span></p>
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">脑洞担当</p>
-                        <p class="mess">我爱用户体验设计！UE使我快乐！不研究UE我浑身难受！</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft ">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">我爱产品分析！不分析我浑身难受！</p>
-                    </div>
-                </li>
-                <li class="clearfix msgright">
-                    <div class="photo boss"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">我爱画交互图！不做交互稿我吃不下饭！_(:з」∠)_</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft">
-                    <p class="mTime"><span>论装逼，我只服产品部</span></p>
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">脑洞担当</p>
-                        <p class="mess">……</p>
-                    </div>
-                </li>
-                <li class="clearfix msgright">
-                    <div class="photo boss"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">……</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">说起来这周分享会你们讲啥呀</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">我想讲这个</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="image"><img src="./images/qqmood.png"></p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">唔这个现成的分享主管大人会不会打我</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft">
-                    <div class="photo mix"></div>
-                    <div>
-                        <p class="username">脑洞担当</p>
-                        <p class="mess">喔感觉还可以哎，说起来qq这一版表情出来的时候我还觉得丑(:з」∠)_</p>
-                    </div>
-                </li>
-                <li class="clearfix msgright">
-                    <div class="photo boss"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">嗯那个emoji出来的时候不也是批评声一片，后来大家还是挺喜欢_(:з」∠)_</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft">
-                    <p class="mTime"><span>晚上10:33</span></p>
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">我刚刚和美女外教聊天了！</p>
-                    </div>
-                </li>
+	        <!--<div class="progress">-->
+	        <!--<div id="content"></div>-->
+	        <!--</div>-->
+	        <!--<p class="number">0%</p>-->
+	        <!--<div class="loadAnimate"></div>-->
+	        <div class="loadIMG"></div>
+	    </div>
+	    <div class="page page1 hidden">
+	        <audio class="tips" src="./images/message.mp3" preload="auto"></audio>
+	        <div class="content">
+	            <div class="date">
+	                <p class="time">00:35</p>
+	                <p class="week">10月24日 星期六</p>
+	            </div>
+	            <ul class="message">
+	                <li class="page1LiAnimate">
+	                    <p calss="title">微信<em> 现在</em></p>
+	                    <p class="info">智商担当：我爱学习！学习使我快乐！不学习我浑身难受！ </p>
+	            </ul>
+	            <!--<div class="footer"><p> > 滑动解锁 </p></div>-->
+	            <div class="footer"></div>
+	        </div>
+	        <audio class="unlock" src="./images/unlock.mp3" preload="auto"></audio>
+	    </div>
+	    <div class="page page2 hidden">
+	        <audio class="tips" src="./images/message.mp3" preload="auto"></audio>
+	        <div class="con">
+	            <ul class="content clearfix">
+	                <li class="clearfix msgleft">
+	                    <p class="mTime"><span>昨天 晚上10:23</span></p>
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">脑洞担当</p>
+	                        <p class="mess">我爱用户体验设计！UE使我快乐！不研究UE我浑身难受！</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft ">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">我爱产品分析！不分析我浑身难受！</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgright">
+	                    <div class="photo boss"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">我爱画交互图！不做交互稿我吃不下饭！_(:з」∠)_</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft">
+	                    <p class="mTime"><span>论装逼，我只服产品部</span></p>
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">脑洞担当</p>
+	                        <p class="mess">……</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgright">
+	                    <div class="photo boss"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">……</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">说起来这周分享会你们讲啥呀</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">我想讲这个</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="image"><img src="./images/qqmood.png"></p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">唔这个现成的分享主管大人会不会打我</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft">
+	                    <div class="photo mix"></div>
+	                    <div>
+	                        <p class="username">脑洞担当</p>
+	                        <p class="mess">喔感觉还可以哎，说起来qq这一版表情出来的时候我还觉得丑(:з」∠)_</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgright">
+	                    <div class="photo boss"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">嗯那个emoji出来的时候不也是批评声一片，后来大家还是挺喜欢_(:з」∠)_</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft">
+	                    <p class="mTime"><span>晚上10:33</span></p>
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">我刚刚和美女外教聊天了！</p>
+	                    </div>
+	                </li>
 
-                <li class="clearfix msgleft hidden">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">害怕.jpg</p>
-                    </div>
-                </li>
-                <li class="clearfix msgright hidden">
-                    <div class="photo boss"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">然后呢_(:з」∠)_</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo mix"></div>
-                    <div>
-                        <p class="username">脑洞担当</p>
-                        <p class="mess">好奇.jpg</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">她说他们挺多人在西安用的Airbnb租的房诶！@—@</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo mix"></div>
-                    <div>
-                        <p class="username">脑洞担当</p>
-                        <p class="mess">……我不会告诉你这周分享会我就打算讲Airbnb！（傲娇脸） </p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">奥Airbnb现在是挺火的噢</p>
-                    </div>
-                </li>
-                <li class="clearfix msgright hidden">
-                    <div class="photo boss"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">（｡ò ∀ ó｡）奥那大神这周是不是要顺带把共享经济好好讲一下⊙﹏⊙!</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">大神是不是要顺带共享一下经济，我们都饿了(^.^)</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo mix"></div>
-                    <div>
-                        <p class="username">脑洞担当</p>
-                        <p class="mess">害怕……套路，全是套路！</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo mix"></div>
-                    <div>
-                        <p class="username">脑洞担当</p>
-                        <p class="mess">不过我确实打算顺便提一下共享经济，哎现在有很多很火的这类产品嗷，思路真的很特别</p>
-                    </div>
-                </li>
-                <li class="clearfix msgright hidden">
-                    <div class="photo boss"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">伏地膜！我打算讨论一下知乎</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">可以可以</p>
-                    </div>
-                </li>
-                <li class="clearfix msgright hidden">
-                    <div class="photo boss"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">……说起来主管大人这周会讲啥呀</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">貌似好像是讲微信和qq定位的不同，微信一路的成功，还有微信一些大家可能不太理解的体验设置是出于什么样的考虑</p>
-                    </div>
-                </li>
-                <li class="clearfix msgright hidden">
-                    <div class="photo boss"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">可以可以，这很强势(๑• . •๑)</p>
-                    </div>
-                </li>
-                 <li class="clearfix msgleft">
-                    <p class="mTime"><span>画风突变</span></p>
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">下个月咱是不是有很多小鲜肉？！</p>
-                    </div>
-                </li>
-                <li class="clearfix msgright hidden">
-                    <div class="photo boss"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">啊啊啊小鲜肉！(๑• . •๑)</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo mix"></div>
-                    <div>
-                        <p class="username">脑洞担当</p>
-                        <p class="mess">好像是的！</p>
-                    </div>
-                </li>
-                <li class="clearfix msgright hidden">
-                    <div class="photo boss"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">啊啊啊小鲜肉！(๑• . •๑)</p>
-                    </div>
-                </li>
-                <li class="clearfix msgright hidden">
-                    <div class="photo boss"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">CEO说小鲜肉进来要请他们吃饭诶！</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo mix"></div>
-                    <div>
-                        <p class="username">脑洞担当</p>
-                        <p class="mess">喔！咱也要带他们去浪一波！</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">hhh他们会爱上这里的！</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo mix"></div>
-                    <div>
-                        <p class="username">脑洞担当</p>
-                        <p class="mess">是啊产品部的学长们都单着呢</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">哎交互设计这些概念但愿不会把孩子们吓到</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo mix"></div>
-                    <div>
-                        <p class="username">脑洞担当</p>
-                        <p class="mess">恩啊咱产品部是技术部门里面最不怎么看重技术基础的吧</p>
-                    </div>
-                </li>
-                  <li class="clearfix msgleft hidden">
-                    <div class="photo"></div>
-                    <div>
-                        <p class="username">智商担当</p>
-                        <p class="mess">同意</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo mix"></div>
-                    <div>
-                        <p class="username">脑洞担当</p>
-                        <p class="mess">而且咱和每一个技术部门交流都非常密切</p>
-                    </div>
-                </li>
-                  <li class="clearfix msgright hidden">
-                    <div class="photo boss"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">恩啊，感觉这一年学到好多东西</p>
-                    </div>
-                </li>
-                <li class="clearfix msgleft hidden">
-                    <div class="photo mix"></div>
-                    <div>
-                        <p class="username">脑洞担当</p>
-                        <p class="mess">而且咱的技术更偏向于设计和思维，也要了解代码但是并不怎么需要写代码</p>
-                    </div>
-                </li>
-                  <li class="clearfix msgright hidden">
-                    <div class="photo boss"></div>
-                    <div>
-                        <p class="username">我</p>
-                        <p class="mess">是。现在看很多东西的思维都变得不一样了</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">害怕.jpg</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgright hidden">
+	                    <div class="photo boss"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">然后呢_(:з」∠)_</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo mix"></div>
+	                    <div>
+	                        <p class="username">脑洞担当</p>
+	                        <p class="mess">好奇.jpg</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">她说他们挺多人在西安用的Airbnb租的房诶！@—@</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo mix"></div>
+	                    <div>
+	                        <p class="username">脑洞担当</p>
+	                        <p class="mess">……我不会告诉你这周分享会我就打算讲Airbnb！（傲娇脸） </p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">奥Airbnb现在是挺火的噢</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgright hidden">
+	                    <div class="photo boss"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">（｡ò ∀ ó｡）奥那大神这周是不是要顺带把共享经济好好讲一下⊙﹏⊙!</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">大神是不是要顺带共享一下经济，我们都饿了(^.^)</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo mix"></div>
+	                    <div>
+	                        <p class="username">脑洞担当</p>
+	                        <p class="mess">害怕……套路，全是套路！</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo mix"></div>
+	                    <div>
+	                        <p class="username">脑洞担当</p>
+	                        <p class="mess">不过我确实打算顺便提一下共享经济，哎现在有很多很火的这类产品嗷，思路真的很特别</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgright hidden">
+	                    <div class="photo boss"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">伏地膜！我打算讨论一下知乎</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">可以可以</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgright hidden">
+	                    <div class="photo boss"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">……说起来主管大人这周会讲啥呀</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">貌似好像是讲微信和qq定位的不同，微信一路的成功，还有微信一些大家可能不太理解的体验设置是出于什么样的考虑</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgright hidden">
+	                    <div class="photo boss"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">可以可以，这很强势(๑• . •๑)</p>
+	                    </div>
+	                </li>
+	                 <li class="clearfix msgleft">
+	                    <p class="mTime"><span>画风突变</span></p>
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">下个月咱是不是有很多小鲜肉？！</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgright hidden">
+	                    <div class="photo boss"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">啊啊啊小鲜肉！(๑• . •๑)</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo mix"></div>
+	                    <div>
+	                        <p class="username">脑洞担当</p>
+	                        <p class="mess">好像是的！</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgright hidden">
+	                    <div class="photo boss"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">啊啊啊小鲜肉！(๑• . •๑)</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgright hidden">
+	                    <div class="photo boss"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">CEO说小鲜肉进来要请他们吃饭诶！</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo mix"></div>
+	                    <div>
+	                        <p class="username">脑洞担当</p>
+	                        <p class="mess">喔！咱也要带他们去浪一波！</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">hhh他们会爱上这里的！</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo mix"></div>
+	                    <div>
+	                        <p class="username">脑洞担当</p>
+	                        <p class="mess">是啊产品部的学长们都单着呢</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">哎交互设计这些概念但愿不会把孩子们吓到</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo mix"></div>
+	                    <div>
+	                        <p class="username">脑洞担当</p>
+	                        <p class="mess">恩啊咱产品部是技术部门里面最不怎么看重技术基础的吧</p>
+	                    </div>
+	                </li>
+	                  <li class="clearfix msgleft hidden">
+	                    <div class="photo"></div>
+	                    <div>
+	                        <p class="username">智商担当</p>
+	                        <p class="mess">同意</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo mix"></div>
+	                    <div>
+	                        <p class="username">脑洞担当</p>
+	                        <p class="mess">而且咱和每一个技术部门交流都非常密切</p>
+	                    </div>
+	                </li>
+	                  <li class="clearfix msgright hidden">
+	                    <div class="photo boss"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">恩啊，感觉这一年学到好多东西</p>
+	                    </div>
+	                </li>
+	                <li class="clearfix msgleft hidden">
+	                    <div class="photo mix"></div>
+	                    <div>
+	                        <p class="username">脑洞担当</p>
+	                        <p class="mess">而且咱的技术更偏向于设计和思维，也要了解代码但是并不怎么需要写代码</p>
+	                    </div>
+	                </li>
+	                  <li class="clearfix msgright hidden">
+	                    <div class="photo boss"></div>
+	                    <div>
+	                        <p class="username">我</p>
+	                        <p class="mess">是。现在看很多东西的思维都变得不一样了</p>
+	                    </div>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
 	</div>
 	<div data-role="page" id="frontend-and-art">
 		前端美工组部详情
