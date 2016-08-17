@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> 
     <!-- <link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.5.min.css"> -->
 
-    <!-- 引入swiper库 -->
+    <!-- 引入swiper -->
     <link rel="stylesheet" type="text/css" href="dest/css/swiper.min.css">
     <script type="text/javascript" src="dest/js/swiper.min.js"></script>
 
@@ -48,18 +48,18 @@
         var fontSize;
         if($(window).width() < 350){  //iphone5
             fontSize = 12;
-            // $('html').css({fontSize: '12px'});
+            $('html').css({fontSize: '12px'});
         }else{
             if($(window).width() < 400){  //iphone6
             	fontSize = 14;
-            	// $('html').css({fontSize: '14px'});
+            	$('html').css({fontSize: '14px'});
             }else{  
             	if($(window).width() < 600){  //iphone6plus
             		fontSize = 16;
-            		// $('html').css({fontSize: '16px'});
+            		$('html').css({fontSize: '16px'});
             	}else{  //ipad
             		fontSize = 26;
-            		// $('html').css({fontSize: '24px'});
+            		$('html').css({fontSize: '24px'});
             	}
             }
         }
