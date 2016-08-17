@@ -15,7 +15,6 @@
 #newmedia-o .icon span{
     position: absolute;
     color: white !important;
-    text-shadow: none !important;
 }
 #newmedia-o .icon #newmedia-o-img2 span:nth-child(1){ font-size: 2rem; }
 #newmedia-o .icon #newmedia-o-img2 span:nth-child(2){ font-size: 1.9rem; }

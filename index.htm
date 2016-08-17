@@ -285,6 +285,7 @@
         	box-sizing: border-box;
         	-moz-box-sizing:border-box; /* Firefox */
 			-webkit-box-sizing:border-box; /* Safari */
+            text-shadow: none;
         }
 	    html, body, div#pagenav {
 	        position: relative;
@@ -2090,7 +2091,10 @@
                 rows: 9,
                 group: true,
                 fixedWidth: [130, 130],
-                headerText: "{value}" 
+                headerText: "{value}"
+                // headerText: function (valueText) {    
+                //     console.log($("#sub_home option[selected]").val());
+                // }
             });
 
 		// 日历选择器

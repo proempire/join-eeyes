@@ -43,7 +43,6 @@
     line-height: 1.8;
     color: white;
     font-weight: lighter !important; 
-    text-shadow: none !important;
 }
 .content-J .more{
     width: 5.8rem;
@@ -55,7 +54,6 @@
     font-weight: lighter !important;   
     line-height: 1.85;
     font-weight: lighter !important; 
-    text-shadow: none !important;
     
     background-color: #2deca6;
     border: none;
@@ -70,6 +68,5 @@
     top: 1rem; left: 1rem;
     color: #2deca6 !important; 
     font-weight: lighter !important; 
-    text-shadow: none !important;
     font-size: 1rem;
 }
