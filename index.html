@@ -164,7 +164,7 @@
 					<tr>
 						<td>
 							<label>
-								<p class="select-arrow"><input type="text" name="date" value="1998-01-01"></p>
+								<p class="select-arrow"><input type="text" name="date"></p>
 								<p class="field">出生日期 DATE OF BIRTH</p>
 							</label>
 						</td>
@@ -300,15 +300,6 @@
 			function validateAll(strict) {
 				$("form .invalid").removeClass("invalid");
 				return validate($('form input[name="name"]'), /^.{1,10}$/, "姓名：1-10个汉字/英文字母", strict)
-					+ validate($('form input[name="date"]'), {
-						test: function (val) {
-							var year = (new Date(val)).getFullYear();
-							if (year < 1986 || year > 2006) {
-								return false;
-							}
-							return true;
-						}
-					}, "出生日期：只接受1986-2006年的同学", strict)
 					+ validate($('form input[name="class"]'), /^.{1,20}$/, "专业班级：1-20个汉字/英文字母", strict)
 					+ validate($('form input[name="tel"]'), /^(1((3\d)|(4[579])|(5[012356789])|(7[05678])|(8\d))\d{8})$/, "手机号段不存在", strict)
 					+ validate($('form input[name="qq"]'), /^[1-9]\d{4,10}$/, "QQ号格式不正确", strict)
@@ -367,17 +358,16 @@
 	<script>
 		+function () {
 			// 日历选择器
-			$('form input[name="date"]').mobiscroll().date({  
+			$('form input[name="date"]').val("1998-01-01").mobiscroll().date({  
 				theme: 'android-holo-light',
 				lang: 'zh',
 				display: 'modal',
 				animate: 'fade',
 				buttons: ['set'],
 				rows: 5,
-				dateFormat: 'yyyy-mm-dd',
+				dateFormat: 'yy-mm-dd',
 				startYear: 1986,
 				endYear: 2006,
-				defaultValue: new Date(1998, 0, 1),
 				headerText: function (valueText) {
 					var array = valueText.split('-');
 					return array[0] + "年" + array[1] + "月" + array[2] + "日";  
