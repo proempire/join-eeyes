@@ -138,22 +138,15 @@
 	color: #00bca4 !important;
 }
 /*下拉*/
-#submit #sub-content form table #sub-college-button, #submit #sub-content form table #sub-first-button, #submit #sub-content form table #sub-second-button{
-	border: 1px solid #bdbdbd;
-	background-color: #f9f9f9;
-	border-radius: 5px;
-	box-shadow: none;
-	outline: none;
-	font-family: 黑体;
-	font-weight: lighter;
-	font-size: 1.2rem;
-	color: #000;
-	text-align: left;
-	padding: 0.5rem;
+#submit #sub-content form table #sub-college-button, #submit #sub-content form table #sub-first-button, #submit #sub-content form table #sub-second-button, #submit #sub-content form table #sub-home-button{
+	display: none;
 }
+/*操作提示*/
 form .invalid {
 	border: 1px solid red !important;
 }
 #submit #sub-content form .submitting {
 	background-color: grey;
 }
+
+
