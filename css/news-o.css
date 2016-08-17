@@ -5,7 +5,7 @@
 #news-o .icon img{
     position: absolute;   
 }
-#news-o .icon #news-o-sun, #news-o-img img:nth-child(1){
+#news-o .icon #news-o-sun, #news-o .icon #news-o-img img:nth-child(1){
     left: 50%; top: 50%;
     height: 10rem;
     -webkit-transform:translate(-5rem, -2.4rem); /* Safari 和 Chrome */
