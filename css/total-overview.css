@@ -1,133 +1,13 @@
-
-
-.main-wrapper-c{
-    background-image: url('../images/star/bg1.jpg');
-    background-size: cover;
-}
-.main-wrapper-first{
-    background-image: url('../images/star/star-p1.jpg');
-    background-size: cover;
-}
-#nav{
-    background-size: cover;
-}
-.main-wrapper-first .content-J{
-    height: 100%;
-    position: absolute !important;
-}
-#planet{
-    display: block;
-    width: 80%;
-    position: relative;
-    left: 7%;
-    bottom: 4%;
-}
-.animate{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background: url(../images/section_home_fg.png) repeat;
-    animation: 5s line linear infinite;
-    -webkit-animation: 5s line linear infinite;
-    -moz-animation: 5s line linear infinite;
-    -ms-animation: 5s line linear infinite;
-    -o-animation: 5s line linear infinite;
-}
-
-@-webkit-keyframes line{
-    0%{
-        background-position: -900px 900px;
-        opacity: 0;
-    }
-    50%{
-        background-position: 0 0;
-        opacity: 0.7;
-    }
-    100%{
-        background-position: 900px -900px;
-        opacity: 0;
-    }
-
-}
-@-moz-keyframes line{
-    0%{
-        background-position: -900px 900px;
-        opacity: 0;
-    }
-    50%{
-        background-position: 0 0;
-        opacity: 0.7;
-    }
-    100%{
-        background-position: 900px -900px;
-        opacity: 0;
-    }
-
-}
-@-ms-keyframes line{
-    0%{
-        background-position: -900px 900px;
-        opacity: 0;
-    }
-    50%{
-        background-position: 0 0;
-        opacity: 0.7;
-    }
-    100%{
-        background-position: 900px -900px;
-        opacity: 0;
-    }
-
-}
-@-o-keyframes line{
-    0%{
-        background-position: -900px 900px;
-        opacity: 0;
-    }
-    50%{
-        background-position: 0 0;
-        opacity: 0.7;
-    }
-    100%{
-        background-position: 900px -900px;
-        opacity: 0;
-    }
-
-}
-@keyframes line{
-    0%{
-        background-position: -900px 900px;
-        opacity: 0;
-    }
-    50%{
-        background-position: 0 0;
-        opacity: 0.7;
-    }
-    100%{
-        background-position: 900px -900px;
-        opacity: 0;
-    }
-}
-.star-container{
+.star-container{ /*第三页*/
     overflow: hidden;
 }
-.main-wrapper{
+.main-wrapper{ /*第三页*/
     position: relative;
-    background-image: url('../images/star/bg.jpg');
+    /*background-image: url('../images/star/bg.jpg');*/
     text-align: center;
 }
-.second{
-    text-align: center;
-}
-.second img{
-    position: absolute;
-    left: 0;
-}
-.sec-con{
+
+/*.sec-con{ 
     position: absolute;
     color: white;
     font-size: 15px;
@@ -135,14 +15,11 @@
 }
 .sec-con p{
     text-align: center;
-}
-#sec-div2,#sec-div3,#sec-div5,#sec-div6,#sec-div{
+}*/
+/*#sec-div2,#sec-div3,#sec-div5,#sec-div6,#sec-div{
     opacity: 0;
-}
-#ofour div.sec-con{
-
-}
-#star-content-wrapper{
+}*/
+#star-content-wrapper{  /*第三页*/
     position: absolute;
     top: 0;
 }
@@ -151,41 +28,15 @@
     color: #fff;
     position: absolute;
 }
-#mutiangle{
+#mutiangle{ /*第五页*/
     position: relative;
     text-align: center;
 }
-#tech,#info,#man{
+#tech,#info,#man{ /*第五页*/
     position: absolute;
     top: 0;
 }
-#techp{
 
-}
-/*.orbit{
-    perspective: 600px;
-}
-.front,.back1,.back2{
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
-	position: absolute;
-	background-color: #c0f;
-	text-align: center;
-
-}
-.front span,.back1 span,.back2 span{
-    position: absolute;
-    top: 50%;
-}
-.front{
-	animation: 3s rot1 linear infinite;
-}
-@keyframes rot1{
-	100%{
-		transform: translate3d(180px,0px,180px);
-	}
-}*/
 
 
 
