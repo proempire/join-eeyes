@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html>
 
@@ -355,7 +351,8 @@
         <img src="./images/star/bg1.jpg">
         <div id="load-ball">           
             <div></div>
-            <img src="./images/wave.png">
+            <img src="./images/ship.png">
+            <img src="./images/wave2.png">
             <span>0％</span>
         </div>
         <p>我们精心的作品<br>值得你少量的等待</p>
@@ -371,20 +368,21 @@
                     clearInterval(load_cartoon1);
                 }
                 $("#loading-cover #load-ball span").text(load_per + "％");
-            }, 600); 
-            load_t1.add(Tweene.get($("#loading-cover #load-ball img")).to({left: "-15rem"}).loops(-1).yoyo(true).duration(1200).easing([0, 0, 1, 1]), '0');           
-            load_t1.add(Tweene.get($("#loading-cover p")).to({zoom: "0.9"}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), '0');
+            }, 200); 
+            load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(3)")).to({left: "-15rem"}).loops(-1).yoyo(true).duration(1200).easing([0, 0, 1, 1]), '0');           
+            load_t1.add(Tweene.get($("#loading-cover p")).to({zoom: "0.9"}).loops(-1).yoyo(true).duration(200).easing([0, 0, 1, 1]), '0');
             load_t1.add(Tweene.get($("#loading-cover #load-ball div")).to({marginTop: "-10rem"}).duration(20000).easing([0, 0, 1, 1]), '0');
+            load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(2)")).to({rotation: -10}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), '0');
             load_t1.play();
         });  
         $(window).load(function(){
-            // clearInterval(load_cartoon1);
-            // $("#loading-cover span").text("100％");
-            // var load_t2 = Tweene.line();
-            // load_t2.add(Tweene.get($("#loading-cover #load-ball div")).to({marginTop: "-12rem"}).duration(100).easing([0, 0, 1, 1]));
-            // load_t2.add(Tweene.get($("#loading-cover")).to({opacity: 0, display: 'none'}).duration(500).easing([0, 0, 1, 1]));
-            // load_t2.play();
-            // load_t1.pause();
+            clearInterval(load_cartoon1);
+            $("#loading-cover span").text("100％");
+            var load_t2 = Tweene.line();
+            load_t2.add(Tweene.get($("#loading-cover #load-ball div")).to({marginTop: "-12rem"}).duration(100).easing([0, 0, 1, 1]));
+            load_t2.add(Tweene.get($("#loading-cover")).to({opacity: 0, display: 'none'}).duration(500).easing([0, 0, 1, 1]));
+            load_t2.play();
+            load_t1.pause();
         })      
     </script>
 	<div data-role="page" id="pagenav">
@@ -1402,7 +1400,7 @@
 		<a href="#" data-rel="back">返回</a>
 	</div>
 	<div data-role="page" id="movie">
-	    <img src="./images/media/total.png" id="movie-total">
+	    <img src="./images/media/total.jpg" id="movie-total">
 		<!--<div class="movie-panel" data-background="./images/media/panel.png"></div>
 		<div class="movie-border" data-background="./images/media/border.png"></div>
 		<div></div>-->
