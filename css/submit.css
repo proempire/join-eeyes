@@ -1,3 +1,25 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*表单*/
 #submit #sub-content{
     position: relative;
@@ -20,7 +42,7 @@
 }
 #submit #sub-content a{
 	position: absolute;
-    top: 1rem; left: 1rem;
+    top: 1.5rem; left: 1.5rem;
     color: #00bca4 !important; 
     font-weight: lighter !important; 
     font-size: 1.2rem;
@@ -147,5 +169,4 @@ form .invalid {
 #submit #sub-content form .submitting {
 	background-color: grey;
 }
-
 

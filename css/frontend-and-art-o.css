@@ -1,21 +1,16 @@
-#frontend-and-art-o>.content-J {
+#frontend-and-art-o>.content-J{
     background: url(../images/QianDuan/bg@2x.jpg);
     background-size: cover;
 }
-
-#frontend-and-art-o .icon #frontend-plane {
+#frontend-and-art-o .icon #frontend-plane{
     width: 8em;
     position: absolute;
 }
-
-#frontend-and-art-o .icon #frontend-css,
-#frontend-and-art-o .icon #frontend-js,
-#frontend-and-art-o .icon #frontend-ai {
+#frontend-and-art-o .icon #frontend-css, #frontend-and-art-o .icon #frontend-js, #frontend-and-art-o .icon #frontend-ai{
     width: 2.8em;
     position: absolute;
 }
-
-#frontend-and-art-o .icon #frontend-ps {
+#frontend-and-art-o .icon #frontend-ps{
     width: 3.2em;
     position: absolute;
 }

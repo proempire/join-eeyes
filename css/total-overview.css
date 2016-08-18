@@ -1,38 +1,35 @@
-.main-wrapper-c {
+
+
+.main-wrapper-c{
     background-image: url('../images/star/bg1.jpg');
     background-size: cover;
 }
-
-.main-wrapper-first {
+.main-wrapper-first{
     background-image: url('../images/star/star-p1.jpg');
     background-size: cover;
 }
-
-#nav {
+#nav{
     background-size: cover;
 }
-
-.main-wrapper-first .content-J {
+.main-wrapper-first .content-J{
     height: 100%;
     position: absolute !important;
 }
-
-#planet {
+#planet{
     display: block;
     width: 80%;
     position: relative;
     left: 7%;
     bottom: 4%;
 }
-
-.animate {
+.animate{
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
     background: url(../images/section_home_fg.png) repeat;
     animation: 5s line linear infinite;
     -webkit-animation: 5s line linear infinite;
@@ -41,138 +38,130 @@
     -o-animation: 5s line linear infinite;
 }
 
-@-webkit-keyframes line {
-    0% {
+@-webkit-keyframes line{
+    0%{
         background-position: -900px 900px;
         opacity: 0;
     }
-    50% {
+    50%{
         background-position: 0 0;
         opacity: 0.7;
     }
-    100% {
+    100%{
+        background-position: 900px -900px;
+        opacity: 0;
+    }
+
+}
+@-moz-keyframes line{
+    0%{
+        background-position: -900px 900px;
+        opacity: 0;
+    }
+    50%{
+        background-position: 0 0;
+        opacity: 0.7;
+    }
+    100%{
+        background-position: 900px -900px;
+        opacity: 0;
+    }
+
+}
+@-ms-keyframes line{
+    0%{
+        background-position: -900px 900px;
+        opacity: 0;
+    }
+    50%{
+        background-position: 0 0;
+        opacity: 0.7;
+    }
+    100%{
+        background-position: 900px -900px;
+        opacity: 0;
+    }
+
+}
+@-o-keyframes line{
+    0%{
+        background-position: -900px 900px;
+        opacity: 0;
+    }
+    50%{
+        background-position: 0 0;
+        opacity: 0.7;
+    }
+    100%{
+        background-position: 900px -900px;
+        opacity: 0;
+    }
+
+}
+@keyframes line{
+    0%{
+        background-position: -900px 900px;
+        opacity: 0;
+    }
+    50%{
+        background-position: 0 0;
+        opacity: 0.7;
+    }
+    100%{
         background-position: 900px -900px;
         opacity: 0;
     }
 }
-
-@-moz-keyframes line {
-    0% {
-        background-position: -900px 900px;
-        opacity: 0;
-    }
-    50% {
-        background-position: 0 0;
-        opacity: 0.7;
-    }
-    100% {
-        background-position: 900px -900px;
-        opacity: 0;
-    }
-}
-
-@-ms-keyframes line {
-    0% {
-        background-position: -900px 900px;
-        opacity: 0;
-    }
-    50% {
-        background-position: 0 0;
-        opacity: 0.7;
-    }
-    100% {
-        background-position: 900px -900px;
-        opacity: 0;
-    }
-}
-
-@-o-keyframes line {
-    0% {
-        background-position: -900px 900px;
-        opacity: 0;
-    }
-    50% {
-        background-position: 0 0;
-        opacity: 0.7;
-    }
-    100% {
-        background-position: 900px -900px;
-        opacity: 0;
-    }
-}
-
-@keyframes line {
-    0% {
-        background-position: -900px 900px;
-        opacity: 0;
-    }
-    50% {
-        background-position: 0 0;
-        opacity: 0.7;
-    }
-    100% {
-        background-position: 900px -900px;
-        opacity: 0;
-    }
-}
-
-.star-container {
+.star-container{
     overflow: hidden;
 }
-
-.main-wrapper {
+.main-wrapper{
     position: relative;
-    background-image: url('../images/star/bg.jpg');
+    background-image: url('../images/star/bg.png');
     text-align: center;
 }
-
-.second {
+.second{
     text-align: center;
 }
-
-.second img {
+.second img{
     position: absolute;
     left: 0;
 }
-
-.sec-con {
+.sec-con{
     position: absolute;
     color: white;
     font-size: 15px;
     line-height: 30px;
 }
-
-.sec-con p {
+.sec-con p{
     text-align: center;
 }
-
-#sec-div2,
-#sec-div3,
-#sec-div5,
-#sec-div6,
-#sec-div {
+#sec-div2,#sec-div3,#sec-div5,#sec-div6,#sec-div{
     opacity: 0;
 }
+#ofour div.sec-con{
 
-#ofour div.sec-con {}
-
-#star-content-wrapper {
+}
+#star-content-wrapper{
     position: absolute;
     top: 0;
 }
-
-#star-content-wrapper div {
+#star-content-wrapper div{
     width: 100px;
     color: #fff;
     position: absolute;
 }
-
-#mutiangle {
+#mutiangle{
+    position: relative;
     text-align: center;
-    top: 50%;
 }
+#tech,#info,#man{
+    position: absolute;
+    top: 0;
+}
+#techp{
 
-
+}
 /*.orbit{
     perspective: 600px;
 }
@@ -197,3 +186,15 @@
 		transform: translate3d(180px,0px,180px);
 	}
 }*/
+
+
+
+
+
+
+
+
+
+
+
+
