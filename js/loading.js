@@ -105,7 +105,7 @@ load_cartoon1 = setInterval(function(){
 // 水上涨以及船波浪动效
 load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(3)")).to({left: "-15rem"}).loops(-1).yoyo(true).duration(1200).easing([0, 0, 1, 1]), '0');           
 load_t1.add(Tweene.get($("#loading-cover p")).to({zoom: "0.9"}).loops(-1).yoyo(true).duration(400).easing([0, 0, 1, 1]), '0');
-load_t1.add(Tweene.get($("#loading-cover #load-ball div")).to({marginTop: "-10rem"}).duration(200).easing([0, 0, 1, 1]), '0');
+load_t1.add(Tweene.get($("#loading-cover #load-ball div")).to({marginTop: "-10rem"}).duration(20000).easing([0, 0, 1, 1]), '0');
 load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(2)")).to({rotation: -10}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), '0');
 load_t1.play();
 // 全部加载完成后加载页消失
