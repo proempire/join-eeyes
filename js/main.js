@@ -6,11 +6,16 @@ $(document).ready(function(){
         calculateHeight: true,
         autoHeight: true,
         onSlideChangeEnd: function(swiper){
-            if (swiper.activeIndex == 2){
-                starline.restart();
+            if (swiper.activeIndex == 0){
+                sec.pause();
             }
             if (swiper.activeIndex == 1){
                 sec.restart();
+            }
+            if (swiper.activeIndex == 2){
+                starline.restart();
+                sec.pause();
+                four.pause();
             }
             if (swiper.activeIndex == 3){
                 four.restart();
@@ -19,70 +24,53 @@ $(document).ready(function(){
                 surround.restart();
                 surround1.restart();
                 surround2.restart();
+                four.pause();
             }
         }
     });
 
+    // 第二第四页动效
+    var cartoon24 = function(str, arr){
+        var TimeLine = Tweene.line();
+        TimeLine.add(Tweene.get($(str+" .sec-con p")).set({opacity: 0}))
+        var i = 0;
+        while(arr[i] != undefined){
+            if(i > 0){
+                TimeLine.add(Tweene.get($(str+" #sec-div"+arr[i-1])).to({opacity: 0}).duration(500).easing([0, 0, 1, 1]));
+            }
+            var maxlen = $(str+" #sec-div"+arr[i]+" p").size();
+            for(var j=1; j<=maxlen; j++){
+                TimeLine.add(fadeIn($(str+" #sec-div"+arr[i]+" p:nth-child("+j+")"), 800));
+            }
+            i++;
+        }
+        TimeLine.add(Tweene.get($(str+" .second")).to({left: "-=1rem"}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "0");
+        TimeLine.add(Tweene.get($(str+" .second")).to({top: "-=1rem"}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "200");
+        return TimeLine;
+    }
+    $(".second").css({left: 0.6 + "rem", top: 0.6 + "rem"});
+    $(".second .sec-img2").css({left: wwidth-1.1*wwidth + "rem", top: wheight-1.1*wwidth*1334/750 + "rem"});
+    // 第二页
+    var sec = Tweene.line();
+    sec.add(cartoon24("#otwo", [1, 2, 3]));
+    // 第四页
+    var four = Tweene.line();
+    four.add(cartoon24("#ofour", [4, 5, 6, 7]));
+
+
     
-            // $('#star-bg').width(cwidth).css({position: 'relative', top: 0});
+            // 第三页（未改动）
             $('#star-zodiac').width(cwidth*0.9).css({position: 'relative', bottom: function(index,value){
                 return $('#star-bg').height()-$('#star-zodiac').height()*0.0686
             }, 'z-index': 7});
             $('.main-wrapper').width(cwidth).height(3500*cwidth/750 + 'px').css({'background-size': cwidth + 'px'});
             $('.star-container').width(cwidth).height(cheight);
-            // $('.main-wrapper-c').width(cwidth).height(cheight);
-            // $('.main-wrapper-first').width(cwidth).height(cheight);
 
             // 动画
             var starline = Tweene.line();
             starline.add(Tweene.get($('.main-wrapper')).to({marginTop: -$('.main-wrapper').height() + cheight + 'px'}).duration(40000));
-            //starline.add(Tweene.get($('.main-wrapper')).to({marginTop: -3020 + 'px'}).duration(30000));
-            //-($('#star-zodiac').height() - cheight)
         
-            
-
-            // 文字动画部分
-            // console.log(cheight*(0.28+0.3673*0.5))
-            // $('.sec-img2').width(cwidth).height(cheight);
-            // $('.sec-img1').width(cwidth*0.7341).height(cheight*0.44).css({marginTop: cheight*0.248 + 'px', marginLeft: cwidth*0.1333 + 'px'});
-            // $('.sec-con').css({marginTop: cheight*(0.28+0.3673*0.5) - $('.sec-con').height()*0.5 + 'px'});
-            $('#sec-div1').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div1').width()*0.5 + 'px'});
-            $('#sec-div2').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div2').width()*0.5 + 'px'});
-            $('#sec-div3').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div3').width()*0.5 + 'px'});
-            $('#sec-div4').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div4').width()*0.5 + 'px'});
-            $('#sec-div5').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div5').width()*0.5 + 'px'});
-            $('#sec-div6').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div6').width()*0.5 + 'px'});
-            $('#sec-div7').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div7').width()*0.5 + 'px'});
-            // $('#sec-div').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div').width()*0.5 + 'px'});
-
-            // 第二页
-            var sec = Tweene.line();
-            var $secDiv1 = Tweene.get('#sec-div1');
-            var $secDiv2 = Tweene.get('#sec-div2');
-            //$secDiv2.set({opacity: 0});
-            var $secDiv3 = Tweene.get('#sec-div3');
-            sec.add($secDiv1.set({opacity: 1}).to({opacity: 0}).duration(3000),5000);
-            sec.add($secDiv2.set({opacity: 0}).to({opacity: 1}).duration(3000),8000);
-            sec.add(Tweene.get('#sec-div2').to({opacity: 0}).duration(3000),16000);
-            sec.add($secDiv3.set({opacity: 0}).to({opacity: 1}).duration(3000),19000);
-            //sec.add($secDiv3.set({opacity: 1}).to({opacity: 0}).duration(3000),27000);
-
-            // 第四页
-            var four = Tweene.line();
-            var $secDiv4 = Tweene.get('#sec-div4');
-            var $secDiv5 = Tweene.get('#sec-div5');
-            //$secDiv2.set({opacity: 0});
-            var $secDiv6 = Tweene.get('#sec-div6');
-            var $secDiv7 = Tweene.get('#sec-div7');
-            four.add($secDiv4.set({opacity: 1}).to({opacity: 0}).duration(3000),5000);
-            four.add($secDiv5.set({opacity: 0}).to({opacity: 1}).duration(3000),8000);
-            four.add(Tweene.get('#sec-div5').to({opacity: 0}).duration(3000),16000);
-            four.add($secDiv6.set({opacity: 0}).to({opacity: 1}).duration(3000),19000);
-            four.add(Tweene.get('#sec-div6').to({opacity: 0}).duration(3000),27000);
-            four.add($secDiv7.set({opacity: 0}).to({opacity: 1}).duration(3000),30000);
-            four.add(Tweene.get('#sec-div7').to({opacity: 0}).duration(3000),38000);
-
-            // 第五页
+            // 第五页（未改动）
             $('#mutiangle img').width(cwidth*0.5);
             $('#mutiangle').css({top: cheight*0.5 - $('#mutiangle').height()*0.5 + 'px'});
             //console.log($('#tech').width())
