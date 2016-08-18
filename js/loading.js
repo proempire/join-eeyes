@@ -124,8 +124,8 @@ $(window).load(function(){
     }, 50);
     // 加载次级页面的js文件
     // $("secondjs").attr("src", "./second.js");
-    // secondjs.src = "./second.js";
-    // $.getScript("./second.js", function(){
-    //     console.log("s");
-    // });
+    // secondjs.src = "./js/second.js";
+    $.getScript("second.js", function(){
+        console.log("s");
+    });
 });
