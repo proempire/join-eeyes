@@ -1,0 +1,108 @@
+/*分类部门样式*/
+#tech,#info,#man{ 
+    position: absolute;
+    top: 0;
+}
+
+/*简介页通用样式*/
+/*整体背景*/
+.FenYe{
+    height: 100%;
+}
+.content-J{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+/*标题*/
+.content-J .title img{
+    width: 12rem;
+    position: absolute;
+    top: 5rem; left: 50%;
+    -webkit-transform:translateX(-6rem);
+}
+/*简介词*/
+.content-J .intro{
+    text-align: center;
+    width: 90%;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: white;
+    font-weight: lighter !important; 
+}
+/*报名键与详情键方案一*/
+/*.content-J .more, .content-J .form{
+    width: 5.8rem;
+    height: 2rem; 
+
+    text-align: center;
+    font-size: 1.2rem;
+    color: white !important; 
+    font-weight: lighter !important;   
+    line-height: 1.85;
+    font-weight: lighter !important; 
+    
+    background-color: #2deca6;
+    border: none;
+    border-radius: 0.4rem;             
+    
+    position: absolute;
+    bottom: 5rem; left: 50%;         
+}
+.content-J .more{
+    -webkit-transform:translateX(-8rem); 
+}
+.content-J .form{
+    -webkit-transform:translateX(2rem); 
+}*/
+/*报名键详情键方案二*/
+.content-J .more, .content-J .form{
+    text-align: center;
+    padding: 0.4rem 0.6rem;
+    
+    font-weight: lighter !important;   
+    font-weight: lighter !important; 
+        
+    border: none;
+    border-radius: 0.4rem;             
+    
+    position: absolute;
+    left: 50%;
+    -webkit-transform:translateX(-2.5rem);          
+}
+.content-J .more{
+    bottom: 8.2rem; 
+    background-color: #2deca6;
+    color: white !important; 
+}
+.content-J .form{
+    bottom: 5rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white !important; 
+}
+/*返回键*/
+.content-J .back{
+    position: absolute;
+    top: 1.5rem; left: 1.5rem;
+    color: #2deca6 !important; 
+    font-weight: lighter !important; 
+    font-size: 1rem;
+}
+
+/*市场部*/
+#market-o>.content-J{
+    background: url(../images/ShiChang/bg@3x.jpg);
+    background-size: cover;
+}
+#market-o .icon img{
+    position: absolute;
+}
+#market-o .icon img:nth-child(1){
+    height: 10rem; 
+    left: 50%; right: 50%;   
+    -webkit-transform:translate(-5rem, -4rem); /* Safari 和 Chrome */ 
+}
+#market-o .icon img:nth-child(2){ height: 3.4rem; }
+#market-o .icon img:nth-child(3){ height: 3rem; }
+#market-o .icon img:nth-child(4){ height: 3rem; }
+#market-o .icon img:nth-child(5){ height: 2.8rem; }

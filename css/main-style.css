@@ -1,0 +1,211 @@
+/*整体样式*/
+*{
+    margin: 0;
+    padding: 0;
+    
+    list-style: none;  /*这个有用到吗？*/
+    text-decoration: none;
+    text-shadow: none;
+
+    box-sizing: border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+
+	font-family: 黑体;
+}
+html, body, #pagenav{
+	position: relative;
+	height: 100%;
+}
+/*总背景*/
+body{
+	background-image: url(../images/star/bg1.jpg);
+	background-size: cover;
+}
+#pagenav, #techp, #infop, #manp{
+	background-color: rgba(255, 255, 255, 0);
+}
+/*流星背景*/
+.animate{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: url(../images/section_home_fg.png);
+    background-size: cover;
+    animation: 5s line linear infinite;
+    -webkit-animation: 5s line linear infinite;
+    -moz-animation: 5s line linear infinite;
+    -ms-animation: 5s line linear infinite;
+    -o-animation: 5s line linear infinite;
+}
+@-webkit-keyframes line{
+    0%{
+        background-position: -900px 900px;
+        opacity: 0;
+    }
+    50%{
+        background-position: 0 0;
+        opacity: 0.7;
+    }
+    100%{
+        background-position: 900px -900px;
+        opacity: 0;
+    }
+
+}
+@-moz-keyframes line{
+    0%{
+        background-position: -900px 900px;
+        opacity: 0;
+    }
+    50%{
+        background-position: 0 0;
+        opacity: 0.7;
+    }
+    100%{
+        background-position: 900px -900px;
+        opacity: 0;
+    }
+
+}
+@-ms-keyframes line{
+    0%{
+        background-position: -900px 900px;
+        opacity: 0;
+    }
+    50%{
+        background-position: 0 0;
+        opacity: 0.7;
+    }
+    100%{
+        background-position: 900px -900px;
+        opacity: 0;
+    }
+
+}
+@-o-keyframes line{
+    0%{
+        background-position: -900px 900px;
+        opacity: 0;
+    }
+    50%{
+        background-position: 0 0;
+        opacity: 0.7;
+    }
+    100%{
+        background-position: 900px -900px;
+        opacity: 0;
+    }
+
+}
+@keyframes line{
+    0%{
+        background-position: -900px 900px;
+        opacity: 0;
+    }
+    50%{
+        background-position: 0 0;
+        opacity: 0.7;
+    }
+    100%{
+        background-position: 900px -900px;
+        opacity: 0;
+    }
+}
+/*swiper样式*/
+.swiper-container {
+	width: 100%;
+	height: 100%;
+}
+.swiper-slide, .sec-con, .content-J{  /*所有flex布局都加于此*/
+	/*flex布局（已兼容）*/
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	/*调整为竖排（已兼容）*/
+	-webkit-flex-direction: column;
+	-moz-flex-direction: column;
+	-ms-flex-direction: column;
+	-o-flex-direction: column;
+	flex-direction: column;
+	/*一行中内容排不下时正常换行*/
+	flex-wrap: wrap;
+	/*主轴居中（已兼容）*/
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	/*交叉轴居中（已兼容）*/
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+/*一级页面通用样式*/
+.main-wrapper-c{
+	width: 100%;
+	height: 100%;
+}
+/*第一页样式*/
+#firstPage p{
+	font-size: 1.2rem;
+	line-height: 2;
+	color: white;
+	opacity: 0;
+}
+/*第二第四页覆盖层*/
+.second{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+    overflow: hidden;
+}
+.second .sec-img1{
+	width: 21rem;
+	position: absolute;
+	left: 50%; top: 50%;
+	-webkit-transform:translate(-10.5rem, -12.8rem);
+}
+.second .sec-img2{
+	width: 110%;
+    position: absolute;
+}
+/*第二第四页文字*/
+.sec-con{	
+	width: 24rem;
+	height: 22rem;
+	position: absolute;
+	left: 50%; top: 50%;
+	-webkit-transform:translate(-12rem, -13rem);
+	
+	text-align: center;
+	color: white;
+	font-size: 1rem;
+    line-height: 1.5;
+}
+/*第三页样式（未改动）*/
+.star-container{ 
+    overflow: hidden;
+}
+.main-wrapper{
+    position: relative;
+    text-align: center;
+}
+#star-content-wrapper{ 
+    position: absolute;
+    top: 0;
+}
+#star-content-wrapper div{
+    width: 100px;
+    color: #fff;
+    position: absolute;
+}
+/*第五页样式（未改动）*/
+#mutiangle{ 
+    position: relative;
+    text-align: center;
+}
