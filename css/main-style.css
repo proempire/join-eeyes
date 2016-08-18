@@ -1,27 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*整体样式*/
 *{
     margin: 0;
@@ -46,7 +22,7 @@ body{
 	background-image: url(../images/star/bg1.jpg);
 	background-size: cover;
 }
-#pagenav, #techp, #infop, #manp{
+#pagenav{
 	background-color: rgba(255, 255, 255, 0);
 }
 /*流星背景*/
@@ -145,7 +121,7 @@ body{
 	width: 100%;
 	height: 100%;
 }
-.swiper-slide, .sec-con, .content-J{  /*所有flex布局都加于此*/
+.swiper-slide{
 	/*flex布局（已兼容）*/
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -174,62 +150,24 @@ body{
 	width: 100%;
 	height: 100%;
 }
+.sec-img1{
+	width: 20rem;
+	position: absolute;
+	left: 50%; top: 50%;
+	-webkit-transform:translate(-10rem, -12rem);
+}
+.sec-img2{
+	width: 100%;
+	position: absolute;
+}
 /*第一页样式*/
 #firstPage p{
-	font-size: 1.2rem;
-	line-height: 2;
+	font-size: 1.8rem;
+	line-height: 2.5;
 	color: white;
 	opacity: 0;
 }
-/*第二第四页覆盖层*/
-.second{
-	position: absolute;
-	width: 100%;
-	height: 100%;
-    overflow: hidden;
-}
-.second .sec-img1{
-	width: 21rem;
-	position: absolute;
-	left: 50%; top: 50%;
-	-webkit-transform:translate(-10.5rem, -12.8rem);
-}
-.second .sec-img2{
-	width: 110%;
-    position: absolute;
-}
-/*第二第四页文字*/
-.sec-con{	
-	width: 24rem;
-	height: 22rem;
-	position: absolute;
-	left: 50%; top: 50%;
-	-webkit-transform:translate(-12rem, -13rem);
-	
-	text-align: center;
-	color: white;
-	font-size: 1rem;
-    line-height: 1.5;
-}
-/*第三页样式（未改动）*/
-.star-container{ 
-    overflow: hidden;
-}
-.main-wrapper{
-    position: relative;
-    text-align: center;
-}
-#star-content-wrapper{ 
-    position: absolute;
-    top: 0;
-}
-#star-content-wrapper div{
-    width: 100px;
-    color: #fff;
-    position: absolute;
-}
-/*第五页样式（未改动）*/
-#mutiangle{ 
-    position: relative;
-    text-align: center;
-}
+/*第二页样式*/
+/*第三页样式*/
+/*第四页样式*/
+/*第五页样式*/

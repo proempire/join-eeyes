@@ -3,8 +3,6 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>e瞳网2016招新</title>
-	
 	<title>e瞳网2016招新</title>	
 	<!-- meta使用viewport以确保页面可自由缩放 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +20,6 @@
             require('gsap');
     </script>
 	<script src="dest/js/tweene.min.js"></script>
-	<script type="text/javascript" src="./js/jquery.lazyload.js"></script>
 	<!-- // <script type="text/javascript" src="./js/jquery.lazyload.js"></script> -->
 	<!-- 设置 -->
 	<script type="text/javascript">
@@ -34,320 +31,10 @@
 	
 	<!-- 引入加载页样式 -->
     <link rel="stylesheet" type="text/css" href="./css/loading.css">
-    
-    <!-- 引入 jQuery Mobile -->
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <!-- <script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script> -->
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> 
-    <!-- <link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.5.min.css"> -->
 
-    <!-- 引入swiper -->
-    <link rel="stylesheet" type="text/css" href="dest/css/swiper.min.css">
-    <script type="text/javascript" src="dest/js/swiper.min.js"></script>
     <!-- 引入页面自适应 -->
     <script type="text/javascript" src="./js/suit.js"></script>
 
-    <!-- 页面自适应等 -->
-    <script>
-        var fontSize;
-        if($(window).width() < 350){  //iphone5
-            fontSize = 12;
-            $('html').css({fontSize: '12px'});
-        }else{
-            if($(window).width() < 400){  //iphone6
-                fontSize = 14;
-                $('html').css({fontSize: '14px'});
-            }else{  
-                if($(window).width() < 600){  //iphone6plus
-                    fontSize = 16;
-                    $('html').css({fontSize: '16px'});
-                }else{  //ipad
-                    fontSize = 26;
-                    $('html').css({fontSize: '24px'});
-                }
-            }
-        }
-
-        // 获取中央位置 
-        var wwidth = $(window).width()/ fontSize * 0.5;
-        var wheight = $(window).height()/ fontSize * 0.5;
-
-        // 通用客户端宽高
-        var cwidth = $(window).width();
-        var cheight = $(window).height();                 
-    </script>
-    <script type="text/javascript" src="./js/CartoonFunction.js"></script>
-	
-	<script type="text/javascript">
-        $(document).ready(function(){
-
-        	$('#star-bg').width(cwidth).css({position: 'relative', top: 0});
-            $('#star-zodiac').width(cwidth*0.9).css({position: 'relative', bottom: function(index,value){
-            	return $('#star-bg').height()-$('#star-zodiac').height()*0.0686
-            }, 'z-index': 7});
-            $('.main-wrapper').width(cwidth).height(3500*cwidth/750 + 'px').css({'background-size': cwidth + 'px'});
-            $('.star-container').width(cwidth).height(cheight);
-            $('.main-wrapper-c').width(cwidth).height(cheight);
-            $('.main-wrapper-first').width(cwidth).height(cheight);
-
-        	// 动画
-            var starline = Tweene.line();
-            starline.add(Tweene.get($('.main-wrapper')).to({marginTop: -$('.main-wrapper').height() + cheight + 'px'}).duration(40000));
-            //starline.add(Tweene.get($('.main-wrapper')).to({marginTop: -3020 + 'px'}).duration(30000));
-            //-($('#star-zodiac').height() - cheight)
-       	
-       	    // build the swiper 
-            var swiper = new Swiper('.swiper-container',{
-            	direction: 'vertical',
-            	initialSlide: 0,
-            	calculateHeight: true,
-            	autoHeight: true,
-            	onSlideChangeEnd: function(swiper){
-            		if (swiper.activeIndex == 2){
-                        starline.restart();
-            		}
-                    if (swiper.activeIndex == 1){
-                        sec.restart();
-                    }
-                    if (swiper.activeIndex == 3){
-                        four.restart();
-                    }
-                    if (swiper.activeIndex == 4){
-                        surround.restart();
-                        surround1.restart();
-                        surround2.restart();
-                    }
-                    //if (swiper.activeIndex == 0){
-                        //demo.play();
-                    //}
-            	}
-            });
-
-            // 文字动画部分
-            console.log(cheight*(0.28+0.3673*0.5))
-            $('.sec-img2').width(cwidth).height(cheight);
-            $('.sec-img1').width(cwidth*0.7341).height(cheight*0.44).css({marginTop: cheight*0.248 + 'px', marginLeft: cwidth*0.1333 + 'px'});
-            $('.sec-con').css({marginTop: cheight*(0.28+0.3673*0.5) - $('.sec-con').height()*0.5 + 'px'});
-            $('#sec-div1').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div1').width()*0.5 + 'px'});
-            $('#sec-div2').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div2').width()*0.5 + 'px'});
-            $('#sec-div3').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div3').width()*0.5 + 'px'});
-            $('#sec-div4').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div4').width()*0.5 + 'px'});
-            $('#sec-div5').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div5').width()*0.5 + 'px'});
-            $('#sec-div6').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div6').width()*0.5 + 'px'});
-            $('#sec-div7').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div7').width()*0.5 + 'px'});
-            $('#sec-div').css({marginLeft: cwidth*0.1333 + $('.sec-img1').width()*0.5 - $('#sec-div').width()*0.5 + 'px'});
-
-            // 第二页
-            var sec = Tweene.line();
-            var $secDiv1 = Tweene.get('#sec-div1');
-            var $secDiv2 = Tweene.get('#sec-div2');
-            //$secDiv2.set({opacity: 0});
-            var $secDiv3 = Tweene.get('#sec-div3');
-            sec.add($secDiv1.set({opacity: 1}).to({opacity: 0}).duration(3000),5000);
-            sec.add($secDiv2.set({opacity: 0}).to({opacity: 1}).duration(3000),8000);
-            sec.add(Tweene.get('#sec-div2').to({opacity: 0}).duration(3000),16000);
-            sec.add($secDiv3.set({opacity: 0}).to({opacity: 1}).duration(3000),19000);
-            //sec.add($secDiv3.set({opacity: 1}).to({opacity: 0}).duration(3000),27000);
-
-            // 第四页
-            var four = Tweene.line();
-            var $secDiv4 = Tweene.get('#sec-div4');
-            var $secDiv5 = Tweene.get('#sec-div5');
-            //$secDiv2.set({opacity: 0});
-            var $secDiv6 = Tweene.get('#sec-div6');
-            var $secDiv7 = Tweene.get('#sec-div7');
-            four.add($secDiv4.set({opacity: 1}).to({opacity: 0}).duration(3000),5000);
-            four.add($secDiv5.set({opacity: 0}).to({opacity: 1}).duration(3000),8000);
-            four.add(Tweene.get('#sec-div5').to({opacity: 0}).duration(3000),16000);
-            four.add($secDiv6.set({opacity: 0}).to({opacity: 1}).duration(3000),19000);
-            four.add(Tweene.get('#sec-div6').to({opacity: 0}).duration(3000),27000);
-            four.add($secDiv7.set({opacity: 0}).to({opacity: 1}).duration(3000),30000);
-            four.add(Tweene.get('#sec-div7').to({opacity: 0}).duration(3000),38000);
-
-            // 第五页
-            $('#mutiangle img').width(cwidth*0.5);
-            $('#mutiangle').css({top: cheight*0.5 - $('#mutiangle').height()*0.5 + 'px'});
-            //console.log($('#tech').width())
-            
-            $('.bigplanet').width(cwidth*0.2);
-            $('#tech').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('#tech').height()*0.5 + 'px' })
-            $('#total-overview').on('swipe',function(){
-                $.mobile.changePage("#submit", {transition: "slidedown"}); 
-            });
-
-            var surround = Tweene.line();
-            var record = 0,
-                reverse = true,
-                xstd = cwidth*0.5 - $('.bigplanet').width()*0.5,
-                ystd = cheight*0.5 - $('#tech').height()*0.5,
-                x = 0,
-                y = -160;
-            //console.log(xstd,ystd)
-            while (record < 2){
-                if (reverse){
-                    y += 1;
-                    x = Math.sqrt(25600-y*y);
-                }else{
-                    y -= 1;
-                    x = -Math.sqrt(25600-y*y);
-                }
-                surround.add(Tweene.get($('#tech')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
-                //console.log(x,y)
-                if ( x == 0 ){
-                    reverse = !reverse;
-                    record++;
-                }
-            }
-            $('#info').css({top: ystd + 80 + 'px', left: xstd + 138});
-            var surround1 = Tweene.line();
-            var record = 0,
-                reverse = true,
-                x = 138,
-                y = 80;
-            while (record < 2 || y != 80){
-                if (reverse){
-                    y += 1;
-                    x = Math.sqrt(25600-y*y);
-                }else{
-                    y -= 1;
-                    x = -Math.sqrt(25600-y*y);
-                }
-                surround1.add(Tweene.get($('#info')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
-                //console.log(x,y)
-                if ( x == 0 ){
-                    reverse = !reverse;
-                    record++;
-                }
-            }
-            $('#man').css({top: ystd + 80 + 'px', left: xstd - 138});
-            var surround2 = Tweene.line();
-            var record = 0,
-                reverse = false,
-                x = -138,
-                y = 80;
-            while (record < 2 || y != 80){
-                if (reverse){
-                    y += 1;
-                    x = Math.sqrt(25600-y*y);
-                }else{
-                    y -= 1;
-                    x = -Math.sqrt(25600-y*y);
-                }
-                surround2.add(Tweene.get($('#man')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
-                //console.log(x,y)
-                if ( x == 0 ){
-                    reverse = !reverse;
-                    record++;
-                }
-            }
-            //$('#info')
-            //surround.play();
-            // lazyload
-            //$('div[data-background]').each(function(){
-            	//$(this).lazyload({
-            		//effect: fadeIn,
-            		//container: $(this).parents().filter('.page');
-            	//});
-            //});
-            
-            /*var p1_1 = Tweene.get($('.part1 img:nth-child(1)'));
-            p1_1.set({left: wwidth*fontSize, top: wheight*fontSize});
-
-            var tmp1 = Tweene.get($('.part1 img:nth-child(1)'));
-            tmp1.to({left: '600px', opacity: 0})
-              .easing([1,-0.04,1,-0.17])
-              .duration(1000);
-            var tmp2 = Tweene.get($('.part1 img:nth-child(8)'));
-            tmp2.to({left: '600px', top: '300px', opacity: 0})
-              .easing([1,-0.04,1,-0.17])
-              .duration(1000);
-            var tmp3 = Tweene.get($('.part1 img:nth-child(9)'));
-            tmp3.to({left: '600px', top: '500px', opacity: 0})
-              .easing([1,-0.04,1,-0.17])
-              .duration(1000);
-            var tmp4 = Tweene.get($('.part1 img:nth-child(4)'));
-            tmp4.to({left: '600px', top: '250px', opacity: 0})
-              .easing([1,-0.04,1,-0.17])
-              .duration(1000);
-            var tmp5 = Tweene.get($('.part1 img:nth-child(5)'));
-            tmp5.to({left: '600px', top: '550px', opacity: 0})
-              .easing([1,-0.04,1,-0.17])
-              .duration(1000);
-            var mt = Tweene.line();
-            mt.add(tmp1,0).add(tmp2,0).add(tmp3,0).add(tmp4,0).add(tmp5,0).play();*/
-        })        
-    </script>
-    
-	<style type="text/css">
-        *{
-        	margin: 0;
-        	padding: 0;
-        	text-decoration: none;
-        	list-style: none;
-        	font-family: 黑体;
-        	box-sizing: border-box;
-        	-moz-box-sizing:border-box; /* Firefox */
-			-webkit-box-sizing:border-box; /* Safari */
-            text-shadow: none;
-        }
-	    html, body, div#pagenav {
-	        position: relative;
-	        height: 100%;
-	    }
-	    .swiper-container {
-	        width: 100%;
-	        height: 100%;
-	    }
-	    .swiper-slide{
-	        /*这个布局默认以中央为中心布局*/
-	        /*flex布局（已兼容）*/
-		    display: -webkit-box;
-		    display: -ms-flexbox;
-		    display: -webkit-flex;
-		    display: flex;
-		    /*调整为竖排（已兼容）*/
-		    -webkit-flex-direction: column;
-			-moz-flex-direction: column;
-			-ms-flex-direction: column;
-			-o-flex-direction: column;
-			flex-direction: column;
-		    /*一行中内容排不下时正常换行*/
-		    flex-wrap: wrap;
-		    /*主轴居中（已兼容）*/
-		    -ms-flex-pack: center;
-		    -webkit-justify-content: center;
-		    justify-content: center;
-		    /*交叉轴居中（已兼容）*/
-		    -webkit-box-align: center;
-		    -ms-flex-align: center;
-		    -webkit-align-items: center;
-		    align-items: center;
-	    }        
-	</style>
-	
-	<!-- 引入简介页样式 -->
-	<link rel="stylesheet" type="text/css" href="./css/total-style-contentJ.css">
-	<link rel="stylesheet" type="text/css" href="./css/market-o.css">
-	<link rel="stylesheet" type="text/css" href="./css/publicrelation-o.css">
-	<link rel="stylesheet" type="text/css" href="./css/newmedia-o.css">
-	<link rel="stylesheet" type="text/css" href="./css/news-o.css">
-	<link rel="stylesheet" type="text/css" href="./css/product-o.css">	
-	<link rel="stylesheet" type="text/css" href="./css/frontend-and-art-o.css">	
-	<link rel="stylesheet" type="text/css" href="./css/backapp-o.css">
-	<link rel="stylesheet" type="text/css" href="./css/backend-o.css">
-	<link rel="stylesheet" type="text/css" href="./css/movie-o.css">
-	
-	<!-- 引入详情页样式 -->
-	<link rel="stylesheet" type="text/css" href="./css/total-overview.css">
-	<link rel="stylesheet" type="text/css" href="./css/planetBoom.css">
-	<link rel="stylesheet" type="text/css" href="./css/newmedia.css">
-	<link rel="stylesheet" type="text/css" href="./css/movie.css">
-	
-	<!-- 引入报名页样式及工具 -->
-	<link rel="stylesheet" type="text/css" href="./css/submit.css">
-	<!-- 引入mobiscroll(报名页生日选择器) -->
-	<script src="./dest/js/mobiscroll-2.13.2.full.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="./dest/css/mobiscroll-2.13.2.full.min.css">
 </head>
 
 <body>
@@ -362,34 +49,6 @@
         </div>
         <p>我们精心的作品<br>值得你少量的等待</p>
     </div>
-    <script type="text/javascript">
-        var load_t1 = Tweene.line(); 
-        var load_cartoon1;
-        $(document).ready(function(){
-            var load_per = 0;
-            load_cartoon1 = setInterval(function(){
-                load_per++;
-                if(load_per >= 99){
-                    clearInterval(load_cartoon1);
-                }
-                $("#loading-cover #load-ball span").text(load_per + "％");
-            }, 200); 
-            load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(3)")).to({left: "-15rem"}).loops(-1).yoyo(true).duration(1200).easing([0, 0, 1, 1]), '0');           
-            load_t1.add(Tweene.get($("#loading-cover p")).to({zoom: "0.9"}).loops(-1).yoyo(true).duration(200).easing([0, 0, 1, 1]), '0');
-            load_t1.add(Tweene.get($("#loading-cover #load-ball div")).to({marginTop: "-10rem"}).duration(20000).easing([0, 0, 1, 1]), '0');
-            load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(2)")).to({rotation: -10}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), '0');
-            load_t1.play();
-        });  
-        $(window).load(function(){
-            clearInterval(load_cartoon1);
-            $("#loading-cover span").text("100％");
-            var load_t2 = Tweene.line();
-            load_t2.add(Tweene.get($("#loading-cover #load-ball div")).to({marginTop: "-12rem"}).duration(100).easing([0, 0, 1, 1]));
-            load_t2.add(Tweene.get($("#loading-cover")).to({opacity: 0, display: 'none'}).duration(500).easing([0, 0, 1, 1]));
-            load_t2.play();
-            load_t1.pause();
-        })      
-    </script>
     <!-- 引入通用参数、动画，加载页与第一页动效 -->
     <script type="text/javascript" src="./js/loading.js"></script>
 
@@ -414,46 +73,7 @@
 	<div data-role="page" id="pagenav">
 		<div class="swiper-container">
 			<div class="swiper-wrapper">
-
 			    <!-- 第一页 -->
-				<div class="swiper-slide" id="nav">
-
-					<div class="main-wrapper-first">
-						<!--<div class="part1">
-						<img src="./images/ember1/p1.png" style="left: 0px; top: 0px">
-						<img src="./images/ember1/p2.png" style="left: 0px; top: 0px">
-						<img src="./images/ember1/p3.png" style="left: 0px; top: 0px">
-						<img src="./images/ember1/p4.png" style="left: 140px; top: 385px">
-						<img src="./images/ember1/p5.png" style="left: 166px; top: 384px">
-						<img src="./images/ember1/p6.png" style="left: 0px; top: 0px">
-						<img src="./images/ember1/p7.png" style="left: 270px; top: 373px">
-						<img src="./images/ember1/p8.png" style="left: 217px; top: 437px">
-						<img src="./images/ember1/p9.png" style="left: 297px; top: 429px">
-						</div>-->
-						<div class="part2"></div>
-						<div class="part3"></div>
-						<div class="part4"></div>
-						<div class="part5"></div>
-                        <div class="content-J"><img src="./images/star/planet.png" id="planet"></div>
-                        <div class="sec-con" id="sec-div">
-                            <p>胜则举杯相庆</p>
-                            <p>败则奋勇相救</p>
-                            <p></p>
-                            <p>e瞳网</p>
-                            <p>一直等待你</p>
-                            <p>和我们一起</p>
-                            <p>改变世界</p>
-                        </div>
-					</div>
-					<div class="animate"></div>
-                    <script type="text/javascript">
-                        $(document).ready(function(){
-                            var demo = Tweene.line();
-                            demo.add(Tweene.get($('#planet')).to({opacity: 0}).duration(3000),3000);
-                            demo.add(Tweene.get($('#sec-div')).to({opacity: 1}).duration(3000),6000);
-                            demo.play();
-                        });
-                    </script>
 				<div class="swiper-slide" id="firstPage">
                     <p>胜则举杯相庆</p>
                     <p>败则奋勇相救</p>
@@ -465,9 +85,8 @@
 
 				<!-- 第二页 -->
 				<div class="swiper-slide">
-				<div class="swiper-slide" id="otwo">
 					<div class="main-wrapper-c">
-                        <div class="second">
+                        <!-- <div class="second"> -->
                             <img src="./images/first/scan.png" class="sec-img1">
                             <img src="./images/first/border.png" class="sec-img2">
                             <div class="sec-con" id="sec-div1">
@@ -490,28 +109,7 @@
                                 <p>我已在，你快来。</p>
                                 <p>我已在，你快来！</p>
                             </div>
-                        </div>               
-                        </div>
-                        <div class="sec-con" id="sec-div1">
-                            <p>四年后，你离开这里</p>
-                            <p>竟没有回忆</p>
-                            <p>开始回想四年前</p>
-                            <p>你见过的每一个社团</p>
-                            <p>设想参与它们其中一个</p>
-                            <p>会是什么样</p>
-                            <p>e瞳就是其中的一个</p>
-                        </div>
-                        <div class="sec-con" id="sec-div2">
-                            <p>就当这是一次时空旅行</p>
-                            <p>你从四年后来到现在</p>
-                        	<p>看看你当初错过了什么</p>
-                            <p>所以，跟我上车</p>
-                            <p>来证明这次选择是正确的。</p>
-                        </div>
-                        <div class="sec-con" id="sec-div3">
-                            <p>我已在，你快来。</p>
-                            <p>我已在，你快来！</p>
-                        </div>
+                        <!-- </div>                -->
                     </div>
                     <script type="text/javascript">
                         $(document).ready(function(){
@@ -586,32 +184,6 @@
                                 <p>互联网必然改变我们的生活</p>
                                 <p>而我们，终将改变世界</p>
                             </div>
-                        </div>
-                        <div class="sec-con" id="sec-div4">
-                            <p>无论是ｅ瞳内部还是外部</p>
-                            <p>对ｅ瞳网最深刻的印象都是</p>
-                            <p>家一般的归属感与凝聚力</p>
-                        </div>
-                        <div class="sec-con" id="sec-div5">
-                            <p>“胜则举杯相庆，败则奋勇相救”</p>
-                            <p>已经不只是一句口号了</p>
-                            <p>这种对ｅ瞳文化的认同</p>
-                            <p>在每一次各部门齐心协力</p>
-                            <p>为同一个目标奋斗的经历中</p>
-                            <p>不断加深</p>
-                        </div>
-                        <div class="sec-con" id="sec-div6">
-                            <p>搭建网站、网络直播、为学子发声</p>
-                            <p>每一个挑战都让我们走得更近</p>
-                            <p>冬至饺子宴、聚餐、春游、素拓</p>
-                            <p>每一次欢乐也给我们的青春</p>
-                            <p>留下了众多回忆</p>
-                        </div>
-                        <div class="sec-con" id="sec-div7">
-                            <p>正是因为有这样一群人的存在</p>
-                            <p>我们才更加相信</p>
-                            <p>互联网必然改变我们的生活</p>
-                            <p>而我们，终将改变世界</p>
                         </div>               
                     </div>
 				</div>
@@ -670,12 +242,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<!-- 引入次级页面样式 -->
-	<link rel="stylesheet" type="text/css" href="./css/second-style.css">
-	<!-- 引入次级页面动效 -->
-	<script type="text/javascript" src="./js/second.js"></script>
-	<!-- 次级页面 -->
     <div data-role="page" id="techp">
         <div class="main-wrapper-c">
             <a href="#market-o"><img src="./images/overview/market.png"></a>
@@ -700,14 +266,11 @@
             <a href="#" data-rel="back" class="back">返回</a>
         </div>
     </div>
-
-
-
-
 	
 
 	
 	<!-- 引入简介页样式 -->
+	<link rel="stylesheet" type="text/css" href="./css/total-style-contentJ.css">
 	<link rel="stylesheet" type="text/css" href="./css/market-o.css">
 	<link rel="stylesheet" type="text/css" href="./css/publicrelation-o.css">
 	<link rel="stylesheet" type="text/css" href="./css/newmedia-o.css">
@@ -719,6 +282,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/movie-o.css">
 	
 	<!-- 引入详情页样式 -->
+	<link rel="stylesheet" type="text/css" href="./css/total-overview.css">
 	<link rel="stylesheet" type="text/css" href="./css/newmedia.css">
 	<link rel="stylesheet" type="text/css" href="./css/movie.css">
 	
@@ -726,8 +290,6 @@
 	<link rel="stylesheet" type="text/css" href="./css/submit.css">
 	<!-- 引入mobiscroll(报名页生日选择器) -->
     <link rel="stylesheet" type="text/css" href="./dest/css/mobiscroll-2.13.2.full.min.css">
-
-
 
 
 
@@ -1433,7 +995,6 @@
             <!-- 动画icon -->
             <div class="icon">
                 <img src="" remark="./images/web/bs@3x.png" id="backend-o-ballshine">
-                <span id="backend-o-bg"><img src="" remark="./images/web/bg@3x.png"></span>
                 <span id="backend-o-bg"><img src="" remark="./images/web/bg@3x.jpg"></span>
                 <img src="" remark="./images/web/b@3x.png" id="backend-o-ball">
                 <img src="" remark="./images/web/ufo@3x.png" id="backend-o-ufo">
@@ -2405,5 +1966,283 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -83,11 +83,8 @@ var endJfuc = function(str){
 var first_t1 = Tweene.line();  
 $(document).ready(function(){
     for(var first_i = 1; first_i < 7; first_i++){
-        if(first_i == 1){
-            first_t1.add(fadeIn($("#firstPage p:nth-child("+first_i+")"), 1000), "1000");
-        }else{
-            first_t1.add(fadeIn($("#firstPage p:nth-child("+first_i+")"), 1000));
-        }       
+        first_t1.add(fadeIn($("#firstPage p:nth-child("+first_i+")"), 1000));
+        console.log("1");
     }
 });
 // 加载页动效
@@ -105,13 +102,13 @@ load_cartoon1 = setInterval(function(){
 // 水上涨以及船波浪动效
 load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(3)")).to({left: "-15rem"}).loops(-1).yoyo(true).duration(1200).easing([0, 0, 1, 1]), '0');           
 load_t1.add(Tweene.get($("#loading-cover p")).to({zoom: "0.9"}).loops(-1).yoyo(true).duration(400).easing([0, 0, 1, 1]), '0');
-load_t1.add(Tweene.get($("#loading-cover #load-ball div")).to({marginTop: "-10rem"}).duration(200).easing([0, 0, 1, 1]), '0');
+load_t1.add(Tweene.get($("#loading-cover #load-ball div")).to({marginTop: "-10rem"}).duration(20000).easing([0, 0, 1, 1]), '0');
 load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(2)")).to({rotation: -10}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), '0');
 load_t1.play();
 // 全部加载完成后加载页消失
 $(window).load(function(){
     var load_cartoon2 = setInterval(function(){
-        if(parseInt($("#loading-cover #load-ball div").css("marginTop")) <= -10*fontSize || $("#loading-cover span").text() == "99％"){      
+        if(parseInt($("#loading-cover #load-ball div").css("marginTop")) <= -10*fontSize){      
             var load_t2 = Tweene.line();
             load_t2.add(Tweene.get($("#loading-cover #load-ball div")).to({marginTop: "-12rem"}).duration(100).easing([0, 0, 1, 1]));
             load_t2.add(fadeOut($("#loading-cover"),500));

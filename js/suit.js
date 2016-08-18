@@ -12,7 +12,7 @@ if($(window).width() < 350){  //iphone5
             fontSize = 16;
             $('html').css({fontSize: '16px'});
         }else{  //ipad
-            fontSize = 24;
+            fontSize = 26;
             $('html').css({fontSize: '24px'});
         }
     }
