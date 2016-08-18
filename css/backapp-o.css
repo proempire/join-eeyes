@@ -1,0 +1,9 @@
+#backapp-o>.content-J {
+    background: url(../images/App/bg@3x.jpg);
+    background-size: cover;
+}
+
+#backapp-o .icon img {
+    height: 15em;
+    position: absolute;
+}

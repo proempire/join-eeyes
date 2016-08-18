@@ -1,0 +1,151 @@
+/*表单*/
+#submit #sub-content{
+    position: relative;
+    /*flex布局（已兼容）*/
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    /*主轴居中（已兼容）*/
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    /*交叉轴居中（已兼容）*/
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    /*背景色*/
+    background-color: #fff;
+}
+#submit #sub-content a{
+	position: absolute;
+    top: 1rem; left: 1rem;
+    color: #00bca4 !important; 
+    font-weight: lighter !important; 
+    font-size: 1.2rem;
+}
+#submit #sub-content form {
+	max-width: 25rem;
+}
+#submit #sub-content form .title, #submit #sub-content form label, #submit #sub-content form input, #submit #sub-content form textarea{
+	font-family: 黑体;
+	font-weight: lighter;
+	text-shadow: none;
+}
+#submit #sub-content form input, #submit #sub-content form textarea{
+	border: 1px solid #bdbdbd;
+	background-color: #f9f9f9;
+	border-radius: 5px;
+	box-shadow: none;
+	outline: none;
+}
+#submit #sub-content form .title {
+	color: #00bca4;
+	font-size: 1.8rem;
+	text-align: center;
+	margin: 2rem 0 1rem 0;	
+}
+#submit #sub-content form table {
+	width: 100%;
+	padding: 0 0.6rem;
+}
+#submit #sub-content form table div{
+	margin: 0;
+	border: none;
+}
+#submit #sub-content form table td{
+	padding: 0.2rem 0.5rem;
+}
+#submit #sub-content form table label{
+	font-size: 1rem;
+	color: #bdbdbd;
+	margin: 0.3rem 0.2rem;
+}
+#submit #sub-content form table input{		
+	font-size: 1.2rem;
+	height: 1.6rem;	
+	padding: 0.5rem;
+}
+#submit #sub-content form table #sub-gender{
+	margin: 0;
+	border: 1px solid #bdbdbd;
+	border-radius: 5px;
+	height: 2.67rem;
+	overflow: hidden;
+}
+#submit #sub-content form table #sub-gender label{
+	width: 50%;
+	background-color: #f9f9f9;
+	margin: 0;
+	font-size: 1.2rem;
+	text-align: center;
+	height: 2.6rem;
+	line-height: 2;
+}
+#submit #sub-content form table #sub-gender input[type="radio"], #submit #sub-content form table #sub-gender .ui-radio{
+	display: none !important;
+}
+#submit #sub-content form table #sub-gender label:nth-child(1){ 
+	float: left;
+}
+#submit #sub-content form table #sub-gender label:nth-child(2){ 
+	float: right;
+}
+#submit #sub-content form table #sub-gender .checked{
+	background-color: #e9e9e7;
+	color: #000;
+}
+#submit #sub-content form table textarea{
+	overflow: auto;
+	resize: none;
+	font-size: 1.2rem;
+	max-height: 7rem;
+	min-height: 7rem;
+	margin: 0;
+}
+#submit #sub-content form table #sub-tip{
+	float: right;
+	color: #bdbdbd;
+	font-size: 1rem;
+	margin-top: -1.4rem;
+	margin-right: 0.4rem; 
+}
+#submit #sub-content form>div{
+	width: 10rem;
+	height:3rem;
+	background-color: #00bca4;
+	border: none;
+	text-shadow: none;
+	color: white;
+	font-size: 1.4rem;
+	font-family: 黑体;
+	font-weight: lighter;
+	margin: 1rem auto;
+	line-height: 0.6;
+}
+/*生日选择器*/
+.dwv{
+	border-bottom: 3px solid #00bca4 !important;
+	color: #00bca4 !important;
+}
+.dwcc .dwwc .dwfl .dwwol{
+	border-top: 2px solid #00bca4 !important;
+	border-bottom: 2px solid #00bca4 !important;
+}
+.dwbc .dwb-e{
+	color: #00bca4 !important;
+}
+/*下拉*/
+#submit #sub-content form table #sub-college-button, #submit #sub-content form table #sub-first-button, #submit #sub-content form table #sub-second-button, #submit #sub-content form table #sub-home-button{
+	display: none;
+}
+/*操作提示*/
+form .invalid {
+	border: 1px solid red !important;
+}
+#submit #sub-content form .submitting {
+	background-color: grey;
+}
+
+
