@@ -1,0 +1,51 @@
+.star-container{ /*第三页*/
+    overflow: hidden;
+}
+.main-wrapper{ /*第三页*/
+    position: relative;
+    /*background-image: url('../images/star/bg.jpg');*/
+    text-align: center;
+}
+
+/*.sec-con{ 
+    position: absolute;
+    color: white;
+    font-size: 15px;
+    line-height: 30px;
+}
+.sec-con p{
+    text-align: center;
+}*/
+/*#sec-div2,#sec-div3,#sec-div5,#sec-div6,#sec-div{
+    opacity: 0;
+}*/
+#star-content-wrapper{  /*第三页*/
+    position: absolute;
+    top: 0;
+}
+#star-content-wrapper div{
+    width: 100px;
+    color: #fff;
+    position: absolute;
+}
+#mutiangle{ /*第五页*/
+    position: relative;
+    text-align: center;
+}
+#tech,#info,#man{ /*第五页*/
+    position: absolute;
+    top: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
