@@ -1,49 +1,10 @@
+/*小星球样式*/
+#tech,#info,#man{ 
+    position: absolute;
+    top: 0;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*简介页通用样式*/
 .FenYe{
     height: 100%;
 }
@@ -51,30 +12,6 @@
     width: 100%;
     height: 100%;
     position: relative;
-    /*flex布局（已兼容）*/
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    /*调整为竖排（已兼容）*/
-    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
-    -ms-flex-direction: column;
-    -o-flex-direction: column;
-    flex-direction: column;
-    /*一行中内容排不下时正常换行*/
-    flex-wrap: wrap;
-    /*主轴居中（已兼容）*/
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    /*交叉轴居中（已兼容）*/
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    /*设置页内字体*/
-    font-family: 黑体; 
 }
 .content-J .title img{
     width: 12rem;
@@ -152,3 +89,5 @@
     font-weight: lighter !important; 
     font-size: 1rem;
 }
+
+/*市场部*/
