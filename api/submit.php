@@ -52,10 +52,10 @@ file_put_contents(IP_FILE, '<?php return ' . var_export($ip, true) . ';');
 // 输入过滤函数
 function I($name, $type, $filter)
 {
-    if (!isset($_POST[$name])) {
+    if (!isset($_REQUEST[$name])) {
         exit('-3');
     }
-    $data = $_POST[$name];
+    $data = $_REQUEST[$name];
     if (!is_string($data)) {
         exit('-3');
     }
