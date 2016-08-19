@@ -1,8 +1,4 @@
 <?php
-// 只允许POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    exit;
-}
 // 读取配置文件
 require 'config.php';
 // 获取ip，ip不合法返回false
@@ -11,7 +7,9 @@ require 'config.php';
 function get_client_ip($advance = false)
 {
     if ($advance) {
-        if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        if (isset($_SERVER['HTTP_X_REAL_IP'])) {
+            $ip = $_SERVER['HTTP_X_REAL_IP'];
+        } elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $arr = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
             $pos = array_search('unknown', $arr);
             if (false !== $pos) {
@@ -30,7 +28,7 @@ function get_client_ip($advance = false)
 }
 
 // 获取ip
-if (!$client_ip = get_client_ip()) {
+if (!$client_ip = get_client_ip(true)) {
     exit('-1');
 }
 // 读取防刷记录文件
@@ -131,9 +129,9 @@ if ($first === $second) {
 }
 $info = I('info', 's', '/^.{0,255}$/');
 // value->名称转换
-$college = COLLEGE[$college];
-$first = GROUP[$first];
-$second = GROUP[$second];
+$college = $COLLEGE[$college];
+$first = $GROUP[$first];
+$second = $GROUP[$second];
 // 时间：YYYY-mm-dd HH:ii:ss
 $time = date('Y-m-d H:i:s');
 
@@ -141,8 +139,7 @@ $time = date('Y-m-d H:i:s');
 ob_start();
 $f = fopen('php://output', 'w');
 // 如果不存在，新建，并写入表头
-if (!file_exists(DATA_FILE) && false === fputcsv($f, TABLE_HEADER)
-) {
+if (!file_exists(DATA_FILE) && false === fputcsv($f, $TABLE_HEADER)) {
     fclose($f);
     ob_end_clean();
     exit('-4');
@@ -157,21 +154,21 @@ if (false === fputcsv($f, array($time, $client_ip, $name, $gender, $date, $home,
 file_put_contents(DATA_FILE, iconv('utf-8', 'GBK//IGNORE', ob_get_clean()), FILE_APPEND);
 fclose($f);
 // 未设置MAIL_SERVER即为不发送邮件
-if (defined('MAIL_SERVER')) {
-    $maskedname = mb_substr(trim($name), 0, 1) . '同学';
+if (isset($MAIL_SERVER)) {
+    $maskedname = trim($name) . ' 同学';
     // 加载PHPMailer库
     require 'PHPMailer/class.phpmailer.php';
     require 'PHPMailer/class.smtp.php';
     $phpmailer = new PHPMailer;
     $phpmailer->CharSet = "utf-8";
     // 邮件服务器设置
-    $phpmailer->Host = MAIL_SERVER['Host'];
-    $phpmailer->Port = MAIL_SERVER['Port'];
+    $phpmailer->Host = $MAIL_SERVER['Host'];
+    $phpmailer->Port = $MAIL_SERVER['Port'];
     $phpmailer->isSMTP();
     $phpmailer->SMTPSecure = 'ssl';
     $phpmailer->SMTPAuth = true;
-    $phpmailer->Username = MAIL_SERVER['Username'];
-    $phpmailer->Password = MAIL_SERVER['Password'];
+    $phpmailer->Username = $MAIL_SERVER['Username'];
+    $phpmailer->Password = $MAIL_SERVER['Password'];
     // 邮件设置
     $phpmailer->setFrom($phpmailer->Username, '西安交通大学e瞳网');
     $phpmailer->addAddress($mail, $maskedname);
