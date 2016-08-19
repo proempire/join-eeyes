@@ -151,11 +151,13 @@ body{
 	height: 100%;
 }
 /*第一页样式*/
-#firstPage p{
-    font-size: 1.2rem;
-    line-height: 2;
-    color: white;
+#firstPage img{
+    width: 40%;
+    margin: 0.6rem;
     opacity: 0;
+}
+#firstPage img:nth-child(2){
+    margin-bottom: 2.5rem;
 }
 /*第二第四页样式*/
 .second{
@@ -172,7 +174,7 @@ body{
     -webkit-transform:translate(-10rem, -12.3rem);
 }
 .sec-img2{
-	width: 110%;
+	width: 120%;
 	position: absolute;
 }
 .sec-con{
@@ -185,6 +187,9 @@ body{
 .sec-con p{
     color: white;
     line-height: 1.5;
+    font-size: 1.1rem;
+    /*Word-spacing: 2rem;*/
+    Letter-spacing: 0.15rem;
 }
 /*第三页样式*/
 .star-container{ 

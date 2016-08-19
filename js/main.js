@@ -44,12 +44,12 @@ $(document).ready(function(){
             }
             i++;
         }
-        TimeLine.add(Tweene.get($(str+" .second")).to({left: "-=1rem"}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "0");
-        TimeLine.add(Tweene.get($(str+" .second")).to({top: "-=1rem"}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "200");
+        TimeLine.add(Tweene.get($(str+" .second")).to({left: "-=0.4rem"}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "0");
+        TimeLine.add(Tweene.get($(str+" .second")).to({top: "-=0.4rem"}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "200");
         return TimeLine;
     }
-    $(".second").css({left: 0.6 + "rem", top: 0.6 + "rem"});
-    $(".second .sec-img2").css({left: wwidth-1.1*wwidth + "rem", top: wheight-1.1*wwidth*1334/750 + "rem"});
+    $(".second").css({left: 0.3 + "rem", top: 0.3 + "rem"});
+    $(".second .sec-img2").css({left: wwidth-1.2*wwidth + "rem", top: wheight-1.2*wwidth*1334/750 + "rem"});
     // 第二页
     var sec = Tweene.line();
     sec.add(cartoon24("#otwo", [1, 2, 3]));

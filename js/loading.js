@@ -41,8 +41,8 @@ var FangDaChuXianfuc = function($, speed, arr){
     if(arr == undefined){ arr = [0, 0, 1, 1]; };
     var TimeLine = Tweene.line();
     TimeLine.add(Tweene.get($)
-        .from({scale: 0, display: 'inline'})
-        .to({scale: 1, display: 'inline'})
+        .from({scale: 0, display: 'inline', opacity: 1})
+        .to({scale: 1, display: 'inline', opacity: 1})
         .easing(arr)
         .duration(speed));
     return TimeLine; 
@@ -59,7 +59,7 @@ var MaoChuXiaoShifuc = function($, dx1, dy1, dx2, dy2, t1, bool, t2){
     if(bool){
         TimeLine.add(fadeOut($, t2));
     }
-    return TimeLine;
+    return TimeLine;  // 要改！
 }      
 // 简介页开始动效 str:简介页id
 var startJfuc = function(str){
@@ -82,36 +82,36 @@ var endJfuc = function(str){
 // 第一页动效
 var first_t1 = Tweene.line();  
 $(document).ready(function(){
-    for(var first_i = 1; first_i < 7; first_i++){
-        if(first_i == 1){
-            first_t1.add(fadeIn($("#firstPage p:nth-child("+first_i+")"), 1000), "1000");
-        }else{
-            first_t1.add(fadeIn($("#firstPage p:nth-child("+first_i+")"), 1000));
-        }        
-    }
+    first_t1.add(FangDaChuXianfuc($("#firstPage img:nth-child(1)"), 400), "1000");
+    first_t1.add(FangDaChuXianfuc($("#firstPage img:nth-child(2)"), 400), "+=500");
+    first_t1.add(fadeIn($("#firstPage img:nth-child(3)"), 1000), "+=800");
+    first_t1.add(fadeIn($("#firstPage img:nth-child(4)"), 1000));
+    first_t1.add(fadeIn($("#firstPage img:nth-child(5)"), 1000));
+    first_t1.add(fadeIn($("#firstPage img:nth-child(6)"), 1000));
 });
 // 加载页动效
 var load_t1 = Tweene.line(); 
 var load_per = 0;
 var load_cartoon1;
-// 百分比变化
+// 百分比变化（希望优化为动态监测!）
 load_cartoon1 = setInterval(function(){
     load_per++;
     if(load_per >= 99){
         clearInterval(load_cartoon1);
     }
     $("#loading-cover #load-ball span").text(load_per + "％");
-}, 2); 
+}, 200); 
 // 水上涨以及船波浪动效
-load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(3)")).to({left: "-15rem"}).loops(-1).yoyo(true).duration(1200).easing([0, 0, 1, 1]), '0');           
+load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(3)")).to({translateX: -15*fontSize}).loops(-1).yoyo(true).duration(1200).easing([0, 0, 1, 1]), '0');           
 load_t1.add(Tweene.get($("#loading-cover p")).to({zoom: "0.9"}).loops(-1).yoyo(true).duration(400).easing([0, 0, 1, 1]), '0');
-load_t1.add(Tweene.get($("#loading-cover #load-ball div")).to({marginTop: "-10rem"}).duration(20000).easing([0, 0, 1, 1]), '0');
+load_t1.add(Tweene.get($("#loading-cover #load-ball div, #loading-cover #load-ball img:nth-child(3), #loading-cover #load-ball img:nth-child(2)")).to({translateY: -10*fontSize}).duration(20000).easing([0, 0, 1, 1]), '0');
 load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(2)")).to({rotation: -10}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), '0');
 load_t1.play();
 // 全部加载完成后加载页消失
 $(window).load(function(){
     var load_cartoon2 = setInterval(function(){
-        if(parseInt($("#loading-cover #load-ball div").css("marginTop")) <= -10*fontSize || $("#loading-cover span").text() == "99％"){      
+        var arr = $("#loading-cover #load-ball div").css("-webkit-transform").split('(')[1].split(')')[0].split(',');
+        if(arr[5] <= -9.95*fontSize || $("#loading-cover span").text() == "99％"){      
             var load_t2 = Tweene.line();
             load_t2.add(Tweene.get($("#loading-cover #load-ball div")).to({marginTop: "-12rem"}).duration(100).easing([0, 0, 1, 1]));
             load_t2.add(fadeOut($("#loading-cover"),500));
