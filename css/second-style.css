@@ -1,7 +1,11 @@
 /*小星球样式*/
-#tech,#info,#man{ 
+#tech,#info,#man,#techp a,#infop a,#manp a{ 
     position: absolute;
     top: 0;
+}
+.dDabumen{
+    position: relative;
+    text-align: center;
 }
 
 /*简介页通用样式*/

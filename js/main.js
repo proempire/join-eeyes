@@ -71,8 +71,8 @@ $(document).ready(function(){
             starline.add(Tweene.get($('.main-wrapper')).to({marginTop: -$('.main-wrapper').height() + cheight + 'px'}).duration(40000));
         
             // 第五页（未改动）
-            $('#mutiangle img').width(cwidth*0.5);
-            $('#mutiangle').css({top: cheight*0.5 - $('#mutiangle').height()*0.5 + 'px'});
+            $('.mutiangle img').width(cwidth*0.5);
+            $('.mutiangle').css({top: cheight*0.5 - $('.mutiangle').height()*0.5 + 'px'});
             //console.log($('#tech').width())
             
             $('.bigplanet').width(cwidth*0.2);
@@ -87,65 +87,47 @@ $(document).ready(function(){
                 xstd = cwidth*0.5 - $('.bigplanet').width()*0.5,
                 ystd = cheight*0.5 - $('#tech').height()*0.5,
                 x = 0,
-                y = -160;
+                y = -160,
+                angle = 0,
+                unit = Math.PI/180;
             //console.log(xstd,ystd)
-            while (record < 2){
-                if (reverse){
-                    y += 1;
-                    x = Math.sqrt(25600-y*y);
-                }else{
-                    y -= 1;
-                    x = -Math.sqrt(25600-y*y);
-                }
+            while (angle < Math.PI*2){
+                angle += unit;
+                x = 160*Math.sin(angle);
+                y = -160*Math.cos(angle);
                 surround.add(Tweene.get($('#tech')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
-                //console.log(x,y)
-                if ( x == 0 ){
-                    reverse = !reverse;
-                    record++;
-                }
             }
             $('#info').css({top: ystd + 80 + 'px', left: xstd + 138});
             var surround1 = Tweene.line();
             var record = 0,
                 reverse = true,
                 x = 138,
-                y = 80;
-            while (record < 2 || y != 80){
-                if (reverse){
-                    y += 1;
-                    x = Math.sqrt(25600-y*y);
-                }else{
-                    y -= 1;
-                    x = -Math.sqrt(25600-y*y);
-                }
+                y = 80,
+                angle = Math.PI/180*120,
+                unit = Math.PI/180;
+            while (angle < Math.PI/180*480){
+                angle += unit;
+                x = 160*Math.sin(angle);
+                y = -160*Math.cos(angle);
                 surround1.add(Tweene.get($('#info')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
-                //console.log(x,y)
-                if ( x == 0 ){
-                    reverse = !reverse;
-                    record++;
-                }
             }
             $('#man').css({top: ystd + 80 + 'px', left: xstd - 138});
             var surround2 = Tweene.line();
             var record = 0,
                 reverse = false,
                 x = -138,
-                y = 80;
-            while (record < 2 || y != 80){
-                if (reverse){
-                    y += 1;
-                    x = Math.sqrt(25600-y*y);
-                }else{
-                    y -= 1;
-                    x = -Math.sqrt(25600-y*y);
-                }
+                y = 80,
+                angle = Math.PI/180*240,
+                unit = Math.PI/180;
+            while (angle < Math.PI/180*600){
+                angle += unit;
+                x = 160*Math.sin(angle);
+                y = -160*Math.cos(angle);
                 surround2.add(Tweene.get($('#man')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
-                //console.log(x,y)
-                if ( x == 0 ){
-                    reverse = !reverse;
-                    record++;
-                }
             }
+
+            // 二级部门
+            //$('.Dabumen').width(cwidth*0.5).css({top: cheight*0.5 - $('#mutiangle').height()*0.5 + 'px'});
 });
 
         

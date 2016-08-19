@@ -1,7 +1,29 @@
 // console.log("a");
 $(window).load(function(){
 	// 小星球动效
-
+	$('.dDabumen img').width(cwidth*0.5);
+    //$('.dDabumen').width(cwidth*0.5);
+    //console.log($('.dDabumen').height()*0.5)
+    $('.dDabumen').css({top: cheight*0.5 - $('.dDabumen').height()*0.5 + 'px'});
+    $('#market').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
+    var surroundman = Tweene.line();
+    console.log($('#market').width())
+    var xstd = cwidth*0.5 - $('#market').width()*0.5,
+        ystd = cheight*0.5 - $('#market').height()*0.5,
+        x = 0,
+        y = -160,
+        angle = 0,
+        unit = Math.PI/180;
+    //console.log(xstd,ystd)
+    while (angle < Math.PI*2){
+        angle += unit;
+        x = 160*Math.sin(angle);
+        y = -160*Math.cos(angle);
+        surroundman.add(Tweene.get($('#market')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+    }
+    $('#man').on('click',function(){
+    	surroundman.restart();
+    })
 	// 简介页动效
 	// 市场部
 	$("#market-o>.content-J").css("background-image", "url('./images/ShiChang/bg@3x.jpg')");
