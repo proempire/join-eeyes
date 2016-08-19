@@ -53,13 +53,13 @@ var MaoChuXiaoShifuc = function($, dx1, dy1, dx2, dy2, t1, bool, t2){
     TimeLine.add(Tweene.get($)
         // 用于测试位置
         // .set({display: 'inline', left: wwidth+dx2 + 'rem', top: wheight+dy2 + 'rem'})
-        .from({scaleX: 0, scaleY: 0, display: 'inline', left: wwidth+dx1 + 'rem', top: wheight+dy1 + 'rem'})
-        .to({scaleX: 1, scaleY: 1, display: 'inline', left: wwidth+dx2 + 'rem', top: wheight+dy2 + 'rem'})
+        .from({scaleX: 0, scaleY: 0, display: 'inline', translateX: dx1*fontSize, translateY: dy1*fontSize})
+        .to({scaleX: 1, scaleY: 1, display: 'inline', translateX: dx2*fontSize, translateY: dy2*fontSize})
                         .duration(t1));
     if(bool){
         TimeLine.add(fadeOut($, t2));
     }
-    return TimeLine;  // 要改！
+    return TimeLine; 
 }      
 // 简介页开始动效 str:简介页id
 var startJfuc = function(str){

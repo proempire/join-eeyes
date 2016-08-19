@@ -24,6 +24,7 @@ $(window).load(function(){
     $('#man').on('click',function(){
     	surroundman.restart();
     })
+
 	// 简介页动效
 	// 市场部
 	$("#market-o>.content-J").css("background-image", "url('./images/ShiChang/bg@3x.jpg')");
@@ -35,20 +36,20 @@ $(window).load(function(){
 	// 星系出现
 	market_o_t1.add(fadeIn('#market-o .icon img:nth-child(1)', 800));
 	// 星球出现并旋转
-	var market_o_Turn = function(number, x0, y0, x1, y1, Xs, dxyS, speed){
+	var market_o_Turn = function(number, x0, y0, dx, dy, Xs, dxyS, speed){
 		if(speed == undefined){ speed = 1000 }
 		var TimeLine = Tweene.line();
 		TimeLine.add(Tweene.get('#market-o .icon img:nth-child(' + number + ')').set({ left: x0 + 'rem', top: y0 + 'rem'}));
 		TimeLine.add(fadeIn('#market-o .icon img:nth-child(' + number + ')', 1000));
 		TimeLine.add(FangDaChuXianfuc('#market-o .icon img:nth-child(' + number + ')', 1000),'-=1000');
-		TimeLine.add(Tweene.get('#market-o .icon img:nth-child(' + number + ')').to({left: x1 + 'rem', top: y1 + 'rem'}).easing([0, 0, 1, 1]).duration(speed),'-=1000');
+		TimeLine.add(Tweene.get('#market-o .icon img:nth-child(' + number + ')').to({translateX: dx*fontSize, translateY: dy*fontSize}).easing([0, 0, 1, 1]).duration(speed),'-=1000');
 		TimeLine.add(ZiXuanfuc('#market-o .icon img:nth-child(' + number + ')', Xs, dxyS));
 		return TimeLine;
 	}
-	market_o_t1.add(market_o_Turn(2, wwidth+10, wheight+12, wwidth-2, wheight+4, 2000, '60% -86%'), '1200');
-	market_o_t1.add(market_o_Turn(3, wwidth-14, wheight+5, wwidth-3.4, wheight-4.5, 2000, '112% 185%'), '3600');
-	market_o_t1.add(market_o_Turn(4, wwidth-14, wheight-20, wwidth+2, wheight-3.5, 2000, '-62% 150%', 1200), '2800');
-	market_o_t1.add(market_o_Turn(5, wwidth+14, wheight-8, wwidth+2, wheight+2.6, 2000, '-66% -60%'), '2000');
+	market_o_t1.add(market_o_Turn(2, wwidth+10, wheight+12, -12, -8, 2000, '60% -86%'), '1200');
+	market_o_t1.add(market_o_Turn(3, wwidth-14, wheight+5, 10.6, -9.5, 2000, '112% 185%'), '3600');
+	market_o_t1.add(market_o_Turn(4, wwidth-14, wheight-20, 16, 16.5, 2000, '-62% 150%', 1200), '2800');
+	market_o_t1.add(market_o_Turn(5, wwidth+14, wheight-8, -12, 10.6, 2000, '-66% -60%'), '2000');
 	// 星系旋转变化
 	var market_o_t2 = Tweene.line();
 	market_o_t2.add(Tweene.get($('#market-o .icon img:nth-child(1)'))
@@ -116,11 +117,11 @@ $(window).load(function(){
 	news_o_t1.add(fadeIn($('#news-o .icon #news-o-sun'), 0.1));
 	// 话筒出现
 	news_o_t1.add(Tweene.get(news_o_obg)
-		.to({height: 0 + 'rem', top: 28.2 + 'rem'})
+		.to({height: 0 + 'rem', translateY: 28.2*fontSize})
 		.easing([0, 0, 1, 1])
 		.duration(1000));
 	news_o_t1.add(Tweene.get(news_o_obg_img)
-		.to({top: -28.2 + 'rem'})
+		.to({translateY: -28.2 *fontSize})
 		.easing([0, 0, 1, 1])
 		.duration(1000), '-=1000');
 	news_o_t1.add(fadeOut(news_o_osun, 220), '-=100');
@@ -177,20 +178,20 @@ $(window).load(function(){
 	movie_o_t1.add(startJfuc('#movie-o'));
 	// 摄像机出现
     movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(1)"))
-	    .from({left: wwidth-4.5 + 'rem', top: wheight-1 + 'rem', opacity: 0, display: 'inline'})
-	    .to({left: wwidth-4.5 + 'rem', top: wheight-1 + 'rem', opacity: 1, display: 'inline'})
-	    .duration(800));
+	    .from({translateX: -4.5*fontSize, translateY: -1*fontSize, opacity: 0, display: 'inline'})
+	    .to({translateX: -4.5*fontSize, translateY: -1*fontSize, opacity: 1, display: 'inline'})
+	    .duration(900));
     movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
-        .from({left: wwidth-5 + 'rem', top: wheight-7 + 'rem', opacity: 0, display: 'inline'})
-        .to({left: wwidth-5 + 'rem', top: wheight-7 + 'rem', opacity: 1, display: 'inline'})
-        .duration(800), '-=800');
+        .from({translateX: -5*fontSize, translateY: -7*fontSize, opacity: 0, display: 'inline'})
+        .to({translateX: -5*fontSize, translateY: -7*fontSize, opacity: 1, display: 'inline'})
+        .duration(900), '-=900');
 	// 摄像机移动
     movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(1)"))
-        .to({left: -5 + 'rem', height: 0 + 'rem'})
-        .duration(4000));
+        .to({translateX: -13*fontSize, height: 0 + 'rem'})
+        .duration(3400));
     movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
-        .to({left: -5.2 + 'rem', height: 0 + 'rem', top: wheight-1 + 'rem'})
-        .duration(4000), '-=4000');
+        .to({translateX: -13.2*fontSize, height: 0 + 'rem', translateY: -1*fontSize})
+        .duration(3400), '-=3400');
 	// 摄像机镜头旋转
 	movie_o_t1.add(Tweene.get($("#movie-o .icon img:nth-child(2)"))
         .to({rotation: -20, transformOrigin: '19% 50%'})
@@ -268,12 +269,13 @@ $(window).load(function(){
 		product_o_t1.add(fadeIn($("#product-o .icon #product-o-ball img:nth-child("+product_o_arr[product_o_i]+")"), 200));
 	}
 	// 星球发光与连线函数
-	var Shinefuc = function(number, t){
+	var Shinefuc = function(number, x, y, t){
 		if(t == undefined){ t = 200; }
 		var TimeLine = Tweene.line(); 
 		TimeLine.add(Tweene.get($("#product-o .icon #product-o-ball img:nth-child("+number+")"))
-	        .from({opacity: 0, display: 'inline', width: '+=5px', left: '-=2.5px', top: '-=2.5px'})
-	        .to({opacity: 1, display: 'inline', width: '+=5px', left: '-=2.5px', top: '-=2.5px'})
+			.set({width: '+=5px', translateX: x*fontSize-2.5, translateY: y*fontSize-2.5})
+	        .from({opacity: 0, display: 'inline'})
+	        .to({opacity: 1, display: 'inline'})
 	        .duration(t));
 		return TimeLine;
 	}
@@ -287,37 +289,37 @@ $(window).load(function(){
 	}
 	// 左侧星球发光并连线1
 	var product_o_t2 = Tweene.line();       
-    product_o_t2.add(Shinefuc(6));
+    product_o_t2.add(Shinefuc(6, -9, -6));
     product_o_t2.add(LianXianfuc(1, 3.2));
-    product_o_t2.add(Shinefuc(4));
+    product_o_t2.add(Shinefuc(4, -4.6, -6));
     product_o_t2.add(LianXianfuc(2, 3.2));
     product_o_t2.add(LianXianfuc(3, 4.8), '-=100');
-    product_o_t2.add(Shinefuc(8));
+    product_o_t2.add(Shinefuc(8, -10, -1.5));
     product_o_t2.add(LianXianfuc(5, 3.2));
     product_o_t2.add(LianXianfuc(8, 1.8));
 	//左侧星球发光并连线2
     var product_o_t3 = Tweene.line();
-    product_o_t3.add(Shinefuc(12));
+    product_o_t3.add(Shinefuc(12, -7.5, 6));
     product_o_t3.add(LianXianfuc(4, 3.3));
-    product_o_t3.add(Shinefuc(10));
+    product_o_t3.add(Shinefuc(10, -5.5, 2));
     product_o_t3.add(LianXianfuc(6, 5.8));
     product_o_t3.add(LianXianfuc(7, 2.9));
-    product_o_t3.add(Shinefuc(2, 1500));  // 灯泡发亮
+    product_o_t3.add(Shinefuc(2, -3, -2, 1500));  // 灯泡发亮
 	//右侧星球发光并连线1
     var product_o_t4 = Tweene.line();       
-    product_o_t4.add(Shinefuc(16));
+    product_o_t4.add(Shinefuc(16, 9, -4.5));
     product_o_t4.add(LianXianfuc(9, 3.2));
-    product_o_t4.add(Shinefuc(18));
+    product_o_t4.add(Shinefuc(18, 7, -0.5));
     product_o_t4.add(LianXianfuc(10, 3.8));
     product_o_t4.add(LianXianfuc(11, 4.2), '-=100');
-    product_o_t4.add(Shinefuc(14));
+    product_o_t4.add(Shinefuc(14, 3, -5.5));
     product_o_t4.add(LianXianfuc(13, 5));
     product_o_t4.add(LianXianfuc(15, 1.5));
 	//右侧星球发光并连线2
     var product_o_t5 = Tweene.line();
-    product_o_t5.add(Shinefuc(22));
+    product_o_t5.add(Shinefuc(22, 5, 5.8));
     product_o_t5.add(LianXianfuc(12, 2.8));
-    product_o_t5.add(Shinefuc(20));
+    product_o_t5.add(Shinefuc(20, 4.2, 2));
     product_o_t5.add(LianXianfuc(14, 2));
     product_o_t5.add(LianXianfuc(16, 2.4), '+=600');
 	product_o_t1.add(product_o_t2, '2000').add(product_o_t3, '2400').add(product_o_t5, '2200').add(product_o_t4, '2600');
@@ -350,7 +352,7 @@ $(window).load(function(){
 			if(x < wwidth * w){ x = wwidth * w; }
 			y = a * (x - wwidth) * (x - (wwidth * w)) + wheight * h;
 			TimeLine.add(Tweene.get($('#frontend-and-art-o .icon ' + str))
-				.to({ left: x +'rem', top: y +'rem'})
+				.to({ translateX: (x-wwidth)*fontSize, translateY: (y-wheight*h)*fontSize})
 			    .duration(50));
 		}
         return TimeLine;
@@ -381,7 +383,7 @@ $(window).load(function(){
 		backapp_o_z = 1 - backapp_o_t * backapp_o_t * backapp_o_t * 0.015;
 		if(backapp_o_z < 0){ backapp_o_z = 0; } 
 		backapp_o_t1.add(Tweene.get($("#backapp-o .icon img"))
-		    .to({left: backapp_o_x + 'rem', bottom: backapp_o_y + 'rem', rotation: backapp_o_o, scale: backapp_o_z})
+		    .to({translateX: (backapp_o_x-1)*fontSize, translateY: (-15-backapp_o_y)*fontSize, rotation: backapp_o_o, scale: backapp_o_z})
 		    .duration(35));
 		backapp_o_t = backapp_o_t + 0.1;
 	}
@@ -407,11 +409,11 @@ $(window).load(function(){
 	backend_o_t1.add(fadeIn($('#backend-o .icon #backend-o-ball'), 800));
 	// 发光
 	backend_o_t1.add(Tweene.get(backend_o_obg)
-		.to({width: 0 + 'rem', height: 0 + 'rem', left: wwidth-6.8+7 + 'rem', top: wheight-6.9+7 + 'rem'})
+		.to({width: 0 + 'rem', height: 0 + 'rem', translateX: 7*fontSize, translateY: 7*fontSize})
 		.easing([0, 0, 1, 1])
 		.duration(2000));
 	backend_o_t1.add(Tweene.get(backend_o_obg_img)
-		.to({left: 6.8-wwidth-7 + 'rem', top: 6.9-wheight-7 + 'rem'})
+		.to({translateX: -7*fontSize, translateY: -7*fontSize})
 		.easing([0, 0, 1, 1])
 		.duration(2000), '-=2000');
 	// 飞船飞出        
@@ -426,7 +428,7 @@ $(window).load(function(){
 		if(backend_o_z >= 1){ backend_o_z = 1; }
 		if(backend_o_o >= 40){ backend_o_o = 40; } 
 		backend_o_t1.add(Tweene.get(backend_o_oufo)
-		    .to({left: backend_o_x + 'rem', top: backend_o_y + 'rem', scale: backend_o_z, rotation: backend_o_o})
+		    .to({translateX: (backend_o_x-wwidth+2.5)*fontSize, translateY: (backend_o_y-wheight+2.5)*fontSize, scale: backend_o_z, rotation: backend_o_o})
 		    .duration(100));
 		backend_o_d1++;
 		backend_o_d2++;

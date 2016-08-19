@@ -1,6 +1,6 @@
 /*小星球样式*/
 #tech,#info,#man,#techp a,#infop a,#manp a{ 
-    position: absolute;
+    /*position: absolute;*/
     top: 0;
 }
 .dDabumen{
