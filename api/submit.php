@@ -129,6 +129,7 @@ if ($first === $second) {
 }
 $info = I('info', 's', '/^.{0,255}$/');
 // value->名称转换
+$gender = $GENDER[$gender];
 $college = $COLLEGE[$college];
 $first = $GROUP[$first];
 $second = $GROUP[$second];

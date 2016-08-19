@@ -5,6 +5,8 @@ date_default_timezone_set('Asia/Shanghai');
 define('DATA_FILE', 'data.csv');
 // 防刷的记录文件
 define('IP_FILE', 'ip.php');
+// 性别
+$GENDER = array('女','男');
 // 书院名
 $COLLEGE = array('彭康','仲英','南洋','文治','崇实','宗濂','励志','启德');
 // 部门名
