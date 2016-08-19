@@ -131,7 +131,6 @@ a {
   87.5% {
     box-shadow: 0em -3em 0em 0em #ffffff, 2em -2em 0 -0.5em #ffffff, 3em 0em 0 -0.5em #ffffff, 2em 2em 0 -0.5em #ffffff, 0em 3em 0 -0.5em #ffffff, -2em 2em 0 0em #ffffff, -3em 0em 0 0em #ffffff, -2em -2em 0 0.2em #ffffff; } }
 .page1 {
-  background: url("../images/page1_bg.png");
   background-size: 100% 100%; }
 
 .page1 .content {
@@ -334,7 +333,6 @@ a {
   to {
     background-position: 0; } }
 .page2 {
-  background: url("../images/page2_bg.png");
   background-size: 100% 100%; }
 
 .page2 .con {
