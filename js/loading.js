@@ -101,7 +101,7 @@ load_cartoon1 = setInterval(function(){
         clearInterval(load_cartoon1);
     }
     $("#loading-cover #load-ball span").text(load_per + "％");
-}, 200); 
+}, 2); 
 // 水上涨以及船波浪动效
 load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(3)")).to({left: "-15rem"}).loops(-1).yoyo(true).duration(1200).easing([0, 0, 1, 1]), '0');           
 load_t1.add(Tweene.get($("#loading-cover p")).to({zoom: "0.9"}).loops(-1).yoyo(true).duration(400).easing([0, 0, 1, 1]), '0');

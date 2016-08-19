@@ -204,7 +204,10 @@ body{
     position: absolute;
 }
 /*第五页样式*/
-#mutiangle{ 
+.mutiangle,.dDabumen{ 
     position: relative;
     text-align: center;
+}
+.Dabumen{
+
 }
