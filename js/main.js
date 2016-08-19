@@ -94,8 +94,8 @@ $(document).ready(function(){
             while (angle < Math.PI*2){
                 angle += unit;
                 x = 160*Math.sin(angle);
-                y = -160*Math.cos(angle);
-                surround.add(Tweene.get($('#tech')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+                y = -160*Math.cos(angle)+160;
+                surround.add(Tweene.get($('#tech')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
             }
             $('#info').css({top: ystd + 80 + 'px', left: xstd + 138});
             var surround1 = Tweene.line();
@@ -107,9 +107,9 @@ $(document).ready(function(){
                 unit = Math.PI/180;
             while (angle < Math.PI/180*480){
                 angle += unit;
-                x = 160*Math.sin(angle);
-                y = -160*Math.cos(angle);
-                surround1.add(Tweene.get($('#info')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+                x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*120);
+                y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*120);
+                surround1.add(Tweene.get($('#info')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
             }
             $('#man').css({top: ystd + 80 + 'px', left: xstd - 138});
             var surround2 = Tweene.line();
@@ -121,9 +121,9 @@ $(document).ready(function(){
                 unit = Math.PI/180;
             while (angle < Math.PI/180*600){
                 angle += unit;
-                x = 160*Math.sin(angle);
-                y = -160*Math.cos(angle);
-                surround2.add(Tweene.get($('#man')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+                x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*240);
+                y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*240);
+                surround2.add(Tweene.get($('#man')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
             }
 
             // 二级部门

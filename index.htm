@@ -700,23 +700,29 @@
 	</div>
 	<!-- 影视部详情页 -->
 	<div data-role="page" id="movie">
-	    <img src="./images/media/total.jpg" id="movie-total">
+	    <img src="" remark="./images/media/total.jpg" id="movie-total">
 		<!--<div class="movie-panel" data-background="./images/media/panel.png"></div>
 		<div class="movie-border" data-background="./images/media/border.png"></div>
 		<div></div>-->
 		<div class="contentJ">
 			<video id="video1">
-				<source src="./images/media/movie.mp4" />
+				<source src="" remarkv="./images/media/movie.mp4" />
 			</video>
 		</div>
         <div id="hint">收到影视部邀请，点击查收<br/>视频很小（3.5M），请放心观看</div>
 		<div id="movie-control">
-			<img src="./images/media/control.jpg" id="movie-control-img">
+			<img src="" remark="./images/media/control.jpg" id="movie-control-img">
 			<a id="movie-back" data-rel="back">返回</a>
 			<a id="movie-play">播放</a>
 		</div>
 		<script type="text/javascript">
             $(document).ready(function(){
+                $("a[href='#movie']").on('click',function(){
+                    $('#movie img[remark]').attr('src',function(){return $(this).attr('remark')});
+                });
+                $('#movie-play').on('click',function(){
+                    $('#movie source[remarkv]').attr('src',function(){return $(this).attr('remarkv')});
+                })
             	//$(window).on('orientationchange',function(){
             	//$("a[href='#movie']").on('click',function(){
             		//$('#movie').css({background: "url('./images/media/bg.png')", transform: 'rotate(90deg)'});
@@ -736,7 +742,7 @@
 	</div>
 	<!-- 新媒体详情页 -->
 	<div data-role="page" id="newmedia">
-		<audio id="voice0" src="yali.mp3"></audio>
+		<audio id="voice0" src="" remarka="yali.mp3"></audio>
 		<div>
 			<div class="container"> 
 				<div class="lrc">
@@ -796,8 +802,16 @@
 		<script type="text/javascript">
             $(document).ready(function(){
             	$("a[href='#newmedia']").on('click',function(){
+                    // 加载
+                    $('#newmedia').css({'background-image': "url('./images/player/b2.jpg')"})
+                    $('.lrc').css({'background-image': "url('./images/player/base.png')"})
             		$('#newmedia img[remark]').attr('src',function(){return $(this).attr('remark')});
             	});
+                $('#toggle-msc').on('click',function(){
+                    $('#newmedia audio[remarka]').attr('src',function(){return $(this).attr('remarka')});
+                })
+                
+
 
                 // 自适应定位
             	$('#newmedia .container').width(cwidth-60).height(cheight-20);
@@ -902,6 +916,12 @@
 	<div data-role="page" id="product">
 	    <link rel="stylesheet" href="./css/index.css">
 	    <script type="text/javascript">
+            $(document).ready(function(){
+                $("a[href='#product']").on('click',function(){
+                    $('.page1').css({background: "url('./images/page1_bg.png')"})
+                    $('.page2').css({background: "url('./images/page2_bg.png')"})
+                })
+            })
 	        var GC = {
 	            w: document.documentElement.clientWidth,
 	            h: document.documentElement.clientHeight
@@ -923,7 +943,7 @@
 	        <div class="loadIMG"></div>
 	    </div>
 	    <div class="page page1 hidden">
-	        <audio class="tips" src="./images/message.mp3" preload="auto"></audio>
+	        <audio class="tips" src="" remark="./images/message.mp3" preload="auto"></audio>
 	        <div class="content">
 	            <div class="date">
 	                <p class="time">00:35</p>
@@ -937,10 +957,10 @@
 	            <!--<div class="footer"><p> > 滑动解锁 </p></div>-->
 	            <div class="footer"></div>
 	        </div>
-	        <audio class="unlock" src="./images/unlock.mp3" preload="auto"></audio>
+	        <audio class="unlock" src="" remark="./images/unlock.mp3" preload="auto"></audio>
 	    </div>
 	    <div class="page page2 hidden">
-	        <audio class="tips" src="./images/message.mp3" preload="auto"></audio>
+	        <audio class="tips" src="" remark="./images/message.mp3" preload="auto"></audio>
 	        <div class="con">
 	            <ul class="content clearfix">
 	                <li class="clearfix msgleft">
@@ -998,7 +1018,7 @@
 	                    <div class="photo"></div>
 	                    <div>
 	                        <p class="username">智商担当</p>
-	                        <p class="image"><img src="./images/qqmood.png"></p>
+	                        <p class="image"><img src="" remark="./images/qqmood.png"></p>
 	                    </div>
 	                </li>
 	                <li class="clearfix msgleft">
@@ -1245,6 +1265,13 @@
 	            </ul>
 	        </div>
 	    </div>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("a[href='#prodict']").on('click',function(){
+                    $('#product img[remark]').attr('src',function(){return $(this).attr('remark')});
+                });
+            })
+        </script>
 	</div>
 	<div data-role="page" id="frontend-and-art">
 		前端美工组部详情

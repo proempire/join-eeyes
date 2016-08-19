@@ -3,11 +3,9 @@
 	visibility: hidden;
 }
 #newmedia{
-	background-image: url('../images/player/b2.jpg');
 	background-size: cover;
 }
 .lrc{
-	background-image: url('../images/player/base.png');
 	background-size: cover;
     background-repeat: no-repeat;
 }
