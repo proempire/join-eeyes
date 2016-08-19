@@ -44,8 +44,8 @@ $(document).ready(function(){
             }
             i++;
         }
-        TimeLine.add(Tweene.get($(str+" .second")).to({left: "-=0.4rem"}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "0");
-        TimeLine.add(Tweene.get($(str+" .second")).to({top: "-=0.4rem"}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "200");
+        TimeLine.add(Tweene.get($(str+" .second")).to({translateX: -0.4*fontSize}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "0");
+        TimeLine.add(Tweene.get($(str+" .second")).to({translateY: -0.4*fontSize}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "200");
         return TimeLine;
     }
     $(".second").css({left: 0.3 + "rem", top: 0.3 + "rem"});

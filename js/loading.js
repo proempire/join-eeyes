@@ -113,7 +113,7 @@ $(window).load(function(){
         var arr = $("#loading-cover #load-ball div").css("-webkit-transform").split('(')[1].split(')')[0].split(',');
         if(arr[5] <= -9.95*fontSize || $("#loading-cover span").text() == "99％"){      
             var load_t2 = Tweene.line();
-            load_t2.add(Tweene.get($("#loading-cover #load-ball div")).to({marginTop: "-12rem"}).duration(100).easing([0, 0, 1, 1]));
+            load_t2.add(Tweene.get($("#loading-cover #load-ball div, #loading-cover #load-ball img:nth-child(3), #loading-cover #load-ball img:nth-child(2)")).to({translateY: -12*fontSize}).duration(100).easing([0, 0, 1, 1]));
             load_t2.add(fadeOut($("#loading-cover"),500));
             load_t2.play();
             $("#loading-cover span").text("100％");
