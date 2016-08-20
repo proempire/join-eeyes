@@ -1,3 +1,11 @@
+/*通用样式*/
+.back{
+    position: absolute;
+    top: 1.5rem; left: 1.5rem;
+    color: #2deca6 !important; 
+    font-weight: lighter !important; 
+    font-size: 1rem;
+}
 /*小星球样式*/
 #tech,#info,#man,#techp a,#infop a,#manp a{ 
     position: absolute;
@@ -7,7 +15,8 @@
     text-align: center;
 }
 
-/*简介页通用样式*/
+/*简介页*/
+/*通用样式*/
 .FenYe{
     height: 100%;
 }
@@ -84,13 +93,6 @@
     bottom: 5rem;
     background-color: rgba(0, 0, 0, 0.3);
     color: white !important; 
-}
-.back{
-    position: absolute;
-    top: 1.5rem; left: 1.5rem;
-    color: #2deca6 !important; 
-    font-weight: lighter !important; 
-    font-size: 1rem;
 }
 
 /*市场部*/
@@ -191,7 +193,7 @@
 }
 
 /*新媒体部*/
-#newmedia-o{
+#newmedia-o>.content-J{
     background-size: cover;
 }
 #newmedia-o .icon img{
@@ -394,4 +396,69 @@
     height: 6em;
     position: absolute; 
     -webkit-transform:rotate(-10deg); /* Safari 和 Chrome */
+}
+
+/*详情页*/
+/*新闻部*/
+#news{
+    overflow: hidden;
+    perspective:1200px;
+    -webkit-perspective:1200px;
+}
+#news #news-hint1{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+#news #news-hint1 div{
+    height: 100%;
+    width: 50%;  
+    vertical-align: middle;
+}
+#news #news-hint1 #news-left{
+    float: left;
+}
+#news #news-hint1 #news-right{
+    float: right;
+}
+#news #news-hint1 div p{
+    font-size: 1.2rem;
+    color: white;
+    position: absolute;
+    top: 50%;
+    -webkit-transform:translateY(-2rem);
+}
+#news #news-hint1 #news-left p{
+    left: 2.5rem;
+}
+#news #news-hint1 #news-right p{
+   right: 2.5rem;
+}
+#news .news-contain{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    -webkit-transform-style: preserve-3d;
+}
+#news .news-contain img{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+#news .news-contain img:nth-child(4){
+    width: 90%;
+}
+#news #news-hint2, #news #news-hint3{
+    width: 9rem;
+    height: 3rem;
+    position: absolute;
+    top: 50%; left: 50%;
+    -webkit-transform:translate(-4.5rem, -1.5rem);
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 0.5rem;
+    color: white;
+    padding: 1rem;
+    text-align: center;
 }

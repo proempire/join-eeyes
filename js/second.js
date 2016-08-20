@@ -439,5 +439,50 @@ $(window).load(function(){
 	$('#backend-o a').click(function(){ backend_o_t1.pause(); });
 	$("a[href='#backend-o']").click(function(){ $('#backend-o img[remark]').attr('src',function(){return $(this).attr('remark')}); backend_o_t1.play(); });
 
+	// 详情页动效
+	// 新闻部
+	$("#news-o .more").click(function(){ 
+		$('#news img[remark]').attr('src', function(){
+			return $(this).attr('remark')
+		});
+	});
+	Tweene.get($("#news .news-contain img")).set({translateY: "-50%"}).play();
+	var news_hintfirst = $("#news #news-hint2");
+	var news_hintlast = $("#news #news-hint3");
+	news_hintfirst.hide();
+	news_hintlast.hide();
+	var news_station = 0;
+	var news_active = 0;
+	$("#news").bind('touchend', function(event) {
+     	// 翻页提醒
+     	if(news_station == 0){
+     		Tweene.get($("#news #news-hint1")).to({opacity: 0}).duration(100).play();
+     		news_station++;
+     	}else{
+     		// 前一页
+     		if($(event.target).attr("id") == "news-left"){
+     			if(news_active == 0){
+     				// 已经是第一页
+     				var news_t1 = Tweene.line();
+     				news_t1.add(fadeIn(news_hintfirst, 100, [0,0,.58,1])).add(fadeOut(news_hintfirst, 1000, [0,0,.58,1]), "+=500").play();
+     			}else{
+     				Tweene.get($("#news .news-contain:nth-child("+(5-news_active+1)+")")).to({rotateY: "0deg", transformOrigin: "0 0"}).duration(1000).play();
+     				news_active--;
+     			}
+     		};
+     		// 后一页
+     		if($(event.target).attr("id") == "news-right"){
+     			if(news_active == 4){
+     				// 已经是最后一页
+     				var news_t2 = Tweene.line();
+     				news_t2.add(fadeIn(news_hintlast, 100, [0,0,.58,1])).add(fadeOut(news_hintlast, 1000, [0,0,.58,1]), "+=500").play();
+     			}else{
+     				Tweene.get($("#news .news-contain:nth-child("+(5-news_active)+")")).to({rotateY: "-91deg", transformOrigin: "0 0"}).duration(1000).easing([0,0,.58,1]).play();
+     				news_active++;
+     			}
+     		};
+     	}       
+	});
 
+	
 });

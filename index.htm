@@ -6,6 +6,9 @@
 	<title>e瞳网2016招新</title>	
 	<!-- meta使用viewport以确保页面可自由缩放 -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- 引入所有样式 -->
+	<!-- <link rel="stylesheet" type="text/css" href=""> -->
 
 	<!-- 引入 jQuery 库 -->
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -1045,10 +1048,20 @@
 		<a href="#submit">报名</a>
 		<a href="#" data-rel="back">返回</a>
 	</div>
-	<div data-role="page" id="news">
-		新闻部详情
-		<a href="#submit">报名</a>
-		<a href="#" data-rel="back">返回</a>
+	<!-- 新闻部详情页 -->
+    <div data-role="page" id="news">       
+        <div class="news-contain"><img src="" remark="./images/XinWen/pic5.jpg"></div>
+        <div class="news-contain"><img src="" remark="./images/XinWen/pic4.jpg"></div>
+        <div class="news-contain"><img src="" remark="./images/XinWen/pic3.jpg"></div>
+        <div class="news-contain"><img src="" remark="./images/XinWen/pic2.jpg"></div>
+        <div class="news-contain"><img src="" remark="./images/XinWen/pic1.jpg"></div>
+        <div id="news-hint1">
+        	<div id="news-left"><p>上<br>一<br>页</p></div>
+        	<div id="news-right"><p>下<br>一<br>页</p></div>
+        </div>
+        <div id="news-hint2">已经是第一页</div>
+        <div id="news-hint3">已经是最后一页</div>
+		<a href="#" data-rel="back" class="back">返回</a>
 	</div>
 	<!-- 影视部详情页 -->
 	<div data-role="page" id="movie">
@@ -1626,8 +1639,8 @@
     
 	<!--后台web组详情页-->
     <div data-role="page" id="backend">
-        <link rel="stylesheet" href="./css/backend.css">
         <link rel="stylesheet" href="./css/jquery.terminal.min.css">
+        <link rel="stylesheet" href="./css/backend.css">
         <script src="./js/jquery.terminal.min.js"></script>
         <script src="./js/backend.js"></script>
         <div class="banner"></div>
