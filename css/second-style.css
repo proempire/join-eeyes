@@ -403,6 +403,7 @@
 #news{
     overflow: hidden;
     perspective:1200px;
+    -webkit-perspective:1200px;
 }
 #news #news-hint1{
     position: fixed;
@@ -439,7 +440,7 @@
     height: 100%;
     position: absolute;
     background-color: white;
-    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
 }
 #news .news-contain img{
     position: absolute;
