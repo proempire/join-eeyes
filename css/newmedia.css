@@ -71,7 +71,6 @@
     height: 70px;
 }
 .player-mask{
-	background-image: url('../images/player/mask.png');
 	background-size: cover;
 	height: 70px;
 	bottom: 0px;
