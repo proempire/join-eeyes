@@ -195,103 +195,16 @@
 
 				<!-- 第五页 -->
 				<div class="swiper-slide" id="total-overview">
-					
-					<!--<div class="orbit">
-						<div class="front">
-							<span>运营部门</span>
-						</div>
-						<div class="back1">
-							<span>信息部门</span>
-						</div>
-						<div class="back2">
-							<span>技术部门</span>
-						</div>
-					</div>
-					<a href="#market-o">市场部</a>
-					<a href="#publicrelation-o">公关部</a>				
-					<a href="#news-o" id="noshow">新闻部</a>
-					<a href="#movie-o">影视部</a>
-					<a href="#newmedia-o">新媒体部</a>					
-					<a href="#product-o">产品部</a>
-					<a href="#frontend-and-art-o">前端美工组</a>
-					<a href="#backapp-o">后台app组</a>
-					<a href="#backend-o">后台web组</a>
-					<script type="text/javascript">
-                        $(document).ready(function(){
-                            
-                        });
-					</script>-->
                     <div class="main-wrapper-c">
                         <div class="mutiangle"><img src="./images/overview/mutiangle.png"></div>
                         <a href="#techp" id="tech"><img class="bigplanet" src="./images/overview/tech.png"></a>
                         <a href="#infop" id="info"><img class="bigplanet" src="./images/overview/info.png"></a>
                         <a href="#manp" id="man"><img class="bigplanet" src="./images/overview/man.png"></a>
-                        <!--<a href="#market-o">市场部</a>
-                        <a href="#publicrelation-o">公关部</a>             
-                        <a href="#news-o" id="noshow">新闻部</a>
-                        <a href="#movie-o">影视部</a>
-                        <a href="#newmedia-o">新媒体部</a>                  
-                        <a href="#product-o">产品部</a>
-                        <a href="#frontend-and-art-o">前端美工组</a>
-                        <a href="#backapp-o">后台app组</a>
-                        <a href="#backend-o">后台web组</a>-->
-                        <div class="ind"><img class="arrow" src="./images/common/arrow.png"></div>
+                        <a href="#submit" class="more" style="bottom: 5rem;">立即报名</a>
                     </div>
-                    <script type="text/javascript">
-                        $(document).ready(function(){
-                            
-                        });
-
-                        
-                    </script> 
 				</div>
 			</div>
 		</div>
-        <script type="text/javascript">
-        $(document).ready(function(){
-            /*$('.dDabumen img').width(cwidth*0.5);
-                //$('.dDabumen').width(cwidth*0.5);
-                console.log($('.dDabumen').width()*0.5)
-                $('.dDabumen').css({top: cheight*0.5 - $('.dDabumen').height()*0.5 + 'px'});
-                $('.bigplanet1').width(cwidth*0.2);
-                //$('#marketp').width(cwidth*0.2);
-                //$('#marketp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
-                //$('#publicrelationp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
-                var surroundman = Tweene.line();
-                var surroundman1 = Tweene.line();
-                //console.log($('#market').width())
-                var xstd = cwidth*0.5 - $('.bigplanet1').width()*0.5,
-                    ystd = cheight*0.5 - $('.bigplanet1').height()*0.5,
-                    x = 0,
-                    y = -160,
-                    angle = 0,
-                    unit = Math.PI/180;
-                    x = 160*Math.sin(angle);
-                    y = -160*Math.cos(angle);
-                    Tweene.get($('#marketp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
-                //console.log(xstd,ystd)
-                while (angle < Math.PI*2){
-                    angle += unit;
-                    x = 160*Math.sin(angle);
-                    y = -160*Math.cos(angle);
-                    surroundman.add(Tweene.get($('#marketp')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
-                }
-                angle = Math.PI;
-                x = 160*Math.sin(angle);
-                y = -160*Math.cos(angle);
-                Tweene.get($('#publicrelationp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
-                while (angle < Math.PI*3){
-                    angle += unit;
-                    x = 160*Math.sin(angle);
-                    y = -160*Math.cos(angle);
-                    surroundman1.add(Tweene.get($('#publicrelationp')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
-                }
-                $('#man').on('click',function(){
-                    surroundman.restart();
-                    surroundman1.restart();
-                })*/
-        })
-        </script>
 	</div>
 
 	<!-- 引入次级页面样式 -->
@@ -312,11 +225,12 @@
         </div>
         <script type="text/javascript">
             $(document).ready(function(){
-                $('.dDabumen img').width(cwidth*0.5);
+                $('.dDabumen img').width(cwidth*0.5).height(cwidth*0.5);
+                $('.dDabumen').height(cwidth*0.5);
                 //$('.dDabumen').width(cwidth*0.5);
-                console.log($('.dDabumen').height()*0.5)
+                //console.log($('.dDabumen').height()*0.5)
                 $('.dDabumen').css({top: cheight*0.5 - $('.dDabumen').height()*0.5 + 'px'});
-                $('.bigplanet1').width(cwidth*0.2);
+                $('.bigplanet1').width(cwidth*0.2).height(cwidth*0.2*146/118);
                 //$('#marketp').width(cwidth*0.2);
                 //$('#marketp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
                 //$('#publicrelationp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
@@ -358,21 +272,22 @@
     </div>
     <div data-role="page" id="infop">
         <div class="main-wrapper-c">
-            <div class="mutiangle">
+            <div class="dDabumen">
                 <img class="Dabumen" src="./images/overview/info.png">
             </div>
             <a href="#news-o" id="newsp"><img class="bigplanet" src="./images/overview/news.png"></a>
             <a href="#movie-o" id="moviep"><img class="bigplanet" src="./images/overview/movie.png"></a>
-            <a href="#newmedia-o" id="#newmediap"><img class="bigplanet" src="./images/overview/newmedia.png"></a>
+            <a href="#newmedia-o" id="newmediap"><img class="bigplanet" src="./images/overview/newmedia.png"></a>
             <a href="#" data-rel="back" class="back">返回</a>
         </div>
         <script type="text/javascript">
         $(document).ready(function(){
-            $('.dDabumen img').width(cwidth*0.5);
+            $('.dDabumen img').width(cwidth*0.5).height(cwidth*0.5);
+            $('.dDabumen').height(cwidth*0.5);
             //$('.dDabumen').width(cwidth*0.5);
             //console.log($('.dDabumen').height()*0.5)
             $('.dDabumen').css({top: cheight*0.5 - $('.dDabumen').height()*0.5 + 'px'});
-            $('.bigplanet1').width(cwidth*0.2);
+            $('.bigplanet1').width(cwidth*0.2).height(cwidth*0.2*146/118);
             //$('#marketp').width(cwidth*0.2);
             //$('#marketp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
             //$('#publicrelationp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
@@ -393,8 +308,8 @@
             while (angle < Math.PI*2){
                 angle += unit;
                 x = 160*Math.sin(angle);
-                y = -160*Math.cos(angle);
-                surroundinfo.add(Tweene.get($('#newsp')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+                y = -160*Math.cos(angle) + 160;
+                surroundinfo.add(Tweene.get($('#newsp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
             }
             angle = Math.PI/180*120;
             x = 160*Math.sin(angle);
@@ -402,9 +317,9 @@
             Tweene.get($('#moviep')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
             while (angle < Math.PI/180*480){
                 angle += unit;
-                x = 160*Math.sin(angle);
-                y = -160*Math.cos(angle);
-                surroundinfo1.add(Tweene.get($('#moviep')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+                x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*120);
+                y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*120);
+                surroundinfo1.add(Tweene.get($('#moviep')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
             }
             angle = Math.PI/180*240;
             x = 160*Math.sin(angle);
@@ -412,9 +327,9 @@
             Tweene.get($('#newmediap')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
             while (angle < Math.PI/180*600){
                 angle += unit;
-                x = 160*Math.sin(angle);
-                y = -160*Math.cos(angle);
-                surroundinfo2.add(Tweene.get($('#newmediap')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+                x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*240);
+                y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*240);
+                surroundinfo2.add(Tweene.get($('#newmediap')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
             }
             $('#info').on('click',function(){
                 surroundinfo.restart();
@@ -426,27 +341,30 @@
     </div>
     <div data-role="page" id="techp">
         <div class="main-wrapper-c">
-            <div class="mutiangle">
+            <div class="dDabumen">
                 <img class="Dabumen" src="./images/overview/tech.png">
             </div>
-            <a href="#product-o"><img class="bigplanet" src="./images/overview/product.png"></a>
-            <a href="#frontend-and-art-o"><img class="bigplanet" src="./images/overview/frontend-and-art.png"></a>
-            <a href="#backapp-o"><img class="bigplanet" src="./images/overview/backapp.png"></a>
-            <a href="#backend-o"><img class="bigplanet" src="./images/overview/backend.png"></a>
+            <a href="#product-o" id="productp"><img class="bigplanet" src="./images/overview/product.png"></a>
+            <a href="#frontend-and-art-o" id="frontend-and-artp"><img class="bigplanet" src="./images/overview/frontend-and-art.png"></a>
+            <a href="#backapp-o" id="backappp"><img class="bigplanet" src="./images/overview/backapp.png"></a>
+            <a href="#backend-o" id="backendp"><img class="bigplanet" src="./images/overview/backend.png"></a>
             <a href="#" data-rel="back" class="back">返回</a>
         </div>
         <script type="text/javascript">
         $(document).ready(function(){
-            $('.dDabumen img').width(cwidth*0.5);
+            $('.dDabumen img').width(cwidth*0.5).height(cwidth*0.5);
+            $('.dDabumen').height(cwidth*0.5);
             //$('.dDabumen').width(cwidth*0.5);
             //console.log($('.dDabumen').height()*0.5)
             $('.dDabumen').css({top: cheight*0.5 - $('.dDabumen').height()*0.5 + 'px'});
-            $('.bigplanet1').width(cwidth*0.2);
-            $('#marketp').width(cwidth*0.2);
+            $('.bigplanet1').width(cwidth*0.2).height(cwidth*0.2*146/118);
+            //$('#marketp').width(cwidth*0.2);
             //$('#marketp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
             //$('#publicrelationp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
-            var surroundman = Tweene.line();
-            var surroundman1 = Tweene.line();
+            var surroundtech = Tweene.line();
+            var surroundtech1 = Tweene.line();
+            var surroundtech2 = Tweene.line();
+            var surroundtech3 = Tweene.line();
             //console.log($('#market').width())
             var xstd = cwidth*0.5 - $('.bigplanet1').width()*0.5,
                 ystd = cheight*0.5 - $('.bigplanet1').height()*0.5,
@@ -456,27 +374,49 @@
                 unit = Math.PI/180;
                 x = 160*Math.sin(angle);
                 y = -160*Math.cos(angle);
-                Tweene.get($('#marketp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
+                Tweene.get($('#productp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
             //console.log(xstd,ystd)
             while (angle < Math.PI*2){
                 angle += unit;
                 x = 160*Math.sin(angle);
-                y = -160*Math.cos(angle);
-                surroundman.add(Tweene.get($('#marketp')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+                y = -160*Math.cos(angle) + 160;
+                surroundtech.add(Tweene.get($('#productp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
             }
-            angle = Math.PI;
+            angle = Math.PI/180*90;
             x = 160*Math.sin(angle);
             y = -160*Math.cos(angle);
-            Tweene.get($('#publicrelationp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
-            while (angle < Math.PI*3){
+            Tweene.get($('#frontend-and-artp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
+            while (angle < Math.PI/180*450){
                 angle += unit;
-                x = 160*Math.sin(angle);
-                y = -160*Math.cos(angle);
-                surroundman1.add(Tweene.get($('#publicrelationp')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+                x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*90);
+                y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*90);
+                surroundtech1.add(Tweene.get($('#frontend-and-artp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
             }
-            $('#man').on('click',function(){
-                surroundman.restart();
-                surroundman1.restart();
+            angle = Math.PI/180*180;
+            x = 160*Math.sin(angle);
+            y = -160*Math.cos(angle);
+            Tweene.get($('#backappp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
+            while (angle < Math.PI/180*540){
+                angle += unit;
+                x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*180);
+                y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*180);
+                surroundtech2.add(Tweene.get($('#backappp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+            }
+            angle = Math.PI/180*270;
+            x = 160*Math.sin(angle);
+            y = -160*Math.cos(angle);
+            Tweene.get($('#backendp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
+            while (angle < Math.PI/180*630){
+                angle += unit;
+                x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*270);
+                y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*270);
+                surroundtech3.add(Tweene.get($('#backendp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+            }
+            $('#tech').on('click',function(){
+                surroundtech.restart();
+                surroundtech1.restart();
+                surroundtech2.restart();
+                surroundtech3.restart();
             })
         })
         </script>

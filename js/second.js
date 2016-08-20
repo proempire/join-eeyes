@@ -1,7 +1,7 @@
 // console.log("a");
 $(window).load(function(){
 	// 小星球动效
-	$('.dDabumen img').width(cwidth*0.5);
+	/*$('.dDabumen img').width(cwidth*0.5);
     //$('.dDabumen').width(cwidth*0.5);
     //console.log($('.dDabumen').height()*0.5)
     $('.dDabumen').css({top: cheight*0.5 - $('.dDabumen').height()*0.5 + 'px'});
@@ -23,7 +23,7 @@ $(window).load(function(){
     }
     $('#man').on('click',function(){
     	surroundman.restart();
-    })
+    })*/
 
 	// 简介页动效
 	// 市场部

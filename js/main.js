@@ -44,8 +44,10 @@ $(document).ready(function(){
             }
             i++;
         }
+        TimeLine.add(Tweene.get($(str+" .ind")).to({opacity: 1}).duration(1000))
         TimeLine.add(Tweene.get($(str+" .second")).to({translateX: -0.4*fontSize}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "0");
         TimeLine.add(Tweene.get($(str+" .second")).to({translateY: -0.4*fontSize}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "200");
+        //TimeLine.add(Tweene.get($(str+" .ind")).to({opacity: 1}).duration(1000))
         return TimeLine;
     }
     $(".second").css({left: 0.3 + "rem", top: 0.3 + "rem"});
@@ -77,9 +79,9 @@ $(document).ready(function(){
             
             $('.bigplanet').width(cwidth*0.2);
             $('#tech').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('#tech').height()*0.5 + 'px' })
-            $('#total-overview').on('swipe',function(){
+            /*$('#total-overview').on('swipe',function(){
                 $.mobile.changePage("#submit", {transition: "slidedown"}); 
-            });
+            });*/
 
             var surround = Tweene.line();
             var record = 0,

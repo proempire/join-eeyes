@@ -153,8 +153,18 @@ body{
 .ind{
     text-align: center;
     position: absolute;
+    bottom: 10px;
     width: 100%;
     height: 30px;
+    opacity: 0;
+}
+.main-wrapper>.ind{
+    opacity: 1;
+}
+#firstPage .arrow{
+    width: 30px;
+    height: 30px;
+    margin: 0;
 }
 .arrow{
     width: 30px;
