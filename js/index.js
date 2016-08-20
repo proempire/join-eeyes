@@ -35,7 +35,7 @@ $(function(){
                     li.eq(0).addClass('page1LiAnimate').removeClass('hidden');
                     //alert(li[0].className+"    ,   "+li.eq(0).css('opacity'));
                     $('.tips')[0].currentTime = 0;
-                    $('.tips')[0].play();
+                    //$('.tips')[0].play();
                     init.isCanMove = true;
                     //alert(init.isCanMove);
                 },1000);

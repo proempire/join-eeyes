@@ -7,7 +7,7 @@ $(window).load(function(){
     $('.dDabumen').css({top: cheight*0.5 - $('.dDabumen').height()*0.5 + 'px'});
     $('#market').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
     var surroundman = Tweene.line();
-    console.log($('#market').width())
+    //console.log($('#market').width())
     var xstd = cwidth*0.5 - $('#market').width()*0.5,
         ystd = cheight*0.5 - $('#market').height()*0.5,
         x = 0,
