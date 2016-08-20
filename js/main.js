@@ -36,7 +36,7 @@ $(document).ready(function(){
         var i = 0;
         while(arr[i] != undefined){
             if(i > 0){
-                TimeLine.add(Tweene.get($(str+" #sec-div"+arr[i-1])).to({opacity: 0}).duration(500).easing([0, 0, 1, 1]));
+                TimeLine.add(Tweene.get($(str+" #sec-div"+arr[i-1])).to({opacity: 0}).duration(500).easing([0, 0, 1, 1]), "+=500");
             }
             var maxlen = $(str+" #sec-div"+arr[i]+" p").size();
             for(var j=1; j<=maxlen; j++){

@@ -447,6 +447,9 @@
     top: 50%;
     width: 100%;
 }
+#news .news-contain img:nth-child(4){
+    width: 90%;
+}
 #news #news-hint2, #news #news-hint3{
     width: 9rem;
     height: 3rem;
