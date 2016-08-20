@@ -1,0 +1,62 @@
+#backapp{
+	width: 100%;
+	height: 100%;
+}
+#backapp .content{
+	width: 100%;
+	height: 100%;
+}
+#backapp img{
+	max-width: 950px;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+#backapp #appufo{
+	width: 30%;
+	height: auto;
+	position: absolute;
+	left: -150px;
+	top: 275px;
+}
+#backapp #approbot{
+	width: 1%;
+	position: absolute;
+	left:49%;
+	top: 375px;
+	height: auto;
+}
+#backapp #applight{
+	width: 20%;
+	position: absolute;
+	left:40%;
+	top: 375px;
+	height: auto;
+	opacity: 0;
+}
+#backapp #appspeak{
+	width: 70%;
+	height: auto;
+	position: absolute;
+	left: 10%;
+	top: 14%;
+	opacity: 0;
+}
+#backapp .word{
+	width: 50%;
+	position: absolute;
+	left: 24%;
+	top: 22%;
+	text-align: center;
+}
+#backapp .word p{
+	margin-top: 10px;
+	font-size: 16px;
+	opacity: 0;
+}
+#backapp .word p.special{
+	position: absolute;
+	opacity: 0;
+	top:22%;
+	font-size: 22px;
+}
