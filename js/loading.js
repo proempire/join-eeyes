@@ -99,6 +99,7 @@ $(document).ready(function(){
     first_t1.add(fadeIn($("#firstPage img:nth-child(4)"), 1000));
     first_t1.add(fadeIn($("#firstPage img:nth-child(5)"), 1000));
     first_t1.add(fadeIn($("#firstPage img:nth-child(6)"), 1000));
+    first_t1.add(fadeIn($("#firstPage .ind"),1000))
 });
 // 加载页动效
 var load_t1 = Tweene.line(); 

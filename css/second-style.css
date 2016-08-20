@@ -65,7 +65,7 @@
     -webkit-transform:translateX(2rem); 
 }*/
 /*报名键方案二*/
-.content-J .more, .content-J .form{
+.more, .content-J .form{
     /*width: 5.8rem;*/
     /*height: 2rem; */
 
@@ -84,7 +84,7 @@
     left: 50%;
     -webkit-transform:translateX(-2.5rem);          
 }
-.content-J .more{
+.more{
     bottom: 8.2rem; 
     background-color: #2deca6;
     color: white !important; 

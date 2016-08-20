@@ -1,13 +1,13 @@
 // console.log("a");
 $(window).load(function(){
 	// 小星球动效
-	$('.dDabumen img').width(cwidth*0.5);
+	/*$('.dDabumen img').width(cwidth*0.5);
     //$('.dDabumen').width(cwidth*0.5);
     //console.log($('.dDabumen').height()*0.5)
     $('.dDabumen').css({top: cheight*0.5 - $('.dDabumen').height()*0.5 + 'px'});
     $('#market').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
     var surroundman = Tweene.line();
-    console.log($('#market').width())
+    //console.log($('#market').width())
     var xstd = cwidth*0.5 - $('#market').width()*0.5,
         ystd = cheight*0.5 - $('#market').height()*0.5,
         x = 0,
@@ -23,7 +23,7 @@ $(window).load(function(){
     }
     $('#man').on('click',function(){
     	surroundman.restart();
-    })
+    })*/
 
 	// 简介页动效
 	// 市场部
