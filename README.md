@@ -21,12 +21,13 @@ cp config.sample.php config.php
 # 把data.csv改成一个奇葩的名字，比如
 # define('DATA_FILE', 'aaaabbbbccccdddd.csv');
 # 把邮箱取消注释，然后用户名密码填上
-# define('MAIL_SERVER', array(
+# $MAIL_SERVER = array(
 #     'Host'     => 'smtp.qq.com',
 #     'Port'     => 465,
 #     'Username' => '1234567890@qq.com',
 #     'Password' => 'aaaabbbbccccdddd',
-# ));
+# );
+
 ```
 
 # Author
