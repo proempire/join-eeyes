@@ -1,0 +1,75 @@
+#frontend-and-art{
+	width: 100%;
+	height: 100%;
+}
+#frontend-and-art .content{
+	width: 100%;
+	height: 100%;
+}
+#frontend-and-art img{
+	display: block;
+	max-width: 950px;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+#motuname,#monaname{
+	left: 14%;
+	top: 12%;
+	color: #83685d;
+	z-index: 10;
+	position: absolute;
+	font-size: 16px;
+	opacity: 1;
+}
+#frontend-and-art #motuname{
+	opacity: 0;
+}
+#frontend-and-art #mona{
+	width: 67%;
+	height: auto;
+	top: 20%;
+	left: 16%;
+	opacity: 1;
+	box-shadow: 3px 3px #888888;
+}
+#frontend-and-art #motu{
+	width: 67%;
+	height: auto;
+	top: 20%;
+	left:16%;
+	opacity: 0;
+	box-shadow: 3px 3px #888888;
+}
+#frontend-and-art #rabbit{
+	width: 80%;
+	height: auto;
+	bottom: 20px;
+	left: 0%;
+}
+#frontend-and-art #speak{
+	width: 30%;
+	height: auto;
+	left: 40%;
+	bottom: 100px;
+	z-index: 10;
+}
+#frontend-and-art #screen{
+	position: relative;
+	width: 1px;
+	height: auto;
+	margin: 0 auto;
+	padding: 50px 0 30px 0;
+}
+#frontend-and-art .qianduanword{
+	text-align: center;
+	width: 60%;
+	left: 20%;
+	color: #150500;
+	position: absolute;
+	font-size: 18px;
+}
+#frontend-and-art .qianduanword p{
+	margin-top: 7px;
+	opacity: 0;
+}
