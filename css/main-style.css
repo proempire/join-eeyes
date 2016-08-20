@@ -156,8 +156,10 @@ body{
     margin: 0.6rem;
     opacity: 0;
 }
-#firstPage img:nth-child(2){
-    margin-bottom: 2.5rem;
+#firstPage img:nth-child(3){
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    width: 60%;
 }
 /*第二第四页样式*/
 .second{
