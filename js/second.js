@@ -441,6 +441,11 @@ $(window).load(function(){
 
 	// 详情页动效
 	// 新闻部
+	$("#news-o .more").click(function(){ 
+		$('#news img[remark]').attr('src', function(){
+			return $(this).attr('remark')
+		});
+	});
 	Tweene.get($("#news .news-contain img")).set({translateY: "-50%"}).play();
 	var news_hintfirst = $("#news #news-hint2");
 	var news_hintlast = $("#news #news-hint3");
@@ -448,7 +453,7 @@ $(window).load(function(){
 	news_hintlast.hide();
 	var news_station = 0;
 	var news_active = 0;
-	$(document).bind('touchend', function(event) {
+	$("#news").bind('touchend', function(event) {
      	// 翻页提醒
      	if(news_station == 0){
      		Tweene.get($("#news #news-hint1")).to({opacity: 0}).duration(100).play();
@@ -478,5 +483,6 @@ $(window).load(function(){
      		};
      	}       
 	});
+
 	
 });
