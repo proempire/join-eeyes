@@ -82,9 +82,20 @@ var endJfuc = function(str){
 // 第一页动效
 var first_t1 = Tweene.line();  
 $(document).ready(function(){
-    first_t1.add(FangDaChuXianfuc($("#firstPage img:nth-child(1)"), 400), "1000");
-    first_t1.add(FangDaChuXianfuc($("#firstPage img:nth-child(2)"), 400), "+=500");
-    first_t1.add(fadeIn($("#firstPage img:nth-child(3)"), 1000), "+=800");
+    // 第一句第二句放大旋转
+    first_t1.add(FangDaChuXianfuc($("#firstPage img:nth-child(1)"), 300), "1000");
+    first_t1.add(Tweene.get($("#firstPage img:nth-child(1)")).to({rotation: '360', transformOrigin: '50% 50%'})
+        .easing([0, 0, 1, 1]) 
+        .duration(300), "1000");
+    first_t1.add(FangDaChuXianfuc($("#firstPage img:nth-child(2)"), 300), "+=500");
+    first_t1.add(Tweene.get($("#firstPage img:nth-child(2)")).to({rotation: '360', transformOrigin: '50% 50%'})
+        .easing([0, 0, 1, 1]) 
+        .duration(300), "-=300");
+    // 第三句缩小
+    first_t1.add(Tweene.get($("#firstPage img:nth-child(3)")).set({scale: 2.8}), "+=800");
+    first_t1.add(fadeIn($("#firstPage img:nth-child(3)"), 100));
+    first_t1.add(Tweene.get($("#firstPage img:nth-child(3)")).to({scale: 1}).duration(500));
+    // 第四五六句淡出
     first_t1.add(fadeIn($("#firstPage img:nth-child(4)"), 1000));
     first_t1.add(fadeIn($("#firstPage img:nth-child(5)"), 1000));
     first_t1.add(fadeIn($("#firstPage img:nth-child(6)"), 1000));
@@ -100,11 +111,11 @@ load_cartoon1 = setInterval(function(){
         clearInterval(load_cartoon1);
     }
     $("#loading-cover #load-ball span").text(load_per + "％");
-}, 2); 
+}, 200); 
 // 水上涨以及船波浪动效
 load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(3)")).to({translateX: -15*fontSize}).loops(-1).yoyo(true).duration(1200).easing([0, 0, 1, 1]), '0');           
-load_t1.add(Tweene.get($("#loading-cover p")).to({zoom: "0.9"}).loops(-1).yoyo(true).duration(400).easing([0, 0, 1, 1]), '0');
-load_t1.add(Tweene.get($("#loading-cover #load-ball div, #loading-cover #load-ball img:nth-child(3), #loading-cover #load-ball img:nth-child(2)")).to({translateY: -10*fontSize}).duration(20000).easing([0, 0, 1, 1]), '0');
+load_t1.add(Tweene.get($("#loading-cover p")).to({scale: 0.9}).loops(-1).yoyo(true).duration(400).easing([0, 0, 1, 1]), '0');
+load_t1.add(Tweene.get($("#loading-cover #load-ball div, #loading-cover #load-ball img:nth-child(3), #loading-cover #load-ball img:nth-child(2)")).to({translateY: -10*fontSize}).duration(200).easing([0, 0, 1, 1]), '0');
 load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(2)")).to({rotation: -10}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), '0');
 load_t1.play();
 // 全部加载完成后加载页消失

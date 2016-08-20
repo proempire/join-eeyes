@@ -1683,15 +1683,86 @@
 		<a href="#submit">报名</a>
 		<a href="#" data-rel="back">返回</a>
 	</div>
-	<div data-role="page" id="backend">
-		后台web组详情
-		<a href="#submit">报名</a>
-		<a href="#" data-rel="back">返回</a>
-	</div>
+    
+	<!--后台web组详情页-->
+    <div data-role="page" id="backend">
+        <link rel="stylesheet" href="./css/backend.css">
+        <link rel="stylesheet" href="./css/jquery.terminal.min.css">
+        <script src="./js/jquery.terminal.min.js"></script>
+        <script src="./js/backend.js"></script>
+        <div class="banner"></div>
+        <div class="content">
+            <div class="term"></div>
+        </div>
+        <div class="footer"></div>
+    </div>
+
+	<!--后台app详情页-->
 	<div data-role="page" id="backapp">
-		后台app组详情
-		<a href="#submit">报名</a>
-		<a href="#" data-rel="back">返回</a>
+		<link rel="stylesheet" type="text/css" href="./css/backapp.css">
+		<div class="content">
+			<img src="images/App/background.jpg">
+			<div class="icon">
+                <img id="appufo" src="images/App/UFO.png">
+			    <img id="applight" src="images/App/light.png">
+			    <img id="approbot" src="images/App/robot.png">
+			    <img id="appspeak" src="images/App/speak.png">
+			<div class="word">
+				<p>你是爱创新爱设计的技术宅吗？</p>
+			    <p>你有好的想法正愁找不到一个好的团队实现吗？</p>
+			    <p>你想随心所欲的开发自己想要的安卓应用吗？</p>
+			    <p>你想成为传说中的android工程师吗？</p>
+			    <p class="special">快加入我们e瞳网APP组吧。只要你敢玩，我们就陪你一起玩，我们就带你玩出高逼格。</p>
+			</div>
+            </div>
+		</div>
+		<script>
+			var appwidth=$('#backapp').width()
+			var backapp_t1 = Tweene.line();
+			var backappufo = $('#backapp .icon #appufo');
+			var backapprobot = $('#backapp .icon #approbot')
+			var backapplight = $('#backapp .icon #applight')
+			var backappspeak = $('#backapp .icon #appspeak')
+			backapp_t1.add(startJfuc('#backapp'));
+			backapp_t1.add(Tweene.get(backappufo)
+		 				         .to({left:0.35*appwidth})
+		  						 .duration(2000));
+			backapp_t1.add(Tweene.get(backapplight)
+		 				         .to({opacity:1})
+		  						 .duration(1000));
+			backapp_t1.add(Tweene.get(backapprobot)
+		 				         .to({left:0.5*appwidth-40,top:500,width:80,height:80})
+		  						 .duration(2000));
+			backapp_t1.add(Tweene.get(backapplight)
+		 				         .to({opacity:0})
+		  						 .duration(1000));
+			backapp_t1.add(Tweene.get(backappufo)
+		 				         .to({top:150,left:0.6*appwidth,width:1})
+		  						 .duration(2000));
+			backapp_t1.add(Tweene.get(backappspeak)
+		 				         .to({opacity:1})
+		  						 .duration(2000));
+			backapp_t1.add(Tweene.get($('#backapp p:eq(0)'))
+		 				         .to({opacity:1})
+		  						 .duration(1500));
+			backapp_t1.add(Tweene.get($('#backapp p:eq(1)'))
+		 				         .to({opacity:1})
+		  						 .duration(1500));
+			backapp_t1.add(Tweene.get($('#backapp p:eq(2)'))
+		 				         .to({opacity:1})
+		  						 .duration(1500));
+			backapp_t1.add(Tweene.get($('#backapp p:eq(3)'))
+		 				         .to({opacity:1})
+		  						 .duration(1500));
+			backapp_t1.add(Tweene.get($('#backapp p'))
+		 				         .to({opacity:0})
+		  						 .duration(1500));
+			backapp_t1.add(Tweene.get($('#backapp p:eq(4)'))
+		 				         .to({opacity:1})
+		  						 .duration(1500));
+			backapp_t1.play();
+
+		</script>
 	</div>
 
 	
