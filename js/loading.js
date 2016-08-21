@@ -121,9 +121,10 @@ load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(2)")).to({rota
 load_t1.play();
 // 全部加载完成后加载页消失
 $(window).load(function(){
+    var load_count = 0; // 10次检索强制结束加载页
     var load_cartoon2 = setInterval(function(){
         var arr = $("#loading-cover #load-ball div").css("-webkit-transform").split('(')[1].split(')')[0].split(',');
-        if(arr[5] <= -9.95*fontSize || $("#loading-cover span").text() == "99％"){      
+        if(arr[5] <= -9.95*fontSize || $("#loading-cover span").text() == "99％" || load_count > 10){      
             var load_t2 = Tweene.line();
             load_t2.add(Tweene.get($("#loading-cover #load-ball div, #loading-cover #load-ball img:nth-child(3), #loading-cover #load-ball img:nth-child(2)")).to({translateY: -12*fontSize}).duration(100).easing([0, 0, 1, 1]));
             load_t2.add(fadeOut($("#loading-cover"),500));
@@ -133,6 +134,7 @@ $(window).load(function(){
             clearInterval(load_cartoon2);
             first_t1.play();
         }
+        load_count++;
     }, 50);
     // 加载次级页面的js文件
     // $("secondjs").attr("src", "./second.js");
