@@ -203,7 +203,7 @@
                         <a href="#techp" id="tech"><img class="bigplanet" src="./images/overview/tech.png"></a>
                         <a href="#infop" id="info"><img class="bigplanet" src="./images/overview/info.png"></a>
                         <a href="#manp" id="man"><img class="bigplanet" src="./images/overview/man.png"></a>
-                        <a href="#submit" class="more" style="bottom: 5rem;">立即报名</a>
+                        <a href="#submit" class="form" style="-webkit-transform:translateX(-3rem);">立即报名</a>
                     </div>
 				</div>
 			</div>
@@ -779,10 +779,34 @@
             })
         </script>
     </div>
+    <!-- 公关部详情页 -->
 	<div data-role="page" id="publicrelation">
-		公关部详情
-		<a href="#submit">报名</a>
-		<a href="#" data-rel="back">返回</a>
+		<div class="content-X">
+			<div>
+				<p>你想知道如何处理好<br>他人的委托需求吗</p>
+				<p>你想知道如何策划一期<br>引人注目的宣传营销吗</p>
+				<p>你想知道如何写出<br>大开脑洞令人捧腹<br>的宣传文案吗</p>
+			</div>
+			<div>
+				我们负责对其他部门的活动做营销宣传，提升网站信息，处理公共关系。
+				<div class="publicrelation_one">
+					<p>运营西交V世界公众号</p>
+					<p>与教务处合作搭建留学信息窗口</p>			
+				</div>
+				<img src="" remark="./images/GongGuan/pic1.png" class="publicrelation_one">
+				<div class="publicrelation_two">
+					<p>运营西安交大团委公众号</p>
+					<p>做好校团委的宣传平台</p>					
+				</div>
+				<img src="" remark="./images/GongGuan/pic2.png" class="publicrelation_two">
+			</div>
+			<div>
+				<p>这里是e瞳网公共关系部</p>
+				<p>给我们一个让你知道的机会</p>
+			</div>
+		</div>
+		<img src="" remark="./images/GongGuan/pepole.jpg">
+		<a href="#" data-rel="back" class="back">返回</a>
 	</div>
 	<!-- 新闻部详情页 -->
     <div data-role="page" id="news">       
@@ -903,6 +927,7 @@
 				</div>
 			</div>
 			<div class="player-mask"></div>
+			<a href="#" data-rel="back" class="back">返回</a>
 		</div>
 		<script type="text/javascript">
             $(document).ready(function(){
@@ -960,7 +985,14 @@
 						lrc_t.pause();
 						toggle_control = true;
 					}
-                })
+                });
+
+                $('#newmedia .back').on('click',function(){
+                	$('#toggle-msc').attr("src", "./images/player/stop.png");
+					weChatPlay("voice0", toggle_control); 
+					lrc_t.pause();
+					toggle_control = true;
+                });
                 
                 // 自适应定位
             	$('#newmedia .container').width(cwidth-60).height(cheight-20);
@@ -1404,7 +1436,7 @@
                 <p>实现酷炫的动效</p>
                 <p>制作不可思议的图像</p>
                 <p>别激动，吃颗药冷静下</p>
-                <p>然后快快加入我们把</p>
+                <p>然后快快加入我们吧</p>
             </div>
 
         </div>

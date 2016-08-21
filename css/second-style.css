@@ -40,20 +40,19 @@
     font-weight: lighter !important; 
 }
 /*报名键方案一*/
-/*.content-J .more, .content-J .form{
-    width: 5.8rem;
-    height: 2rem; 
+.more, .form{
+    /*width: 5.8rem;*/
+    /*height: 2rem; */
 
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: white !important; 
     font-weight: lighter !important;   
-    line-height: 1.85;
-    font-weight: lighter !important; 
     
     background-color: #2deca6;
     border: none;
-    border-radius: 0.4rem;             
+    border-radius: 0.4rem;  
+    padding: 0.3rem 0.8rem;           
     
     position: absolute;
     bottom: 5rem; left: 50%;         
@@ -63,18 +62,15 @@
 }
 .content-J .form{
     -webkit-transform:translateX(2rem); 
-}*/
+    /*background-color: rgba(0, 0, 0, 0.3);*/
+}
 /*报名键方案二*/
-.more, .content-J .form{
-    /*width: 5.8rem;*/
-    /*height: 2rem; */
-
+/*.more, .content-J .form{
     text-align: center;
-    /*font-size: 1.2rem;*/
+    font-size: 1.2rem;
     padding: 0.4rem 0.6rem;
     
     font-weight: lighter !important;   
-    /*line-height: 1.85;*/
     font-weight: lighter !important; 
         
     border: none;
@@ -93,7 +89,7 @@
     bottom: 5rem;
     background-color: rgba(0, 0, 0, 0.3);
     color: white !important; 
-}
+}*/
 
 /*市场部*/
 #market-o>.content-J{
@@ -461,4 +457,61 @@
     color: white;
     padding: 1rem;
     text-align: center;
+}
+
+/*公关部*/
+#publicrelation{
+    background-color: rgb(24, 190, 240);
+    height: 100%;
+}
+#publicrelation>img{
+    width: 22rem;
+    position: absolute;
+    bottom: 5rem; left: 50%;
+    -webkit-transform:translateX(-11rem);
+}
+#publicrelation>a{
+    color: white !important;
+}
+#publicrelation .content-X{
+    width: 100%;
+    height: 60%;
+}
+#publicrelation .content-X>div{
+    width: 70%;
+    color: white;
+    line-height: 1.5;
+    font-size: 1.3rem;
+    Letter-spacing: 0.12rem;
+    display: none;
+    position: relative;
+}
+#publicrelation .content-X>div:nth-child(2){
+    text-align: left;
+    margin-bottom: 10rem
+}
+#publicrelation .content-X>div p{
+    text-align: center;
+}
+#publicrelation .content-X>div:nth-child(2) div{   
+    margin-top: 5rem;
+    width: 45%;
+    font-size: 1.1rem;
+    Letter-spacing: 0;
+    position: absolute;
+    -webkit-transform:translateY(-1rem);
+}
+#publicrelation .content-X>div:nth-child(2) img{
+    width: 8.5rem;   
+    position: absolute;
+    -webkit-transform:translateY(3rem);
+}
+#publicrelation .content-X>div:nth-child(2) img.publicrelation_one {
+    right: 0; 
+}
+#publicrelation .content-X>div:nth-child(2) div.publicrelation_two{
+    right: 0; 
+}
+#publicrelation .content-X>div:nth-child(2) img.publicrelation_two {
+    left: 0;
 }

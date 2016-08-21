@@ -25,6 +25,17 @@ var fadeOut = function($, t, arr){
         .duration(t));
     return TimeLine;
 }
+// 淡入 $:jquery对象 t:时长 arr:淡出速度曲线(默认匀速)
+var fadeIn2 = function($, t, arr){
+    if(arr == undefined){ arr = [0, 0, 1, 1]; };
+    var TimeLine = Tweene.line();
+    TimeLine.add(Tweene.get($)
+        .from({opacity: 0, display: 'block'})
+        .to({opacity: 1, display: 'block'})
+        .easing(arr)
+        .duration(t));
+    return TimeLine;
+}       
 // 顺时针循环旋转 $:jquery对象 speed:旋转速度 xystr:旋转中心(默认图形中点)
 var ZiXuanfuc = function($, speed, xystr){
     if(xystr == undefined){ xystr = '50% 50%'; };
