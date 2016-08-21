@@ -41,18 +41,15 @@
 }
 /*报名键方案一*/
 .more, .form{
-    /*width: 5.8rem;*/
-    /*height: 2rem; */
-
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: white !important; 
     font-weight: lighter !important;   
     
     background-color: #2deca6;
     border: none;
-    border-radius: 0.4rem;  
-    padding: 0.3rem 0.8rem;           
+    border-radius: 0.6rem;  
+    padding: 0.4rem 0.9rem;           
     
     position: absolute;
     bottom: 5rem; left: 50%;         
@@ -64,32 +61,6 @@
     -webkit-transform:translateX(2rem); 
     /*background-color: rgba(0, 0, 0, 0.3);*/
 }
-/*报名键方案二*/
-/*.more, .content-J .form{
-    text-align: center;
-    font-size: 1.2rem;
-    padding: 0.4rem 0.6rem;
-    
-    font-weight: lighter !important;   
-    font-weight: lighter !important; 
-        
-    border: none;
-    border-radius: 0.4rem;             
-    
-    position: absolute;
-    left: 50%;
-    -webkit-transform:translateX(-2.5rem);          
-}
-.more{
-    bottom: 8.2rem; 
-    background-color: #2deca6;
-    color: white !important; 
-}
-.content-J .form{
-    bottom: 5rem;
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white !important; 
-}*/
 
 /*市场部*/
 #market-o>.content-J{
