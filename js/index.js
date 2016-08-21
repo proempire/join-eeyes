@@ -51,6 +51,8 @@ $(function(){
         startX = 0,
         pStartX = 0,
         pageSwipe = $('.page1 .content').get(0);
+        pageSwipe1 = $('.page1 .content').get(1);
+        //console.log(pageSwipe1)
     pageSwipe.addEventListener('touchstart',function(event){
         event.preventDefault();
         var touch = event.targetTouches[0];
@@ -69,6 +71,43 @@ $(function(){
         }
     },false);
     pageSwipe.addEventListener('touchend',function(){
+        //alert(init.isCanMove);
+        if( isTouchmove ){
+            if( 1 ){
+                clearTimeout(timeout);
+                //if( $('.page1 .unlock')[0].readyState == 4 ){
+                    $('.page1 .unlock')[0].play();
+                //}
+                $('.page1').addClass('hidden');
+                showMessage1();
+            }else{
+                $(this).css('left',0);
+            }
+        }else{
+            $(this).css('left',0);
+        }
+        pStartX = 0;
+        startX = 0;
+        isTouchmove = false;
+    },false);
+    pageSwipe1.addEventListener('touchstart',function(event){
+        event.preventDefault();
+        var touch = event.targetTouches[0];
+        startX = touch.pageX;
+    },false);
+    pageSwipe1.addEventListener('touchmove',function(event){
+        event.preventDefault();
+        var touch = event.targetTouches[0];
+        pStartX += touch.pageX - startX;
+        startX = touch.pageX;
+        $(this).css('left',pStartX);
+        if( parseInt($(this).css('left')) > 0 ){
+            isTouchmove = true;
+        }else{
+            isTouchmove = false;
+        }
+    },false);
+    pageSwipe1.addEventListener('touchend',function(){
         //alert(init.isCanMove);
         if( isTouchmove ){
             if( 1 ){
@@ -146,17 +185,19 @@ $(function(){
         };
         return time;
     }
-    // 依次显示信息
+    // 依次显示信息1
     function showMessage(){
-        var li = $('.page2 .con .content li');
-        $('.page2').removeClass('hidden');
+        var li = $('#wechat_bg .con .content li');
+        $('#wechat_bg').removeClass('hidden');
         //li.eq(0).find('.mTime').html(getEarlyTime());
         //li.eq(2).find('.mTime').html(getCurrentTime());
-        $('.page2 .con .content').removeClass('hidden');
+        $('#wechat_bg .con .content').removeClass('hidden');
         var totalHeight = 0,
             maxHigh = (GC.h / 1039) * 962,
             scrollTotop = 0;
-        console.log(maxHigh);
+        //console.log(maxHigh);
+        $('#wechat_bg .con .content').height((GC.h / 1039) * 962)
+        //$('#wechat_bg .con .content').css('top': cheight*0.1)
         for( var j = 0 ; j < 5; j++ ){
             totalHeight += li.eq(j).height();
         }
@@ -172,8 +213,60 @@ $(function(){
                     if( totalHeight > maxHigh - 10 ){
                         scrollTotop = totalHeight - maxHigh + 10;
                         setTimeout(function(){
-                            $('.page2 .con .content').animate({'top':-scrollTotop+'px'},150);
-                            $('.page2 .con .content').css('height',totalHeight + 'px');
+                            $('#wechat_bg .con .content').animate({'top':-scrollTotop+'px'},150);
+                            $('#wechat_bg .con .content').css('height',totalHeight + 'px');
+                        },(ind == 1) ? 0 : 350);
+
+                    }
+                    //if( ind <= 4){
+                        //return;
+                    //}else{
+                        li.eq(ind).removeClass('liStart').addClass('liAnimate');  // 每条消息出现的动画时间为 0.3s
+                    //}
+                    if( ind == (li.length - 1) ){  // 当播放到最后一条消息时
+                        //setTimeout(showPage3,2500);   // 等待1650ms ，显示下一个页面
+                        //------------------------------
+                        //李磊改
+                        //setTimeout("alert('over')", 5000);
+                    }
+                    //if( $('.tips')[0].readyState == 4 ){
+                        $('.tips')[0].currentTime = 0;
+                        $('.tips')[0].play();
+                    //}
+                },(        (ind > 2 ) ? (ind-2) * 1200 : ((ind == 2) ? parseInt(Math.random()*500) + 300 : 0 )      )     );   // 每条消息播放等待时间分别比上一条消息的多 800ms
+            })(i);
+        }
+    }
+    // 依次显示信息2
+    function showMessage1(){
+        var li = $('#market_bg .con .content li');
+        $('#market_bg').removeClass('hidden');
+        //li.eq(0).find('.mTime').html(getEarlyTime());
+        //li.eq(2).find('.mTime').html(getCurrentTime());
+        $('#market_bg .con .content').removeClass('hidden');
+        var totalHeight = 0,
+            maxHigh = (GC.h / 1039) * 962,
+            scrollTotop = 0;
+        //console.log(maxHigh);
+        $('#market_bg .con .content').height((GC.h / 1039) * 962)
+        $('#market_bg .con .content').css({'margin-top': cheight*0.1})
+        for( var j = 0 ; j < 5; j++ ){
+            totalHeight += li.eq(j).height();
+        }
+
+        for( var i = 0; i < li.length;i++ ){
+            (function(ind){
+                setTimeout(function(){
+                    li.eq(ind+1).addClass('liStart').removeClass('hidden');//.addClass('liAnimate');
+
+                    var h = li.eq(ind+1).height();
+                    totalHeight += h;
+
+                    if( totalHeight > maxHigh - 10 ){
+                        scrollTotop = totalHeight - maxHigh + 10;
+                        setTimeout(function(){
+                            $('#market_bg .con .content').animate({'top':-scrollTotop+'px'},150);
+                            $('#market_bg .con .content').css('height',totalHeight + 'px');
                         },(ind == 1) ? 0 : 350);
 
                     }
