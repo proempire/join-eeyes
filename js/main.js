@@ -71,6 +71,16 @@ $(document).ready(function(){
             // 动画
             var starline = Tweene.line();
             starline.add(Tweene.get($('.main-wrapper')).to({marginTop: -$('.main-wrapper').height() + cheight + 'px'}).duration(40000));
+
+            $('#star-content-wrapper').css({width: cwidth*0.9, height: '3020px', left: cwidth*0.05});
+            $('#star-p1').css({top: $('.main-wrapper').height()*0.0814, right: 0});
+            $('#star-p2').css({top: $('.main-wrapper').height()*0.2171, left: 0});
+            $('#star-p3').css({top: $('.main-wrapper').height()*0.34, right: 0});
+            $('#star-p4').css({top: $('.main-wrapper').height()*0.46, left: 0});
+            $('#star-p5').css({top: $('.main-wrapper').height()*0.58, right: 0});
+            $('#star-p6').css({top: $('.main-wrapper').height()*0.6929, left: 0});
+            $('#star-p7').css({top: $('.main-wrapper').height()*0.8571, right: 0});
+
         
             // 第五页（未改动）
             $('.mutiangle img').width(cwidth*0.5);

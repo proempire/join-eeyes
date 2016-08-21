@@ -1,29 +1,173 @@
 // console.log("a");
 $(window).load(function(){
 	// 小星球动效
-	/*$('.dDabumen img').width(cwidth*0.5);
-    //$('.dDabumen').width(cwidth*0.5);
-    //console.log($('.dDabumen').height()*0.5)
+	// id="manp"
+	$('.dDabumen img').width(cwidth*0.5).height(cwidth*0.5);
+    $('.dDabumen').height(cwidth*0.5);
+                //$('.dDabumen').width(cwidth*0.5);
+                //console.log($('.dDabumen').height()*0.5)
     $('.dDabumen').css({top: cheight*0.5 - $('.dDabumen').height()*0.5 + 'px'});
-    $('#market').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
+    $('.bigplanet1').width(cwidth*0.2).height(cwidth*0.2*146/118);
+                //$('#marketp').width(cwidth*0.2);
+                //$('#marketp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
+                //$('#publicrelationp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
     var surroundman = Tweene.line();
-    //console.log($('#market').width())
-    var xstd = cwidth*0.5 - $('#market').width()*0.5,
-        ystd = cheight*0.5 - $('#market').height()*0.5,
-        x = 0,
-        y = -160,
-        angle = 0,
-        unit = Math.PI/180;
-    //console.log(xstd,ystd)
+    var surroundman1 = Tweene.line();
+                //console.log($('#market').width())
+    var xstd = cwidth*0.5 - $('.bigplanet1').width()*0.5,
+    ystd = cheight*0.5 - $('.bigplanet1').height()*0.5,
+    x = 0,
+    y = -160,
+    angle = 0,
+    unit = Math.PI/180;
+    x = 160*Math.sin(angle);
+    y = -160*Math.cos(angle);
+    Tweene.get($('#marketp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
+                //console.log(xstd,ystd)
     while (angle < Math.PI*2){
         angle += unit;
         x = 160*Math.sin(angle);
         y = -160*Math.cos(angle);
-        surroundman.add(Tweene.get($('#market')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+        surroundman.add(Tweene.get($('#marketp')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+    }
+    angle = Math.PI;
+    x = 160*Math.sin(angle);
+    y = -160*Math.cos(angle);
+    Tweene.get($('#publicrelationp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
+    while (angle < Math.PI*3){
+        angle += unit;
+        x = 160*Math.sin(angle);
+        y = -160*Math.cos(angle);
+        surroundman1.add(Tweene.get($('#publicrelationp')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
     }
     $('#man').on('click',function(){
-    	surroundman.restart();
-    })*/
+        surroundman.restart();
+        surroundman1.restart();
+    })
+
+    // id="infop"
+    $('.dDabumen img').width(cwidth*0.5).height(cwidth*0.5);
+    $('.dDabumen').height(cwidth*0.5);
+            //$('.dDabumen').width(cwidth*0.5);
+            //console.log($('.dDabumen').height()*0.5)
+    $('.dDabumen').css({top: cheight*0.5 - $('.dDabumen').height()*0.5 + 'px'});
+    $('.bigplanet1').width(cwidth*0.2).height(cwidth*0.2*146/118);
+            //$('#marketp').width(cwidth*0.2);
+            //$('#marketp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
+            //$('#publicrelationp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
+    var surroundinfo = Tweene.line();
+    var surroundinfo1 = Tweene.line();
+    var surroundinfo2 = Tweene.line();
+            //console.log($('#market').width())
+    var xstd = cwidth*0.5 - $('.bigplanet1').width()*0.5,
+    ystd = cheight*0.5 - $('.bigplanet1').height()*0.5,
+    x = 0,
+    y = -160,
+    angle = 0,
+    unit = Math.PI/180;
+    x = 160*Math.sin(angle);
+    y = -160*Math.cos(angle);
+    Tweene.get($('#newsp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
+            //console.log(xstd,ystd)
+            while (angle < Math.PI*2){
+                angle += unit;
+                x = 160*Math.sin(angle);
+                y = -160*Math.cos(angle) + 160;
+                surroundinfo.add(Tweene.get($('#newsp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+            }
+            angle = Math.PI/180*120;
+            x = 160*Math.sin(angle);
+            y = -160*Math.cos(angle);
+            Tweene.get($('#moviep')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
+            while (angle < Math.PI/180*480){
+                angle += unit;
+                x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*120);
+                y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*120);
+                surroundinfo1.add(Tweene.get($('#moviep')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+            }
+            angle = Math.PI/180*240;
+            x = 160*Math.sin(angle);
+            y = -160*Math.cos(angle);
+            Tweene.get($('#newmediap')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
+            while (angle < Math.PI/180*600){
+                angle += unit;
+                x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*240);
+                y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*240);
+                surroundinfo2.add(Tweene.get($('#newmediap')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+            }
+            $('#info').on('click',function(){
+                surroundinfo.restart();
+                surroundinfo1.restart();
+                surroundinfo2.restart();
+            })
+
+    // id="techp"
+    $('.dDabumen img').width(cwidth*0.5).height(cwidth*0.5);
+            $('.dDabumen').height(cwidth*0.5);
+            //$('.dDabumen').width(cwidth*0.5);
+            //console.log($('.dDabumen').height()*0.5)
+            $('.dDabumen').css({top: cheight*0.5 - $('.dDabumen').height()*0.5 + 'px'});
+            $('.bigplanet1').width(cwidth*0.2).height(cwidth*0.2*146/118);
+            //$('#marketp').width(cwidth*0.2);
+            //$('#marketp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
+            //$('#publicrelationp').css({left: cwidth*0.5 - $('.bigplanet').width()*0.5 + 'px', top: cheight*0.5 - 160 - $('.bigplanet').height()*0.5 + 'px' })
+            var surroundtech = Tweene.line();
+            var surroundtech1 = Tweene.line();
+            var surroundtech2 = Tweene.line();
+            var surroundtech3 = Tweene.line();
+            //console.log($('#market').width())
+            var xstd = cwidth*0.5 - $('.bigplanet1').width()*0.5,
+                ystd = cheight*0.5 - $('.bigplanet1').height()*0.5,
+                x = 0,
+                y = -160,
+                angle = 0,
+                unit = Math.PI/180;
+                x = 160*Math.sin(angle);
+                y = -160*Math.cos(angle);
+                Tweene.get($('#productp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
+            //console.log(xstd,ystd)
+            while (angle < Math.PI*2){
+                angle += unit;
+                x = 160*Math.sin(angle);
+                y = -160*Math.cos(angle) + 160;
+                surroundtech.add(Tweene.get($('#productp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+            }
+            angle = Math.PI/180*90;
+            x = 160*Math.sin(angle);
+            y = -160*Math.cos(angle);
+            Tweene.get($('#frontend-and-artp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
+            while (angle < Math.PI/180*450){
+                angle += unit;
+                x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*90);
+                y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*90);
+                surroundtech1.add(Tweene.get($('#frontend-and-artp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+            }
+            angle = Math.PI/180*180;
+            x = 160*Math.sin(angle);
+            y = -160*Math.cos(angle);
+            Tweene.get($('#backappp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
+            while (angle < Math.PI/180*540){
+                angle += unit;
+                x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*180);
+                y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*180);
+                surroundtech2.add(Tweene.get($('#backappp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+            }
+            angle = Math.PI/180*270;
+            x = 160*Math.sin(angle);
+            y = -160*Math.cos(angle);
+            Tweene.get($('#backendp')).set({left: xstd + x + 'px', top: ystd + y + 'px'})
+            while (angle < Math.PI/180*630){
+                angle += unit;
+                x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*270);
+                y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*270);
+                surroundtech3.add(Tweene.get($('#backendp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+            }
+            $('#tech').on('click',function(){
+                surroundtech.restart();
+                surroundtech1.restart();
+                surroundtech2.restart();
+                surroundtech3.restart();
+            })
 
 	// 简介页动效
 	// 市场部
@@ -518,6 +662,207 @@ $(window).load(function(){
 	publicrelation_t.add(Tweene.get($("#publicrelation .content-X>div:nth-child(3) p")).set({opacity: 0}));
 	for(publicrelation_i=1; publicrelation_i<3; publicrelation_i++){
 		publicrelation_t.add(fadeIn2($("#publicrelation .content-X>div:nth-child(3) p:nth-child("+publicrelation_i+")"), 800), "+=800");
-	}		
+	}
+
+	// 影视部
+	// 加载图片
+    $("a[href='#movie']").on('click',function(){
+        $('#movie img[remark]').attr('src',function(){return $(this).attr('remark')});
+    });
+    var myvideo = document.getElementById('video1');
+    // 加载播放视频
+    $('#movie-play').on('click',function(){
+        if (!myvideo.src) {
+			myvideo.src = "./images/media/movie.mp4"
+		}
+		myvideo.play(); 
+	});
+    // 样式
+                $('#movie-total').css({width: cheight, height: cwidth}).addClass('movie-total-rotate').css({position: 'absolute', left: cwidth});
+                $('video').css({width: cheight*0.8, height: cwidth*0.8}).css({left: cwidth});
+                $('#movie-control').css({bottom: cheight*0.3});
+                $('#movie-control-img').css({width: cheight*0.4498, height: cwidth*0.0933});   
+
+    // 新媒体部
+    // 加载图片
+    $("a[href='#newmedia']").on('click', function(){
+        $('#newmedia').css({'background-image': "url('./images/player/b2.jpg')"})
+        $('.lrc').css({'background-image': "url('./images/player/base.png')"})
+        $('.player-mask').css({'background-image': "url('./images/player/mask.png')"})
+        $('#newmedia img[remark]').attr('src',function(){return $(this).attr('remark')});
+    });
+    // 加载播放暂停音频
+    function weChatPlay(id, state){
+        var audio = document.getElementById(id);
+		var play = function(state) {
+			document.removeEventListener("WeixinJSBridgeReady", play);
+			document.removeEventListener("YixinJSBridgeReady", play);
+	        if(state){
+				audio.play();
+			}else{
+				audio.pause();
+			} 
+		};
+		if(state){
+			audio.play();
+		}else{
+			audio.pause();
+		}
+		//weixin
+		document.addEventListener("WeixinJSBridgeReady", play, false);
+		//yixin
+		document.addEventListener('YixinJSBridgeReady', play, false);
+    }
+	var toggle_control = true;
+    $('#toggle-msc').on('click',function(){
+        if(toggle_control){
+            $('#toggle-msc').attr("src", "./images/player/play.png");
+            var audio = document.getElementById("voice0");
+	        if (!audio.src) {
+				audio.src = "yali.mp3";
+			}
+			weChatPlay("voice0", toggle_control); 
+			lrc_t.resume();
+			toggle_control = false;
+		}else{
+			$('#toggle-msc').attr("src", "./images/player/stop.png");
+			weChatPlay("voice0", toggle_control); 
+			lrc_t.pause();
+			toggle_control = true;
+		}
+    });
+	$('#newmedia .back').on('click',function(){
+        $('#toggle-msc').attr("src", "./images/player/stop.png");
+		weChatPlay("voice0", toggle_control); 
+		lrc_t.pause();
+		toggle_control = true;
+    });
+    // 自适应定位
+    $('#newmedia .container').width(cwidth-60).height(cheight-20);
+    $('#newmedia .player-mask').width(cwidth);
+    $('#newmedia .lrc').width(cwidth-60).height(cheight-20-70);
+    $('#newmedia .lrc').css('text-align','center');
+    $('#newmedia .icon').width(cwidth-60).height(70);
+    $('#newmedia #newmedia-detail').css('left',$('#newmedia .lrc').width() * 0.155299 + 20 + 'px');
+    $('#newmedia #newmedia-detail').css('top',65.4132 + 'px');
+    $('#newmedia #newmedia-title').css('position','relative');
+    $('#newmedia #newmedia-title').css('left','10px');
+    $('#newmedia #newmedia-title').css('top',45.4132 + 'px');
+    $('#newmedia .lrc-panel').css('margin-top',$('#newmedia .lrc').height() * 0.070299 + 25 + 'px');
+    $('#newmedia .lrc-panel').css('height',$('.lrc').height()-120 + 'px');
+    var lrc_t = Tweene.line();
+    // 添加动态歌词
+    var wordsmove = function(arr, t){
+    	var TimeLine = Tweene.line();
+    	var i = 0;
+    	var y = 60;
+    	while(arr[i] != undefined){
+    		TimeLine.add(Tweene.get($('.lrc-real')).to({translateY: -y}).duration(t), arr[i]);
+    		i++;
+    		y = y + 60;
+    	}
+    	return TimeLine;
+    }
+    lrc_t.add(wordsmove([3570, 6370, 9000, 10890, 12230, 13540, 15610, 18260, 19740, 22230, 24120, 26410, 27840, 29550, 31350, 33260, 34550, 36380, 39010, 41610, 44350, 46820, 49300, 51050, 53260, 54840, 56440, 58110, 59910, 62830, 65430, 66480, 68150, 70750], 1000));
+
+    // 前端美工组
+    var qianduan_t1 = Tweene.line();
+            var rabbit=$('#rabbit')
+            var motu=$('#motu')
+            var mona=$('#mona')
+            var qianduanwidth=$('#frontend-and-art').width()
+            $(rabbit).click(function(){
+                qianduan_t1.add(startJfuc('#frontend-and-art'));
+                qianduan_t1.add(fadeOut('#speak',400),0);
+                qianduan_t1.add(Tweene.get(mona)
+                                      .to({opacity:0})
+                                      .duration(1500),400);
+                qianduan_t1.add(Tweene.get(motu)
+                                      .to({opacity:1})
+                                      .duration(1500),400);
+                qianduan_t1.add(Tweene.get($('#monaname'))
+                                      .to({opacity:0})
+                                      .duration(1500),400);
+                qianduan_t1.add(Tweene.get($('#motuname'))
+                                      .to({opacity:1})
+                                      .duration(1500),400);
+                qianduan_t1.add(Tweene.get($('#frontend-and-art img:eq(1),#motu,#motuname,#rabbit'))
+                                      .to({opacity:0})
+                                      .duration(1000),2500);
+                qianduan_t1.add(Tweene.get($('#screen'))
+                                      .to({width:qianduanwidth*0.9})
+                                      .duration(1000),3500);
+                qianduan_t1.add(Tweene.get($('.qianduanword p:eq(0)'))
+                                 .to({opacity:1})
+                                 .duration(1500));
+                qianduan_t1.add(Tweene.get($('.qianduanword p:eq(1)'))
+                                 .to({opacity:1})
+                                 .duration(1500));
+                qianduan_t1.add(Tweene.get($('.qianduanword p:eq(2)'))
+                                 .to({opacity:1})
+                                 .duration(1500));
+                qianduan_t1.add(Tweene.get($('.qianduanword p:eq(3)'))
+                                 .to({opacity:1})
+                                 .duration(1500));
+                qianduan_t1.add(Tweene.get($('.qianduanword p:eq(4)'))
+                                 .to({opacity:1})
+                                 .duration(1500));
+                qianduan_t1.add(Tweene.get($('.qianduanword p:eq(5)'))
+                                 .to({opacity:1})
+                                 .duration(1500));
+                qianduan_t1.play();
+            })
+	$('#frontend-and-art-o a.more').click(function(){ $('#frontend-and-art img[remark]').attr('src',function(){return $(this).attr('remark')}); });
+
+	// App
+	var appwidth=$('#backapp').width()
+            var appheight=$('#backapp').height()
+			var backapp_t1 = Tweene.line();
+			var backappufo = $('#backapp .icon #appufo');
+			var backapprobot = $('#backapp .icon #approbot')
+			var backapplight = $('#backapp .icon #applight')
+			var backappspeak = $('#backapp .icon #appspeak')
+			backapp_t1.add(startJfuc('#backapp'));
+			backapp_t1.add(Tweene.get(backappufo)
+		 				         .to({left:0.35*appwidth})
+		  						 .duration(2000));
+			backapp_t1.add(Tweene.get(backapplight)
+		 				         .to({opacity:1})
+		  						 .duration(1000));
+			backapp_t1.add(Tweene.get(backapprobot)
+		 				         .to({left:0.5*appwidth-40,top:0.75*appheight,width:80,height:80})
+		  						 .duration(2000));
+			backapp_t1.add(Tweene.get(backapplight)
+		 				         .to({opacity:0})
+		  						 .duration(1000));
+			backapp_t1.add(Tweene.get(backappufo)
+		 				         .to({top:0.2*appheight,left:0.6*appwidth,width:1})
+		  						 .duration(2000));
+			backapp_t1.add(Tweene.get(backappspeak)
+		 				         .to({opacity:1})
+		  						 .duration(2000));
+			backapp_t1.add(Tweene.get($('#backapp p:eq(0)'))
+		 				         .to({opacity:1})
+		  						 .duration(1500));
+			backapp_t1.add(Tweene.get($('#backapp p:eq(1)'))
+		 				         .to({opacity:1})
+		  						 .duration(1500));
+			backapp_t1.add(Tweene.get($('#backapp p:eq(2)'))
+		 				         .to({opacity:1})
+		  						 .duration(1500));
+			backapp_t1.add(Tweene.get($('#backapp p:eq(3)'))
+		 				         .to({opacity:1})
+		  						 .duration(1500));
+			backapp_t1.add(Tweene.get($('#backapp p'))
+		 				         .to({opacity:0})
+		  						 .duration(1500));
+			backapp_t1.add(Tweene.get($('#backapp p:eq(4)'))
+		 				         .to({opacity:1})
+		  						 .duration(1500));
+			$('#backapp-o a.more').click(function(){
+                $('#backapp img[remark]').attr('src',function(){return $(this).attr('remark')});
+                backapp_t1.play();
+            });
+
 	
 });
