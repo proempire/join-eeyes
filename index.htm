@@ -731,7 +731,7 @@
             </div>
             <audio class="unlock" src="" remark="./images/unlock.mp3" preload="auto"></audio>
         </div>
-        <div class="page page2 hidden">
+        <div class="page page2 hidden" id="market_bg">
             <audio class="tips" src="" remark="./images/message.mp3" preload="auto"></audio>
             <div class="con">
                 <ul class="content clearfix">
@@ -743,21 +743,21 @@
                         </div>
                     </li>
                     <li class="clearfix msgleft ">
-                        <div class="photo"></div>
+                        <div class="photo boss"></div>
                         <div>
                             <p class="username">主管</p>
                             <p class="mess">作为网站的门户部门，市场部不仅负责对外的赞助拉取和外联交流工作，同时承担内部联谊等活动的策划组织以及部门协调沟通的工作。</p>
                         </div>
                     </li>
                     <li class="clearfix msgright">
-                        <div class="photo"></div>
+                        <div class="photo new1"></div>
                         <div>
                             <p class="username">萌新1</p>
                             <p class="mess">萌新求问，在市场部我能学到什么呢？ 在这里你能学到职场办公必备技能、培养合作协调沟通能力。</p>
                         </div>
                     </li>
                     <li class="clearfix msgleft">
-                        <div class="photo"></div>
+                        <div class="photo new2"></div>
                         <div>
                             <p class="username">萌新2</p>
                             <p class="mess">那个……市场部的氛围怎么样呢？ 市场部的氛围非常好呀!我们不仅有严谨敬业的企业文化、还有温馨有爱的社团氛围。</p>
@@ -777,6 +777,12 @@
             $(document).ready(function(){
                 $("a[href='#market']").on('click',function(){
                     $('#market img[remark]').attr('src',function(){return $(this).attr('remark')});
+                    var market_audio = $('#market audio');
+                    for (var i = 0; i < market_audio.length; i++) {
+                        (function(index){
+                            if (!market_audio[index].src) {market_audio[index].src = market_audio[index].remark};
+                        })(i)
+                    };
                 });
             })
         </script>
@@ -1030,8 +1036,8 @@
 	    <script type="text/javascript">
             $(document).ready(function(){
                 $("a[href='#product']").on('click',function(){
-                    $('.page1').css({background: "url('./images/page1_bg.png')"})
-                    $('.page2').css({background: "url('./images/page2_bg.png')"})
+                    $('.page1').css({background: "url('./images/chanpinMore/page1_bg.png')"})
+                    $('.page2').css({background: "url('./images/chanpinMore/page2_bg.png')"})
                 })
             })
 	        var GC = {
@@ -1071,10 +1077,10 @@
 	        </div>
 	        <audio class="unlock" src="" remark="./images/unlock.mp3" preload="auto"></audio>
 	    </div>
-	    <div class="page page2 hidden">
+	    <div class="page page2 hidden" id="wechat_bg">
 	        <audio class="tips" src="" remark="./images/message.mp3" preload="auto"></audio>
 	        <div class="con">
-	            <ul class="content clearfix">
+	            <ul class="content clearfix" id="market-con">
 	                <li class="clearfix msgleft">
 	                    <p class="mTime"><span>昨天 晚上10:23</span></p>
 	                    <div class="photo"></div>
