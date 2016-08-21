@@ -1123,49 +1123,35 @@
 		</div>
 		<script type="text/javascript">
             $(document).ready(function(){
+                // 加载图片
                 $("a[href='#movie']").on('click',function(){
                     $('#movie img[remark]').attr('src',function(){return $(this).attr('remark')});
                 });
+
                 var myvideo = document.getElementById('video1');
-                $("a[href='#movie']").on('click',function(){
-                // $('#movie-play').on('click',function(){
+
+                // 加载播放视频
+                $('#movie-play').on('click',function(){
 
 					if (!myvideo.src) {
 					    myvideo.src = "./images/media/movie.mp4"
 					}
-					// media.play();
-                    // myvideo.loadstart();
-                    // myvideo.eventTester("loadstart");
-                    // $('#movie source[remarkv]').attr('src',function(){return $(this).attr('remarkv')});
+					myvideo.play(); 
+					
                 });
-            	//$(window).on('orientationchange',function(){
-            	//$("a[href='#movie']").on('click',function(){
-            		//$('#movie').css({background: "url('./images/media/bg.png')", transform: 'rotate(90deg)'});
-            	//});
+            	
+            	// 样式
                 $('#movie-total').css({width: cheight, height: cwidth}).addClass('movie-total-rotate').css({position: 'absolute', left: cwidth});
                 $('video').css({width: cheight*0.8, height: cwidth*0.8}).css({left: cwidth});
                 $('#movie-control').css({bottom: cheight*0.3});
-                $('#movie-control-img').css({width: cheight*0.4498, height: cwidth*0.0933})
-                
-                $('#movie-play').on('click',function(){
-                	
-                	console.log( myvideo.networkState);
-                	console.log( myvideo.preload);
-                	myvideo.play();
-					
-					// $('#movie-play').bind('oncanplay', function(event) {
-						
-					// });
-                	
-                });
-	            //url('../images/media/bg.png')
-            	//});
+                $('#movie-control-img').css({width: cheight*0.4498, height: cwidth*0.0933});               
+
             });
 		</script>
 	</div>
 	<!-- 新媒体详情页 -->
 	<div data-role="page" id="newmedia">
-		<audio id="voice0" src="" remarka="yali.mp3"></audio>
+		<audio id="voice0" src="yali.mp3" preload="none"></audio>
 		<div>
 			<div class="container"> 
 				<div class="lrc">
@@ -1213,17 +1199,18 @@
 					</div>
 				</div>
 				<div class="icon">
-					<a href="#"><img src="" remark="./images/player/shuffle.png" style="width: 20px;"></a>
-					<a href="#"><img src="" remark="./images/player/prev.png" style="width: 30px;"></a>
-					<a href="#" id="toggle-msc"><img src="" remark="./images/player/play.png" style="width: 30px;"></a>
-					<a href="#"><img src="" remark="./images/player/next.png" style="width: 30px;"></a>
-					<a href="#"><img src="" remark="./images/player/repeat.png" style="width: 20px;"></a>
+					<img src="" remark="./images/player/shuffle.png" style="width: 20px;">
+					<img src="" remark="./images/player/prev.png" style="width: 30px;">
+					<img src="" remark="./images/player/play.png" style="width: 30px;" id="toggle-msc">
+					<img src="" remark="./images/player/next.png" style="width: 30px;">
+					<img src="" remark="./images/player/repeat.png" style="width: 20px;">
 				</div>
 			</div>
 			<div class="player-mask"></div>
 		</div>
 		<script type="text/javascript">
             $(document).ready(function(){
+            	// 加载图片
             	$("a[href='#newmedia']").on('click',function(){
                     // 加载
                     $('#newmedia').css({'background-image': "url('./images/player/b2.jpg')"})
@@ -1231,12 +1218,54 @@
                     $('.player-mask').css({'background-image': "url('./images/player/mask.png')"})
             		$('#newmedia img[remark]').attr('src',function(){return $(this).attr('remark')});
             	});
+           	
+            	// 加载播放暂停音频
+                function weChatPlay(id, state){
+                	var audio = document.getElementById(id);
+
+	                var play = function(state) {
+				        document.removeEventListener("WeixinJSBridgeReady", play);
+				        document.removeEventListener("YixinJSBridgeReady", play);
+
+				        if(state){
+				        	audio.play();
+				        }else{
+				        	audio.pause();
+				        } 
+				        // document.removeEventListener("touchstart", play, false);
+				    };
+				    
+				    if(state){
+				        audio.play();
+				    }else{
+				        audio.pause();
+				    }
+
+				    //weixin
+				    document.addEventListener("WeixinJSBridgeReady", play, false);
+				    //yixin
+				    document.addEventListener('YixinJSBridgeReady', play, false);
+                }
+
+                var toggle_control = true;
                 $('#toggle-msc').on('click',function(){
-                    $('#newmedia audio[remarka]').attr('src',function(){return $(this).attr('remarka')});
+                	if(toggle_control){
+                		$('#toggle-msc').attr("src", "./images/player/play.png");
+                		var audio = document.getElementById("voice0");
+	                    if (!audio.src) {
+						    audio.src = "yali.mp3";
+						}
+						weChatPlay("voice0", toggle_control); 
+						lrc_t.resume();
+						toggle_control = false;
+					}else{
+						$('#toggle-msc').attr("src", "./images/player/stop.png");
+						weChatPlay("voice0", toggle_control); 
+						lrc_t.pause();
+						toggle_control = true;
+					}
                 })
                 
-
-
                 // 自适应定位
             	$('#newmedia .container').width(cwidth-60).height(cheight-20);
             	$('#newmedia .player-mask').width(cwidth);
@@ -1252,17 +1281,13 @@
             	//$('#newmedia .lrc-panel').css('margin-left',$('#newmedia .lrc').width() * 0.155299 + 5 + 'px');
             	$('#newmedia .lrc-panel').css('margin-top',$('#newmedia .lrc').height() * 0.070299 + 25 + 'px');
             	$('#newmedia .lrc-panel').css('height',$('.lrc').height()-120 + 'px');
-
-            	
-            	
+           	
 	            var lrc_t = Tweene.line();
                 var lrc = Tweene.get($('.lrc-real'));
                 var t = 1000;
                 var child1 = lrc.to({marginTop: '-=60px'})
-                             .duration(1000);
+                             .duration(1000);                
                 
-                
-
                 // 添加动态歌词
                 lrc_t.add(child1,3570);
                 lrc_t.add(Tweene.get($('.lrc-real')).to({marginTop: '-=60px'}).duration(t),6370);
@@ -1298,35 +1323,7 @@
                 lrc_t.add(Tweene.get($('.lrc-real')).to({marginTop: '-=60px'}).duration(t),66480);
                 lrc_t.add(Tweene.get($('.lrc-real')).to({marginTop: '-=60px'}).duration(t),68150);
                 lrc_t.add(Tweene.get($('.lrc-real')).to({marginTop: '-=60px'}).duration(t),70750);
-                
-                function weChatPlay(id){
-                	var audio = document.getElementById(id);
-
-	                var play = function() {
-				        document.removeEventListener("WeixinJSBridgeReady", play);
-				        document.removeEventListener("YixinJSBridgeReady", play);
-
-				        audio.play();
-				        audio.pause();
-				        // document.removeEventListener("touchstart", play, false);
-				    };
-				    
-				    audio.play();
-				    audio.pause();
-
-				    //weixin
-				    document.addEventListener("WeixinJSBridgeReady", play, false);
-				    //yixin
-				    document.addEventListener('YixinJSBridgeReady', play, false);
-                }
-
-                $("#toggle-msc").bind('touchend', function(event) {
-                // $('#toggle-msc').on('click',function(){
-	            	console.log(event.target);
-                    // weChatPlay("voice0");
-                    // compatible with 
-	            
-			    })
+                             
 			});
 		</script>
 	</div>
