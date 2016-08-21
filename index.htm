@@ -1740,6 +1740,7 @@
 		</div>
 		<script>
 			var appwidth=$('#backapp').width()
+            var appheight=$('#backapp').height()
 			var backapp_t1 = Tweene.line();
 			var backappufo = $('#backapp .icon #appufo');
 			var backapprobot = $('#backapp .icon #approbot')
@@ -1753,13 +1754,13 @@
 		 				         .to({opacity:1})
 		  						 .duration(1000));
 			backapp_t1.add(Tweene.get(backapprobot)
-		 				         .to({left:0.5*appwidth-40,top:500,width:80,height:80})
+		 				         .to({left:0.5*appwidth-40,top:0.75*appheight,width:80,height:80})
 		  						 .duration(2000));
 			backapp_t1.add(Tweene.get(backapplight)
 		 				         .to({opacity:0})
 		  						 .duration(1000));
 			backapp_t1.add(Tweene.get(backappufo)
-		 				         .to({top:150,left:0.6*appwidth,width:1})
+		 				         .to({top:0.2*appheight,left:0.6*appwidth,width:1})
 		  						 .duration(2000));
 			backapp_t1.add(Tweene.get(backappspeak)
 		 				         .to({opacity:1})
@@ -1782,11 +1783,11 @@
 			backapp_t1.add(Tweene.get($('#backapp p:eq(4)'))
 		 				         .to({opacity:1})
 		  						 .duration(1500));
-			backapp_t1.play();
+			$('#backapp-o a.more').click(function(){
+                backapp_t1.play();
+            });
 
 		</script>
-        <a href="#submit">报名</a>
-        <a href="#" data-rel="back">返回</a>
 	</div>
 
 	
