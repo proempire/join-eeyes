@@ -212,12 +212,12 @@ a {
 }
 
 .page1 .message li {
-    width: 100%;
+    width: 95%;
     height: auto;
     padding: 6px 0 0 0;
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
-    background: url("../images/chanpinMore/weixin.png") no-repeat left 11.5px;
+    background: url("../images/market/QQ.png") no-repeat left 11.5px;
     background-size: 20px 20px;
     position: absolute;
     left: 0;
@@ -291,7 +291,7 @@ a {
     width: 135px;
     height: 22.5px;
     position: absolute;
-    right: 35%;
+    right: 30%;
     bottom: 10%;
     background: url("../images/chanpinMore/huadong01.png") no-repeat center top;
     background-size: 100% 100%;
@@ -415,7 +415,7 @@ a {
 }
 
 .page2 {
-    background: url("../images/chanpinMore/page2_bg.png");
+    background: url("../images/market/bg.png");
     background-size: 100% 100%;
 }
 
@@ -426,13 +426,13 @@ a {
 }
 
 .page2 .con .content {
-    width: 16rem;
+    width: 22rem;
     height: 24.05rem;
     /* overflow:scroll;*/
     overflow: hidden;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 5rem;
 }
 
 .page2 .con .content li {

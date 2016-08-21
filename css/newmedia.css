@@ -69,6 +69,7 @@
     -webkit-align-items: center;
     align-items: center;
     height: 70px;
+    z-index: 999;
 }
 .player-mask{
 	background-size: cover;
