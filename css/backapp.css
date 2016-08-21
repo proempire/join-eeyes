@@ -17,41 +17,41 @@
 	height: auto;
 	position: absolute;
 	left: -150px;
-	top: 275px;
+	top: 50%;
 }
 #backapp #approbot{
 	width: 1%;
 	position: absolute;
 	left:49%;
-	top: 375px;
+	top: 66%;
 	height: auto;
 }
 #backapp #applight{
 	width: 20%;
 	position: absolute;
 	left:40%;
-	top: 375px;
+	top: 65%;
 	height: auto;
 	opacity: 0;
 }
 #backapp #appspeak{
-	width: 70%;
+	width: 80%;
 	height: auto;
 	position: absolute;
-	left: 10%;
-	top: 14%;
+	left: 5%;
+	top: 7%;
 	opacity: 0;
 }
 #backapp .word{
 	width: 50%;
 	position: absolute;
 	left: 24%;
-	top: 22%;
+	top: 11%;
 	text-align: center;
 }
 #backapp .word p{
 	margin-top: 10px;
-	font-size: 16px;
+	font-size: 18px;
 	opacity: 0;
 }
 #backapp .word p.special{
