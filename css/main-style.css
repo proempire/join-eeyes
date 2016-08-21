@@ -121,7 +121,7 @@ body{
 	width: 100%;
 	height: 100%;
 }
-.swiper-slide, .sec-con, .content-J{
+.swiper-slide, .sec-con, .content-J, .content-X{
 	/*flex布局（已兼容）*/
 	display: -webkit-box;
 	display: -ms-flexbox;

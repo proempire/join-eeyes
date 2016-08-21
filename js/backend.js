@@ -102,7 +102,7 @@ $(function() {
         term.echo('go to http://join.eeyes.net to fill the form.')
     } 
     function exit(term) {
-        // 跳转至上一页
+        history.back();
         term.echo('Bye.')
     }
     function other(command, term) {

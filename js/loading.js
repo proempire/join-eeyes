@@ -25,6 +25,17 @@ var fadeOut = function($, t, arr){
         .duration(t));
     return TimeLine;
 }
+// 淡入 $:jquery对象 t:时长 arr:淡出速度曲线(默认匀速)
+var fadeIn2 = function($, t, arr){
+    if(arr == undefined){ arr = [0, 0, 1, 1]; };
+    var TimeLine = Tweene.line();
+    TimeLine.add(Tweene.get($)
+        .from({opacity: 0, display: 'block'})
+        .to({opacity: 1, display: 'block'})
+        .easing(arr)
+        .duration(t));
+    return TimeLine;
+}       
 // 顺时针循环旋转 $:jquery对象 speed:旋转速度 xystr:旋转中心(默认图形中点)
 var ZiXuanfuc = function($, speed, xystr){
     if(xystr == undefined){ xystr = '50% 50%'; };
@@ -121,21 +132,21 @@ load_t1.add(Tweene.get($("#loading-cover #load-ball img:nth-child(2)")).to({rota
 load_t1.play();
 // 全部加载完成后加载页消失
 $(window).load(function(){
-    // var load_count = 0; // 10次检索强制结束加载页
-    // var load_cartoon2 = setInterval(function(){
-    //     var arr = $("#loading-cover #load-ball div").css("-webkit-transform").split('(')[1].split(')')[0].split(',');
-    //     if(arr[5] <= -9.95*fontSize || $("#loading-cover span").text() == "99％" || load_count > 10){      
+    var load_count = 0; // 10次检索强制结束加载页
+    var load_cartoon2 = setInterval(function(){
+        var arr = $("#loading-cover #load-ball div").css("-webkit-transform").split('(')[1].split(')')[0].split(',');
+        if(arr[5] <= -9.95*fontSize || $("#loading-cover span").text() == "99％" || load_count > 10){      
             var load_t2 = Tweene.line();
             load_t2.add(Tweene.get($("#loading-cover #load-ball div, #loading-cover #load-ball img:nth-child(3), #loading-cover #load-ball img:nth-child(2)")).to({translateY: -12*fontSize}).duration(100).easing([0, 0, 1, 1]));
             load_t2.add(fadeOut($("#loading-cover"),500));
             load_t2.play();
             $("#loading-cover span").text("100％");
             load_t1.pause();
-            // clearInterval(load_cartoon2);
+            clearInterval(load_cartoon2);
             first_t1.play();
-    //     }
-    //     load_count++;
-    // }, 50);
+        }
+        load_count++;
+    }, 50);
     // 加载次级页面的js文件
     // $("secondjs").attr("src", "./second.js");
     // secondjs.src = "./js/second.js";

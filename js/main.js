@@ -40,7 +40,7 @@ $(document).ready(function(){
             }
             var maxlen = $(str+" #sec-div"+arr[i]+" p").size();
             for(var j=1; j<=maxlen; j++){
-                TimeLine.add(fadeIn($(str+" #sec-div"+arr[i]+" p:nth-child("+j+")"), 800));
+                TimeLine.add(fadeIn($(str+" #sec-div"+arr[i]+" p:nth-child("+j+")"), 800), "+=200");
             }
             i++;
         }

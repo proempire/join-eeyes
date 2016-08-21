@@ -484,5 +484,40 @@ $(window).load(function(){
      	}       
 	});
 
+	// 公关部
+	$("#publicrelation-o .more").click(function(){ 
+		$('#publicrelation img[remark]').attr('src', function(){
+			return $(this).attr('remark')
+		});
+		publicrelation_t.restart();
+	});
+	var publicrelation_t = Tweene.line();
+	// 第一部分
+	publicrelation_t.add(Tweene.get($("#publicrelation .content-X>div:nth-child(1)")).set({display: "block"}));
+	publicrelation_t.add(Tweene.get($("#publicrelation .content-X>div:nth-child(1) p")).set({opacity: 0}));
+	for(var publicrelation_i=1; publicrelation_i<4; publicrelation_i++){
+		publicrelation_t.add(fadeIn2($("#publicrelation .content-X>div:nth-child(1) p:nth-child("+publicrelation_i+")"), 800), "+=800");
+	}
+	publicrelation_t.add(fadeOut($("#publicrelation .content-X>div:nth-child(1)"), 500), "+=1000");
+	// 第二部分	
+	publicrelation_t.add(Tweene.get($("#publicrelation .content-X>div:nth-child(2) div p")).set({display: "none"}));
+	publicrelation_t.add(Tweene.get($("#publicrelation .content-X>div:nth-child(2) img")).set({display: "none"}));
+	publicrelation_t.add(fadeIn2($("#publicrelation .content-X>div:nth-child(2)"), 800));
+	// 2.1	
+	publicrelation_t.add(fadeIn2($("#publicrelation .content-X>div:nth-child(2) .publicrelation_one>p:nth-child(1)"), 800), "+=800");
+	publicrelation_t.add(fadeIn2($("#publicrelation .content-X>div:nth-child(2) .publicrelation_one>p:nth-child(2)"), 800));
+	publicrelation_t.add(fadeIn($("#publicrelation .content-X>div:nth-child(2) img.publicrelation_one"), 1000), "-=1600");
+	publicrelation_t.add(fadeOut($("#publicrelation .content-X>div:nth-child(2) .publicrelation_one"), 500), "+=1000");	
+	// 2.2	
+	publicrelation_t.add(fadeIn2($("#publicrelation .content-X>div:nth-child(2) .publicrelation_two>p:nth-child(1)"), 800));
+	publicrelation_t.add(fadeIn2($("#publicrelation .content-X>div:nth-child(2) .publicrelation_two>p:nth-child(2)"), 800));
+	publicrelation_t.add(fadeIn($("#publicrelation .content-X>div:nth-child(2) img.publicrelation_two"), 1000), "-=1600");
+	publicrelation_t.add(fadeOut($("#publicrelation .content-X>div:nth-child(2)"), 500), "+=1000");
+	// 第三部分
+	publicrelation_t.add(Tweene.get($("#publicrelation .content-X>div:nth-child(3)")).set({display: "block"}));
+	publicrelation_t.add(Tweene.get($("#publicrelation .content-X>div:nth-child(3) p")).set({opacity: 0}));
+	for(publicrelation_i=1; publicrelation_i<3; publicrelation_i++){
+		publicrelation_t.add(fadeIn2($("#publicrelation .content-X>div:nth-child(3) p:nth-child("+publicrelation_i+")"), 800), "+=800");
+	}		
 	
 });
