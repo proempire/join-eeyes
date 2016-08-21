@@ -1116,7 +1116,7 @@
 		</div>
         <div id="hint">收到影视部邀请，点击查收<br/>视频很小（3.5M），请放心观看</div>
 		<div id="movie-control">
-			<img src="" remark="./images/media/control.jpg" id="movie-control-img">
+			<img src="" remark="./images/media/control.png" id="movie-control-img">
 			<a id="movie-back" data-rel="back">返回</a>
 			<a id="movie-play">播放</a>
 		</div>
@@ -1712,10 +1712,79 @@
             })
         </script>
 	</div>
+    <!--前端美工组详情页-->
 	<div data-role="page" id="frontend-and-art">
-		前端美工组部详情
-		<a href="#submit">报名</a>
-		<a href="#" data-rel="back">返回</a>
+        
+        <link rel="stylesheet" type="text/css" href="./css/qianduan.css">
+        <div class="content">
+            <img src="images/QianDuan/bg2.jpg">
+            <img src="images/QianDuan/bg.png">
+            <div id="name"></div>
+            <p id="monaname">蒙娜丽莎的微笑</p>
+            <p id="motuname">萌兔丽莎的微笑</p>
+            <img id="mona" src="images/QianDuan/mona.jpg">
+            <img id="motu" src="images/QianDuan/motu.jpg">
+            <img id="rabbit" src="images/QianDuan/rabbit.png">
+            <img id="speak" src="images/QianDuan/speak.png">
+            <img id="screen" src="images/QianDuan/screen.png">
+            <div class="qianduanword">
+                <p>我们是e瞳前端美工组</p>
+                <p>我们开发网页</p>
+                <p>实现酷炫的动效</p>
+                <p>制作不可思议的图像</p>
+                <p>别激动，吃颗药冷静下</p>
+                <p>然后快快加入我们把</p>
+            </div>
+
+        </div>
+        <script type="text/javascript">
+            var qianduan_t1 = Tweene.line();
+            var rabbit=$('#rabbit')
+            var motu=$('#motu')
+            var mona=$('#mona')
+            var qianduanwidth=$('#frontend-and-art').width()
+            $(rabbit).click(function(){
+                qianduan_t1.add(startJfuc('#frontend-and-art'));
+                qianduan_t1.add(fadeOut('#speak',400),0);
+                qianduan_t1.add(Tweene.get(mona)
+                                      .to({opacity:0})
+                                      .duration(1500),400);
+                qianduan_t1.add(Tweene.get(motu)
+                                      .to({opacity:1})
+                                      .duration(1500),400);
+                qianduan_t1.add(Tweene.get($('#monaname'))
+                                      .to({opacity:0})
+                                      .duration(1500),400);
+                qianduan_t1.add(Tweene.get($('#motuname'))
+                                      .to({opacity:1})
+                                      .duration(1500),400);
+                qianduan_t1.add(Tweene.get($('#frontend-and-art img:eq(1),#motu,#motuname,#rabbit'))
+                                      .to({opacity:0})
+                                      .duration(1000),2500);
+                qianduan_t1.add(Tweene.get($('#screen'))
+                                      .to({width:qianduanwidth*0.9})
+                                      .duration(1000),3500);
+                qianduan_t1.add(Tweene.get($('.qianduanword p:eq(0)'))
+                                 .to({opacity:1})
+                                 .duration(1500));
+                qianduan_t1.add(Tweene.get($('.qianduanword p:eq(1)'))
+                                 .to({opacity:1})
+                                 .duration(1500));
+                qianduan_t1.add(Tweene.get($('.qianduanword p:eq(2)'))
+                                 .to({opacity:1})
+                                 .duration(1500));
+                qianduan_t1.add(Tweene.get($('.qianduanword p:eq(3)'))
+                                 .to({opacity:1})
+                                 .duration(1500));
+                qianduan_t1.add(Tweene.get($('.qianduanword p:eq(4)'))
+                                 .to({opacity:1})
+                                 .duration(1500));
+                qianduan_t1.add(Tweene.get($('.qianduanword p:eq(5)'))
+                                 .to({opacity:1})
+                                 .duration(1500));
+                qianduan_t1.play();
+            })
+        </script>
 	</div>
     
 	<!--后台web组详情页-->
@@ -1752,6 +1821,7 @@
 		</div>
 		<script>
 			var appwidth=$('#backapp').width()
+            var appheight=$('#backapp').height()
 			var backapp_t1 = Tweene.line();
 			var backappufo = $('#backapp .icon #appufo');
 			var backapprobot = $('#backapp .icon #approbot')
@@ -1765,13 +1835,13 @@
 		 				         .to({opacity:1})
 		  						 .duration(1000));
 			backapp_t1.add(Tweene.get(backapprobot)
-		 				         .to({left:0.5*appwidth-40,top:500,width:80,height:80})
+		 				         .to({left:0.5*appwidth-40,top:0.75*appheight,width:80,height:80})
 		  						 .duration(2000));
 			backapp_t1.add(Tweene.get(backapplight)
 		 				         .to({opacity:0})
 		  						 .duration(1000));
 			backapp_t1.add(Tweene.get(backappufo)
-		 				         .to({top:150,left:0.6*appwidth,width:1})
+		 				         .to({top:0.2*appheight,left:0.6*appwidth,width:1})
 		  						 .duration(2000));
 			backapp_t1.add(Tweene.get(backappspeak)
 		 				         .to({opacity:1})
@@ -1794,7 +1864,9 @@
 			backapp_t1.add(Tweene.get($('#backapp p:eq(4)'))
 		 				         .to({opacity:1})
 		  						 .duration(1500));
-			backapp_t1.play();
+			$('#backapp-o a.more').click(function(){
+                backapp_t1.play();
+            });
 
 		</script>
 	</div>
