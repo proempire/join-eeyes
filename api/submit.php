@@ -145,8 +145,17 @@ if (!file_exists(DATA_FILE) && false === fputcsv($f, $TABLE_HEADER)) {
     ob_end_clean();
     exit('-4');
 }
+// 获取IP归属地
+function getLocation($ip)
+{
+	$html = file_get_contents('http://ip.lockview.cn/ShowIP.aspx?ip=' . $ip);
+	if (1 === preg_match('/<table.*?><tr><td>.*?<\\/td><td>.*?<\\/td><td>(.*?)<\\/td><\\/tr><\\/table>/', $html, $matches)) {
+		return $matches[1];
+	}
+	return '';
+}
 // 追加数据
-if (false === fputcsv($f, array($time, $client_ip, $name, $gender, $date, $home, $college, $class, $tel, $qq, $mail, $first, $second, $info))) {
+if (false === fputcsv($f, array($time, $client_ip, getLocation($client_ip), $name, $gender, $date, $home, $college, $class, $tel, $qq, $mail, $first, $second, $info))) {
     fclose($f);
     ob_end_clean();
     exit('-4');
