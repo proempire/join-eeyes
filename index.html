@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>e瞳网2016招新链接</title>
+    <title>带你探索精彩e瞳</title>
+    <meta name="description" content="带你探索精彩e瞳">
     <style>
         * {
             margin: 0;
@@ -77,14 +78,29 @@
             width: 31%;
             height: 31%;
         }
+        .toscale {
+            -webkit-animation: toscale 1s ease-out infinite;
+                    animation: toscale 1s ease-out infinite;
+        }
+        @keyframes toscale {
+              0% {transform: scale(1)}
+             50% {transform: scale(1.1)}
+            100% {transform: scale(1)}
+        }
+        @-webkit-keyframes toscale {
+              0% {-webkit-transform: scale(1)}
+             50% {-webkit-transform: scale(1.1)}
+            100% {-webkit-transform: scale(1)}
+        }
     </style>
 </head>
 
 <body>
+    <img src="share.png" style="position:absolute;left:0;top:0;width:0;height:0;overflow:hidden">
     <img src="banner.png">
     <div class="content">
         <p>去招新网站</p>
-        <a href="index.htm">了解更多</a>
+        <a href="index.htm" class="toscale">探索e瞳</a>
         <p>我已经想好了</p>
         <a href="join.html">直接报名</a>
     </div>
