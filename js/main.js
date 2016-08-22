@@ -97,7 +97,7 @@ $(document).ready(function(){
                 angle += unit;
                 x = 160*Math.sin(angle);
                 y = -160*Math.cos(angle)+160;
-                surround.add(Tweene.get($('#tech')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+                surround.add(Tweene.get($('#tech')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(60).easing([0,0,1,1]));
             }
             $('#info').css({top: ystd + 80 + 'px', left: xstd + 138});
             var surround1 = Tweene.line();
@@ -111,7 +111,7 @@ $(document).ready(function(){
                 angle += unit;
                 x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*120);
                 y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*120);
-                surround1.add(Tweene.get($('#info')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+                surround1.add(Tweene.get($('#info')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(60).easing([0,0,1,1]));
             }
             $('#man').css({top: ystd + 80 + 'px', left: xstd - 138});
             var surround2 = Tweene.line();
@@ -125,7 +125,7 @@ $(document).ready(function(){
                 angle += unit;
                 x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*240);
                 y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*240);
-                surround2.add(Tweene.get($('#man')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+                surround2.add(Tweene.get($('#man')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(60).easing([0,0,1,1]));
             }
 
             // 二级部门
