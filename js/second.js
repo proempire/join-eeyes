@@ -831,7 +831,7 @@ $(window).load(function(){
 		 				         .to({opacity:1})
 		  						 .duration(1000));
 			backapp_t1.add(Tweene.get(backapprobot)
-		 				         .to({left:0.5*appwidth-40,top:0.75*appheight,width:80,height:80})
+		 				         .to({left:0.5*appwidth-40,top:0.79*appheight,width:80,height:80})
 		  						 .duration(2000));
 			backapp_t1.add(Tweene.get(backapplight)
 		 				         .to({opacity:0})

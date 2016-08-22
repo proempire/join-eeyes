@@ -763,14 +763,14 @@
     width: 1%;
     position: absolute;
     left:49%;
-    top: 66%;
+    top: 68%;
     height: auto;
 }
 #backapp #applight{
     width: 20%;
     position: absolute;
     left:40%;
-    top: 65%;
+    top: 66%;
     height: auto;
     opacity: 0;
 }
@@ -779,7 +779,7 @@
     height: auto;
     position: absolute;
     left: 5%;
-    top: 7%;
+    top: 4%;
     opacity: 0;
 }
 #backapp .word{
