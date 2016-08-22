@@ -690,7 +690,7 @@
 }
 #frontend-and-art #mona{
     width: 67%;
-    height: auto;
+    height:53%;
     top: 20%;
     left: 16%;
     opacity: 1;
@@ -698,7 +698,7 @@
 }
 #frontend-and-art #motu{
     width: 67%;
-    height: auto;
+    height:53%;
     top: 20%;
     left:16%;
     opacity: 0;
@@ -722,7 +722,7 @@
     width: 1px;
     height: auto;
     margin: 0 auto;
-    padding: 50px 0 30px 0;
+    padding: 10% 0 6% 0;
 }
 #frontend-and-art .qianduanword{
     text-align: center;

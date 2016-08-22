@@ -774,6 +774,7 @@ $(window).load(function(){
             $(rabbit).click(function(){
                 qianduan_t1.add(startJfuc('#frontend-and-art'));
                 qianduan_t1.add(fadeOut('#speak',400),0);
+                qianduan_t1.add(fadeOut('#rabbit',400),0);
                 qianduan_t1.add(Tweene.get(mona)
                                       .to({opacity:0})
                                       .duration(1500),400);
