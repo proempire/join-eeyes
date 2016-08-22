@@ -687,10 +687,11 @@ $(window).load(function(){
     // 加载图片
     $("a[href='#newmedia']").on('click', function(){
         $('#newmedia').css({'background-image': "url('./images/player/b2.jpg')"})
-        $('.lrc').css({'background-image': "url('./images/player/base.png')"})
-        $('.player-mask').css({'background-image': "url('./images/player/mask.png')"})
         $('#newmedia img[remark]').attr('src',function(){return $(this).attr('remark')});
     });
+    // 样式
+    $("#newmedia #newmedia_word").css({left: 0.2*wwidth + "rem", bottom: 0.2*wheight+1 + "rem"});
+    $("#newmedia #newmedia_button").css({left: 0.16*wwidth + "rem"});
     // 加载播放暂停音频
     function weChatPlay(id, state){
         var audio = document.getElementById(id);
@@ -737,21 +738,9 @@ $(window).load(function(){
 		lrc_t.pause();
 		toggle_control = true;
     });
-    // 自适应定位
-    $('#newmedia .container').width(cwidth-60).height(cheight-20);
-    $('#newmedia .player-mask').width(cwidth);
-    $('#newmedia .lrc').width(cwidth-60).height(cheight-20-70);
-    $('#newmedia .lrc').css('text-align','center');
-    $('#newmedia .icon').width(cwidth-60).height(70);
-    $('#newmedia #newmedia-detail').css('left',$('#newmedia .lrc').width() * 0.155299 + 20 + 'px');
-    $('#newmedia #newmedia-detail').css('top',65.4132 + 'px');
-    $('#newmedia #newmedia-title').css('position','relative');
-    $('#newmedia #newmedia-title').css('left','10px');
-    $('#newmedia #newmedia-title').css('top',45.4132 + 'px');
-    $('#newmedia .lrc-panel').css('margin-top',$('#newmedia .lrc').height() * 0.070299 + 25 + 'px');
-    $('#newmedia .lrc-panel').css('height',$('.lrc').height()-120 + 'px');
-    var lrc_t = Tweene.line();
+    
     // 添加动态歌词
+    var lrc_t = Tweene.line();
     var wordsmove = function(arr, t){
     	var TimeLine = Tweene.line();
     	var i = 0;
@@ -763,7 +752,8 @@ $(window).load(function(){
     	}
     	return TimeLine;
     }
-    lrc_t.add(wordsmove([3570, 6370, 9000, 10890, 12230, 13540, 15610, 18260, 19740, 22230, 24120, 26410, 27840, 29550, 31350, 33260, 34550, 36380, 39010, 41610, 44350, 46820, 49300, 51050, 53260, 54840, 56440, 58110, 59910, 62830, 65430, 66480, 68150, 70750], 1000));
+    lrc_t.add(wordsmove([3570, 6370, 9000, 12230, 15610, 18260, 19740, 22230, 24120, 26410, 29550, 31350, 33260, 36380, 39010, 41610, 44350, 49300, 51050, 53260, 56440,  58110,  65430,  68150, 70750], 1000));
+
 
     // 前端美工组
     var qianduan_t1 = Tweene.line();
