@@ -153,22 +153,13 @@ body{
 .ind{
     text-align: center;
     position: absolute;
-    bottom: 10px;
+    bottom: 0.3rem;
     width: 100%;
-    height: 30px;
     opacity: 0;
 }
-.main-wrapper>.ind{
-    opacity: 1;
-}
-#firstPage .arrow{
-    width: 30px;
-    height: 30px;
-    margin: 0;
-}
-.arrow{
-    width: 30px;
-    height: 30px;
+.ind .arrow{
+    opacity: 1 !important;
+    width: 1.8rem !important;
 }
 /*第一页样式*/
 #firstPage img{

@@ -18,22 +18,16 @@
 
 	<!-- use Tweene with GSAP -->
 	<script src="dest/js/vendor.min.js"></script>
+	<script src="dest/js/tweene.min.js"></script>
 	<script>
             window.$ = window.jQuery = require('jquery');
             require('velocity-animate');
             require('jquery.transit');
             require('gsap');
+            Tweene.defaultTimeUnit = 'ms';
+            Tweene.defaultDriver = 'gsap';
     </script>
-	<script src="dest/js/tweene.min.js"></script>
-	<!-- // <script type="text/javascript" src="./js/jquery.lazyload.js"></script> -->
-	<!-- 设置 -->
-	<script type="text/javascript">
-		// set the default time unit you want to use
-	    Tweene.defaultTimeUnit = 'ms'; // or 's'      
-	    // set the default driver you want to use
-	    Tweene.defaultDriver = 'gsap'; // or one of 'transit', 'velocity', 'jquery'
-	</script>
-	
+		
 	<!-- 引入加载页样式 -->
     <link rel="stylesheet" type="text/css" href="./css/loading.css">
 

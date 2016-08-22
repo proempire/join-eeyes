@@ -11,6 +11,7 @@ $(document).ready(function(){
             }
             if (swiper.activeIndex == 1){
                 sec.restart();
+                first_t1.pause();
             }
             if (swiper.activeIndex == 2){
                 starline.restart();
