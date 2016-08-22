@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>提交成功</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, Helvetica, 黑体, sans-serif;
+		}
+		.ok {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+		.ok-title {
+			padding: 4em 0 2em;
+			background-color: #00bca4;
+			text-align: center;
+		}
+		.ok-title img {
+			height: 2.5em;
+		}
+		.ok-title h1 {
+			margin-top: 1em;
+			color: #fff;
+			font-size: 1.25em;
+		}
+		.ok-tips, .ok-qrcode {
+			color: #666;
+		}
+		.ok-tips {
+			padding: 1.5em 0;
+		}
+		.ok-tips table {
+			margin: 0 auto;
+		}
+		.ok-tips td {
+			padding: 0.5em 0.5em;
+		}
+		.ok-tips img {
+			height: 3em;
+		}
+		.ok-qrcode {
+			text-align: center;
+		}
+		.ok-qrcode > div {
+			display: inline-block;
+			margin: 0 1em;
+		}
+		.ok-qrcode img {
+			height: 5em;
+		}
+		.ok-qrcode p {
+			font-size: 0.75em;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="ok">
+		<div class="ok-title">
+			<p><img src="./images/ok/bird@2x.png"></p>
+			<h1>提交成功</h1>
+		</div>
+		<div class="ok-tips">
+			<table>
+				<tbody>
+					<tr>
+						<td>
+						</td>
+						<td>
+							<p>小瞳正在审核材料中<br>请耐心等待面试通知</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img src="./images/ok/ship@2x.png">
+						</td>
+						<td>
+							<p>不放心？<br>登陆邮箱确认报名状态</p>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<img src="./images/ok/clock@2x.png">
+						</td>
+						<td>
+							<p>没有收到邮件？<br>联系我们解决<br>邮箱：eeyesnet@163.com</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="ok-qrcode">
+			<div>
+				<img src="./images/ok/freshmengroup.jpg">
+				<p>QQ新生群<br>(552035254)</p>
+			</div><div>
+				<img src="./images/ok/wechat.jpg">
+				<p>微信公众号<br>(xjtueeyes)</p>
+			</div>
+		</div>
+	</div>
+	<script>
+		+function () {
+			function resize() {
+				document.getElementsByClassName("ok")[0].style.fontSize = window.innerHeight / 37 + "px";
+			};
+			window.addEventListener("resize", resize);
+			resize();
+		}();
+	</script>
+</body>
+
+</html>
