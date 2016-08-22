@@ -1,10 +1,13 @@
 $(function() {
     $('html').height(window.innerHeight)
     function init(term) {
-        term.echo("+----------------------------------------+\n")
-        term.echo("|      Welcome to eeyes web group!       |\n")
-        term.echo("|  input 'help' to get more information  |\n")
-        term.echo("+----------------------------------------+\n")
+        term.echo("+----------------------------------------+")
+        term.echo("|                                        |")
+        term.echo("|      Welcome to eeyes web group!       |")
+        term.echo("|                                        |")
+        term.echo("|  input 'help' to get more information  |")
+        term.echo("|                                        |")
+        term.echo("+----------------------------------------+")
     }
     function help(term) {
         term.echo('')
@@ -99,11 +102,14 @@ $(function() {
         term.echo('')
     }
     function join(term) {
-        term.echo('go to http://join.eeyes.net to fill the form.')
+        term.echo('you can also go to http://join.eeyes.net/join.html and fill the form.')
+        $.mobile.changePage("#submit");
     } 
     function exit(term) {
-        history.back();
         term.echo('Bye.')
+        setTimeout(function () {
+            history.back();
+        }, 300);
     }
     function other(command, term) {
         if (command != '') {
