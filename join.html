@@ -453,7 +453,11 @@
 				arr.push('</optgroup>');
 			}
 			// 地点选择器
-			$('form select[name="home"]').html(arr.join("")).mobiscroll().select({
+			var home = $('form select[name="home"]');
+			function onSelectHome() {
+				home.parent().find("input").val(home.val());
+			};
+			home.html(arr.join("")).mobiscroll().select({
 				theme: 'android-holo-light',
 				lang: "zh",
 				display: 'modal',
@@ -462,8 +466,10 @@
 				rows: 9,
 				group: true,
 				fixedWidth: [130, 130],
-				headerText: "{value}"
+				headerText: home.closest("label").find(".field").text().split(" ")[0],
+				onSelect: onSelectHome
 			});
+			onSelectHome();
 		}();
 	</script>
 </body>

@@ -82,12 +82,19 @@ var startJfuc = function(str){
     TimeLine.add(fadeIn($(str + ' .title'), 1000, [.89, 0, .79, .46]));
     return TimeLine;
 }
+// 点击探索按钮的通过动画
+var scanfuc = function(str){
+    var TimeLine = Tweene.line();
+    TimeLine.add(Tweene.get(str+" .more").to({scale: 1.05}).duration(500).loops(-1).yoyo(true));
+    return TimeLine;
+}
 // 简介页结束动效 str:简介页id
 var endJfuc = function(str){
     var TimeLine = Tweene.line();
     TimeLine.add(fadeOut($(str + ' .icon'), 800), '+=800');
     TimeLine.add(fadeIn($(str + ' .intro'), 800));
     TimeLine.add(fadeIn($(str + ' a'), 800));
+    TimeLine.add(scanfuc(str));
     return TimeLine;
 }
 // 第一页动效

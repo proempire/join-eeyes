@@ -249,7 +249,8 @@ $(function(){
             scrollTotop = 0;
         //console.log(maxHigh);
         $('#market_bg .con .content').height((GC.h / 1039) * 962)
-        $('#market_bg .con .content').css({'margin-top': cheight*0.1})
+        //('#market_bg .con .content').css({'margin-top': cheight*0.1})
+        $('#market_bg .con').css({'margin-top': cheight*0.1})
         for( var j = 0 ; j < 5; j++ ){
             totalHeight += li.eq(j).height();
         }
@@ -285,7 +286,7 @@ $(function(){
                         $('.tips')[0].currentTime = 0;
                         $('.tips')[0].play();
                     //}
-                },(        (ind > 2 ) ? (ind-2) * 1200 : ((ind == 2) ? parseInt(Math.random()*500) + 300 : 0 )      )     );   // 每条消息播放等待时间分别比上一条消息的多 800ms
+                },(        (ind > 2 ) ? (ind-2) * 1200 : ((ind == 2) ? parseInt(Math.random()*500) + 500 : 0 )      )     );   // 每条消息播放等待时间分别比上一条消息的多 800ms
             })(i);
         }
     }

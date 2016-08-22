@@ -41,18 +41,15 @@
 }
 /*报名键方案一*/
 .more, .form{
-    /*width: 5.8rem;*/
-    /*height: 2rem; */
-
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: white !important; 
     font-weight: lighter !important;   
     
     background-color: #2deca6;
     border: none;
-    border-radius: 0.4rem;  
-    padding: 0.3rem 0.8rem;           
+    border-radius: 0.6rem;  
+    padding: 0.4rem 0.9rem;           
     
     position: absolute;
     bottom: 5rem; left: 50%;         
@@ -64,32 +61,6 @@
     -webkit-transform:translateX(2rem); 
     /*background-color: rgba(0, 0, 0, 0.3);*/
 }
-/*报名键方案二*/
-/*.more, .content-J .form{
-    text-align: center;
-    font-size: 1.2rem;
-    padding: 0.4rem 0.6rem;
-    
-    font-weight: lighter !important;   
-    font-weight: lighter !important; 
-        
-    border: none;
-    border-radius: 0.4rem;             
-    
-    position: absolute;
-    left: 50%;
-    -webkit-transform:translateX(-2.5rem);          
-}
-.more{
-    bottom: 8.2rem; 
-    background-color: #2deca6;
-    color: white !important; 
-}
-.content-J .form{
-    bottom: 5rem;
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white !important; 
-}*/
 
 /*市场部*/
 #market-o>.content-J{
@@ -514,4 +485,318 @@
 }
 #publicrelation .content-X>div:nth-child(2) img.publicrelation_two {
     left: 0;
+}
+
+/*影视部*/
+#movie{
+    background-size: cover;
+}
+.movie-total-rotate{
+    transform: rotate(90deg);
+    transform-origin:0% 0%;
+
+    -ms-transform: rotate(90deg);       /* IE 9 */
+    -ms-transform-origin:0% 0%;         /* IE 9 */
+
+    -webkit-transform: rotate(90deg);   /* Safari 和 Chrome */
+    -webkit-transform-origin:0% 0%; /* Safari 和 Chrome */
+
+    -moz-transform: rotate(90deg);      /* Firefox */
+    -moz-transform-origin:0% 0%;        /* Firefox */
+
+    -o-transform: rotate(90deg);        /* Opera */
+    -o-transform-origin:0% 0%;      /* Opera */
+}
+#movie video{
+    /*position: relative;
+    z-index: 80;*/
+    transform: rotate(90deg);
+    transform-origin:0% 0%;
+
+    -ms-transform: rotate(90deg);       /* IE 9 */
+    -ms-transform-origin:0% 0%;         /* IE 9 */
+
+    -webkit-transform: rotate(90deg);   /* Safari 和 Chrome */
+    -webkit-transform-origin:0% 0%; /* Safari 和 Chrome */
+
+    -moz-transform: rotate(90deg);      /* Firefox */
+    -moz-transform-origin:0% 0%;        /* Firefox */
+
+    -o-transform: rotate(90deg);        /* Opera */
+    -o-transform-origin:0% 0%;      /* Opera */
+}
+#movie-control{
+    position: relative;
+    z-index: 80;
+    left: 10%;
+    transform: rotate(90deg);
+    transform-origin:0% 0%;
+
+    -ms-transform: rotate(90deg);       /* IE 9 */
+    -ms-transform-origin:0% 0%;         /* IE 9 */
+
+    -webkit-transform: rotate(90deg);   /* Safari 和 Chrome */
+    -webkit-transform-origin:0% 0%; /* Safari 和 Chrome */
+
+    -moz-transform: rotate(90deg);      /* Firefox */
+    -moz-transform-origin:0% 0%;        /* Firefox */
+
+    -o-transform: rotate(90deg);        /* Opera */
+    -o-transform-origin:0% 0%;      /* Opera */
+}
+#movie-control a, #movie-control-img{
+    position: absolute;
+    color: white;
+    font-weight: 400 !important;
+}
+#movie-control a:nth-child(2){
+    left: 20%;
+    top: 7px;
+}
+#movie-control a:nth-child(3){
+    left: 50%;
+    top: 7px;
+}
+#hint{
+    position: absolute;
+    left: 60%;
+    bottom: 80px;
+    color: white;
+    line-height: 30px;
+    transform: rotate(90deg);
+    transform-origin:0% 0%;
+
+    -ms-transform: rotate(90deg);       /* IE 9 */
+    -ms-transform-origin:0% 0%;         /* IE 9 */
+
+    -webkit-transform: rotate(90deg);   /* Safari 和 Chrome */
+    -webkit-transform-origin:0% 0%; /* Safari 和 Chrome */
+
+    -moz-transform: rotate(90deg);      /* Firefox */
+    -moz-transform-origin:0% 0%;        /* Firefox */
+
+    -o-transform: rotate(90deg);        /* Opera */
+    -o-transform-origin:0% 0%;      /* Opera */
+}
+
+/*新媒体部*/
+#newmedia audio{
+    position: absolute;
+    visibility: hidden;
+}
+#newmedia{
+    background-size: cover;
+}
+.lrc{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.lrc a{
+    position: absolute;
+}
+.lrc .lrc-panel{
+    position: relative;
+    margin: auto;
+    left: 10px;
+    width: 260px;
+    overflow: hidden;
+}
+.lrc-real{
+    margin-top: 160px;
+}
+.lrc .lrc-panel p{
+    text-align: center;
+    font-size: 16px;
+    height: 60px;
+    color: white;
+    font-weight: 100;
+    line-height: 60px;
+    letter-spacing: 1.5px;
+}
+#newmedia .container{
+    padding: 20px 30px 0 30px;
+    /*flex布局（已兼容）*/
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    /*调整为竖排*/
+    flex-direction: column;
+    /*一行中内容排不下时正常换行*/
+    flex-wrap: wrap;
+    /*主轴居中（已兼容）*/
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    /*交叉轴居中（已兼容）*/
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-family: 黑体;
+}
+#newmedia .icon{
+    /*flex布局（已兼容）*/
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    /*主轴居中（已兼容）*/
+    -ms-flex-pack: space-between;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    /*交叉轴居中（已兼容）*/
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    height: 70px;
+    z-index: 999;
+}
+.player-mask{
+    background-size: cover;
+    height: 70px;
+    bottom: 0px;
+    position: absolute;
+}
+
+/*前端美工*/
+#frontend-and-art{
+    width: 100%;
+    height: 100%;
+}
+#frontend-and-art .content{
+    width: 100%;
+    height: 100%;
+}
+#frontend-and-art img{
+    display: block;
+    max-width: 950px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+#motuname,#monaname{
+    left: 14%;
+    top: 12%;
+    color: #83685d;
+    z-index: 10;
+    position: absolute;
+    font-size: 16px;
+    opacity: 1;
+}
+#frontend-and-art #motuname{
+    opacity: 0;
+}
+#frontend-and-art #mona{
+    width: 67%;
+    height: auto;
+    top: 20%;
+    left: 16%;
+    opacity: 1;
+    box-shadow: 3px 3px #888888;
+}
+#frontend-and-art #motu{
+    width: 67%;
+    height: auto;
+    top: 20%;
+    left:16%;
+    opacity: 0;
+    box-shadow: 3px 3px #888888;
+}
+#frontend-and-art #rabbit{
+    width: 80%;
+    height: auto;
+    bottom: 20px;
+    left: 0%;
+}
+#frontend-and-art #speak{
+    width: 30%;
+    height: auto;
+    left: 40%;
+    bottom: 100px;
+    z-index: 10;
+}
+#frontend-and-art #screen{
+    position: relative;
+    width: 1px;
+    height: auto;
+    margin: 0 auto;
+    padding: 50px 0 30px 0;
+}
+#frontend-and-art .qianduanword{
+    text-align: center;
+    width: 60%;
+    left: 20%;
+    color: #150500;
+    position: absolute;
+    font-size: 18px;
+}
+#frontend-and-art .qianduanword p{
+    margin-top: 7px;
+    opacity: 0;
+}
+
+/*app*/
+#backapp{
+    width: 100%;
+    height: 100%;
+}
+#backapp .content{
+    width: 100%;
+    height: 100%;
+}
+#backapp img{
+    max-width: 950px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+#backapp #appufo{
+    width: 30%;
+    height: auto;
+    position: absolute;
+    left: -150px;
+    top: 50%;
+}
+#backapp #approbot{
+    width: 1%;
+    position: absolute;
+    left:49%;
+    top: 66%;
+    height: auto;
+}
+#backapp #applight{
+    width: 20%;
+    position: absolute;
+    left:40%;
+    top: 65%;
+    height: auto;
+    opacity: 0;
+}
+#backapp #appspeak{
+    width: 80%;
+    height: auto;
+    position: absolute;
+    left: 5%;
+    top: 7%;
+    opacity: 0;
+}
+#backapp .word{
+    width: 50%;
+    position: absolute;
+    left: 24%;
+    top: 11%;
+    text-align: center;
+}
+#backapp .word p{
+    margin-top: 10px;
+    font-size: 18px;
+    opacity: 0;
+}
+#backapp .word p.special{
+    position: absolute;
+    opacity: 0;
+    top:22%;
+    font-size: 22px;
 }
