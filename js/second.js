@@ -28,7 +28,7 @@ $(window).load(function(){
         angle += unit;
         x = 160*Math.sin(angle);
         y = -160*Math.cos(angle);
-        surroundman.add(Tweene.get($('#marketp')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+        surroundman.add(Tweene.get($('#marketp')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(60).easing([0,0,1,1]));
     }
     angle = Math.PI;
     x = 160*Math.sin(angle);
@@ -38,7 +38,7 @@ $(window).load(function(){
         angle += unit;
         x = 160*Math.sin(angle);
         y = -160*Math.cos(angle);
-        surroundman1.add(Tweene.get($('#publicrelationp')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(20).easing([0,0,1,1]));
+        surroundman1.add(Tweene.get($('#publicrelationp')).to({left: xstd + x + 'px', top: ystd + y + 'px'}).duration(60).easing([0,0,1,1]));
     }
     $('#man').on('click',function(){
         surroundman.restart();
@@ -73,7 +73,7 @@ $(window).load(function(){
                 angle += unit;
                 x = 160*Math.sin(angle);
                 y = -160*Math.cos(angle) + 160;
-                surroundinfo.add(Tweene.get($('#newsp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+                surroundinfo.add(Tweene.get($('#newsp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(60).easing([0,0,1,1]));
             }
             angle = Math.PI/180*120;
             x = 160*Math.sin(angle);
@@ -83,7 +83,7 @@ $(window).load(function(){
                 angle += unit;
                 x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*120);
                 y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*120);
-                surroundinfo1.add(Tweene.get($('#moviep')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+                surroundinfo1.add(Tweene.get($('#moviep')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(60).easing([0,0,1,1]));
             }
             angle = Math.PI/180*240;
             x = 160*Math.sin(angle);
@@ -93,7 +93,7 @@ $(window).load(function(){
                 angle += unit;
                 x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*240);
                 y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*240);
-                surroundinfo2.add(Tweene.get($('#newmediap')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+                surroundinfo2.add(Tweene.get($('#newmediap')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(60).easing([0,0,1,1]));
             }
             $('#info').on('click',function(){
                 surroundinfo.restart();
@@ -130,7 +130,7 @@ $(window).load(function(){
                 angle += unit;
                 x = 160*Math.sin(angle);
                 y = -160*Math.cos(angle) + 160;
-                surroundtech.add(Tweene.get($('#productp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+                surroundtech.add(Tweene.get($('#productp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(60).easing([0,0,1,1]));
             }
             angle = Math.PI/180*90;
             x = 160*Math.sin(angle);
@@ -140,7 +140,7 @@ $(window).load(function(){
                 angle += unit;
                 x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*90);
                 y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*90);
-                surroundtech1.add(Tweene.get($('#frontend-and-artp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+                surroundtech1.add(Tweene.get($('#frontend-and-artp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(60).easing([0,0,1,1]));
             }
             angle = Math.PI/180*180;
             x = 160*Math.sin(angle);
@@ -150,7 +150,7 @@ $(window).load(function(){
                 angle += unit;
                 x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*180);
                 y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*180);
-                surroundtech2.add(Tweene.get($('#backappp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+                surroundtech2.add(Tweene.get($('#backappp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(60).easing([0,0,1,1]));
             }
             angle = Math.PI/180*270;
             x = 160*Math.sin(angle);
@@ -160,7 +160,7 @@ $(window).load(function(){
                 angle += unit;
                 x = 160*Math.sin(angle) - 160*Math.sin(Math.PI/180*270);
                 y = -160*Math.cos(angle) + 160*Math.cos(Math.PI/180*270);
-                surroundtech3.add(Tweene.get($('#backendp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(20).easing([0,0,1,1]));
+                surroundtech3.add(Tweene.get($('#backendp')).to({transform: "translate(" + x + 'px,' + y + 'px'}).duration(60).easing([0,0,1,1]));
             }
             $('#tech').on('click',function(){
                 surroundtech.restart();
