@@ -3,6 +3,8 @@
 date_default_timezone_set('Asia/Shanghai');
 // CSV文件名设置，最好设置成别人猜不到的名字
 define('DATA_FILE', 'data.csv');
+// 下载密码
+define('PASSWORD', 'password');
 // 防刷的记录文件
 define('IP_FILE', 'ip.php');
 // 性别
