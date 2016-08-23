@@ -102,7 +102,7 @@ var indfuc = function(str){
     var TimeLine = Tweene.line();
     var ind = $(str + " .ind");
     TimeLine.add(fadeIn(ind, 50));
-    TimeLine.add(Tweene.get(ind).to({translateY: 0.5*fontSize}).duration(400).loops(-1).yoyo(true).easing([0, 0, 1, 1]));
+    TimeLine.add(Tweene.get(ind).to({translateY: 0.5*fontSize}).duration(400).loops(-1).yoyo(true).easing([0, 0, 1, 1]), "-=50");
     return TimeLine;
 }
 // 第一页动效
@@ -165,7 +165,7 @@ $(window).load(function(){
             load_t1.add(Tweene.get(load_div).to({translateY: -12*fontSize}).duration(100).easing([0, 0, 1, 1]), '0');
             load_t1.add(Tweene.get(load_img[0]).to({translateY: -12*fontSize}).duration(100).easing([0, 0, 1, 1]), '0');
             load_t1.add(Tweene.get(load_img[1]).to({translateY: -12*fontSize}).duration(100).easing([0, 0, 1, 1]), '0');
-            $("#loading-cover span").text("100％");
+            load_number.text("100％");
             // 加载页消失
             load_t2.add(fadeOut($("#loading-cover"),500));
             load_t2.play();
