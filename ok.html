@@ -97,10 +97,10 @@
 		</div>
 		<div class="ok-qrcode">
 			<div>
-				<img src="./images/ok/freshmengroup.jpg">
+				<img id="ok-qrcode-qun" src="./images/ok/freshmengroup.jpg">
 				<p>QQ新生群<br>(552035254)</p>
 			</div><div>
-				<img src="./images/ok/wechat.jpg">
+				<img id="ok-qrcode-weixin" src="./images/ok/wechat.jpg">
 				<p>微信公众号<br>(xjtueeyes)</p>
 			</div>
 		</div>
@@ -112,6 +112,48 @@
 			};
 			window.addEventListener("resize", resize);
 			resize();
+		}();
+		+function () {
+			var qun = document.getElementById("ok-qrcode-qun"),
+				weixin = document.getElementById("ok-qrcode-weixin");
+			var run = false;
+			function reset() {
+				run = false;
+				qun.style.opacity = "";
+				weixin.style.opacity = "";
+			}
+			function fadeOut(element) {
+				function time() {
+					return (new Date()).getTime();
+				}
+				var t0 = time();
+				function fadeOutFunc() {
+					var opacity = 1 - (time() - t0) / 400;
+					if (opacity > 0) {
+						element.style.opacity = opacity;
+						if (run) {
+							setTimeout(fadeOutFunc, 0);
+						} else {
+							reset();
+						}
+					} else {
+						element.style.opacity = 0;
+					}
+				}
+				run = true;
+				fadeOutFunc();
+				setTimeout(reset, 1000);
+			}
+			qun.addEventListener("touchstart", function () {
+				fadeOut(weixin);
+			});
+			weixin.addEventListener("touchstart", function () {
+				fadeOut(qun);
+			});
+			qun.addEventListener("touchend", reset);
+			qun.addEventListener("touchcancel", reset);
+			weixin.addEventListener("touchend", reset);
+			weixin.addEventListener("touchcancel", reset);
 		}();
 	</script>
 </body>
