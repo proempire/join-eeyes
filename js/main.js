@@ -7,11 +7,13 @@ $(document).ready(function(){
         autoHeight: true,
         onSlideChangeEnd: function(swiper){
             if (swiper.activeIndex == 0){
+                first_t1.restart();
                 sec.pause();
             }
             if (swiper.activeIndex == 1){
                 sec.restart();
                 first_t1.pause();
+                starline.pause();
             }
             if (swiper.activeIndex == 2){
                 starline.restart();
@@ -20,6 +22,7 @@ $(document).ready(function(){
             }
             if (swiper.activeIndex == 3){
                 four.restart();
+                starline.pause();
             }
             if (swiper.activeIndex == 4){
                 surround.restart();
@@ -33,22 +36,22 @@ $(document).ready(function(){
     // 第二第四页动效
     var cartoon24 = function(str, arr){
         var TimeLine = Tweene.line();
+        var line = $(str+" .sec-con");
+        var linelenth = line.size();
         TimeLine.add(Tweene.get($(str+" .sec-con p")).set({opacity: 0}))
-        var i = 0;
-        while(arr[i] != undefined){
+        for(var i=0; i<linelenth; i++){
             if(i > 0){
-                TimeLine.add(Tweene.get($(str+" #sec-div"+arr[i-1])).to({opacity: 0}).duration(500).easing([0, 0, 1, 1]), "+=500");
+                TimeLine.add(Tweene.get(line[i-1]).to({opacity: 0}).duration(500).easing([0, 0, 1, 1]), "+=500");
             }
-            var maxlen = $(str+" #sec-div"+arr[i]+" p").size();
-            for(var j=1; j<=maxlen; j++){
-                TimeLine.add(fadeIn($(str+" #sec-div"+arr[i]+" p:nth-child("+j+")"), 800), "+=200");
+            var line_p = $(str+" #sec-div"+arr[i]+" p");
+            var maxlen = line_p.size();
+            for(var j=0; j<maxlen; j++){
+                TimeLine.add(fadeIn(line_p[j], 800), "+=200");
             }
-            i++;
         }
-        TimeLine.add(Tweene.get($(str+" .ind")).to({opacity: 1}).duration(1000))
+        TimeLine.add(indfuc("#otwo"));
         TimeLine.add(Tweene.get($(str+" .second")).to({translateX: -0.4*fontSize}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "0");
         TimeLine.add(Tweene.get($(str+" .second")).to({translateY: -0.4*fontSize}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "200");
-        //TimeLine.add(Tweene.get($(str+" .ind")).to({opacity: 1}).duration(1000))
         return TimeLine;
     }
     $(".second").css({left: 0.3 + "rem", top: 0.3 + "rem"});
