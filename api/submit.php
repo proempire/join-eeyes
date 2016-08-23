@@ -73,18 +73,18 @@ function I($name, $type, $filter)
 }
 
 // 验证输入数据
-// 姓名：1-10个字符
+// 姓名：1-20个UTF-8字符
 // 性别：0女、1男
 // 出生日期：YYYY-mm-dd，出生年份必须在1986年-2006年之间，且日期必须真实存在
-// 籍贯：0-40个字符
+// 籍贯：0-40个UTF-8字符
 // 书院；0彭康、1仲英、2南洋、3文治、4崇实、5宗濂、6励志、7启德
-// 专业班级：1-20个字符
+// 专业班级：1-20个UTF-8字符
 // 手机：号段130、131、132、133、134、135、136、137、138、139、145、147、149、150、151、152、153、155、156、157、158、159、170、175、176、177、178、180、181、182、183、184、185、186、187、188、189
 // QQ号：5-11位数字，首位不为0
 // 邮箱：filter_var->checkdnsrr
 // 第一志愿：         1新闻部、2新媒体部、3影视部、4市场部、5公关部、6产品部、7app组、8web组、9前端美工组
 // 第二志愿：0(未选)、1新闻部、2新媒体部、3影视部、4市场部、5公关部、6产品部、7app组、8web组、9前端美工组，第二志愿必须与第一志愿不同
-// 个人陈述：0-255个字符
+// 个人陈述：0-255个UTF-8字符
 $name = I('name', 's', '/^.{1,20}$/u');
 $gender = I('gender', 'd', '/^[01]$/');
 $date = I('date', 's', function ($date) {
@@ -148,11 +148,11 @@ if (!file_exists(DATA_FILE) && false === fputcsv($f, $TABLE_HEADER)) {
 // 获取IP归属地
 function getLocation($ip)
 {
-	$html = file_get_contents('http://ip.lockview.cn/ShowIP.aspx?ip=' . $ip);
-	if (1 === preg_match('/<table.*?><tr><td>.*?<\\/td><td>.*?<\\/td><td>(.*?)<\\/td><\\/tr><\\/table>/', $html, $matches)) {
-		return $matches[1];
-	}
-	return '';
+    $html = file_get_contents('http://ip.lockview.cn/ShowIP.aspx?ip=' . $ip);
+    if (1 === preg_match('/<table.*?><tr><td>.*?<\\/td><td>.*?<\\/td><td>(.*?)<\\/td><\\/tr><\\/table>/', $html, $matches)) {
+        return $matches[1];
+    }
+    return '';
 }
 // 追加数据
 if (false === fputcsv($f, array($time, $client_ip, getLocation($client_ip), $name, $gender, $date, $home, $college, $class, $tel, $qq, $mail, $first, $second, $info))) {
