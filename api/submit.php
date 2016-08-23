@@ -85,7 +85,7 @@ function I($name, $type, $filter)
 // 第一志愿：         1新闻部、2新媒体部、3影视部、4市场部、5公关部、6产品部、7app组、8web组、9前端美工组
 // 第二志愿：0(未选)、1新闻部、2新媒体部、3影视部、4市场部、5公关部、6产品部、7app组、8web组、9前端美工组，第二志愿必须与第一志愿不同
 // 个人陈述：0-255个字符
-$name = I('name', 's', '/^.{1,10}$/');
+$name = I('name', 's', '/^.{1,20}$/u');
 $gender = I('gender', 'd', '/^[01]$/');
 $date = I('date', 's', function ($date) {
     if (!is_string($date)) {
@@ -103,9 +103,9 @@ $date = I('date', 's', function ($date) {
     }
     return $date;
 });
-$home = I('home', 's', '/^.{0,40}$/');
+$home = I('home', 's', '/^.{0,40}$/u');
 $college = I('college', 'd', '/^[0-7]$/');
-$class = I('class', 's', '/^.{1,20}$/');
+$class = I('class', 's', '/^.{1,20}$/u');
 $tel = I('tel', 's', '/^(1((3\d)|(4[579])|(5[012356789])|(7[05678])|(8\d))\d{8})$/');
 $qq = I('qq', 's', '/^[1-9]\d{4,10}$/');
 $mail = I('mail', 's', function ($mail) {
@@ -127,7 +127,7 @@ $second = I('second', 'd', '/^[0-9]$/');
 if ($first === $second) {
     exit('-3');
 }
-$info = I('info', 's', '/^.{0,255}$/');
+$info = I('info', 's', '/^.{0,255}$/u');
 // value->名称转换
 $gender = $GENDER[$gender];
 $college = $COLLEGE[$college];
