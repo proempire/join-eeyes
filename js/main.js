@@ -43,12 +43,11 @@ $(document).ready(function(){
             if(i > 0){
                 TimeLine.add(Tweene.get(line[i-1]).to({opacity: 0}).duration(500).easing([0, 0, 1, 1]), "+=500");
             }
-            var line_p = $(str+" #sec-div"+arr[i+1]+" p");
+            var line_p = $(str+" #sec-div"+arr[i]+" p");
             var maxlen = line_p.size();
             for(var j=0; j<maxlen; j++){
                 TimeLine.add(fadeIn(line_p[j], 800), "+=200");
             }
-            i++;
         }
         TimeLine.add(indfuc("#otwo"));
         TimeLine.add(Tweene.get($(str+" .second")).to({translateX: -0.4*fontSize}).loops(-1).yoyo(true).duration(500).easing([0, 0, 1, 1]), "0");

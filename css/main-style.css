@@ -204,6 +204,9 @@ body{
     /*Word-spacing: 2rem;*/
     Letter-spacing: 0.15rem;
 }
+#otwo #sec-div3 p{
+    line-height: 3;
+}
 /*第三页样式*/
 .star-container{ 
     overflow: hidden;
