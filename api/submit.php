@@ -161,7 +161,7 @@ if (false === fputcsv($f, array($time, $client_ip, getLocation($client_ip), $nam
     exit('-4');
 }
 // Excel仅识别GBK编码的csv
-if (false === file_put_contents(DATA_FILE, iconv('utf-8', 'GBK//IGNORE', ob_get_clean()), FILE_APPEND)) {
+if (false === file_put_contents(DATA_FILE, iconv('utf-8', 'GBK//IGNORE', ob_get_clean()), FILE_APPEND |  LOCK_EX)) {
     exit('-4');
 }
 fclose($f);
