@@ -69,5 +69,5 @@
 }
 
 .terminal, .cmd{
-    font-family: DejaVuSansMono;
+    font-family: DejaVuSansMono !important;
 }
