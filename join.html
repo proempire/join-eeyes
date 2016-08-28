@@ -14,19 +14,19 @@
 			margin: 0;
 			padding: 0;
 		}
-		form {
+		body {
 			font-size: 20px;
 			margin: 0 auto;
 			max-width: 640px;
 		}
 		@media screen and (max-width: 414px) {
-			form {font-size: 18px;}
+			body {font-size: 18px;}
 		}
 		@media screen and (max-width: 375px) {
-			form {font-size: 16px;}
+			body {font-size: 16px;}
 		}
 		@media screen and (max-width: 320px) {
-			form {font-size: 14px;}
+			body {font-size: 14px;}
 		}
 		form h1 {
 			margin: 1em 0 0.5em 0;
@@ -163,7 +163,7 @@
 			top: 0;
 			width: 100%;
 			height: 100%;
-			background-color: rgba(0, 0, 0, 0.3);
+			background-color: rgba(0, 0, 0, 0.7);
 			text-align: center;
 		}
 		.alert > div {
@@ -211,7 +211,7 @@
 						<td>
 							<label>
 								<p><input type="text" name="name"></p>
-								<p class="field">姓名 YOURNAME</p>
+								<p class="field">姓名 YOUR NAME</p>
 							</label>
 						</td>
 						<td>
@@ -344,7 +344,7 @@
 			<div class="alert-content">
 				<h1>提示</h1>
 				<div class="alert-text"></div>
-				<a href="javascript:alertOk();">确定</a>
+				<a>确定</a>
 			</div>
 		</div>
 	</div>
@@ -355,9 +355,9 @@
 				$(".alert-text").html("<p>" + text.split("\n").join("</p><p>") + "</p>");
 				$(".alert").fadeIn(200);
 			};
-			window.alertOk = function () {
+			$(".alert a").click(function () {
 				$(".alert").hide();
-			};
+			});
 		}();
 		+function () {
 			// 单选效果
